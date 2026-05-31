@@ -46,7 +46,7 @@
   }
 
   /* ── Layout ── */
-  .app { display: grid; grid-template-columns: 400px 1fr; height: 100vh; }
+  .app { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
   @media (max-width: 860px) {
     .app { grid-template-columns: 1fr; grid-template-rows: 52vh 48vh; }
     #map { order: -1; }
@@ -63,12 +63,8 @@
   header.brand { padding: 20px 20px 14px; border-bottom: 1px solid var(--line); }
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo .mark {
-    width: 40px; height: 40px; flex-shrink: 0;
-    border-radius: 11px;
-    background: var(--accent); color: #fff;
-    display: grid; place-items: center;
-    font-weight: 700; font-size: 20px; font-family: 'Fraunces', serif;
-    box-shadow: 0 2px 8px rgba(31,111,92,.3);
+    width: 28px; height: 38px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
   }
   .logo h1 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
   .tag { color: var(--muted); font-size: 13px; margin-top: 5px; line-height: 1.45; }
@@ -140,18 +136,18 @@
   /* ── Cards ── */
   .card {
     background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius);
-    padding: 14px 16px; margin: 6px 0; cursor: pointer;
+    padding: 16px; margin: 5px 0; cursor: pointer;
     box-shadow: var(--shadow-sm);
     transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), border-color 180ms var(--ease);
   }
-  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: #cac4b6; }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: #c4beb0; }
   .card:active { transform: translateY(0); }
   .card.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-sm); }
   .card .top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
-  .card h3 { font-size: 15px; font-weight: 600; line-height: 1.25; }
-  .card .type { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 600; margin-top: 3px; }
-  .card .addr { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
-  .card .meta { display: flex; gap: 8px; align-items: center; margin-top: 10px; font-size: 12px; flex-wrap: wrap; }
+  .card h3 { font-size: 14.5px; font-weight: 600; line-height: 1.3; letter-spacing: -.01em; }
+  .card .type { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-top: 4px; display: flex; align-items: center; gap: 3px; }
+  .card .addr { font-size: 12px; color: var(--muted); margin-top: 7px; line-height: 1.45; }
+  .card .meta { display: flex; gap: 7px; align-items: center; margin-top: 10px; font-size: 11.5px; flex-wrap: wrap; }
 
   .badge { background: var(--accent-soft); color: var(--accent); border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 11.5px; white-space: nowrap; }
   .dist { color: var(--muted); }
@@ -303,7 +299,7 @@
   <aside class="panel" role="complementary" aria-label="Building list and filters">
     <header class="brand">
       <div class="logo">
-        <div class="mark" aria-hidden="true">L</div>
+        <div class="mark" aria-hidden="true"><svg width="28" height="38" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 0C33.49 0 12 21.49 12 48C12 76.5 60 140 60 140C60 140 108 76.5 108 48C108 21.49 86.51 0 60 0Z" fill="#1f6f5c"/><circle cx="60" cy="42" r="24" fill="#ffffff"/><rect x="44" y="30" width="14" height="24" rx="1" fill="#1f6f5c" opacity="0.9"/><rect x="62" y="30" width="14" height="24" rx="1" fill="#1f6f5c" opacity="0.9"/><path d="M60 34L54 40L66 40Z" fill="#ffffff"/><path d="M60 50L66 44L54 44Z" fill="#ffffff"/></svg></div>
         <h1>LiftSpot</h1>
       </div>
       <div class="tag">Find and rate elevators in buildings across Long Island</div>
@@ -351,7 +347,8 @@ const sb = createClient(
 );
 
 const TYPES = ["Medical","Office","Mall","Hotel","Education"];
-const TYPE_ICON = {Medical:"✚",Office:"▣",Mall:"◫",Hotel:"⌂",Education:"✎"};
+const TYPE_ICON  = {Medical:"✚", Office:"▣", Mall:"◫", Hotel:"⌂", Education:"✎"};
+const TYPE_COLOR = {Medical:"#c0392b", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c"};
 
 let BUILDINGS = [];
 let state = { q:"", types:new Set(), minStories:0, userLoc:null, activeId:null };
@@ -366,7 +363,7 @@ const dist = (a,b) => {
 /* Map */
 const map = new maplibregl.Map({
   container:'map',
-  style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+  style:'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
   center:[-73.55,40.78], zoom:9.6
 });
 map.addControl(new maplibregl.NavigationControl(),'top-right');
@@ -412,7 +409,7 @@ function renderList(){
       <div class="top">
         <div style="min-width:0">
           <h3>${b.name}</h3>
-          <div class="type">${b.type}</div>
+          <div class="type" style="color:${TYPE_COLOR[b.type]||'var(--accent)'}">⬤ ${b.type}</div>
         </div>
         <div class="stars" aria-label="Rating ${b.rating} out of 5">${stars(b.rating)}<span class="n">${b.rating}</span></div>
       </div>

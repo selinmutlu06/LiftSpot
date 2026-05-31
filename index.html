@@ -174,15 +174,13 @@
   .maplibregl-popup-content { font-family: 'Spline Sans', sans-serif; border-radius: 10px; padding: 10px 14px; font-size: 13.5px; }
 
   .pin {
-    width: 32px; height: 32px;
-    background: var(--accent); border: 3px solid #fff; border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg); box-shadow: 0 2px 8px rgba(0,0,0,.22);
-    cursor: pointer; display: grid; place-items: center;
-    transition: background 150ms var(--ease), transform 150ms var(--ease);
+    cursor: pointer;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,.28));
+    transition: transform 150ms var(--ease), filter 150ms var(--ease);
+    display: block;
   }
-  .pin span { transform: rotate(45deg); color: #fff; font-size: 12px; display: block; }
-  .pin.active { background: #0e3d32; transform: rotate(-45deg) scale(1.25); }
-  .pin:hover { background: var(--accent-hover); }
+  .pin:hover { transform: scale(1.12); filter: drop-shadow(0 3px 7px rgba(0,0,0,.35)); }
+  .pin.active { transform: scale(1.2); filter: drop-shadow(0 3px 8px rgba(0,0,0,.4)); }
 
   /* ── Drawer ── */
   .drawer {
@@ -437,15 +435,24 @@ function renderMarkers(items){
 
   items.forEach(b=>{
     if(markers[b.id]){
-      // just update active class, no re-create
-      markers[b.id].getElement().className='pin'+(b.id===state.activeId?' active':'');
+      const el=markers[b.id].getElement();
+      const isActive=b.id===state.activeId;
+      el.className='pin'+(isActive?' active':'');
+      const fill=isActive?'#0e3d32':'#1f6f5c';
+      el.querySelector('path').setAttribute('fill',fill);
+      el.querySelector('text').setAttribute('fill',fill);
       return;
     }
     const elp=document.createElement('div');
     elp.className='pin'+(b.id===state.activeId?' active':'');
     elp.setAttribute('role','button');
     elp.setAttribute('aria-label',b.name);
-    elp.innerHTML=`<span aria-hidden="true">${TYPE_ICON[b.type]||'▲'}</span>`;
+    const fill=b.id===state.activeId?'#0e3d32':'#1f6f5c';
+    elp.innerHTML=`<svg width="32" height="40" viewBox="0 0 32 40" fill="none" aria-hidden="true">
+      <path d="M16 0C7.16 0 0 7.16 0 16c0 11.5 16 24 16 24S32 27.5 32 16C32 7.16 24.84 0 16 0z" fill="${fill}"/>
+      <circle cx="16" cy="15" r="8" fill="white"/>
+      <text x="16" y="19" text-anchor="middle" font-family="sans-serif" font-size="9" fill="${fill}">${TYPE_ICON[b.type]||'•'}</text>
+    </svg>`;
     elp.onclick=()=>{ openBuilding(b.id); map.flyTo({center:[b.lng,b.lat],zoom:14}); };
     markers[b.id]=new maplibregl.Marker({element:elp,anchor:'bottom'}).setLngLat([b.lng,b.lat]).addTo(map);
   });

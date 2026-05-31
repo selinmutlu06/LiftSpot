@@ -113,9 +113,17 @@
   .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
 
   .range-row { display: flex; flex-direction: column; gap: 5px; }
+  .range-row .range-header { display: flex; justify-content: space-between; align-items: center; }
   .range-row label { font-size: 12.5px; color: var(--muted); }
   .range-row label span { font-weight: 600; color: var(--ink); }
   .range-row input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; height: 20px; }
+  .exact-toggle {
+    border: 1.5px solid var(--line); background: #fff; border-radius: 999px;
+    padding: 3px 10px; font: inherit; font-size: 11.5px; font-weight: 600;
+    cursor: pointer; color: var(--muted);
+    transition: background 150ms var(--ease), color 150ms var(--ease), border-color 150ms var(--ease);
+  }
+  .exact-toggle.on { background: var(--accent); color: #fff; border-color: var(--accent); }
 
   .locbtn {
     display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -304,7 +312,10 @@
       </div>
       <div class="row" id="typeChips" role="group" aria-label="Filter by building type"></div>
       <div class="range-row">
-        <label for="storyRange">Min. stories: <span id="storyVal">any</span></label>
+        <div class="range-header">
+          <label for="storyRange"><span id="storyMode">Min.</span> stories: <span id="storyVal">any</span></label>
+          <button class="exact-toggle" id="exactToggle" type="button" aria-pressed="false">Exact</button>
+        </div>
         <input type="range" id="storyRange" min="0" max="40" value="0" step="1" />
       </div>
       <button class="locbtn" id="locBtn">
@@ -341,7 +352,7 @@ const TYPE_ICON  = {Medical:"✚", Office:"▣", Mall:"◫", Hotel:"⌂", Educat
 const TYPE_COLOR = {Medical:"#c0392b", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c", Government:"#5d6d7e", Residential:"#e8590c", Library:"#0097a7", Transit:"#455a64", Legal:"#7d5a00", Entertainment:"#e53935", Community:"#00897b", Financial:"#1a6b3c"};
 
 let BUILDINGS = [];
-let state = { q:"", types:new Set(), minStories:0, userLoc:null, activeId:null };
+let state = { q:"", types:new Set(), minStories:0, exactStories:false, userLoc:null, activeId:null };
 
 const stars = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
 const dist = (a,b) => {
@@ -363,7 +374,10 @@ function filtered(){
   return BUILDINGS.filter(b=>{
     if(state.q){ const q=state.q.toLowerCase(); if(!(b.name.toLowerCase().includes(q)||b.town.toLowerCase().includes(q)||b.addr.toLowerCase().includes(q))) return false; }
     if(state.types.size && !state.types.has(b.type)) return false;
-    if(b.stories < state.minStories) return false;
+    if(state.minStories > 0){
+      if(state.exactStories){ if(b.stories !== state.minStories) return false; }
+      else { if(b.stories < state.minStories) return false; }
+    }
     return true;
   }).map(b=>({...b, _d: state.userLoc?dist(state.userLoc,b):null}))
     .sort((a,b)=> state.userLoc ? a._d-b._d : b.rating-a.rating);
@@ -603,8 +617,30 @@ document.getElementById('clearSearch').onclick=()=>{
   qInput.focus(); renderList();
 };
 
-const range=document.getElementById('storyRange'), storyVal=document.getElementById('storyVal');
-range.oninput=e=>{ state.minStories=+e.target.value; storyVal.textContent=state.minStories===0?'any':state.minStories+'+'; renderList(); };
+const range=document.getElementById('storyRange');
+const storyVal=document.getElementById('storyVal');
+const storyMode=document.getElementById('storyMode');
+const exactToggle=document.getElementById('exactToggle');
+
+function updateStoryLabel(){
+  if(state.minStories===0){ storyVal.textContent='any'; return; }
+  storyVal.textContent = state.exactStories ? String(state.minStories) : state.minStories+'+';
+}
+
+range.oninput=e=>{
+  state.minStories=+e.target.value;
+  updateStoryLabel();
+  renderList();
+};
+
+exactToggle.onclick=()=>{
+  state.exactStories=!state.exactStories;
+  exactToggle.classList.toggle('on', state.exactStories);
+  exactToggle.setAttribute('aria-pressed', String(state.exactStories));
+  storyMode.textContent = state.exactStories ? 'Exact' : 'Min.';
+  updateStoryLabel();
+  renderList();
+};
 
 document.getElementById('locBtn').onclick=()=>{
   if(!navigator.geolocation){ alert('Geolocation not supported'); return; }

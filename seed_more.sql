@@ -1,0 +1,128 @@
+-- ============================================================
+-- LiftSpot — 103 additional buildings (IDs 28–130)
+-- ============================================================
+
+-- Add new types support (no schema change needed — type is just text)
+
+insert into buildings (id, name, type, town, addr, lat, lng, stories, elevators, rating) values
+
+-- ── MEDICAL ──────────────────────────────────────────────────
+(28,  'John T. Mather Memorial Hospital',           'Medical',     'Port Jefferson',   '75 North Country Rd, Port Jefferson, NY 11777',         40.9449, -73.0659,  7,  6, 4.3),
+(29,  'South Shore University Hospital',             'Medical',     'Bay Shore',        '301 E Main St, Bay Shore, NY 11706',                    40.7284, -73.2515,  9,  8, 4.4),
+(30,  'Long Island Community Hospital',              'Medical',     'Patchogue',        '101 Hospital Rd, Patchogue, NY 11772',                  40.7737, -73.0096,  7,  6, 4.2),
+(31,  'Eastern Long Island Hospital',                'Medical',     'Greenport',        '201 Manor Pl, Greenport, NY 11944',                     41.1034, -72.3590,  4,  3, 4.0),
+(32,  'Stony Brook Southampton Hospital',            'Medical',     'Southampton',      '240 Meeting House Ln, Southampton, NY 11968',           40.8878, -72.3861,  5,  4, 4.3),
+(33,  'Mercy Medical Center',                        'Medical',     'Rockville Centre', '1000 N Village Ave, Rockville Centre, NY 11570',        40.6654, -73.6379,  9,  8, 4.4),
+(34,  'St. Francis Hospital The Heart Center',       'Medical',     'Roslyn',           '100 Port Washington Blvd, Roslyn, NY 11576',            40.7887, -73.6479,  8,  7, 4.7),
+(35,  'Glen Cove Hospital',                          'Medical',     'Glen Cove',        '101 St Andrews Ln, Glen Cove, NY 11542',                40.8635, -73.6310,  5,  4, 4.2),
+(36,  'Plainview Hospital',                          'Medical',     'Plainview',        '888 Old Country Rd, Plainview, NY 11803',               40.7768, -73.4678,  4,  4, 4.1),
+(37,  'Syosset Hospital',                            'Medical',     'Syosset',          '221 Jericho Tpke, Syosset, NY 11791',                   40.8134, -73.5013,  4,  4, 4.1),
+(38,  'Long Island Jewish Medical Center',           'Medical',     'New Hyde Park',    '270-05 76th Ave, New Hyde Park, NY 11040',              40.7409, -73.7085, 16, 16, 4.6),
+(39,  'Cohen Children''s Medical Center',            'Medical',     'New Hyde Park',    '269-01 76th Ave, New Hyde Park, NY 11040',              40.7415, -73.7079,  8,  8, 4.5),
+(40,  'St. Catherine of Siena Medical Center',       'Medical',     'Smithtown',        '50 Route 25A, Smithtown, NY 11787',                     40.8533, -73.2136,  7,  5, 4.3),
+(41,  'Northport VA Medical Center',                 'Medical',     'Northport',        '79 Middleville Rd, Northport, NY 11768',                40.9178, -73.3394,  8,  6, 4.1),
+(42,  'St. Charles Hospital',                        'Medical',     'Port Jefferson',   '200 Belle Terre Rd, Port Jefferson, NY 11777',          40.9341, -73.0569,  6,  5, 4.2),
+(43,  'St. Joseph Hospital',                         'Medical',     'Bethpage',         '4295 Hempstead Tpke, Bethpage, NY 11714',               40.7504, -73.4838,  5,  4, 4.2),
+(44,  'South Oaks Hospital',                         'Medical',     'Amityville',       '400 Sunrise Hwy, Amityville, NY 11701',                 40.6731, -73.4195,  5,  4, 4.0),
+(45,  'Northwell Health — Katz Women''s Hospital',   'Medical',     'New Hyde Park',    '271-02 76th Ave, New Hyde Park, NY 11040',              40.7421, -73.7074,  6,  5, 4.4),
+
+-- ── OFFICE ───────────────────────────────────────────────────
+(46,  '2 Jericho Plaza',                             'Office',      'Jericho',          '2 Jericho Plaza, Jericho, NY 11753',                    40.7932, -73.5390,  7,  6, 4.3),
+(47,  '3 Jericho Plaza',                             'Office',      'Jericho',          '3 Jericho Plaza, Jericho, NY 11753',                    40.7944, -73.5382,  7,  6, 4.2),
+(48,  '333 Earle Ovington Blvd',                     'Office',      'Uniondale',        '333 Earle Ovington Blvd, Uniondale, NY 11553',          40.7246, -73.5895,  8,  6, 4.2),
+(49,  '100 Garden City Plaza',                       'Office',      'Garden City',      '100 Garden City Plaza, Garden City, NY 11530',          40.7255, -73.6367,  8,  6, 4.3),
+(50,  '900 Stewart Ave',                             'Office',      'Garden City',      '900 Stewart Ave, Garden City, NY 11530',                40.7201, -73.6338,  6,  5, 4.2),
+(51,  '585 Stewart Ave',                             'Office',      'Garden City',      '585 Stewart Ave, Garden City, NY 11530',                40.7178, -73.6292,  6,  5, 4.1),
+(52,  '175 Broadhollow Rd',                          'Office',      'Melville',         '175 Broadhollow Rd, Melville, NY 11747',                40.7621, -73.4133,  7,  5, 4.2),
+(53,  '1010 Northern Blvd',                          'Office',      'Great Neck',       '1010 Northern Blvd, Great Neck, NY 11021',              40.7956, -73.7241,  6,  5, 4.2),
+(54,  'Jericho Atrium',                              'Office',      'Jericho',          '500 N Broadway, Jericho, NY 11753',                     40.7876, -73.5402,  8,  6, 4.3),
+(55,  'Henry Schein HQ',                             'Office',      'Melville',         '135 Duryea Rd, Melville, NY 11747',                     40.7689, -73.4117,  6,  5, 4.3),
+(56,  'CA Technologies Campus',                      'Office',      'Islandia',         '100 Stevens Ave, Islandia, NY 11749',                   40.7801, -73.1789,  8,  6, 4.2),
+(57,  'Canon USA HQ',                                'Office',      'Melville',         '1 Canon Plaza, Melville, NY 11747',                     40.7812, -73.4083,  6,  4, 4.1),
+(58,  'Broadridge Financial Solutions HQ',           'Office',      'Lake Success',     '5 Dakota Dr, Lake Success, NY 11042',                   40.7668, -73.7173,  5,  4, 4.2),
+(59,  'Pall Corporation HQ',                         'Office',      'Port Washington',  '25 Harbor Park Dr, Port Washington, NY 11050',          40.8323, -73.6989,  6,  5, 4.2),
+(60,  '300 Motor Pkwy',                              'Office',      'Hauppauge',        '300 Motor Pkwy, Hauppauge, NY 11788',                   40.8187, -73.2077,  6,  5, 4.2),
+(61,  'Newsday Building',                            'Office',      'Melville',         '235 Pinelawn Rd, Melville, NY 11747',                   40.7683, -73.4123,  6,  5, 4.2),
+(62,  '1111 Marcus Ave',                             'Office',      'Lake Success',     '1111 Marcus Ave, Lake Success, NY 11042',               40.7620, -73.7185,  8,  6, 4.2),
+(63,  '400 Crossways Park Dr',                       'Office',      'Woodbury',         '400 Crossways Park Dr, Woodbury, NY 11797',             40.7899, -73.4692,  6,  5, 4.2),
+(64,  'Altice USA HQ',                               'Office',      'Bethpage',         '1111 Stewart Ave, Bethpage, NY 11714',                  40.7534, -73.4833,  8,  5, 4.2),
+(65,  'Northwell Health HQ',                         'Office',      'New Hyde Park',    '2000 Marcus Ave, New Hyde Park, NY 11042',              40.7633, -73.7131,  7,  6, 4.2),
+(66,  '400 Post Ave',                                'Office',      'Westbury',         '400 Post Ave, Westbury, NY 11590',                      40.7535, -73.5849,  6,  5, 4.2),
+(67,  '445 Broadhollow Rd',                          'Office',      'Melville',         '445 Broadhollow Rd, Melville, NY 11747',                40.7598, -73.4101,  5,  4, 4.1),
+(68,  'Long Island State Office Building',           'Office',      'Hauppauge',        '250 Veterans Memorial Hwy, Hauppauge, NY 11788',        40.8207, -73.2082,  6,  5, 3.9),
+(69,  '800 Community Dr',                            'Office',      'Manhasset',        '800 Community Dr, Manhasset, NY 11030',                 40.7763, -73.7022,  6,  5, 4.2),
+(70,  '1000 Woodbury Rd',                            'Office',      'Woodbury',         '1000 Woodbury Rd, Woodbury, NY 11797',                  40.8145, -73.4674,  5,  4, 4.1),
+(71,  '500 Bi-County Blvd',                          'Office',      'Farmingdale',      '500 Bi-County Blvd, Farmingdale, NY 11735',             40.7337, -73.4442,  6,  5, 4.2),
+(72,  '200 Motor Pkwy',                              'Office',      'Hauppauge',        '200 Motor Pkwy, Hauppauge, NY 11788',                   40.8183, -73.2084,  5,  4, 4.1),
+
+-- ── HOTEL ────────────────────────────────────────────────────
+(73,  'Sheraton Long Island Hotel',                  'Hotel',       'Smithtown',        '110 Vanderbilt Motor Pkwy, Smithtown, NY 11788',        40.8557, -73.2101,  8,  5, 4.3),
+(74,  'Hyatt Regency Long Island',                   'Hotel',       'Hauppauge',        '1717 Motor Pkwy, Hauppauge, NY 11749',                  40.7799, -73.2192, 10,  6, 4.4),
+(75,  'The Allegria Hotel',                          'Hotel',       'Long Beach',       '80 W Broadway, Long Beach, NY 11561',                   40.5885, -73.6631,  7,  4, 4.5),
+(76,  'Gurney''s Montauk Resort & Seawater Spa',     'Hotel',       'Montauk',          '290 Old Montauk Hwy, Montauk, NY 11954',                41.0473, -71.9401,  5,  3, 4.6),
+(77,  'Hampton Inn Long Island Commack',             'Hotel',       'Commack',          '680 Commack Rd, Commack, NY 11725',                     40.8424, -73.2896,  5,  3, 4.2),
+(78,  'Hilton Garden Inn Roslyn',                    'Hotel',       'Roslyn',           '1 Tower Dr, Roslyn, NY 11576',                          40.7986, -73.6534,  7,  4, 4.3),
+(79,  'Marriott Residence Inn Melville',             'Hotel',       'Melville',         '101 Sunnyside Blvd, Melville, NY 11747',                40.7773, -73.4076,  7,  4, 4.3),
+(80,  'Courtyard Marriott Garden City',              'Hotel',       'Garden City',      '821 Stewart Ave, Garden City, NY 11530',                40.7185, -73.6384,  6,  4, 4.2),
+(81,  'Marriott Residence Inn Plainview',            'Hotel',       'Plainview',        '9 Gerhard Rd, Plainview, NY 11803',                     40.7837, -73.4659,  5,  3, 4.2),
+(82,  'Hampton Inn Garden City',                     'Hotel',       'Garden City',      '1 North Ave, Garden City, NY 11530',                    40.7278, -73.6398,  6,  4, 4.3),
+(83,  'Hyatt House Hauppauge',                       'Hotel',       'Hauppauge',        '58 Motor Pkwy, Hauppauge, NY 11788',                    40.8041, -73.2086,  5,  3, 4.2),
+(84,  'Holiday Inn Express Hauppauge',               'Hotel',       'Hauppauge',        '3131 Veterans Memorial Hwy, Hauppauge, NY 11788',       40.8274, -73.2138,  5,  3, 4.1),
+(85,  'Marriott Courtyard Ronkonkoma',               'Hotel',       'Ronkonkoma',       '2 Corporate Center Dr, Ronkonkoma, NY 11779',           40.8047, -73.1155,  4,  3, 4.1),
+(86,  'Marriott Residence Inn Islandia',             'Hotel',       'Islandia',         '3 Corporate Center Dr, Islandia, NY 11749',             40.7871, -73.1724,  4,  3, 4.2),
+(87,  'Homewood Suites Melville',                    'Hotel',       'Melville',         '363 Pinelawn Rd, Melville, NY 11747',                   40.7684, -73.4108,  4,  3, 4.1),
+(88,  'The Menhaden Hotel',                          'Hotel',       'Greenport',        '207 Main St, Greenport, NY 11944',                      41.0999, -72.3599,  4,  2, 4.5),
+(89,  'Marriott Courtyard Uniondale',                'Hotel',       'Uniondale',        '101 Merrick Ave, Uniondale, NY 11553',                  40.7262, -73.5938,  6,  4, 4.2),
+
+-- ── EDUCATION ────────────────────────────────────────────────
+(90,  'SUNY Old Westbury — Campus Center',           'Education',   'Old Westbury',     '223 Store Hill Rd, Old Westbury, NY 11568',             40.7547, -73.6009,  5,  3, 4.0),
+(91,  'Farmingdale State College — Gleeson Hall',    'Education',   'Farmingdale',      '2350 Broadhollow Rd, Farmingdale, NY 11735',            40.7327, -73.4373,  4,  3, 3.9),
+(92,  'Nassau Community College — Library',          'Education',   'Garden City',      '1 Education Dr, Garden City, NY 11530',                 40.7244, -73.5987,  6,  4, 4.0),
+(93,  'LIU Post — Hillwood Commons',                 'Education',   'Brookville',       '720 Northern Blvd, Brookville, NY 11548',               40.8099, -73.5965,  5,  3, 4.1),
+(94,  'NYIT — de Seversky Mansion',                  'Education',   'Old Westbury',     'Northern Blvd, Old Westbury, NY 11568',                 40.7546, -73.5989,  4,  3, 4.2),
+(95,  'Touro Law Center',                            'Education',   'Central Islip',    '225 Eastview Dr, Central Islip, NY 11722',              40.7824, -73.1960,  5,  4, 4.1),
+(96,  'Molloy University — Public Square',           'Education',   'Rockville Centre', '1000 Hempstead Ave, Rockville Centre, NY 11571',        40.6649, -73.6409,  6,  4, 4.1),
+(97,  'St. Joseph''s University — Callahan Library', 'Education',   'Patchogue',        '155 W Roe Blvd, Patchogue, NY 11772',                   40.7613, -73.0213,  5,  3, 4.0),
+(98,  'Stony Brook University — Wang Center',        'Education',   'Stony Brook',      '1 University Center, Stony Brook, NY 11794',            40.9151, -73.1245,  4,  4, 4.3),
+(99,  'Stony Brook University — Administration',     'Education',   'Stony Brook',      '100 Nicolls Rd, Stony Brook, NY 11794',                 40.9145, -73.1221,  9,  6, 4.1),
+(100, 'Hofstra University — Student Center',         'Education',   'Hempstead',        '200 Hofstra University, Hempstead, NY 11549',           40.7165, -73.5993,  4,  4, 4.2),
+(101, 'Five Towns College',                          'Education',   'Dix Hills',        '305 N Service Rd, Dix Hills, NY 11746',                 40.7836, -73.3684,  4,  3, 3.9),
+
+-- ── GOVERNMENT ───────────────────────────────────────────────
+(102, 'Nassau County Courthouse',                    'Government',  'Mineola',          '100 Supreme Court Dr, Mineola, NY 11501',               40.7496, -73.6433,  7,  6, 4.0),
+(103, 'Nassau County Administrative Building',       'Government',  'Mineola',          '1 West St, Mineola, NY 11501',                          40.7476, -73.6412,  8,  6, 3.9),
+(104, 'Suffolk County Courthouse',                   'Government',  'Riverhead',        '210 Center Dr, Riverhead, NY 11901',                    40.9163, -72.6608,  7,  5, 3.9),
+(105, 'US Federal Building & Courthouse',            'Government',  'Central Islip',    '100 Federal Plaza, Central Islip, NY 11722',            40.7862, -73.2016,  8,  6, 4.0),
+(106, 'Suffolk County Legislative Building',         'Government',  'Hauppauge',        '725 Veterans Memorial Hwy, Hauppauge, NY 11788',        40.8199, -73.2091,  5,  4, 3.8),
+(107, 'Nassau County Police Headquarters',           'Government',  'Mineola',          '1490 Franklin Ave, Mineola, NY 11501',                  40.7453, -73.6373,  6,  5, 3.9),
+(108, 'IRS Service Center Holtsville',               'Government',  'Holtsville',       '1040 Waverly Ave, Holtsville, NY 11742',                40.8084, -73.0455,  6,  5, 3.7),
+(109, 'Nassau County District Court',                'Government',  'Hempstead',        '99 Main St, Hempstead, NY 11550',                       40.7058, -73.6189,  5,  4, 3.8),
+(110, 'Long Island Federal Courthouse',              'Government',  'Central Islip',    '610 Federal Plaza, Central Islip, NY 11722',            40.7854, -73.1998,  7,  5, 4.0),
+(111, 'Brookhaven Town Hall',                        'Government',  'Farmingville',     '1 Independence Hill, Farmingville, NY 11738',           40.8214, -73.0456,  4,  3, 3.8),
+(112, 'Hempstead Town Hall',                         'Government',  'Hempstead',        '1 Washington St, Hempstead, NY 11550',                  40.7063, -73.6187,  5,  4, 3.9),
+(113, 'Suffolk County Family Court',                 'Government',  'Central Islip',    '400 Carleton Ave, Central Islip, NY 11722',             40.7844, -73.1975,  5,  4, 3.8),
+
+-- ── RESIDENTIAL ──────────────────────────────────────────────
+(114, 'Oceanic Tower',                               'Residential', 'Long Beach',       '100 W Broadway, Long Beach, NY 11561',                  40.5889, -73.6575, 16,  6, 4.3),
+(115, 'Long Beach Towers North',                     'Residential', 'Long Beach',       '800 Shore Rd, Long Beach, NY 11561',                    40.5886, -73.6637, 12,  5, 4.1),
+(116, 'Long Beach Towers South',                     'Residential', 'Long Beach',       '825 Shore Rd, Long Beach, NY 11561',                    40.5872, -73.6638, 12,  5, 4.1),
+(117, 'Bayview Tower',                               'Residential', 'Great Neck',       '130 Steamboat Rd, Great Neck, NY 11024',                40.8019, -73.7342, 14,  6, 4.3),
+(118, 'Great Neck Plaza Apartments',                 'Residential', 'Great Neck',       '1 Bond St, Great Neck, NY 11021',                       40.7999, -73.7283, 10,  4, 4.1),
+(119, 'Parkwood Apartments',                         'Residential', 'New Hyde Park',    '2800 Marcus Ave, New Hyde Park, NY 11042',              40.7542, -73.7079, 10,  4, 4.0),
+(120, 'The Sutton at Rockville Centre',              'Residential', 'Rockville Centre', '50 N Village Ave, Rockville Centre, NY 11570',          40.6661, -73.6389,  8,  4, 4.2),
+(121, 'Sunrise Towers',                              'Residential', 'Valley Stream',    '525 Gibson Blvd, Valley Stream, NY 11580',              40.6663, -73.7083, 10,  4, 4.0),
+(122, 'Port Washington Towers',                      'Residential', 'Port Washington',  '100 Shore Rd, Port Washington, NY 11050',               40.8322, -73.7012,  9,  4, 4.1),
+(123, 'Mill Creek at Mineola',                       'Residential', 'Mineola',          '101 Mineola Blvd, Mineola, NY 11501',                   40.7487, -73.6376,  6,  4, 4.0),
+
+-- ── LIBRARY ──────────────────────────────────────────────────
+(124, 'Huntington Public Library',                   'Library',     'Huntington',       '338 Main St, Huntington, NY 11743',                     40.8691, -73.4304,  4,  3, 4.2),
+(125, 'Port Washington Public Library',              'Library',     'Port Washington',  '1 Library Dr, Port Washington, NY 11050',               40.8269, -73.6942,  4,  3, 4.3),
+(126, 'Half Hollow Hills Community Library',         'Library',     'Dix Hills',        '510 Sweet Hollow Rd, Dix Hills, NY 11746',              40.7848, -73.3716,  3,  2, 4.1),
+(127, 'Middle Country Public Library',               'Library',     'Centereach',       '101 Eastwood Blvd, Centereach, NY 11720',               40.8751, -73.0899,  3,  2, 4.0),
+(128, 'Sachem Public Library',                       'Library',     'Holbrook',         '150 Holbrook Rd, Holbrook, NY 11741',                   40.7887, -73.0785,  3,  2, 4.1),
+
+-- ── TRANSIT ──────────────────────────────────────────────────
+(129, 'Long Island MacArthur Airport Terminal',      'Transit',     'Ronkonkoma',       '100 Arrival Ave, Ronkonkoma, NY 11779',                 40.7975, -73.0995,  3,  4, 3.8),
+(130, 'MacArthur Airport Parking Garage',            'Transit',     'Ronkonkoma',       '3111 Veterans Memorial Hwy, Ronkonkoma, NY 11779',      40.7963, -73.0998,  5,  4, 3.6)
+
+on conflict (id) do nothing;

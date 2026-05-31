@@ -336,9 +336,9 @@ const sb = createClient(
   'sb_publishable_SceOqu60uTDQpX_SM62gAQ_Rl5TgZig'
 );
 
-const TYPES = ["Medical","Office","Mall","Hotel","Education"];
-const TYPE_ICON  = {Medical:"✚", Office:"▣", Mall:"◫", Hotel:"⌂", Education:"✎"};
-const TYPE_COLOR = {Medical:"#c0392b", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c"};
+const TYPES = ["Medical","Office","Mall","Hotel","Education","Government","Residential","Library","Transit"];
+const TYPE_ICON  = {Medical:"✚", Office:"▣", Mall:"◫", Hotel:"⌂", Education:"✎", Government:"⚑", Residential:"⌂", Library:"▦", Transit:"⬡"};
+const TYPE_COLOR = {Medical:"#c0392b", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c", Government:"#5d6d7e", Residential:"#e8590c", Library:"#0097a7", Transit:"#455a64"};
 
 let BUILDINGS = [];
 let state = { q:"", types:new Set(), minStories:0, userLoc:null, activeId:null };

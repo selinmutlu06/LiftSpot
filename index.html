@@ -416,16 +416,21 @@ function renderList(){
   renderMarkers(items);
 }
 
-function makePinCanvas(fill){
-  const s=2, canvas=document.createElement('canvas');
-  canvas.width=32*s; canvas.height=40*s;
-  const ctx=canvas.getContext('2d');
+function makePinImage(fill){
+  const s=2, w=32*s, h=40*s;
+  const c=document.createElement('canvas');
+  c.width=w; c.height=h;
+  const ctx=c.getContext('2d');
   ctx.scale(s,s);
   ctx.fillStyle=fill;
-  ctx.fill(new Path2D('M16 0C7.16 0 0 7.16 0 16c0 11.5 16 24 16 24S32 27.5 32 16C32 7.16 24.84 0 16 0z'));
+  ctx.beginPath();
+  ctx.arc(16,15,15,Math.PI,0);
+  ctx.lineTo(24,28); ctx.lineTo(16,40); ctx.lineTo(8,28);
+  ctx.closePath(); ctx.fill();
   ctx.fillStyle='#fff';
-  ctx.beginPath(); ctx.arc(16,15,7,0,Math.PI*2); ctx.fill();
-  return canvas;
+  ctx.beginPath(); ctx.arc(16,14,7,0,Math.PI*2); ctx.fill();
+  const d=ctx.getImageData(0,0,w,h);
+  return {width:w, height:h, data:d.data};
 }
 
 function renderMarkers(items){
@@ -611,12 +616,10 @@ document.getElementById('locBtn').onclick=()=>{
   },()=>alert('Could not get your location'));
 };
 
-map.on('load', async () => {
-  map.addImage('pin',        makePinCanvas('#1f6f5c'), {pixelRatio:2});
-  map.addImage('pin-active', makePinCanvas('#0e3d32'), {pixelRatio:2});
-
+map.on('load', () => {
+  map.addImage('pin',        makePinImage('#1f6f5c'), {pixelRatio:2});
+  map.addImage('pin-active', makePinImage('#0e3d32'), {pixelRatio:2});
   map.addSource('buildings-src', {type:'geojson', data:{type:'FeatureCollection',features:[]}});
-
   map.addLayer({
     id:'buildings-pins', type:'symbol', source:'buildings-src',
     layout:{
@@ -626,7 +629,6 @@ map.on('load', async () => {
       'icon-size':1
     }
   });
-
   map.on('click','buildings-pins', e=>{
     if(!e.features.length) return;
     const id=e.features[0].properties.id;
@@ -635,9 +637,10 @@ map.on('load', async () => {
   });
   map.on('mouseenter','buildings-pins',()=>{ map.getCanvas().style.cursor='pointer'; });
   map.on('mouseleave','buildings-pins',()=>{ map.getCanvas().style.cursor=''; });
-
-  await loadBuildings();
+  if(BUILDINGS.length) renderMarkers(filtered());
 });
+
+loadBuildings();
 </script>
 </body>
 </html>

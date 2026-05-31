@@ -431,8 +431,19 @@ function renderList(){
 }
 
 function renderMarkers(items){
-  Object.values(markers).forEach(m=>m.remove()); markers={};
+  const visibleIds = new Set(items.map(b=>b.id));
+
+  // remove markers no longer visible
+  Object.keys(markers).forEach(id=>{
+    if(!visibleIds.has(+id)){ markers[id].remove(); delete markers[id]; }
+  });
+
   items.forEach(b=>{
+    if(markers[b.id]){
+      // just update active class, no re-create
+      markers[b.id].getElement().className='pin'+(b.id===state.activeId?' active':'');
+      return;
+    }
     const elp=document.createElement('div');
     elp.className='pin'+(b.id===state.activeId?' active':'');
     elp.setAttribute('role','button');

@@ -4,183 +4,366 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LiftSpot — Find Elevators on Long Island</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Spline+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --bg:#f4f1ea; --panel:#fffdf8; --ink:#1c2a28; --muted:#6b7672;
-    --line:#e2ddd1; --accent:#1f6f5c; --accent-soft:#dcefe7; --star:#e0a000;
-    --shadow:0 1px 2px rgba(28,42,40,.06),0 8px 24px rgba(28,42,40,.06);
+  :root {
+    --bg: #f4f1ea;
+    --panel: #fffdf8;
+    --ink: #1c2a28;
+    --muted: #576260;
+    --line: #e2ddd1;
+    --accent: #1f6f5c;
+    --accent-hover: #185c4c;
+    --accent-soft: #dcefe7;
+    --star: #b87d00;
+    --shadow-sm: 0 1px 3px rgba(28,42,40,.07);
+    --shadow: 0 2px 6px rgba(28,42,40,.06), 0 10px 28px rgba(28,42,40,.09);
+    --radius: 12px;
+    --ease: cubic-bezier(.4,0,.2,1);
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{font-family:'Spline Sans',sans-serif;background:var(--bg);color:var(--ink);overflow:hidden}
-  h1,h2,h3,.display{font-family:'Fraunces',serif}
 
-  .app{display:grid;grid-template-columns:420px 1fr;height:100vh}
-  @media(max-width:860px){.app{grid-template-columns:1fr;grid-template-rows:55vh 45vh}#map{order:-1}}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Spline Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', serif; }
 
-  /* Sidebar */
-  .panel{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;height:100vh;overflow:hidden}
-  header.brand{padding:18px 20px 12px;border-bottom:1px solid var(--line)}
-  .logo{display:flex;align-items:center;gap:10px}
-  .logo .mark{width:34px;height:34px;border-radius:9px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px;font-family:'Fraunces',serif}
-  .logo h1{font-size:22px;font-weight:600;letter-spacing:-.01em}
-  .tag{color:var(--muted);font-size:12.5px;margin-top:3px}
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 
-  .filters{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
-  .search{position:relative}
-  .search input{width:100%;padding:10px 12px 10px 34px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit;font-size:14px}
-  .search svg{position:absolute;left:11px;top:11px;color:var(--muted)}
-  .row{display:flex;gap:8px;flex-wrap:wrap}
-  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer;transition:.15s;user-select:none;white-space:nowrap}
-  .chip:hover{border-color:var(--accent)}
-  .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .stories label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}
-  .stories{display:flex;align-items:center;gap:10px}
-  .stories input{flex:1;accent-color:var(--accent)}
-  .stories .val{font-size:12.5px;font-weight:600;min-width:54px}
-  .locbtn{display:flex;align-items:center;gap:7px;border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);border-radius:10px;padding:8px 12px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
-  .locbtn:hover{background:#cde7dd}
+  /* ── Layout ── */
+  .app { display: grid; grid-template-columns: 400px 1fr; height: 100vh; }
+  @media (max-width: 860px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: 52vh 48vh; }
+    #map { order: -1; }
+  }
 
-  .list{flex:1;overflow-y:auto;padding:6px 12px 24px}
-  .count{font-size:12px;color:var(--muted);padding:8px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:8px 4px;cursor:pointer;transition:.15s;box-shadow:var(--shadow)}
-  .card:hover{transform:translateY(-1px);border-color:#cdc7b8}
-  .card.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft),var(--shadow)}
-  .card .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-  .card h3{font-size:16px;font-weight:600;line-height:1.2}
-  .card .type{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:600;margin-top:2px}
-  .card .addr{font-size:12.5px;color:var(--muted);margin-top:6px}
-  .card .meta{display:flex;gap:12px;align-items:center;margin-top:9px;font-size:12.5px;flex-wrap:wrap}
-  .badge{background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:2px 7px;font-weight:600;font-size:11.5px}
-  .dist{color:var(--muted)}
-  .stars{color:var(--star);letter-spacing:1px}
-  .stars .n{color:var(--muted);margin-left:4px}
+  /* ── Sidebar ── */
+  .panel {
+    background: var(--panel);
+    border-right: 1px solid var(--line);
+    display: flex; flex-direction: column;
+    height: 100vh; overflow: hidden;
+  }
 
-  /* Map */
-  #map{height:100vh;width:100%}
-  .maplibregl-popup-content{font-family:'Spline Sans',sans-serif;border-radius:10px;padding:10px 12px}
-  .pin{width:30px;height:30px;background:var(--accent);border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 2px 6px rgba(0,0,0,.3);cursor:pointer;display:grid;place-items:center}
-  .pin span{transform:rotate(45deg);color:#fff;font-size:13px}
-  .pin.active{background:#114a3d;transform:rotate(-45deg) scale(1.2)}
+  header.brand { padding: 20px 20px 14px; border-bottom: 1px solid var(--line); }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo .mark {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: 11px;
+    background: var(--accent); color: #fff;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 20px; font-family: 'Fraunces', serif;
+    box-shadow: 0 2px 8px rgba(31,111,92,.3);
+  }
+  .logo h1 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+  .tag { color: var(--muted); font-size: 13px; margin-top: 5px; line-height: 1.45; }
 
-  /* Detail drawer */
-  .drawer{position:fixed;top:0;right:0;width:440px;max-width:92vw;height:100vh;background:var(--panel);box-shadow:-12px 0 40px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:30;display:flex;flex-direction:column;overflow:hidden}
-  .drawer.open{transform:translateX(0)}
-  .drawer .dhead{padding:18px 20px;border-bottom:1px solid var(--line);position:relative}
-  .drawer .close{position:absolute;top:14px;right:16px;border:none;background:#f0ece2;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:16px;color:var(--muted)}
-  .drawer h2{font-size:21px;font-weight:600;padding-right:36px;line-height:1.15}
-  .drawer .dtype{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:600;margin-top:4px}
-  .dbody{flex:1;overflow-y:auto;padding:18px 20px 40px}
-  .facts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-  .fact{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12.5px;flex:1;min-width:90px}
-  .fact b{display:block;font-size:16px;font-family:'Fraunces',serif;margin-top:2px}
-  .sec{margin-top:22px}
-  .sec h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
-  textarea,.rv-input{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:13.5px;background:#fff;resize:vertical}
-  .note-area{min-height:90px}
-  .savednote{background:var(--accent-soft);border-radius:10px;padding:10px 12px;font-size:13px;margin-top:8px;white-space:pre-wrap}
-  .btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 16px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;margin-top:8px}
-  .btn:hover{background:#185c4c}
-  .starpick{display:flex;gap:3px;font-size:22px;color:#d8d2c4;cursor:pointer;margin-bottom:8px}
-  .starpick .on{color:var(--star)}
-  .review{border-top:1px solid var(--line);padding:12px 0}
-  .review:first-of-type{border-top:none}
-  .review .rhead{display:flex;justify-content:space-between;align-items:center}
-  .review .who{font-weight:600;font-size:13.5px}
-  .review .rstars{color:var(--star);font-size:13px}
-  .review p{font-size:13.5px;color:#3a4744;margin-top:5px;line-height:1.5}
-  .empty{color:var(--muted);font-size:13px;font-style:italic}
-  .scrim{position:fixed;inset:0;background:rgba(20,30,28,.35);opacity:0;pointer-events:none;transition:.28s;z-index:25}
-  .scrim.show{opacity:1;pointer-events:auto}
+  /* ── Filters ── */
+  .filters { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+
+  .search { position: relative; }
+  .search input {
+    width: 100%; min-height: 44px;
+    padding: 11px 36px 11px 36px;
+    border: 1.5px solid var(--line); border-radius: var(--radius);
+    background: #fff; font: inherit; font-size: 14px; color: var(--ink);
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+  .search input:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .search input::placeholder { color: var(--muted); }
+  .s-icon {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); pointer-events: none;
+  }
+  .clear-btn {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    width: 26px; height: 26px;
+    border: none; background: var(--line); border-radius: 50%;
+    cursor: pointer; color: var(--muted);
+    display: none; place-items: center;
+    transition: background 150ms var(--ease);
+  }
+  .clear-btn:hover { background: #cdc9be; }
+  .search.has-value .clear-btn { display: grid; }
+
+  .row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    border: 1.5px solid var(--line); background: #fff; border-radius: 999px;
+    padding: 7px 14px; min-height: 36px;
+    font: inherit; font-size: 13px; font-weight: 500;
+    cursor: pointer; user-select: none; white-space: nowrap;
+    display: flex; align-items: center;
+    transition: border-color 150ms var(--ease), background 150ms var(--ease), color 150ms var(--ease);
+  }
+  .chip:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .range-row { display: flex; flex-direction: column; gap: 5px; }
+  .range-row label { font-size: 12.5px; color: var(--muted); }
+  .range-row label span { font-weight: 600; color: var(--ink); }
+  .range-row input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; height: 20px; }
+
+  .locbtn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    border: 1.5px solid var(--accent); color: var(--accent); background: var(--accent-soft);
+    border-radius: var(--radius); padding: 10px 14px; min-height: 44px; width: 100%;
+    font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+    transition: background 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+  .locbtn:hover { background: #cae4db; box-shadow: 0 2px 10px rgba(31,111,92,.18); }
+
+  /* ── List ── */
+  .list { flex: 1; overflow-y: auto; padding: 6px 12px 32px; }
+  .list::-webkit-scrollbar { width: 4px; }
+  .list::-webkit-scrollbar-track { background: transparent; }
+  .list::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; }
+  .count { font-size: 12px; color: var(--muted); padding: 8px 4px 4px; letter-spacing: .01em; }
+
+  /* ── Cards ── */
+  .card {
+    background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius);
+    padding: 14px 16px; margin: 6px 0; cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), border-color 180ms var(--ease);
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: #cac4b6; }
+  .card:active { transform: translateY(0); }
+  .card.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-sm); }
+  .card .top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+  .card h3 { font-size: 15px; font-weight: 600; line-height: 1.25; }
+  .card .type { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 600; margin-top: 3px; }
+  .card .addr { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+  .card .meta { display: flex; gap: 8px; align-items: center; margin-top: 10px; font-size: 12px; flex-wrap: wrap; }
+
+  .badge { background: var(--accent-soft); color: var(--accent); border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 11.5px; white-space: nowrap; }
+  .dist { color: var(--muted); }
+  .stars { color: var(--star); letter-spacing: 1px; font-size: 13px; }
+  .stars .n { color: var(--muted); margin-left: 3px; font-size: 12px; }
+
+  /* ── Skeleton ── */
+  .skeleton-card { background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin: 6px 0; }
+  .skel {
+    background: linear-gradient(90deg, var(--line) 25%, #eae6dd 50%, var(--line) 75%);
+    background-size: 200% 100%; border-radius: 6px;
+    animation: shimmer 1.5s infinite;
+  }
+  .skel-title { height: 16px; width: 68%; margin-bottom: 9px; }
+  .skel-sub { height: 12px; width: 42%; margin-bottom: 10px; }
+  .skel-addr { height: 11px; width: 82%; margin-bottom: 12px; }
+  .skel-row { display: flex; gap: 8px; }
+  .skel-badge { height: 22px; width: 72px; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+
+  /* ── Map ── */
+  #map { height: 100%; width: 100%; }
+  @media (max-width: 860px) { #map { height: 52vh; } }
+  .maplibregl-popup-content { font-family: 'Spline Sans', sans-serif; border-radius: 10px; padding: 10px 14px; font-size: 13.5px; }
+
+  .pin {
+    width: 32px; height: 32px;
+    background: var(--accent); border: 3px solid #fff; border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg); box-shadow: 0 2px 8px rgba(0,0,0,.22);
+    cursor: pointer; display: grid; place-items: center;
+    transition: background 150ms var(--ease), transform 150ms var(--ease);
+  }
+  .pin span { transform: rotate(45deg); color: #fff; font-size: 12px; display: block; }
+  .pin.active { background: #0e3d32; transform: rotate(-45deg) scale(1.25); }
+  .pin:hover { background: var(--accent-hover); }
+
+  /* ── Drawer ── */
+  .drawer {
+    position: fixed; top: 0; right: 0;
+    width: 460px; max-width: 95vw; height: 100vh;
+    background: var(--panel);
+    box-shadow: -16px 0 48px rgba(0,0,0,.15);
+    transform: translateX(100%);
+    transition: transform .28s var(--ease);
+    z-index: 30; display: flex; flex-direction: column; overflow: hidden;
+  }
+  .drawer.open { transform: translateX(0); }
+
+  .dhead {
+    padding: 20px 20px 16px; border-bottom: 1px solid var(--line);
+    position: relative; display: flex; flex-direction: column; gap: 4px;
+  }
+  .close-btn {
+    position: absolute; top: 12px; right: 12px;
+    border: none; background: #ece8df; border-radius: 10px;
+    width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+    cursor: pointer; color: var(--muted);
+    display: grid; place-items: center;
+    transition: background 150ms var(--ease), color 150ms var(--ease);
+  }
+  .close-btn:hover { background: #ddd9cf; color: var(--ink); }
+
+  .drawer h2 { font-size: 20px; font-weight: 700; padding-right: 58px; line-height: 1.2; }
+  .dtype { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 600; }
+
+  .dbody { flex: 1; overflow-y: auto; padding: 20px 20px 52px; }
+  .dbody::-webkit-scrollbar { width: 4px; }
+  .dbody::-webkit-scrollbar-track { background: transparent; }
+  .dbody::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; }
+
+  .facts { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .fact {
+    background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius);
+    padding: 10px 14px; font-size: 12.5px; flex: 1; min-width: 80px; text-align: center;
+  }
+  .fact b { display: block; font-size: 19px; font-family: 'Fraunces', serif; margin-top: 2px; line-height: 1.2; }
+
+  .daddr { color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+  .sec { margin-top: 26px; }
+  .sec h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; font-weight: 600; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 13px; font-weight: 500; color: var(--ink); }
+
+  textarea {
+    width: 100%; border: 1.5px solid var(--line); border-radius: var(--radius);
+    padding: 10px 12px; font: inherit; font-size: 13.5px; background: #fff;
+    resize: vertical; color: var(--ink); line-height: 1.5;
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+  textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  textarea::placeholder { color: var(--muted); }
+  .note-area { min-height: 88px; }
+
+  .savednote {
+    background: var(--accent-soft); color: var(--accent);
+    border-radius: 8px; padding: 9px 12px; font-size: 13px; font-weight: 500;
+    margin-top: 8px; display: flex; align-items: center; gap: 7px;
+  }
+
+  .btn {
+    background: var(--accent); color: #fff; border: none; border-radius: var(--radius);
+    padding: 12px 18px; min-height: 44px; width: 100%;
+    font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    transition: background 180ms var(--ease), box-shadow 180ms var(--ease), transform 120ms var(--ease);
+  }
+  .btn:hover { background: var(--accent-hover); box-shadow: 0 4px 14px rgba(31,111,92,.28); }
+  .btn:active { transform: scale(.98); }
+  .btn:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  .starpick { display: flex; gap: 2px; margin-bottom: 10px; }
+  .starpick span {
+    font-size: 28px; color: #d0cbc0; cursor: pointer;
+    width: 44px; height: 44px; border-radius: 8px;
+    display: grid; place-items: center;
+    transition: color 120ms var(--ease), transform 120ms var(--ease);
+    user-select: none;
+  }
+  .starpick span:hover { transform: scale(1.18); }
+  .starpick .on { color: var(--star); }
+
+  .review { border-top: 1px solid var(--line); padding: 14px 0; }
+  .review:first-of-type { border-top: none; padding-top: 0; }
+  .review .rhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .review .who { font-weight: 600; font-size: 13.5px; }
+  .review .rstars { color: var(--star); font-size: 13px; letter-spacing: 1px; }
+  .review p { font-size: 13.5px; color: #3a4744; margin-top: 6px; line-height: 1.6; }
+
+  .empty { color: var(--muted); font-size: 13.5px; font-style: italic; padding: 4px 0; }
+
+  .scrim {
+    position: fixed; inset: 0;
+    background: rgba(10,20,18,.42);
+    opacity: 0; pointer-events: none;
+    transition: opacity .28s var(--ease);
+    z-index: 25; backdrop-filter: blur(1px);
+  }
+  .scrim.show { opacity: 1; pointer-events: auto; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
 </style>
 </head>
 <body>
 <div class="app">
-  <aside class="panel">
+  <aside class="panel" role="complementary" aria-label="Building list and filters">
     <header class="brand">
-      <div class="logo"><div class="mark">L</div><h1>LiftSpot</h1></div>
+      <div class="logo">
+        <div class="mark" aria-hidden="true">L</div>
+        <h1>LiftSpot</h1>
+      </div>
       <div class="tag">Find and rate elevators in buildings across Long Island</div>
     </header>
     <div class="filters">
-      <div class="search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
-        <input id="q" placeholder="Search building or town…" />
+      <div class="search" id="searchWrap">
+        <svg class="s-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+        <input id="q" type="search" placeholder="Search building or town…" aria-label="Search buildings" autocomplete="off" />
+        <button class="clear-btn" id="clearSearch" aria-label="Clear search">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1l8 8M9 1l-8 8"/></svg>
+        </button>
       </div>
-      <div class="row" id="typeChips"></div>
-      <div class="stories">
-        <div style="flex:1">
-          <label>Min. stories: <span class="val" id="storyVal">any</span></label>
-          <input type="range" id="storyRange" min="0" max="40" value="0" step="1" />
-        </div>
+      <div class="row" id="typeChips" role="group" aria-label="Filter by building type"></div>
+      <div class="range-row">
+        <label for="storyRange">Min. stories: <span id="storyVal">any</span></label>
+        <input type="range" id="storyRange" min="0" max="40" value="0" step="1" />
       </div>
       <button class="locbtn" id="locBtn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
         Use my location
       </button>
     </div>
-    <div class="list" id="list"></div>
+    <div class="list" id="list" role="list" aria-label="Buildings"></div>
   </aside>
-  <div id="map"></div>
+  <div id="map" role="region" aria-label="Map"></div>
 </div>
 
-<div class="scrim" id="scrim"></div>
-<div class="drawer" id="drawer">
+<div class="scrim" id="scrim" aria-hidden="true"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
   <div class="dhead">
-    <button class="close" id="closeDrawer">✕</button>
-    <h2 id="dName"></h2>
+    <button class="close-btn" id="closeDrawer" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14"/></svg>
+    </button>
+    <h2 id="drawerTitle"></h2>
     <div class="dtype" id="dType"></div>
   </div>
   <div class="dbody" id="dBody"></div>
 </div>
 
 <script>
-/* ---------- Seed data: real-ish Long Island multi-story buildings ---------- */
-const BUILDINGS = [
-  {id:1, name:"Winthrop / NYU Langone Hospital", type:"Medical", town:"Mineola", addr:"259 1st St, Mineola, NY", lat:40.7479, lng:-73.6407, stories:11, elevators:8, rating:4.6, reviews:[{who:"Marcus",stars:5,text:"Glass-back elevators on the north wing with a great view of the parking structure. Smooth Otis units."},{who:"Dana",stars:4,text:"Service elevators are huge. Public ones can get busy midday."}]},
-  {id:2, name:"RXR Plaza", type:"Office", town:"Uniondale", addr:"625 RXR Plaza, Uniondale, NY", lat:40.7257, lng:-73.5876, stories:15, elevators:12, rating:4.8, reviews:[{who:"Theo",stars:5,text:"Destination-dispatch system — you pick your floor on a keypad in the lobby. Very modern."}]},
-  {id:3, name:"Roosevelt Field Mall", type:"Mall", town:"Garden City", addr:"630 Old Country Rd, Garden City, NY", lat:40.7407, lng:-73.6107, stories:2, elevators:6, rating:4.2, reviews:[{who:"Sam",stars:4,text:"Two glass scenic elevators near the center court. Kids love watching them."}]},
-  {id:4, name:"Stony Brook University Hospital", type:"Medical", town:"Stony Brook", addr:"101 Nicolls Rd, Stony Brook, NY", lat:40.9089, lng:-73.1148, stories:19, elevators:20, rating:4.7, reviews:[{who:"Priya",stars:5,text:"One of the tallest buildings on the Island. The tower elevators travel fast and there are a LOT of them."}]},
-  {id:5, name:"EAB Plaza (West Tower)", type:"Office", town:"Uniondale", addr:"100 Quentin Roosevelt Blvd, Uniondale, NY", lat:40.7268, lng:-73.5901, stories:14, elevators:10, rating:4.5, reviews:[]},
-  {id:6, name:"Walt Whitman Shops", type:"Mall", town:"Huntington Station", addr:"160 Walt Whitman Rd, Huntington Station, NY", lat:40.8157, lng:-73.4179, stories:2, elevators:5, rating:4.0, reviews:[{who:"Lena",stars:4,text:"Nice newer elevators by the food court."}]},
-  {id:7, name:"Nassau University Medical Center", type:"Medical", town:"East Meadow", addr:"2201 Hempstead Tpke, East Meadow, NY", lat:40.7203, lng:-73.5532, stories:19, elevators:16, rating:4.3, reviews:[{who:"Omar",stars:4,text:"Big iconic tower. Lots of elevator banks, some original mid-century ones still running."}]},
-  {id:8, name:"Long Island Marriott", type:"Hotel", town:"Uniondale", addr:"101 James Doolittle Blvd, Uniondale, NY", lat:40.7234, lng:-73.5905, stories:11, elevators:6, rating:4.4, reviews:[{who:"Beth",stars:5,text:"Exposed-back glass elevators overlooking the atrium lobby. A favorite."}]},
-  {id:9, name:"Hofstra University — Axinn Library", type:"Education", town:"Hempstead", addr:"123 Hofstra University, Hempstead, NY", lat:40.7146, lng:-73.6003, stories:10, elevators:4, rating:4.1, reviews:[]},
-  {id:10, name:"Garden City Hotel", type:"Hotel", town:"Garden City", addr:"45 7th St, Garden City, NY", lat:40.7268, lng:-73.6398, stories:7, elevators:5, rating:4.5, reviews:[{who:"Ray",stars:5,text:"Classic, well-maintained cab interiors with brass fittings."}]},
-  {id:11, name:"Tanger Outlets Deer Park", type:"Mall", town:"Deer Park", addr:"152 The Arches Cir, Deer Park, NY", lat:40.7592, lng:-73.3217, stories:2, elevators:4, rating:3.9, reviews:[]},
-  {id:12, name:"South Nassau / Mount Sinai South Nassau", type:"Medical", town:"Oceanside", addr:"1 Healthy Way, Oceanside, NY", lat:40.6388, lng:-73.6334, stories:8, elevators:9, rating:4.4, reviews:[{who:"Carlos",stars:4,text:"New patient tower has very quiet, fast traction elevators."}]},
-  {id:13, name:"North Shore University Hospital", type:"Medical", town:"Manhasset", addr:"300 Community Dr, Manhasset, NY 11030", lat:40.7779, lng:-73.7017, stories:10, elevators:12, rating:4.7, reviews:[]},
-  {id:14, name:"Long Island Jewish Valley Stream (Northwell Health)", type:"Medical", town:"Valley Stream", addr:"900 Franklin Ave, Valley Stream, NY 11580", lat:40.6811, lng:-73.6864, stories:7, elevators:6, rating:4.2, reviews:[]},
-  {id:15, name:"Green Acres Mall", type:"Mall", town:"Valley Stream", addr:"2034 Green Acres Rd S, Valley Stream, NY 11581", lat:40.6630, lng:-73.7219, stories:2, elevators:4, rating:4.0, reviews:[]},
-  {id:16, name:"Adelphi University — Post Hall", type:"Education", town:"Garden City", addr:"1 South Ave, Garden City, NY 11530", lat:40.7202, lng:-73.6517, stories:9, elevators:4, rating:4.1, reviews:[]},
-  {id:17, name:"1 Jericho Plaza", type:"Office", town:"Jericho", addr:"1 Jericho Plaza, Jericho, NY 11753", lat:40.7920, lng:-73.5398, stories:6, elevators:6, rating:4.3, reviews:[]},
-  {id:18, name:"Sunrise Mall", type:"Mall", town:"Massapequa", addr:"600 Sunrise Mall, Massapequa, NY 11758", lat:40.6829, lng:-73.4346, stories:2, elevators:4, rating:3.9, reviews:[]},
-  {id:19, name:"One Hollow Lane", type:"Office", town:"Lake Success", addr:"1 Hollow Ln, Lake Success, NY 11020", lat:40.7585, lng:-73.7124, stories:7, elevators:5, rating:4.3, reviews:[]},
-  {id:20, name:"Huntington Hospital (Northwell Health)", type:"Medical", town:"Huntington", addr:"270 Park Ave, Huntington, NY 11743", lat:40.8794, lng:-73.4162, stories:7, elevators:6, rating:4.4, reviews:[]},
-  {id:21, name:"Hilton Long Island / Huntington", type:"Hotel", town:"Melville", addr:"598 Broad Hollow Rd, Melville, NY 11747", lat:40.7611, lng:-73.4227, stories:9, elevators:5, rating:4.3, reviews:[]},
-  {id:22, name:"Melville Marriott Long Island", type:"Hotel", town:"Melville", addr:"1350 Walt Whitman Rd, Melville, NY 11747", lat:40.7834, lng:-73.4216, stories:10, elevators:6, rating:4.5, reviews:[]},
-  {id:23, name:"Good Samaritan University Hospital", type:"Medical", town:"West Islip", addr:"1000 Montauk Hwy, West Islip, NY 11795", lat:40.6941, lng:-73.2943, stories:9, elevators:8, rating:4.4, reviews:[]},
-  {id:24, name:"Hauppauge Corporate Center", type:"Office", town:"Hauppauge", addr:"150 Motor Pkwy, Hauppauge, NY 11788", lat:40.8179, lng:-73.2091, stories:8, elevators:6, rating:4.2, reviews:[]},
-  {id:25, name:"Smith Haven Mall", type:"Mall", town:"Lake Grove", addr:"313 Smith Haven Mall, Lake Grove, NY 11755", lat:40.8590, lng:-73.1247, stories:2, elevators:5, rating:4.1, reviews:[]},
-  {id:26, name:"Frank Melville Jr. Memorial Library, Stony Brook University", type:"Education", town:"Stony Brook", addr:"Circle Rd, Stony Brook, NY 11794", lat:40.9156, lng:-73.1227, stories:6, elevators:4, rating:4.2, reviews:[]},
-  {id:27, name:"Peconic Bay Medical Center", type:"Medical", town:"Riverhead", addr:"1 Heroes Way, Riverhead, NY 11901", lat:40.9192, lng:-72.6631, stories:6, elevators:5, rating:4.3, reviews:[]},
-];
+const { createClient } = supabase;
+const sb = createClient(
+  'https://qrphiipxqvsrnenkphhr.supabase.co',
+  'sb_publishable_SceOqu60uTDQpX_SM62gAQ_Rl5TgZig'
+);
 
 const TYPES = ["Medical","Office","Mall","Hotel","Education"];
-const TYPE_ICON = {Medical:"✚",Office:"▤",Mall:"◫",Hotel:"⌂",Education:"✎"};
+const TYPE_ICON = {Medical:"✚",Office:"▣",Mall:"◫",Hotel:"⌂",Education:"✎"};
 
-/* ---------- State ---------- */
+let BUILDINGS = [];
 let state = { q:"", types:new Set(), minStories:0, userLoc:null, activeId:null };
+
 const stars = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
-const dist = (a,b) => { // miles, haversine
+const dist = (a,b) => {
   const R=3959,dLat=(b.lat-a.lat)*Math.PI/180,dLng=(b.lng-a.lng)*Math.PI/180;
   const x=Math.sin(dLat/2)**2+Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLng/2)**2;
   return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
 };
 
-/* ---------- Map ---------- */
+/* Map */
 const map = new maplibregl.Map({
   container:'map',
   style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
@@ -189,7 +372,7 @@ const map = new maplibregl.Map({
 map.addControl(new maplibregl.NavigationControl(),'top-right');
 let markers = {};
 
-/* ---------- Filtering ---------- */
+/* Filtering */
 function filtered(){
   return BUILDINGS.filter(b=>{
     if(state.q){ const q=state.q.toLowerCase(); if(!(b.name.toLowerCase().includes(q)||b.town.toLowerCase().includes(q)||b.addr.toLowerCase().includes(q))) return false; }
@@ -200,18 +383,38 @@ function filtered(){
     .sort((a,b)=> state.userLoc ? a._d-b._d : b.rating-a.rating);
 }
 
-/* ---------- Render list ---------- */
+/* Skeleton loader */
+function skeletons(n=5){
+  return Array.from({length:n},()=>`
+    <div class="skeleton-card" aria-hidden="true">
+      <div class="skel skel-title"></div>
+      <div class="skel skel-sub"></div>
+      <div class="skel skel-addr"></div>
+      <div class="skel-row"><div class="skel skel-badge"></div><div class="skel skel-badge"></div></div>
+    </div>`).join('');
+}
+
+/* Render list */
 function renderList(){
   const items = filtered();
   const list = document.getElementById('list');
   list.innerHTML = `<div class="count">${items.length} building${items.length!==1?'s':''}${state.userLoc?' · nearest first':' · top rated first'}</div>`;
+  if(!items.length){
+    list.innerHTML += '<div class="empty" style="padding:16px 4px">No buildings match your filters.</div>';
+  }
   items.forEach(b=>{
     const el=document.createElement('div');
     el.className='card'+(b.id===state.activeId?' active':'');
+    el.setAttribute('role','listitem');
+    el.setAttribute('tabindex','0');
+    el.setAttribute('aria-label',`${b.name}, ${b.type}, ${b.stories} stories, rated ${b.rating}`);
     el.innerHTML=`
       <div class="top">
-        <div><h3>${b.name}</h3><div class="type">${b.type}</div></div>
-        <div class="stars">${stars(b.rating)}<span class="n">${b.rating}</span></div>
+        <div style="min-width:0">
+          <h3>${b.name}</h3>
+          <div class="type">${b.type}</div>
+        </div>
+        <div class="stars" aria-label="Rating ${b.rating} out of 5">${stars(b.rating)}<span class="n">${b.rating}</span></div>
       </div>
       <div class="addr">${b.addr}</div>
       <div class="meta">
@@ -219,7 +422,9 @@ function renderList(){
         <span class="badge">${b.elevators} elevators</span>
         ${b._d!=null?`<span class="dist">${b._d.toFixed(1)} mi away</span>`:''}
       </div>`;
-    el.onclick=()=>{ openBuilding(b.id); map.flyTo({center:[b.lng,b.lat],zoom:14}); };
+    const activate = () => { openBuilding(b.id); map.flyTo({center:[b.lng,b.lat],zoom:14}); };
+    el.onclick = activate;
+    el.onkeydown = e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); activate(); } };
     list.appendChild(el);
   });
   renderMarkers(items);
@@ -230,97 +435,185 @@ function renderMarkers(items){
   items.forEach(b=>{
     const elp=document.createElement('div');
     elp.className='pin'+(b.id===state.activeId?' active':'');
-    elp.innerHTML=`<span>${TYPE_ICON[b.type]||'▲'}</span>`;
+    elp.setAttribute('role','button');
+    elp.setAttribute('aria-label',b.name);
+    elp.innerHTML=`<span aria-hidden="true">${TYPE_ICON[b.type]||'▲'}</span>`;
     elp.onclick=()=>{ openBuilding(b.id); map.flyTo({center:[b.lng,b.lat],zoom:14}); };
     markers[b.id]=new maplibregl.Marker({element:elp,anchor:'bottom'}).setLngLat([b.lng,b.lat]).addTo(map);
   });
 }
 
-/* ---------- Detail drawer ---------- */
-const NOTES = {};   // local-only notes per building (swap for Supabase later)
-function openBuilding(id){
+/* Load from Supabase */
+async function loadBuildings(){
+  document.getElementById('list').innerHTML = '<div class="count">Loading…</div>' + skeletons();
+  const { data, error } = await sb.from('buildings').select('*');
+  if(error){
+    document.getElementById('list').innerHTML = '<div class="empty" style="padding:16px 4px">Failed to load. Please refresh.</div>';
+    console.error(error);
+    return;
+  }
+  BUILDINGS = data;
+  renderList();
+}
+
+/* Detail drawer */
+async function openBuilding(id){
   state.activeId=id; renderList();
   const b=BUILDINGS.find(x=>x.id===id);
-  document.getElementById('dName').textContent=b.name;
+  document.getElementById('drawerTitle').textContent=b.name;
   document.getElementById('dType').textContent=b.type+" · "+b.town;
   const body=document.getElementById('dBody');
+  const savedNote=localStorage.getItem(`liftspot_note_${id}`)||'';
   body.innerHTML=`
     <div class="facts">
       <div class="fact">Stories<b>${b.stories}</b></div>
       <div class="fact">Elevators<b>${b.elevators}</b></div>
       <div class="fact">Rating<b>${b.rating} ★</b></div>
     </div>
-    <div class="addr" style="color:var(--muted);font-size:13px">${b.addr}</div>
+    <div class="daddr">${b.addr}</div>
 
     <div class="sec">
       <h4>My private notes</h4>
-      <textarea class="note-area" id="noteBox" placeholder="e.g. Otis Gen2, glass back, north entrance…">${NOTES[id]||''}</textarea>
+      <div class="field">
+        <label for="noteBox">Notes (saved to this device only)</label>
+        <textarea class="note-area" id="noteBox" placeholder="e.g. Otis Gen2, glass back, north entrance…">${savedNote}</textarea>
+      </div>
       <button class="btn" id="saveNote">Save note</button>
       <div id="noteSaved"></div>
     </div>
 
     <div class="sec">
       <h4>Leave a review</h4>
-      <div class="starpick" id="picker">${[1,2,3,4,5].map(n=>`<span data-n="${n}">★</span>`).join('')}</div>
-      <textarea class="rv-input" id="rvText" placeholder="What are the elevators like here?"></textarea>
+      <div role="group" aria-label="Star rating">
+        <div class="starpick" id="picker">${[1,2,3,4,5].map(n=>`<span data-n="${n}" role="radio" aria-label="${n} star${n>1?'s':''}" tabindex="0">★</span>`).join('')}</div>
+      </div>
+      <div class="field">
+        <label for="rvText">Your review</label>
+        <textarea id="rvText" placeholder="What are the elevators like here?" style="min-height:80px"></textarea>
+      </div>
       <button class="btn" id="postReview">Post review</button>
     </div>
 
     <div class="sec">
-      <h4>Reviews (${b.reviews.length})</h4>
-      <div id="rvList">${renderReviews(b)}</div>
+      <h4>Reviews</h4>
+      <div id="rvList"><div class="empty">Loading…</div></div>
     </div>`;
 
-  // notes
-  document.getElementById('saveNote').onclick=()=>{ NOTES[id]=document.getElementById('noteBox').value; document.getElementById('noteSaved').innerHTML='<div class="savednote">Saved locally ✓</div>'; };
-  // review star picker
-  let pick=0; const picker=document.getElementById('picker');
-  picker.querySelectorAll('span').forEach(s=>{
-    s.onclick=()=>{ pick=+s.dataset.n; picker.querySelectorAll('span').forEach(x=>x.classList.toggle('on',+x.dataset.n<=pick)); };
-  });
-  document.getElementById('postReview').onclick=()=>{
-    const t=document.getElementById('rvText').value.trim();
-    if(!pick){alert('Pick a star rating');return;}
-    b.reviews.unshift({who:"You",stars:pick,text:t||"(no comment)"});
-    b.rating=+(b.reviews.reduce((s,r)=>s+r.stars,0)/b.reviews.length).toFixed(1);
-    openBuilding(id); // re-render
-  };
   showDrawer(true);
+  document.getElementById('closeDrawer').focus();
+
+  document.getElementById('saveNote').onclick=()=>{
+    localStorage.setItem(`liftspot_note_${id}`, document.getElementById('noteBox').value);
+    document.getElementById('noteSaved').innerHTML=`<div class="savednote">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      Saved to this device
+    </div>`;
+  };
+
+  let pick=0;
+  const picker=document.getElementById('picker');
+  const updatePicker=val=>{
+    pick=val;
+    picker.querySelectorAll('span').forEach(x=>x.classList.toggle('on',+x.dataset.n<=pick));
+  };
+  picker.querySelectorAll('span').forEach(s=>{
+    s.onclick=()=>updatePicker(+s.dataset.n);
+    s.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); updatePicker(+s.dataset.n); } };
+  });
+
+  document.getElementById('postReview').onclick=async()=>{
+    const t=document.getElementById('rvText').value.trim();
+    if(!pick){ alert('Please pick a star rating first.'); return; }
+    const btn=document.getElementById('postReview');
+    btn.disabled=true; btn.textContent='Posting…';
+    const { error }=await sb.from('reviews').insert({building_id:id, who:'You', stars:pick, body:t||'(no comment)'});
+    if(error){ alert('Error: '+error.message); btn.disabled=false; btn.textContent='Post review'; return; }
+    await refreshReviews(id);
+  };
+
+  await refreshReviews(id);
 }
+
+async function refreshReviews(id){
+  const { data: reviews, error }=await sb.from('reviews').select('*').eq('building_id',id).order('created_at',{ascending:false});
+  if(error){ const el=document.getElementById('rvList'); if(el) el.innerHTML='<div class="empty">Error loading reviews.</div>'; return; }
+  const b=BUILDINGS.find(x=>x.id===id);
+  b.reviews=reviews||[];
+  if(b.reviews.length){
+    const newRating=+(b.reviews.reduce((s,r)=>s+r.stars,0)/b.reviews.length).toFixed(1);
+    if(newRating!==b.rating){
+      b.rating=newRating;
+      await sb.from('buildings').update({rating:newRating}).eq('id',id);
+    }
+  }
+  const rvList=document.getElementById('rvList');
+  if(rvList) rvList.innerHTML=renderReviews(b);
+  const rvText=document.getElementById('rvText');
+  const btn=document.getElementById('postReview');
+  if(rvText) rvText.value='';
+  if(btn){ btn.disabled=false; btn.textContent='Post review'; }
+}
+
 function renderReviews(b){
-  if(!b.reviews.length) return '<div class="empty">No reviews yet — be the first.</div>';
-  return b.reviews.map(r=>`<div class="review"><div class="rhead"><span class="who">${r.who}</span><span class="rstars">${stars(r.stars)}</span></div><p>${r.text}</p></div>`).join('');
+  if(!b.reviews||!b.reviews.length) return '<div class="empty">No reviews yet — be the first.</div>';
+  return b.reviews.map(r=>`<div class="review"><div class="rhead"><span class="who">${r.who}</span><span class="rstars" aria-label="${r.stars} stars">${stars(r.stars)}</span></div><p>${r.body||''}</p></div>`).join('');
 }
+
 function showDrawer(open){
-  document.getElementById('drawer').classList.toggle('open',open);
-  document.getElementById('scrim').classList.toggle('show',open);
-  if(!open){state.activeId=null;renderList();}
+  const drawer=document.getElementById('drawer');
+  const scrim=document.getElementById('scrim');
+  drawer.classList.toggle('open',open);
+  drawer.setAttribute('aria-hidden',String(!open));
+  scrim.classList.toggle('show',open);
+  if(!open){ state.activeId=null; renderList(); }
 }
 document.getElementById('closeDrawer').onclick=()=>showDrawer(false);
 document.getElementById('scrim').onclick=()=>showDrawer(false);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') showDrawer(false); });
 
-/* ---------- Filter controls ---------- */
+/* Filter controls */
 const typeChips=document.getElementById('typeChips');
 TYPES.forEach(t=>{
-  const c=document.createElement('div'); c.className='chip'; c.textContent=t;
-  c.onclick=()=>{ c.classList.toggle('on'); state.types.has(t)?state.types.delete(t):state.types.add(t); renderList(); };
+  const c=document.createElement('button');
+  c.className='chip'; c.type='button';
+  c.setAttribute('aria-pressed','false');
+  c.textContent=t;
+  c.onclick=()=>{
+    const on=c.classList.toggle('on');
+    c.setAttribute('aria-pressed',String(on));
+    on?state.types.add(t):state.types.delete(t);
+    renderList();
+  };
   typeChips.appendChild(c);
 });
-document.getElementById('q').oninput=e=>{state.q=e.target.value;renderList();};
+
+const qInput=document.getElementById('q');
+const searchWrap=document.getElementById('searchWrap');
+qInput.oninput=e=>{
+  state.q=e.target.value;
+  searchWrap.classList.toggle('has-value',!!state.q);
+  renderList();
+};
+document.getElementById('clearSearch').onclick=()=>{
+  qInput.value=''; state.q='';
+  searchWrap.classList.remove('has-value');
+  qInput.focus(); renderList();
+};
+
 const range=document.getElementById('storyRange'), storyVal=document.getElementById('storyVal');
 range.oninput=e=>{ state.minStories=+e.target.value; storyVal.textContent=state.minStories===0?'any':state.minStories+'+'; renderList(); };
 
 document.getElementById('locBtn').onclick=()=>{
-  if(!navigator.geolocation){alert('Geolocation not supported');return;}
+  if(!navigator.geolocation){ alert('Geolocation not supported'); return; }
   navigator.geolocation.getCurrentPosition(p=>{
     state.userLoc={lat:p.coords.latitude,lng:p.coords.longitude};
-    new maplibregl.Marker({color:'#114a3d'}).setLngLat([state.userLoc.lng,state.userLoc.lat]).addTo(map);
+    new maplibregl.Marker({color:'#0e3d32'}).setLngLat([state.userLoc.lng,state.userLoc.lat]).addTo(map);
     map.flyTo({center:[state.userLoc.lng,state.userLoc.lat],zoom:11});
     renderList();
   },()=>alert('Could not get your location'));
 };
 
-map.on('load',renderList);
+map.on('load', loadBuildings);
 </script>
 </body>
 </html>

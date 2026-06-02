@@ -294,6 +294,19 @@
   }
   .scrim.show { opacity: 1; pointer-events: auto; }
 
+  .mode-badge {
+    font-size: 11.5px; font-weight: 600; padding: 3px 10px;
+    border-radius: 999px; display: none; align-items: center; gap: 5px;
+    margin-top: 4px; width: fit-content;
+  }
+  .mode-badge.show { display: inline-flex; }
+  .mode-badge.location { background: var(--accent-soft); color: var(--accent); }
+  .mode-badge.smart { background: #f0ebff; color: #6c2bd9; }
+
+  .radius-row { display: none; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .radius-row.show { display: flex; }
+  .radius-label { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   }
@@ -312,10 +325,15 @@
     <div class="filters">
       <div class="search" id="searchWrap">
         <svg class="s-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
-        <input id="q" type="search" placeholder="Search building or town…" aria-label="Search buildings" autocomplete="off" />
+        <input id="q" type="search" placeholder="Place, building, or keywords…" aria-label="Search buildings" autocomplete="off" />
         <button class="clear-btn" id="clearSearch" aria-label="Clear search">
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1l8 8M9 1l-8 8"/></svg>
         </button>
+      </div>
+      <div class="mode-badge" id="modeBadge"></div>
+      <div class="radius-row" id="radiusRow">
+        <span class="radius-label">Within:</span>
+        <div class="row" id="radiusChips"></div>
       </div>
       <div class="row" id="typeChips" role="group" aria-label="Filter by building type"></div>
       <div class="range-row">
@@ -359,7 +377,9 @@ const TYPE_ICON  = {Medical:"✚", Dermatology:"◈", "Physical Therapy":"⊕", 
 const TYPE_COLOR = {Medical:"#c0392b", Dermatology:"#8e44ad", "Physical Therapy":"#e67e22", Radiology:"#1a5276", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c", Government:"#5d6d7e", Residential:"#e8590c", Library:"#0097a7", Transit:"#455a64", Legal:"#7d5a00", Entertainment:"#e53935", Community:"#00897b", Financial:"#1a6b3c"};
 
 let BUILDINGS = [];
-let state = { q:"", types:new Set(), minStories:0, exactStories:false, userLoc:null, activeId:null };
+let state = { q:"", types:new Set(), minStories:0, exactStories:false, userLoc:null, activeId:null,
+  searchMode:'text', locationCoords:null, radius:5 };
+let locationMarker = null;
 
 const stars = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
 const dist = (a,b) => {
@@ -376,18 +396,115 @@ const map = new maplibregl.Map({
 });
 map.addControl(new maplibregl.NavigationControl(),'top-right');
 
-/* Filtering */
-function filtered(){
-  return BUILDINGS.filter(b=>{
-    if(state.q){ const q=state.q.toLowerCase(); if(!(b.name.toLowerCase().includes(q)||b.town.toLowerCase().includes(q)||b.addr.toLowerCase().includes(q))) return false; }
-    if(state.types.size && !state.types.has(b.type)) return false;
-    if(state.minStories > 0){
-      if(state.exactStories){ if(b.stories !== state.minStories) return false; }
-      else { if(b.stories < state.minStories) return false; }
+/* ── Smart search ── */
+const TYPE_KEYWORDS = {
+  Medical:['medical','hospital','doctor','clinic','health','urgent care','physician','surgery','orthopedic'],
+  Dermatology:['dermatology','dermatologist','skin','derm','acne','cosmetic'],
+  'Physical Therapy':['physical therapy','physical therapist','pt ','rehab','rehabilitation','sports medicine','occupational therapy'],
+  Radiology:['radiology','radiologist','xray','x-ray','imaging','mri','ct scan','ultrasound','mammography'],
+  Office:['office','professional','corporate','business','headquarters','hq','law firm','attorney'],
+  Mall:['mall','shopping','retail','plaza','shopping center','shops'],
+  Hotel:['hotel','motel','inn','stay','lodging','resort','suites'],
+  Education:['school','education','university','college','high school','academy','learning'],
+  Library:['library','books','reading','branch'],
+  Government:['government','city hall','village hall','dmv','municipal','county','town hall','federal'],
+  Entertainment:['entertainment','theater','theatre','museum','art','cinema','movie','gallery','park'],
+  Community:['community','ymca','jcc','recreation','center','arts council','cultural'],
+  Financial:['financial','bank','credit union','bancorp','savings'],
+  Residential:['residential','apartment','senior','assisted living','senior living','condo'],
+  Legal:['legal','law','courthouse','court'],
+};
+
+function parseStoryCount(q){
+  const w={'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'nine':9,'ten':10,'single':1,'double':2,'triple':3};
+  const m=q.match(/(\d+)\s*(?:floor|stor)/i); if(m) return +m[1];
+  for(const[word,n] of Object.entries(w)){
+    if(new RegExp(`\\b${word}\\s+(?:floor|stor)`,'i').test(q)) return n;
+  }
+  if(/\bground.?floor\b|\bone.?floor\b/i.test(q)) return 1;
+  return null;
+}
+
+function smartScore(b,q){
+  const ql=q.toLowerCase();
+  const bt=[b.name,b.type,b.town,b.addr].join(' ').toLowerCase();
+  let score=0;
+  for(const[type,kws] of Object.entries(TYPE_KEYWORDS)){
+    if(kws.some(kw=>ql.includes(kw))){
+      if(b.type===type) score+=10;
+      else if(b.type==='Medical'&&['Dermatology','Physical Therapy','Radiology'].includes(type)) score+=3;
     }
-    return true;
-  }).map(b=>({...b, _d: state.userLoc?dist(state.userLoc,b):null}))
-    .sort((a,b)=> state.userLoc ? a._d-b._d : b.rating-a.rating);
+  }
+  const want=parseStoryCount(ql);
+  if(want!==null){
+    if(b.stories===want) score+=8;
+    else if(Math.abs(b.stories-want)===1) score+=2;
+  }
+  const words=ql.split(/\s+/).filter(w=>w.length>3&&!['with','that','near','from','have','this','floor','story','stories','floors','building','buildings'].includes(w));
+  words.forEach(w=>{ if(bt.includes(w)) score+=2; });
+  return score;
+}
+
+/* ── Geocoding ── */
+const LI_BOUNDS={minLat:40.45,maxLat:41.15,minLng:-74.05,maxLng:-71.75};
+async function geocodeQuery(q){
+  try{
+    const url=`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q+', Long Island, NY')}&format=json&limit=1&countrycodes=us`;
+    const res=await fetch(url,{headers:{'Accept-Language':'en'}});
+    const data=await res.json();
+    if(!data.length) return null;
+    const lt=parseFloat(data[0].lat), ln=parseFloat(data[0].lon);
+    if(lt>=LI_BOUNDS.minLat&&lt<=LI_BOUNDS.maxLat&&ln>=LI_BOUNDS.minLng&&ln<=LI_BOUNDS.maxLng) return{lat:lt,lng:ln,name:data[0].display_name.split(',')[0]};
+    return null;
+  }catch{ return null; }
+}
+
+function setSearchMode(mode,label){
+  state.searchMode=mode;
+  const badge=document.getElementById('modeBadge');
+  const radRow=document.getElementById('radiusRow');
+  badge.className='mode-badge';
+  if(mode==='location'){
+    badge.className='mode-badge location show';
+    badge.textContent='📍 Near '+label;
+    radRow.classList.add('show');
+    if(state.locationCoords) map.flyTo({center:[state.locationCoords.lng,state.locationCoords.lat],zoom:12});
+  } else if(mode==='smart'){
+    badge.className='mode-badge smart show';
+    badge.textContent='✦ Smart match';
+    radRow.classList.remove('show');
+  } else {
+    radRow.classList.remove('show');
+    state.locationCoords=null;
+    if(locationMarker){locationMarker.remove();locationMarker=null;}
+  }
+}
+
+/* ── Filtering ── */
+function applyChipFilters(arr){
+  if(state.types.size) arr=arr.filter(b=>state.types.has(b.type));
+  if(state.minStories>0){
+    if(state.exactStories) arr=arr.filter(b=>b.stories===state.minStories);
+    else arr=arr.filter(b=>b.stories>=state.minStories);
+  }
+  return arr;
+}
+
+function filtered(){
+  let result=applyChipFilters(BUILDINGS);
+
+  if(state.searchMode==='location'&&state.locationCoords){
+    result=result.filter(b=>dist(state.locationCoords,b)<=state.radius);
+    return result.map(b=>({...b,_d:dist(state.locationCoords,b)})).sort((a,b)=>a._d-b._d);
+  }
+
+  if(state.searchMode==='smart'&&state.q){
+    return result.map(b=>({...b,_score:smartScore(b,state.q),_d:state.userLoc?dist(state.userLoc,b):null}))
+      .filter(b=>b._score>0).sort((a,b)=>b._score-a._score);
+  }
+
+  if(state.q){const q=state.q.toLowerCase(); result=result.filter(b=>b.name.toLowerCase().includes(q)||b.town.toLowerCase().includes(q)||b.addr.toLowerCase().includes(q));}
+  return result.map(b=>({...b,_d:state.userLoc?dist(state.userLoc,b):null})).sort((a,b)=>state.userLoc?a._d-b._d:b.rating-a.rating);
 }
 
 /* Skeleton loader */
@@ -405,7 +522,10 @@ function skeletons(n=5){
 function renderList(){
   const items = filtered();
   const list = document.getElementById('list');
-  list.innerHTML = `<div class="count">${items.length} building${items.length!==1?'s':''}${state.userLoc?' · nearest first':' · top rated first'}</div>`;
+  const modeLabel = state.searchMode==='location' ? ` · within ${state.radius} mi`
+    : state.searchMode==='smart' ? ' · best matches'
+    : state.userLoc ? ' · nearest first' : ' · top rated first';
+  list.innerHTML = `<div class="count">${items.length} building${items.length!==1?'s':''}${modeLabel}</div>`;
   if(!items.length){
     list.innerHTML += '<div class="empty" style="padding:16px 4px">No buildings match your filters.</div>';
   }
@@ -630,16 +750,48 @@ TYPES.forEach(t=>{
 
 const qInput=document.getElementById('q');
 const searchWrap=document.getElementById('searchWrap');
+let geoTimer=null;
 qInput.oninput=e=>{
   state.q=e.target.value;
   searchWrap.classList.toggle('has-value',!!state.q);
-  renderList();
+  clearTimeout(geoTimer);
+  if(!state.q){ setSearchMode('text'); renderList(); return; }
+  renderList(); // show text results immediately
+  geoTimer=setTimeout(async()=>{
+    const coords=await geocodeQuery(state.q);
+    if(coords){
+      state.locationCoords=coords;
+      if(locationMarker) locationMarker.remove();
+      locationMarker=new maplibregl.Marker({color:'#0e3d32'}).setLngLat([coords.lng,coords.lat]).addTo(map);
+      setSearchMode('location',coords.name||state.q);
+    } else if(state.q.trim().split(/\s+/).length>=2){
+      setSearchMode('smart');
+    } else {
+      setSearchMode('text');
+    }
+    renderList();
+  },650);
 };
 document.getElementById('clearSearch').onclick=()=>{
   qInput.value=''; state.q='';
   searchWrap.classList.remove('has-value');
+  setSearchMode('text');
   qInput.focus(); renderList();
 };
+
+/* Radius chips */
+[1,2,5,10,25].forEach(r=>{
+  const c=document.createElement('button');
+  c.className='chip'+(r===state.radius?' on':'');
+  c.type='button'; c.textContent=r+' mi';
+  c.onclick=()=>{
+    state.radius=r;
+    document.querySelectorAll('#radiusChips .chip').forEach(x=>x.classList.remove('on'));
+    c.classList.add('on');
+    renderList();
+  };
+  document.getElementById('radiusChips').appendChild(c);
+});
 
 const range=document.getElementById('storyRange');
 const storyVal=document.getElementById('storyVal');

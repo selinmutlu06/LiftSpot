@@ -332,7 +332,6 @@
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1l8 8M9 1l-8 8"/></svg>
         </button>
       </div>
-      <div class="mode-badge" id="modeBadge"></div>
       <div class="radius-row" id="radiusRow">
         <div class="range-row" style="width:100%">
           <label for="radiusRange">Within: <span id="radiusVal" style="font-weight:600;color:var(--ink)">5 mi</span></label>
@@ -477,22 +476,13 @@ async function geocodeQuery(q){
 
 function setSearchMode(mode,label){
   state.searchMode=mode;
-  const badge=document.getElementById('modeBadge');
   const radRow=document.getElementById('radiusRow');
-  badge.className='mode-badge';
   if(mode==='location'){
-    badge.className='mode-badge location show';
-    badge.textContent='📍 Near '+label;
     radRow.classList.add('show');
     if(state.locationCoords) map.flyTo({center:[state.locationCoords.lng,state.locationCoords.lat],zoom:12});
-  } else if(mode==='smart'){
-    badge.className='mode-badge smart show';
-    badge.textContent='✦ Smart match';
-    radRow.classList.remove('show');
   } else {
     radRow.classList.remove('show');
-    state.locationCoords=null;
-    if(locationMarker){locationMarker.remove();locationMarker=null;}
+    if(mode==='text'){ state.locationCoords=null; if(locationMarker){locationMarker.remove();locationMarker=null;} }
   }
 }
 

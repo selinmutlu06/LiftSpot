@@ -354,9 +354,9 @@ const sb = createClient(
   'sb_publishable_SceOqu60uTDQpX_SM62gAQ_Rl5TgZig'
 );
 
-const TYPES = ["Medical","Office","Mall","Hotel","Education","Government","Residential","Library","Transit","Legal","Entertainment","Community","Financial"];
-const TYPE_ICON  = {Medical:"✚", Office:"▣", Mall:"◫", Hotel:"⌂", Education:"✎", Government:"⚑", Residential:"⌂", Library:"▦", Transit:"⬡", Legal:"⚖", Entertainment:"♦", Community:"◉", Financial:"$"};
-const TYPE_COLOR = {Medical:"#c0392b", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c", Government:"#5d6d7e", Residential:"#e8590c", Library:"#0097a7", Transit:"#455a64", Legal:"#7d5a00", Entertainment:"#e53935", Community:"#00897b", Financial:"#1a6b3c"};
+const TYPES = ["Medical","Dermatology","Physical Therapy","Radiology","Office","Mall","Hotel","Education","Government","Residential","Library","Transit","Legal","Entertainment","Community","Financial"];
+const TYPE_ICON  = {Medical:"✚", Dermatology:"◈", "Physical Therapy":"⊕", Radiology:"◎", Office:"▣", Mall:"◫", Hotel:"⌂", Education:"✎", Government:"⚑", Residential:"⌂", Library:"▦", Transit:"⬡", Legal:"⚖", Entertainment:"♦", Community:"◉", Financial:"$"};
+const TYPE_COLOR = {Medical:"#c0392b", Dermatology:"#8e44ad", "Physical Therapy":"#e67e22", Radiology:"#1a5276", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c", Government:"#5d6d7e", Residential:"#e8590c", Library:"#0097a7", Transit:"#455a64", Legal:"#7d5a00", Entertainment:"#e53935", Community:"#00897b", Financial:"#1a6b3c"};
 
 let BUILDINGS = [];
 let state = { q:"", types:new Set(), minStories:0, exactStories:false, userLoc:null, activeId:null };

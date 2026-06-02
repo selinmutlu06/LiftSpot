@@ -120,17 +120,19 @@
   .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
 
   .range-row { display: flex; flex-direction: column; gap: 5px; }
-  .range-row .range-header { display: flex; justify-content: space-between; align-items: center; }
   .range-row label { font-size: 12.5px; color: var(--muted); }
   .range-row label span { font-weight: 600; color: var(--ink); }
   .range-row input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; height: 20px; }
-  .exact-toggle {
-    border: 1.5px solid var(--line); background: #fff; border-radius: 999px;
-    padding: 3px 10px; font: inherit; font-size: 11.5px; font-weight: 600;
-    cursor: pointer; color: var(--muted);
-    transition: background 150ms var(--ease), color 150ms var(--ease), border-color 150ms var(--ease);
+
+  .story-select {
+    width: 100%; padding: 9px 32px 9px 12px; min-height: 40px;
+    border: 1.5px solid var(--line); border-radius: var(--radius);
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23576260' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+    font: inherit; font-size: 13.5px; color: var(--ink);
+    cursor: pointer; appearance: none; -webkit-appearance: none;
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
   }
-  .exact-toggle.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .story-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 
   .locbtn {
     display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -332,16 +334,27 @@
       </div>
       <div class="mode-badge" id="modeBadge"></div>
       <div class="radius-row" id="radiusRow">
-        <span class="radius-label">Within:</span>
-        <div class="row" id="radiusChips"></div>
+        <div class="range-row" style="width:100%">
+          <label for="radiusRange">Within: <span id="radiusVal" style="font-weight:600;color:var(--ink)">5 mi</span></label>
+          <input type="range" id="radiusRange" min="1" max="25" value="5" step="1" />
+        </div>
       </div>
       <div class="row" id="typeChips" role="group" aria-label="Filter by building type"></div>
       <div class="range-row">
-        <div class="range-header">
-          <label for="storyRange"><span id="storyMode">Min.</span> stories: <span id="storyVal">any</span></label>
-          <button class="exact-toggle" id="exactToggle" type="button" aria-pressed="false">Exact</button>
-        </div>
-        <input type="range" id="storyRange" min="0" max="40" value="0" step="1" />
+        <label for="storySelect">Min. stories</label>
+        <select id="storySelect" class="story-select">
+          <option value="0">Any</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+          <option value="5">5+</option>
+          <option value="6">6+</option>
+          <option value="8">8+</option>
+          <option value="10">10+</option>
+          <option value="15">15+</option>
+          <option value="20">20+</option>
+        </select>
       </div>
       <button class="locbtn" id="locBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
@@ -782,42 +795,18 @@ document.getElementById('clearSearch').onclick=()=>{
   qInput.focus(); renderList();
 };
 
-/* Radius chips */
-[1,2,5,10,25].forEach(r=>{
-  const c=document.createElement('button');
-  c.className='chip'+(r===state.radius?' on':'');
-  c.type='button'; c.textContent=r+' mi';
-  c.onclick=()=>{
-    state.radius=r;
-    document.querySelectorAll('#radiusChips .chip').forEach(x=>x.classList.remove('on'));
-    c.classList.add('on');
-    renderList();
-  };
-  document.getElementById('radiusChips').appendChild(c);
-});
-
-const range=document.getElementById('storyRange');
-const storyVal=document.getElementById('storyVal');
-const storyMode=document.getElementById('storyMode');
-const exactToggle=document.getElementById('exactToggle');
-
-function updateStoryLabel(){
-  if(state.minStories===0){ storyVal.textContent='any'; return; }
-  storyVal.textContent = state.exactStories ? String(state.minStories) : state.minStories+'+';
-}
-
-range.oninput=e=>{
-  state.minStories=+e.target.value;
-  updateStoryLabel();
+/* Radius slider */
+const radiusRange=document.getElementById('radiusRange');
+const radiusVal=document.getElementById('radiusVal');
+radiusRange.oninput=e=>{
+  state.radius=+e.target.value;
+  radiusVal.textContent=state.radius+' mi';
   renderList();
 };
 
-exactToggle.onclick=()=>{
-  state.exactStories=!state.exactStories;
-  exactToggle.classList.toggle('on', state.exactStories);
-  exactToggle.setAttribute('aria-pressed', String(state.exactStories));
-  storyMode.textContent = state.exactStories ? 'Exact' : 'Min.';
-  updateStoryLabel();
+/* Stories dropdown */
+document.getElementById('storySelect').onchange=e=>{
+  state.minStories=+e.target.value;
   renderList();
 };
 

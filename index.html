@@ -438,66 +438,34 @@ function renderList(){
 }
 
 function makePinImage(fill){
-  const s=2, w=32*s, h=42*s;
+  const s=2, w=20*s, h=28*s;
   const c=document.createElement('canvas');
   c.width=w; c.height=h;
   const ctx=c.getContext('2d');
   ctx.scale(s,s);
 
-  const cx=16, cy=13, r=12;
-
-  // Needle shadow
-  ctx.fillStyle='rgba(0,0,0,0.18)';
-  ctx.beginPath();
-  ctx.moveTo(cx-2.5, cy+r);
-  ctx.lineTo(cx+2.5, cy+r);
-  ctx.lineTo(cx+1, 42);
-  ctx.lineTo(cx-1, 42);
-  ctx.closePath();
-  ctx.fill();
+  const cx=10, cy=9, r=8;
 
   // Needle
-  ctx.fillStyle='rgba(15,15,15,0.72)';
+  ctx.fillStyle=fill;
   ctx.beginPath();
-  ctx.moveTo(cx-1.8, cy+r-0.5);
-  ctx.lineTo(cx+1.8, cy+r-0.5);
-  ctx.lineTo(cx, 41);
+  ctx.moveTo(cx-1.5, cy+r-1);
+  ctx.lineTo(cx+1.5, cy+r-1);
+  ctx.lineTo(cx, 27);
   ctx.closePath();
   ctx.fill();
 
-  // Head drop-shadow
-  ctx.save();
-  ctx.shadowColor='rgba(0,0,0,0.22)';
-  ctx.shadowBlur=6*s;
-  ctx.shadowOffsetY=2*s;
-  ctx.fillStyle=fill;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI*2);
-  ctx.fill();
-  ctx.restore();
-
-  // Head base colour
+  // Head
   ctx.fillStyle=fill;
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI*2);
   ctx.fill();
 
-  // Gloss highlight (top-left radial)
-  const g=ctx.createRadialGradient(cx-4, cy-4, 1, cx, cy, r);
-  g.addColorStop(0,'rgba(255,255,255,0.48)');
-  g.addColorStop(0.55,'rgba(255,255,255,0.08)');
-  g.addColorStop(1,'rgba(0,0,0,0.04)');
-  ctx.fillStyle=g;
+  // White centre dot
+  ctx.fillStyle='#fff';
   ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI*2);
+  ctx.arc(cx, cy, 3, 0, Math.PI*2);
   ctx.fill();
-
-  // Thin border ring
-  ctx.strokeStyle='rgba(0,0,0,0.14)';
-  ctx.lineWidth=1;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI*2);
-  ctx.stroke();
 
   const d=ctx.getImageData(0,0,w,h);
   return {width:w, height:h, data:d.data};

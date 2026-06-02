@@ -295,13 +295,13 @@
   .scrim.show { opacity: 1; pointer-events: auto; }
 
   .mode-badge {
-    font-size: 11.5px; font-weight: 600; padding: 3px 10px;
+    font-size: 12px; font-weight: 600; padding: 5px 12px;
     border-radius: 999px; display: none; align-items: center; gap: 5px;
-    margin-top: 4px; width: fit-content;
+    margin-top: 6px; width: fit-content; border: 1.5px solid transparent;
   }
   .mode-badge.show { display: inline-flex; }
-  .mode-badge.location { background: var(--accent-soft); color: var(--accent); }
-  .mode-badge.smart { background: #f0ebff; color: #6c2bd9; }
+  .mode-badge.location { background: var(--accent-soft); color: var(--accent); border-color: #a8d8c8; }
+  .mode-badge.smart { background: #f0ebff; color: #6c2bd9; border-color: #c9b8f0; }
 
   .radius-row { display: none; align-items: center; gap: 7px; flex-wrap: wrap; }
   .radius-row.show { display: flex; }
@@ -446,16 +446,19 @@ function smartScore(b,q){
 }
 
 /* ── Geocoding ── */
-const LI_BOUNDS={minLat:40.45,maxLat:41.15,minLng:-74.05,maxLng:-71.75};
+const LI_VIEWBOX='-74.05,40.45,-71.75,41.15';
 async function geocodeQuery(q){
   try{
-    const url=`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q+', Long Island, NY')}&format=json&limit=1&countrycodes=us`;
-    const res=await fetch(url,{headers:{'Accept-Language':'en'}});
-    const data=await res.json();
+    // bounded=1 forces results to stay within Long Island only
+    const base=`https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&viewbox=${LI_VIEWBOX}&bounded=1`;
+    let res=await fetch(`${base}&q=${encodeURIComponent(q)}`,{headers:{'Accept-Language':'en'}});
+    let data=await res.json();
+    if(!data.length){
+      res=await fetch(`${base}&q=${encodeURIComponent(q+', NY')}`,{headers:{'Accept-Language':'en'}});
+      data=await res.json();
+    }
     if(!data.length) return null;
-    const lt=parseFloat(data[0].lat), ln=parseFloat(data[0].lon);
-    if(lt>=LI_BOUNDS.minLat&&lt<=LI_BOUNDS.maxLat&&ln>=LI_BOUNDS.minLng&&ln<=LI_BOUNDS.maxLng) return{lat:lt,lng:ln,name:data[0].display_name.split(',')[0]};
-    return null;
+    return{lat:parseFloat(data[0].lat),lng:parseFloat(data[0].lon),name:data[0].display_name.split(',')[0]};
   }catch{ return null; }
 }
 

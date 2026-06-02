@@ -767,27 +767,32 @@ TYPES.forEach(t=>{
 const qInput=document.getElementById('q');
 const searchWrap=document.getElementById('searchWrap');
 let geoTimer=null;
+async function runGeocode(){
+  if(!state.q) return;
+  const coords=await geocodeQuery(state.q);
+  if(coords){
+    state.locationCoords=coords;
+    if(locationMarker) locationMarker.remove();
+    locationMarker=new maplibregl.Marker({color:'#0e3d32'}).setLngLat([coords.lng,coords.lat]).addTo(map);
+    setSearchMode('location',coords.name||state.q);
+  } else if(state.q.trim().split(/\s+/).length>=2){
+    setSearchMode('smart');
+  } else {
+    setSearchMode('text');
+  }
+  renderList();
+}
 qInput.oninput=e=>{
   state.q=e.target.value;
   searchWrap.classList.toggle('has-value',!!state.q);
   clearTimeout(geoTimer);
   if(!state.q){ setSearchMode('text'); renderList(); return; }
-  renderList(); // show text results immediately
-  geoTimer=setTimeout(async()=>{
-    const coords=await geocodeQuery(state.q);
-    if(coords){
-      state.locationCoords=coords;
-      if(locationMarker) locationMarker.remove();
-      locationMarker=new maplibregl.Marker({color:'#0e3d32'}).setLngLat([coords.lng,coords.lat]).addTo(map);
-      setSearchMode('location',coords.name||state.q);
-    } else if(state.q.trim().split(/\s+/).length>=2){
-      setSearchMode('smart');
-    } else {
-      setSearchMode('text');
-    }
-    renderList();
-  },650);
+  renderList();
+  geoTimer=setTimeout(runGeocode, 300);
 };
+qInput.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ clearTimeout(geoTimer); runGeocode(); }
+});
 document.getElementById('clearSearch').onclick=()=>{
   qInput.value=''; state.q='';
   searchWrap.classList.remove('has-value');

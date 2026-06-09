@@ -26,17 +26,15 @@
 
 ---
 
-## Why this exists
-
 My younger brother has been obsessed with elevators for over a decade.
 
-He spends hours every day tracking down new buildings, riding every elevator he can find, and cataloguing the details most people walk straight past — the cab manufacturer, the speed, the sound of the doors. He runs **[@elevatorzboy20](https://www.youtube.com/@elevatorzboy20)** on YouTube and Instagram, where he reviews elevators with a level of care I've only ever seen from the best critics.
+He spends hours every day tracking down new buildings, riding every elevator he can find, and cataloguing the details most people walk straight past: the cab manufacturer, the speed, the sound of the doors. He runs **[@elevatorzboy20](https://www.youtube.com/@elevatorzboy20)** on YouTube and Instagram, where he reviews elevators with a level of care I've only ever seen from the best critics.
 
 The problem: there was no tool built for someone like him. No map of where to go. No way to filter by building type or floor count. No place to leave a review that actually mattered.
 
 So I built one.
 
-**LiftSpot** is a Long Island elevator finder, built for him — and for anyone else who knows that not all elevators are created equal.
+**LiftSpot** is a Long Island elevator finder, built for him and for anyone else who knows that not all elevators are created equal.
 
 ---
 
@@ -64,7 +62,7 @@ So I built one.
     </td>
     <td width="33%" valign="top">
       <h3>Private Notes</h3>
-      <p>Save personal notes per building — cab brand, access quirks, anything — stored locally on your device.</p>
+      <p>Save personal notes per building: cab brand, access quirks, anything. Stored locally on your device.</p>
     </td>
     <td width="33%" valign="top">
       <h3>Near Me Mode</h3>
@@ -78,11 +76,11 @@ So I built one.
 ## Screenshots
 
 <p align="center">
-  <img src="docs/images/app-main.png" alt="LiftSpot — full app view with sidebar and map" width="100%" />
+  <img src="docs/images/app-main.png" alt="LiftSpot full app view with sidebar and map" width="100%" />
 </p>
 
 <p align="center">
-  <img src="docs/images/app-drawer.png" alt="LiftSpot — building detail drawer with reviews" width="100%" />
+  <img src="docs/images/app-drawer.png" alt="LiftSpot building detail drawer with reviews" width="100%" />
 </p>
 
 ---
@@ -117,7 +115,7 @@ flowchart LR
 
 | Layer | Tools |
 |-------|-------|
-| **Frontend** | Vanilla HTML, CSS, JavaScript — zero build step |
+| **Frontend** | Vanilla HTML, CSS, JavaScript (zero build step) |
 | **Map** | MapLibre GL 4.7, CartoDB Voyager tiles |
 | **Geocoding** | Nominatim (OpenStreetMap) |
 | **Database** | Supabase (PostgreSQL) |
@@ -154,17 +152,13 @@ The Supabase project is public-read, so the map and buildings load immediately.
 ## Project structure
 
 ```
-index.html          # Entire app — HTML, CSS, and JS in one file
+index.html          # Entire app, HTML + CSS + JS in one file
 schema.sql          # Supabase table definitions and RLS policies
 seed_more*.sql      # Building seed data
 docs/images/        # README assets
 ```
 
 ---
-
-<p align="center">
-  Built for my brother, who never walks past an elevator without looking up.
-</p>
 
 <p align="center">
   <a href="https://www.youtube.com/@elevatorzboy20">YouTube</a> · <a href="https://www.instagram.com/elevatorzboy20">Instagram</a>

@@ -1,0 +1,63 @@
+/* LiftSpot design tokens — "modern cab interior"
+   Palette: ink (cab panels), brushed steel (rails, hairlines), paper (surfaces),
+   LED green (illuminated states, dark surfaces only), amber (stars only),
+   red (errors only). Spacing on a 4px grid. */
+
+:root {
+  /* Ink — dark surfaces and text */
+  --ink-900: #16211d;
+  --ink-800: #1d2b26;
+  --ink-700: #2a3a34;
+  --ink-600: #44524c;   /* muted text on paper, ≥7:1 */
+
+  /* Steel — rails, rings, hairlines */
+  --steel-400: #aab2b3;
+  --steel-300: #c9ced0;
+  --steel-200: #d9dddd;
+  --steel-150: #e4e7e7;
+
+  /* Surfaces */
+  --paper: #f5f6f4;
+  --card: #ffffff;
+
+  /* Signal green */
+  --green-700: #1f6f5c; /* brand on light surfaces, 5.5:1 on paper */
+  --green-800: #185c4c;
+  --led: #23a47f;       /* illuminated — use on ink surfaces only */
+  --led-dim: #1a7a5f;
+  --led-glow: rgba(35, 164, 127, 0.45);
+  --led-soft: rgba(35, 164, 127, 0.14);
+
+  /* Accents */
+  --amber: #e8a13a;     /* star glyphs only */
+  --red-600: #b3402f;   /* errors only, 5.4:1 on paper */
+  --red-soft: #f7e8e5;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-led: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Spacing — 4px grid */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 24px; --s7: 28px; --s8: 32px;
+
+  /* Shape + depth */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(22, 33, 29, 0.08);
+  --shadow-md: 0 2px 8px rgba(22, 33, 29, 0.10), 0 12px 32px rgba(22, 33, 29, 0.12);
+  --shadow-drawer: -16px 0 48px rgba(22, 33, 29, 0.22);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 120ms;
+  --t-med: 180ms;
+  --t-door: 230ms;
+
+  /* Layout */
+  --rail-w: 380px;
+  --topbar-h: 56px;
+}

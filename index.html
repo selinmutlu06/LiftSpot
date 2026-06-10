@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>LiftSpot — Find Elevators on Long Island</title>
 <meta name="description" content="Find and rate elevators in buildings across Long Island, NY. Search hospitals, offices, malls, hotels and more." />
 <meta property="og:title" content="LiftSpot — Find Elevators on Long Island" />
 <meta property="og:description" content="Find and rate elevators in 600+ buildings across Long Island." />
 <meta property="og:type" content="website" />
-<meta name="theme-color" content="#1f6f5c" />
+<meta name="theme-color" content="#16211d" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160'%3E%3Cpath d='M60 0C33.49 0 12 21.49 12 48C12 76.5 60 140 60 140C60 140 108 76.5 108 48C108 21.49 86.51 0 60 0Z' fill='%231f6f5c'/%3E%3Ccircle cx='60' cy='42' r='24' fill='white'/%3E%3Crect x='44' y='30' width='14' height='24' rx='1' fill='%231f6f5c'/%3E%3Crect x='62' y='30' width='14' height='24' rx='1' fill='%231f6f5c'/%3E%3Cpath d='M60 34L54 40L66 40Z' fill='white'/%3E%3Cpath d='M60 50L66 44L54 44Z' fill='white'/%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160'%3E%3Crect width='120' height='160' rx='28' fill='%231f6f5c'/%3E%3Cpath d='M60 10C39.49 10 22 27.49 22 50C22 73 60 120 60 120C60 120 98 73 98 50C98 27.49 80.51 10 60 10Z' fill='white'/%3E%3Ccircle cx='60' cy='44' r='16' fill='%231f6f5c'/%3E%3Crect x='50' y='36' width='8' height='16' rx='1' fill='white'/%3E%3Crect x='62' y='36' width='8' height='16' rx='1' fill='white'/%3E%3Cpath d='M60 38L56 43L64 43Z' fill='%231f6f5c'/%3E%3Cpath d='M60 50L64 45L56 45Z' fill='%231f6f5c'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,830 +16,102 @@
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --bg: #f4f1ea;
-    --panel: #fffdf8;
-    --ink: #1c2a28;
-    --muted: #576260;
-    --line: #e2ddd1;
-    --accent: #1f6f5c;
-    --accent-hover: #185c4c;
-    --accent-soft: #dcefe7;
-    --star: #b87d00;
-    --shadow-sm: 0 1px 3px rgba(28,42,40,.07);
-    --shadow: 0 2px 6px rgba(28,42,40,.06), 0 10px 28px rgba(28,42,40,.09);
-    --radius: 12px;
-    --ease: cubic-bezier(.4,0,.2,1);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    overflow: hidden;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
-
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
-  /* ── Layout ── */
-  .app { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
-  @media (max-width: 860px) {
-    .app { grid-template-columns: 1fr; grid-template-rows: 52vh 48vh; }
-    #map { order: -1; }
-  }
-
-  /* ── Sidebar ── */
-  .panel {
-    background: var(--panel);
-    border-right: 1px solid var(--line);
-    display: flex; flex-direction: column;
-    height: 100vh; overflow: hidden;
-  }
-
-  header.brand { padding: 20px 20px 14px; border-bottom: 1px solid var(--line); }
-  .logo { display: flex; align-items: center; gap: 12px; }
-  .logo .mark {
-    width: 28px; height: 38px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .logo h1 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
-  .tag { color: var(--muted); font-size: 13px; margin-top: 5px; line-height: 1.45; }
-
-  /* ── Filters ── */
-  .filters { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
-
-  .search { position: relative; }
-  .search input {
-    width: 100%; min-height: 44px;
-    padding: 11px 36px 11px 36px;
-    border: 1.5px solid var(--line); border-radius: var(--radius);
-    background: #fff; font: inherit; font-size: 14px; color: var(--ink);
-    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
-  }
-  .search input:focus {
-    outline: none; border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-  .search input::placeholder { color: var(--muted); }
-  .s-icon {
-    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-    color: var(--muted); pointer-events: none;
-  }
-  .clear-btn {
-    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
-    width: 26px; height: 26px;
-    border: none; background: var(--line); border-radius: 50%;
-    cursor: pointer; color: var(--muted);
-    display: none; place-items: center;
-    transition: background 150ms var(--ease);
-  }
-  .clear-btn:hover { background: #cdc9be; }
-  .search.has-value .clear-btn { display: grid; }
-
-  .row { display: flex; gap: 6px; flex-wrap: wrap; }
-  .chip {
-    border: 1.5px solid var(--line); background: #fff; border-radius: 999px;
-    padding: 7px 14px; min-height: 36px;
-    font: inherit; font-size: 13px; font-weight: 500;
-    cursor: pointer; user-select: none; white-space: nowrap;
-    display: flex; align-items: center;
-    transition: border-color 150ms var(--ease), background 150ms var(--ease), color 150ms var(--ease);
-  }
-  .chip:hover { border-color: var(--accent); background: var(--accent-soft); }
-  .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-  .range-row { display: flex; flex-direction: column; gap: 5px; }
-  .range-row label { font-size: 12.5px; color: var(--muted); }
-  .range-row label span { font-weight: 600; color: var(--ink); }
-  .range-row input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; height: 20px; }
-
-  .story-select {
-    width: 100%; padding: 9px 32px 9px 12px; min-height: 40px;
-    border: 1.5px solid var(--line); border-radius: var(--radius);
-    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23576260' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
-    font: inherit; font-size: 13.5px; color: var(--ink);
-    cursor: pointer; appearance: none; -webkit-appearance: none;
-    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
-  }
-  .story-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-
-  .locbtn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    border: 1.5px solid var(--accent); color: var(--accent); background: var(--accent-soft);
-    border-radius: var(--radius); padding: 10px 14px; min-height: 44px; width: 100%;
-    font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
-    transition: background 180ms var(--ease), box-shadow 180ms var(--ease);
-  }
-  .locbtn:hover { background: #cae4db; box-shadow: 0 2px 10px rgba(31,111,92,.18); }
-
-  /* ── List ── */
-  .list { flex: 1; overflow-y: auto; padding: 6px 12px 32px; }
-  .list::-webkit-scrollbar { width: 4px; }
-  .list::-webkit-scrollbar-track { background: transparent; }
-  .list::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; }
-  .count { font-size: 12px; color: var(--muted); padding: 8px 4px 4px; letter-spacing: .01em; }
-
-  /* ── Cards ── */
-  .card {
-    background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius);
-    padding: 16px; margin: 5px 0; cursor: pointer;
-    box-shadow: var(--shadow-sm);
-    transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), border-color 180ms var(--ease);
-  }
-  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: #c4beb0; }
-  .card:active { transform: translateY(0); }
-  .card.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-sm); }
-  .card .top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
-  .card h3 { font-size: 14.5px; font-weight: 600; line-height: 1.3; letter-spacing: -.01em; }
-  .card .type { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-top: 4px; display: flex; align-items: center; gap: 3px; }
-  .card .addr { font-size: 12px; color: var(--muted); margin-top: 7px; line-height: 1.45; }
-  .card .meta { display: flex; gap: 7px; align-items: center; margin-top: 10px; font-size: 11.5px; flex-wrap: wrap; }
-
-  .badge { background: var(--accent-soft); color: var(--accent); border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 11.5px; white-space: nowrap; }
-  .dist { color: var(--muted); }
-  .stars { color: var(--star); letter-spacing: 1px; font-size: 13px; }
-  .stars .n { color: var(--muted); margin-left: 3px; font-size: 12px; }
-
-  /* ── Skeleton ── */
-  .skeleton-card { background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin: 6px 0; }
-  .skel {
-    background: linear-gradient(90deg, var(--line) 25%, #eae6dd 50%, var(--line) 75%);
-    background-size: 200% 100%; border-radius: 6px;
-    animation: shimmer 1.5s infinite;
-  }
-  .skel-title { height: 16px; width: 68%; margin-bottom: 9px; }
-  .skel-sub { height: 12px; width: 42%; margin-bottom: 10px; }
-  .skel-addr { height: 11px; width: 82%; margin-bottom: 12px; }
-  .skel-row { display: flex; gap: 8px; }
-  .skel-badge { height: 22px; width: 72px; }
-  @keyframes shimmer { to { background-position: -200% 0; } }
-
-  /* ── Map ── */
-  #map { height: 100%; width: 100%; }
-  @media (max-width: 860px) { #map { height: 52vh; } }
-  .maplibregl-popup-content { font-family: 'Spline Sans', sans-serif; border-radius: 10px; padding: 10px 14px; font-size: 13.5px; }
-
-
-  /* ── Drawer ── */
-  .drawer {
-    position: fixed; top: 0; right: 0;
-    width: 460px; max-width: 95vw; height: 100vh;
-    background: var(--panel);
-    box-shadow: -16px 0 48px rgba(0,0,0,.15);
-    transform: translateX(100%);
-    transition: transform .28s var(--ease);
-    z-index: 30; display: flex; flex-direction: column; overflow: hidden;
-  }
-  .drawer.open { transform: translateX(0); }
-
-  .dhead {
-    padding: 20px 20px 16px; border-bottom: 1px solid var(--line);
-    position: relative; display: flex; flex-direction: column; gap: 4px;
-  }
-  .close-btn {
-    position: absolute; top: 12px; right: 12px;
-    border: none; background: #ece8df; border-radius: 10px;
-    width: 44px; height: 44px; min-width: 44px; min-height: 44px;
-    cursor: pointer; color: var(--muted);
-    display: grid; place-items: center;
-    transition: background 150ms var(--ease), color 150ms var(--ease);
-  }
-  .close-btn:hover { background: #ddd9cf; color: var(--ink); }
-
-  .drawer h2 { font-size: 20px; font-weight: 700; padding-right: 58px; line-height: 1.2; }
-  .dtype { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 600; }
-
-  .dbody { flex: 1; overflow-y: auto; padding: 20px 20px 52px; }
-  .dbody::-webkit-scrollbar { width: 4px; }
-  .dbody::-webkit-scrollbar-track { background: transparent; }
-  .dbody::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; }
-
-  .facts { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
-  .fact {
-    background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius);
-    padding: 10px 14px; font-size: 12.5px; flex: 1; min-width: 80px; text-align: center;
-  }
-  .fact b { display: block; font-size: 19px; font-weight: 700; margin-top: 2px; line-height: 1.2; }
-
-  .daddr { color: var(--muted); font-size: 13px; line-height: 1.5; }
-
-  .sec { margin-top: 26px; }
-  .sec h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; font-weight: 600; }
-
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field label { font-size: 13px; font-weight: 500; color: var(--ink); }
-
-  textarea {
-    width: 100%; border: 1.5px solid var(--line); border-radius: var(--radius);
-    padding: 10px 12px; font: inherit; font-size: 13.5px; background: #fff;
-    resize: vertical; color: var(--ink); line-height: 1.5;
-    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
-  }
-  textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-  textarea::placeholder { color: var(--muted); }
-  .note-area { min-height: 88px; }
-
-  .savednote {
-    background: var(--accent-soft); color: var(--accent);
-    border-radius: 8px; padding: 9px 12px; font-size: 13px; font-weight: 500;
-    margin-top: 8px; display: flex; align-items: center; gap: 7px;
-  }
-
-  .btn {
-    background: var(--accent); color: #fff; border: none; border-radius: var(--radius);
-    padding: 12px 18px; min-height: 44px; width: 100%;
-    font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 10px;
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-    transition: background 180ms var(--ease), box-shadow 180ms var(--ease), transform 120ms var(--ease);
-  }
-  .btn:hover { background: var(--accent-hover); box-shadow: 0 4px 14px rgba(31,111,92,.28); }
-  .btn:active { transform: scale(.98); }
-  .btn:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
-
-  .starpick { display: flex; gap: 2px; margin-bottom: 10px; }
-  .starpick span {
-    font-size: 28px; color: #d0cbc0; cursor: pointer;
-    width: 44px; height: 44px; border-radius: 8px;
-    display: grid; place-items: center;
-    transition: color 120ms var(--ease), transform 120ms var(--ease);
-    user-select: none;
-  }
-  .starpick span:hover { transform: scale(1.18); }
-  .starpick .on { color: var(--star); }
-
-  .review { border-top: 1px solid var(--line); padding: 14px 0; }
-  .review:first-of-type { border-top: none; padding-top: 0; }
-  .review .rhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-  .review .who { font-weight: 600; font-size: 13.5px; }
-  .review .rstars { color: var(--star); font-size: 13px; letter-spacing: 1px; }
-  .review p { font-size: 13.5px; color: #3a4744; margin-top: 6px; line-height: 1.6; }
-
-  .empty { color: var(--muted); font-size: 13.5px; font-style: italic; padding: 4px 0; }
-
-  .scrim {
-    position: fixed; inset: 0;
-    background: rgba(10,20,18,.42);
-    opacity: 0; pointer-events: none;
-    transition: opacity .28s var(--ease);
-    z-index: 25; backdrop-filter: blur(1px);
-  }
-  .scrim.show { opacity: 1; pointer-events: auto; }
-
-  .mode-badge {
-    font-size: 12px; font-weight: 600; padding: 5px 12px;
-    border-radius: 999px; display: none; align-items: center; gap: 5px;
-    margin-top: 6px; width: fit-content; border: 1.5px solid transparent;
-  }
-  .mode-badge.show { display: inline-flex; }
-  .mode-badge.location { background: var(--accent-soft); color: var(--accent); border-color: #a8d8c8; }
-  .mode-badge.smart { background: #f0ebff; color: #6c2bd9; border-color: #c9b8f0; }
-
-  .radius-row { display: none; align-items: center; gap: 7px; flex-wrap: wrap; }
-  .radius-row.show { display: flex; }
-  .radius-label { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
+<a class="skip-link" href="#list">Skip to results</a>
+
 <div class="app">
-  <aside class="panel" role="complementary" aria-label="Building list and filters">
-    <header class="brand">
-      <div class="logo">
-        <div class="mark" aria-hidden="true"><svg width="28" height="38" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 0C33.49 0 12 21.49 12 48C12 76.5 60 140 60 140C60 140 108 76.5 108 48C108 21.49 86.51 0 60 0Z" fill="#1f6f5c"/><circle cx="60" cy="42" r="24" fill="#ffffff"/><rect x="44" y="30" width="14" height="24" rx="1" fill="#1f6f5c" opacity="0.9"/><rect x="62" y="30" width="14" height="24" rx="1" fill="#1f6f5c" opacity="0.9"/><path d="M60 34L54 40L66 40Z" fill="#ffffff"/><path d="M60 50L66 44L54 44Z" fill="#ffffff"/></svg></div>
-        <h1>LiftSpot</h1>
-      </div>
-      <div class="tag">Find and rate elevators in buildings across Long Island</div>
-    </header>
-    <div class="filters">
-      <div class="search" id="searchWrap">
-        <svg class="s-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
-        <input id="q" type="search" placeholder="Place, building, or keywords…" aria-label="Search buildings" autocomplete="off" />
-        <button class="clear-btn" id="clearSearch" aria-label="Clear search">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1l8 8M9 1l-8 8"/></svg>
-        </button>
-      </div>
-      <div class="radius-row" id="radiusRow">
-        <div class="range-row" style="width:100%">
-          <label for="radiusRange">Within: <span id="radiusVal" style="font-weight:600;color:var(--ink)">5 mi</span></label>
-          <input type="range" id="radiusRange" min="1" max="25" value="5" step="1" />
-        </div>
-      </div>
-      <div class="row" id="typeChips" role="group" aria-label="Filter by building type"></div>
-      <div class="range-row">
-        <label for="storySelect">Min. stories</label>
-        <select id="storySelect" class="story-select">
-          <option value="0">Any</option>
-          <option value="1">1+</option>
-          <option value="2">2+</option>
-          <option value="3">3+</option>
-          <option value="4">4+</option>
-          <option value="5">5+</option>
-          <option value="6">6+</option>
-          <option value="8">8+</option>
-          <option value="10">10+</option>
-          <option value="15">15+</option>
-          <option value="20">20+</option>
-        </select>
-      </div>
-      <button class="locbtn" id="locBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
-        Use my location
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="LiftSpot home">
+      <span class="mark" aria-hidden="true"><svg width="22" height="30" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 0C33.49 0 12 21.49 12 48C12 76.5 60 140 60 140C60 140 108 76.5 108 48C108 21.49 86.51 0 60 0Z" fill="#23a47f"/><circle cx="60" cy="42" r="24" fill="#16211d"/><rect x="44" y="30" width="14" height="24" rx="1" fill="#23a47f"/><rect x="62" y="30" width="14" height="24" rx="1" fill="#23a47f"/><path d="M60 34L54 40L66 40Z" fill="#16211d"/><path d="M60 50L66 44L54 44Z" fill="#16211d"/></svg></span>
+      <h1>Lift<span class="up">Spot</span></h1>
+    </a>
+
+    <div class="search" id="searchWrap">
+      <svg class="s-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+      <input id="q" type="search" role="combobox" aria-expanded="false" aria-controls="palette" aria-autocomplete="list"
+        placeholder="Search buildings, towns, or places…" aria-label="Search buildings, towns, or places" autocomplete="off" />
+      <span class="kbd" aria-hidden="true">⌘K</span>
+      <button class="clear-btn" id="clearSearch" aria-label="Clear search">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1 1l8 8M9 1l-8 8"/></svg>
       </button>
+      <div class="palette" id="palette" role="listbox" aria-label="Search results"></div>
     </div>
-    <div class="list" id="list" role="list" aria-label="Buildings"></div>
+
+    <button class="nearme" id="locBtn" aria-pressed="false">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+      <span>Near me</span>
+    </button>
+  </header>
+
+  <aside class="rail" id="rail" aria-label="Filters and building list">
+    <button class="sheet-handle" id="sheetHandle" aria-label="Expand results list"></button>
+
+    <div class="cab" id="cab">
+      <button class="cab-close" id="cabClose" aria-label="Close filters">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14"/></svg>
+      </button>
+      <div class="plate">
+        <div class="cab-label" id="plateLabel">Building type</div>
+        <div class="plate-grid" id="typePlate" role="group" aria-labelledby="plateLabel"></div>
+      </div>
+      <div class="floors">
+        <div class="cab-label" id="floorLabel">Min stories</div>
+        <div class="floor-strip" id="floorStrip" role="radiogroup" aria-labelledby="floorLabel"></div>
+      </div>
+    </div>
+
+    <div class="mode" id="modeChip">
+      <span id="modeText"></span>
+      <button class="x" id="modeClear">Clear</button>
+    </div>
+
+    <div class="radius" id="radiusRow">
+      <label for="radiusRange">Within</label>
+      <input type="range" id="radiusRange" min="1" max="25" value="5" step="1" aria-label="Search radius in miles" />
+      <span class="val led" id="radiusVal">5 mi</span>
+    </div>
+
+    <div class="listwrap">
+      <div class="readout" aria-live="polite">
+        <span class="n led led-lit" id="countN">—</span>
+        <span class="cap" id="countCap">buildings</span>
+      </div>
+      <div class="list" id="list" role="list" aria-label="Buildings" tabindex="-1"></div>
+    </div>
   </aside>
-  <div id="map" role="region" aria-label="Map"></div>
+
+  <div class="mapwrap">
+    <div id="map" role="region" aria-label="Map of buildings"></div>
+    <div class="map-shimmer" id="mapShimmer" aria-hidden="true"></div>
+    <button class="filters-fab" id="filtersFab" aria-expanded="false" aria-controls="cab">
+      <span class="dot" aria-hidden="true"></span>
+      Filters
+    </button>
+  </div>
 </div>
 
 <div class="scrim" id="scrim" aria-hidden="true"></div>
+
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
   <div class="dhead">
-    <button class="close-btn" id="closeDrawer" aria-label="Close">
+    <button class="close-btn" id="closeDrawer" aria-label="Close building details">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14"/></svg>
     </button>
     <h2 id="drawerTitle"></h2>
     <div class="dtype" id="dType"></div>
+    <div class="daddr" id="dAddr"></div>
   </div>
+  <div class="datastrip" id="dataStrip" aria-label="Building data"></div>
   <div class="dbody" id="dBody"></div>
+  <div class="doors" aria-hidden="true"><div class="door l"></div><div class="door r"></div></div>
 </div>
 
-<script>
-const { createClient } = supabase;
-const sb = createClient(
-  'https://qrphiipxqvsrnenkphhr.supabase.co',
-  'sb_publishable_SceOqu60uTDQpX_SM62gAQ_Rl5TgZig'
-);
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
 
-const TYPES = ["Medical","Dermatology","Physical Therapy","Radiology","Office","Mall","Hotel","Education","Government","Residential","Library","Transit","Legal","Entertainment","Community","Financial"];
-const TYPE_ICON  = {Medical:"✚", Dermatology:"◈", "Physical Therapy":"⊕", Radiology:"◎", Office:"▣", Mall:"◫", Hotel:"⌂", Education:"✎", Government:"⚑", Residential:"⌂", Library:"▦", Transit:"⬡", Legal:"⚖", Entertainment:"♦", Community:"◉", Financial:"$"};
-const TYPE_COLOR = {Medical:"#c0392b", Dermatology:"#8e44ad", "Physical Therapy":"#e67e22", Radiology:"#1a5276", Office:"#2471a3", Mall:"#7d3c98", Hotel:"#c87722", Education:"#1f6f5c", Government:"#5d6d7e", Residential:"#e8590c", Library:"#0097a7", Transit:"#455a64", Legal:"#7d5a00", Entertainment:"#e53935", Community:"#00897b", Financial:"#1a6b3c"};
-
-let BUILDINGS = [];
-let state = { q:"", types:new Set(), minStories:0, exactStories:false, userLoc:null, activeId:null,
-  searchMode:'text', locationCoords:null, radius:5 };
-let locationMarker = null;
-
-const stars = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
-const dist = (a,b) => {
-  const R=3959,dLat=(b.lat-a.lat)*Math.PI/180,dLng=(b.lng-a.lng)*Math.PI/180;
-  const x=Math.sin(dLat/2)**2+Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLng/2)**2;
-  return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
-};
-
-/* Map */
-const map = new maplibregl.Map({
-  container:'map',
-  style:'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
-  center:[-73.55,40.78], zoom:9.6
-});
-map.addControl(new maplibregl.NavigationControl(),'top-right');
-
-/* ── Smart search ── */
-const TYPE_KEYWORDS = {
-  Medical:['medical','hospital','doctor','clinic','health','urgent care','physician','surgery','orthopedic'],
-  Dermatology:['dermatology','dermatologist','skin','derm','acne','cosmetic'],
-  'Physical Therapy':['physical therapy','physical therapist','pt ','rehab','rehabilitation','sports medicine','occupational therapy'],
-  Radiology:['radiology','radiologist','xray','x-ray','imaging','mri','ct scan','ultrasound','mammography'],
-  Office:['office','professional','corporate','business','headquarters','hq','law firm','attorney'],
-  Mall:['mall','shopping','retail','plaza','shopping center','shops'],
-  Hotel:['hotel','motel','inn','stay','lodging','resort','suites'],
-  Education:['school','education','university','college','high school','academy','learning'],
-  Library:['library','books','reading','branch'],
-  Government:['government','city hall','village hall','dmv','municipal','county','town hall','federal'],
-  Entertainment:['entertainment','theater','theatre','museum','art','cinema','movie','gallery','park'],
-  Community:['community','ymca','jcc','recreation','center','arts council','cultural'],
-  Financial:['financial','bank','credit union','bancorp','savings'],
-  Residential:['residential','apartment','senior','assisted living','senior living','condo'],
-  Legal:['legal','law','courthouse','court'],
-};
-
-function parseStoryCount(q){
-  const w={'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'nine':9,'ten':10,'single':1,'double':2,'triple':3};
-  const m=q.match(/(\d+)\s*(?:floor|stor)/i); if(m) return +m[1];
-  for(const[word,n] of Object.entries(w)){
-    if(new RegExp(`\\b${word}\\s+(?:floor|stor)`,'i').test(q)) return n;
-  }
-  if(/\bground.?floor\b|\bone.?floor\b/i.test(q)) return 1;
-  return null;
-}
-
-function smartScore(b,q){
-  const ql=q.toLowerCase();
-  const bt=[b.name,b.type,b.town,b.addr].join(' ').toLowerCase();
-  let score=0;
-  for(const[type,kws] of Object.entries(TYPE_KEYWORDS)){
-    if(kws.some(kw=>ql.includes(kw))){
-      if(b.type===type) score+=10;
-      else if(b.type==='Medical'&&['Dermatology','Physical Therapy','Radiology'].includes(type)) score+=3;
-    }
-  }
-  const want=parseStoryCount(ql);
-  if(want!==null){
-    if(b.stories===want) score+=8;
-    else if(Math.abs(b.stories-want)===1) score+=2;
-  }
-  const words=ql.split(/\s+/).filter(w=>w.length>3&&!['with','that','near','from','have','this','floor','story','stories','floors','building','buildings'].includes(w));
-  words.forEach(w=>{ if(bt.includes(w)) score+=2; });
-  return score;
-}
-
-/* ── Geocoding ── */
-const LI_VIEWBOX='-74.05,40.45,-71.75,41.15';
-async function geocodeQuery(q){
-  try{
-    // bounded=1 forces results to stay within Long Island only
-    const base=`https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&viewbox=${LI_VIEWBOX}&bounded=1`;
-    let res=await fetch(`${base}&q=${encodeURIComponent(q)}`,{headers:{'Accept-Language':'en'}});
-    let data=await res.json();
-    if(!data.length){
-      res=await fetch(`${base}&q=${encodeURIComponent(q+', NY')}`,{headers:{'Accept-Language':'en'}});
-      data=await res.json();
-    }
-    if(!data.length) return null;
-    return{lat:parseFloat(data[0].lat),lng:parseFloat(data[0].lon),name:data[0].display_name.split(',')[0]};
-  }catch{ return null; }
-}
-
-function setSearchMode(mode,label){
-  state.searchMode=mode;
-  const radRow=document.getElementById('radiusRow');
-  if(mode==='location'){
-    radRow.classList.add('show');
-    if(state.locationCoords) map.flyTo({center:[state.locationCoords.lng,state.locationCoords.lat],zoom:12});
-  } else {
-    radRow.classList.remove('show');
-    if(mode==='text'){ state.locationCoords=null; if(locationMarker){locationMarker.remove();locationMarker=null;} }
-  }
-}
-
-/* ── Filtering ── */
-function applyChipFilters(arr){
-  if(state.types.size) arr=arr.filter(b=>state.types.has(b.type));
-  if(state.minStories>0){
-    if(state.exactStories) arr=arr.filter(b=>b.stories===state.minStories);
-    else arr=arr.filter(b=>b.stories>=state.minStories);
-  }
-  return arr;
-}
-
-function filtered(){
-  let result=applyChipFilters(BUILDINGS);
-
-  if(state.searchMode==='location'&&state.locationCoords){
-    result=result.filter(b=>dist(state.locationCoords,b)<=state.radius);
-    return result.map(b=>({...b,_d:dist(state.locationCoords,b)})).sort((a,b)=>a._d-b._d);
-  }
-
-  if(state.searchMode==='smart'&&state.q){
-    return result.map(b=>({...b,_score:smartScore(b,state.q),_d:state.userLoc?dist(state.userLoc,b):null}))
-      .filter(b=>b._score>0).sort((a,b)=>b._score-a._score);
-  }
-
-  if(state.q){const q=state.q.toLowerCase(); result=result.filter(b=>b.name.toLowerCase().includes(q)||b.town.toLowerCase().includes(q)||b.addr.toLowerCase().includes(q));}
-  return result.map(b=>({...b,_d:state.userLoc?dist(state.userLoc,b):null})).sort((a,b)=>state.userLoc?a._d-b._d:b.rating-a.rating);
-}
-
-/* Skeleton loader */
-function skeletons(n=5){
-  return Array.from({length:n},()=>`
-    <div class="skeleton-card" aria-hidden="true">
-      <div class="skel skel-title"></div>
-      <div class="skel skel-sub"></div>
-      <div class="skel skel-addr"></div>
-      <div class="skel-row"><div class="skel skel-badge"></div><div class="skel skel-badge"></div></div>
-    </div>`).join('');
-}
-
-/* Render list */
-function renderList(){
-  const items = filtered();
-  const list = document.getElementById('list');
-  const modeLabel = state.searchMode==='location' ? ` · within ${state.radius} mi`
-    : state.searchMode==='smart' ? ' · best matches'
-    : state.userLoc ? ' · nearest first' : ' · top rated first';
-  list.innerHTML = `<div class="count">${items.length} building${items.length!==1?'s':''}${modeLabel}</div>`;
-  if(!items.length){
-    list.innerHTML += '<div class="empty" style="padding:16px 4px">No buildings match your filters.</div>';
-  }
-  items.forEach(b=>{
-    const el=document.createElement('div');
-    el.className='card'+(b.id===state.activeId?' active':'');
-    el.setAttribute('role','listitem');
-    el.setAttribute('tabindex','0');
-    el.setAttribute('aria-label',`${b.name}, ${b.type}, ${b.stories} stories, rated ${b.rating}`);
-    el.innerHTML=`
-      <div class="top">
-        <div style="min-width:0">
-          <h3>${b.name}</h3>
-          <div class="type" style="color:${TYPE_COLOR[b.type]||'var(--accent)'}">⬤ ${b.type}</div>
-        </div>
-        <div class="stars" aria-label="Rating ${b.rating} out of 5">${stars(b.rating)}<span class="n">${b.rating}</span></div>
-      </div>
-      <div class="addr">${b.addr}</div>
-      <div class="meta">
-        <span class="badge">${b.stories} stories</span>
-        <span class="badge">${b.elevators} elevators</span>
-        ${b._d!=null?`<span class="dist">${b._d.toFixed(1)} mi away</span>`:''}
-      </div>`;
-    const activate = () => { openBuilding(b.id); map.flyTo({center:[b.lng,b.lat],zoom:14}); };
-    el.onclick = activate;
-    el.onkeydown = e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); activate(); } };
-    list.appendChild(el);
-  });
-  renderMarkers(items);
-}
-
-function makePinImage(fill){
-  const s=2, w=20*s, h=28*s;
-  const c=document.createElement('canvas');
-  c.width=w; c.height=h;
-  const ctx=c.getContext('2d');
-  ctx.scale(s,s);
-
-  const cx=10, cy=9, r=8;
-
-  // Needle
-  ctx.fillStyle=fill;
-  ctx.beginPath();
-  ctx.moveTo(cx-1.5, cy+r-1);
-  ctx.lineTo(cx+1.5, cy+r-1);
-  ctx.lineTo(cx, 27);
-  ctx.closePath();
-  ctx.fill();
-
-  // Head
-  ctx.fillStyle=fill;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI*2);
-  ctx.fill();
-
-  // White centre dot
-  ctx.fillStyle='#fff';
-  ctx.beginPath();
-  ctx.arc(cx, cy, 3, 0, Math.PI*2);
-  ctx.fill();
-
-  const d=ctx.getImageData(0,0,w,h);
-  return {width:w, height:h, data:d.data};
-}
-
-function renderMarkers(items){
-  const src=map.getSource('buildings-src');
-  if(!src) return;
-  src.setData({
-    type:'FeatureCollection',
-    features:items.map(b=>({
-      type:'Feature',
-      geometry:{type:'Point',coordinates:[b.lng,b.lat]},
-      properties:{id:b.id, active:b.id===state.activeId}
-    }))
-  });
-}
-
-/* Load from Supabase */
-async function loadBuildings(){
-  document.getElementById('list').innerHTML = '<div class="count">Loading…</div>' + skeletons();
-  const { data, error } = await sb.from('buildings').select('*');
-  if(error){
-    document.getElementById('list').innerHTML = '<div class="empty" style="padding:16px 4px">Failed to load. Please refresh.</div>';
-    console.error(error);
-    return;
-  }
-  BUILDINGS = data;
-  renderList();
-}
-
-/* Detail drawer */
-async function openBuilding(id){
-  state.activeId=id; renderList();
-  const b=BUILDINGS.find(x=>x.id===id);
-  document.getElementById('drawerTitle').textContent=b.name;
-  document.getElementById('dType').textContent=b.type+" · "+b.town;
-  const body=document.getElementById('dBody');
-  const savedNote=localStorage.getItem(`liftspot_note_${id}`)||'';
-  body.innerHTML=`
-    <div class="facts">
-      <div class="fact">Stories<b>${b.stories}</b></div>
-      <div class="fact">Elevators<b>${b.elevators}</b></div>
-      <div class="fact">Rating<b>${b.rating} ★</b></div>
-    </div>
-    <div class="daddr">${b.addr}</div>
-
-    <div class="sec">
-      <h4>My private notes</h4>
-      <div class="field">
-        <label for="noteBox">Notes (saved to this device only)</label>
-        <textarea class="note-area" id="noteBox" placeholder="e.g. Otis Gen2, glass back, north entrance…">${savedNote}</textarea>
-      </div>
-      <button class="btn" id="saveNote">Save note</button>
-      <div id="noteSaved"></div>
-    </div>
-
-    <div class="sec">
-      <h4>Leave a review</h4>
-      <div role="group" aria-label="Star rating">
-        <div class="starpick" id="picker">${[1,2,3,4,5].map(n=>`<span data-n="${n}" role="radio" aria-label="${n} star${n>1?'s':''}" tabindex="0">★</span>`).join('')}</div>
-      </div>
-      <div class="field">
-        <label for="rvText">Your review</label>
-        <textarea id="rvText" placeholder="What are the elevators like here?" style="min-height:80px"></textarea>
-      </div>
-      <button class="btn" id="postReview">Post review</button>
-    </div>
-
-    <div class="sec">
-      <h4>Reviews</h4>
-      <div id="rvList"><div class="empty">Loading…</div></div>
-    </div>`;
-
-  showDrawer(true);
-  document.getElementById('closeDrawer').focus();
-
-  document.getElementById('saveNote').onclick=()=>{
-    localStorage.setItem(`liftspot_note_${id}`, document.getElementById('noteBox').value);
-    document.getElementById('noteSaved').innerHTML=`<div class="savednote">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-      Saved to this device
-    </div>`;
-  };
-
-  let pick=0;
-  const picker=document.getElementById('picker');
-  const updatePicker=val=>{
-    pick=val;
-    picker.querySelectorAll('span').forEach(x=>x.classList.toggle('on',+x.dataset.n<=pick));
-  };
-  picker.querySelectorAll('span').forEach(s=>{
-    s.onclick=()=>updatePicker(+s.dataset.n);
-    s.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); updatePicker(+s.dataset.n); } };
-  });
-
-  document.getElementById('postReview').onclick=async()=>{
-    const t=document.getElementById('rvText').value.trim();
-    if(!pick){ alert('Please pick a star rating first.'); return; }
-    const btn=document.getElementById('postReview');
-    btn.disabled=true; btn.textContent='Posting…';
-    const { error }=await sb.from('reviews').insert({building_id:id, who:'You', stars:pick, body:t||'(no comment)'});
-    if(error){ alert('Error: '+error.message); btn.disabled=false; btn.textContent='Post review'; return; }
-    await refreshReviews(id);
-  };
-
-  await refreshReviews(id);
-}
-
-async function refreshReviews(id){
-  const { data: reviews, error }=await sb.from('reviews').select('*').eq('building_id',id).order('created_at',{ascending:false});
-  if(error){ const el=document.getElementById('rvList'); if(el) el.innerHTML='<div class="empty">Error loading reviews.</div>'; return; }
-  const b=BUILDINGS.find(x=>x.id===id);
-  b.reviews=reviews||[];
-  if(b.reviews.length){
-    const newRating=+(b.reviews.reduce((s,r)=>s+r.stars,0)/b.reviews.length).toFixed(1);
-    if(newRating!==b.rating){
-      b.rating=newRating;
-      await sb.from('buildings').update({rating:newRating}).eq('id',id);
-    }
-  }
-  const rvList=document.getElementById('rvList');
-  if(rvList) rvList.innerHTML=renderReviews(b);
-  const rvText=document.getElementById('rvText');
-  const btn=document.getElementById('postReview');
-  if(rvText) rvText.value='';
-  if(btn){ btn.disabled=false; btn.textContent='Post review'; }
-}
-
-function renderReviews(b){
-  if(!b.reviews||!b.reviews.length) return '<div class="empty">No reviews yet — be the first.</div>';
-  return b.reviews.map(r=>`<div class="review"><div class="rhead"><span class="who">${r.who}</span><span class="rstars" aria-label="${r.stars} stars">${stars(r.stars)}</span></div><p>${r.body||''}</p></div>`).join('');
-}
-
-function showDrawer(open){
-  const drawer=document.getElementById('drawer');
-  const scrim=document.getElementById('scrim');
-  drawer.classList.toggle('open',open);
-  drawer.setAttribute('aria-hidden',String(!open));
-  scrim.classList.toggle('show',open);
-  if(!open){ state.activeId=null; renderList(); }
-}
-document.getElementById('closeDrawer').onclick=()=>showDrawer(false);
-document.getElementById('scrim').onclick=()=>showDrawer(false);
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') showDrawer(false); });
-
-/* Filter controls */
-const typeChips=document.getElementById('typeChips');
-TYPES.forEach(t=>{
-  const c=document.createElement('button');
-  c.className='chip'; c.type='button';
-  c.setAttribute('aria-pressed','false');
-  c.textContent=t;
-  c.onclick=()=>{
-    const on=c.classList.toggle('on');
-    c.setAttribute('aria-pressed',String(on));
-    on?state.types.add(t):state.types.delete(t);
-    renderList();
-  };
-  typeChips.appendChild(c);
-});
-
-const qInput=document.getElementById('q');
-const searchWrap=document.getElementById('searchWrap');
-let geoTimer=null;
-async function runGeocode(){
-  if(!state.q) return;
-  const coords=await geocodeQuery(state.q);
-  if(coords){
-    state.locationCoords=coords;
-    if(locationMarker) locationMarker.remove();
-    locationMarker=new maplibregl.Marker({color:'#0e3d32'}).setLngLat([coords.lng,coords.lat]).addTo(map);
-    setSearchMode('location',coords.name||state.q);
-  } else if(state.q.trim().split(/\s+/).length>=2){
-    setSearchMode('smart');
-  } else {
-    setSearchMode('text');
-  }
-  renderList();
-}
-qInput.oninput=e=>{
-  state.q=e.target.value;
-  searchWrap.classList.toggle('has-value',!!state.q);
-  clearTimeout(geoTimer);
-  if(!state.q){ setSearchMode('text'); renderList(); return; }
-  renderList();
-  geoTimer=setTimeout(runGeocode, 300);
-};
-qInput.addEventListener('keydown',e=>{
-  if(e.key==='Enter'){ clearTimeout(geoTimer); runGeocode(); }
-});
-document.getElementById('clearSearch').onclick=()=>{
-  qInput.value=''; state.q='';
-  searchWrap.classList.remove('has-value');
-  setSearchMode('text');
-  qInput.focus(); renderList();
-};
-
-/* Radius slider */
-const radiusRange=document.getElementById('radiusRange');
-const radiusVal=document.getElementById('radiusVal');
-radiusRange.oninput=e=>{
-  state.radius=+e.target.value;
-  radiusVal.textContent=state.radius+' mi';
-  renderList();
-};
-
-/* Stories dropdown */
-document.getElementById('storySelect').onchange=e=>{
-  state.minStories=+e.target.value;
-  renderList();
-};
-
-document.getElementById('locBtn').onclick=()=>{
-  if(!navigator.geolocation){ alert('Geolocation not supported'); return; }
-  navigator.geolocation.getCurrentPosition(p=>{
-    state.userLoc={lat:p.coords.latitude,lng:p.coords.longitude};
-    new maplibregl.Marker({color:'#0e3d32'}).setLngLat([state.userLoc.lng,state.userLoc.lat]).addTo(map);
-    map.flyTo({center:[state.userLoc.lng,state.userLoc.lat],zoom:11});
-    renderList();
-  },()=>alert('Could not get your location'));
-};
-
-map.on('load', () => {
-  map.addImage('pin',        makePinImage('#1f6f5c'), {pixelRatio:2});
-  map.addImage('pin-active', makePinImage('#0e3d32'), {pixelRatio:2});
-  map.addSource('buildings-src', {type:'geojson', data:{type:'FeatureCollection',features:[]}});
-  map.addLayer({
-    id:'buildings-pins', type:'symbol', source:'buildings-src',
-    layout:{
-      'icon-image':['case',['==',['get','active'],true],'pin-active','pin'],
-      'icon-anchor':'bottom',
-      'icon-allow-overlap':true,
-      'icon-size':1
-    }
-  });
-  map.on('click','buildings-pins', e=>{
-    if(!e.features.length) return;
-    const id=e.features[0].properties.id;
-    const b=BUILDINGS.find(x=>x.id===id);
-    if(b){ openBuilding(id); map.flyTo({center:[b.lng,b.lat],zoom:14}); }
-  });
-  map.on('mouseenter','buildings-pins',()=>{ map.getCanvas().style.cursor='pointer'; });
-  map.on('mouseleave','buildings-pins',()=>{ map.getCanvas().style.cursor=''; });
-  if(BUILDINGS.length) renderMarkers(filtered());
-});
-
-loadBuildings();
-</script>
+<script type="module" src="js/ui.js"></script>
 </body>
 </html>

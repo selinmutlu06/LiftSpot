@@ -95,8 +95,7 @@ function renderDataStrip(b) {
   els.dataStrip.innerHTML = `
     <div class="cell"><span class="v led led-lit">${b.stories}</span><span class="k">stories</span></div>
     <div class="cell"><span class="v led led-lit">${b.elevators}</span><span class="k">elevators</span></div>
-    ${d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : ''}
-    <div class="cell"><span class="v led led-lit">${fmtRating(b.rating)}</span><span class="k">rating</span></div>`;
+    ${d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : ''}`;
 }
 
 function wireForm(b) {

@@ -137,12 +137,12 @@ reviews   (id, building_id, who, stars, body, created_at)
 
 ## Running it locally
 
-No install, no build step. Just open the file:
+No install, no build step. Serve the folder with any static server (ES modules need http, not file://):
 
 ```bash
 git clone https://github.com/selinmutlu06/liftspot.git
 cd liftspot
-open index.html   # or serve with any static server
+python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
 The Supabase project is public-read, so the map and buildings load immediately.
@@ -152,10 +152,17 @@ The Supabase project is public-read, so the map and buildings load immediately.
 ## Project structure
 
 ```
-index.html          # Entire app, HTML + CSS + JS in one file
+index.html          # Markup + CDN links
+css/tokens.css      # Design tokens — "modern cab interior" palette, type, spacing
+css/app.css         # All component styles
+js/data.js          # Supabase client, state, filtering, smart search scoring
+js/map.js           # MapLibre init, clustering, elevator-button pins
+js/search.js        # Command palette (Cmd-K), geocode cache + rate limit
+js/drawer.js        # Building detail, door-reveal animation, reviews, notes
+js/ui.js            # Entry module: filters, list, toasts, wiring
 schema.sql          # Supabase table definitions and RLS policies
 seed_more*.sql      # Building seed data
-docs/images/        # README assets
+docs/               # README assets + redesign plan
 ```
 
 ---

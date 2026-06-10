@@ -161,6 +161,7 @@ function buildPlate() {
     btn.type = 'button';
     btn.setAttribute('aria-pressed', 'false');
     btn.setAttribute('aria-label', `Filter: ${t}`);
+    btn.title = t;
     btn.dataset.type = t;
     btn.innerHTML = `<span class="ring" aria-hidden="true">${TYPE_ICON[t] || '◉'}</span><span class="lbl">${t}</span>`;
     btn.addEventListener('click', () => {
@@ -308,14 +309,19 @@ function initSheet() {
   });
   window.addEventListener('pointerup', () => { startY = null; });
 
+  /* The rail is CSS-transformed on mobile, so a fixed-position cab inside it
+     would anchor to the rail, not the viewport. Move it to <body> while open. */
   const cab = $('cab');
+  const cabHome = cab.parentElement;
   $('filtersFab').addEventListener('click', () => {
+    document.body.appendChild(cab);
     cab.classList.add('open');
     $('filtersFab').setAttribute('aria-expanded', 'true');
     $('cabClose').focus();
   });
   $('cabClose').addEventListener('click', () => {
     cab.classList.remove('open');
+    cabHome.insertBefore(cab, cabHome.querySelector('.mode'));
     $('filtersFab').setAttribute('aria-expanded', 'false');
     $('filtersFab').focus();
   });

@@ -145,13 +145,16 @@ function movePal(dir) {
 }
 
 function pick(b) {
+  // A direct pick cancels any pending place search.
+  clearTimeout(debounceTimer);
+  geocodeSeq++;
   closePalette();
   hooks.onPick(b);
 }
 
 function renderPalette() {
   palItems = topMatches(state.q, 8);
-  palIndex = palItems.length ? 0 : -1;
+  palIndex = -1; // nothing preselected: Enter still means "search places"
   if (!palItems.length) { closePalette(); return; }
   els.palette.classList.add('open');
   els.input.setAttribute('aria-expanded', 'true');
@@ -167,7 +170,7 @@ function renderPaletteRows() {
       </span>
       <span class="p-data led led-lit">${b.stories}F·${b.elevators}E</span>
     </button>`).join('')
-    + `<div class="p-hint">↑↓ to browse · <span class="led">↵</span> opens · or finish typing to search places</div>`;
+    + `<div class="p-hint">↑↓ browse buildings · <span class="led">↵</span> search places</div>`;
   els.input.setAttribute('aria-activedescendant', palIndex >= 0 ? `pal-${palItems[palIndex].id}` : '');
   els.palette.querySelectorAll('.p-row').forEach(row => {
     row.addEventListener('mousedown', e => e.preventDefault()); // keep input focus

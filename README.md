@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://selinmutlu06.github.io/liftspot"><img src="https://img.shields.io/badge/Live_App-Open_LiftSpot-1f6f5c?style=for-the-badge" alt="Live App" /></a>
+  <a href="https://liftspot.netlify.app"><img src="https://img.shields.io/badge/Live_App-Open_LiftSpot-1f6f5c?style=for-the-badge" alt="Live App" /></a>
 </p>
 
 <p align="center">
@@ -120,7 +120,7 @@ flowchart LR
 | **Geocoding** | Nominatim (OpenStreetMap) |
 | **Database** | Supabase (PostgreSQL) |
 | **Fonts** | Plus Jakarta Sans (Google Fonts) |
-| **Hosting** | GitHub Pages |
+| **Hosting** | Netlify |
 
 ---
 

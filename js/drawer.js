@@ -58,6 +58,11 @@ export async function openBuilding(id) {
           ${[1, 2, 3, 4, 5].map(n => `<button type="button" data-n="${n}" role="radio" aria-checked="false" aria-label="${n} star${n > 1 ? 's' : ''}">★</button>`).join('')}
         </div>
         <p class="form-error" id="formError">Pick a star rating first.</p>
+        <div class="field" style="margin-bottom:8px">
+          <label for="rvName">Name (shown with your review)</label>
+          <input class="text-input" id="rvName" maxlength="40" placeholder="Anonymous"
+            value="${esc(localStorage.getItem('liftspot_reviewer_name') || '')}" />
+        </div>
         <div class="field">
           <label for="rvText">Your review</label>
           <textarea id="rvText" placeholder="What are the elevators like here?" style="min-height:80px"></textarea>
@@ -142,10 +147,12 @@ function wireForm(b) {
       starBtns[0].focus();
       return;
     }
+    const name = document.getElementById('rvName').value.trim().slice(0, 40);
+    if (name) localStorage.setItem('liftspot_reviewer_name', name);
     const btn = document.getElementById('postReview');
     btn.disabled = true;
     btn.textContent = 'Posting…';
-    const { error } = await sb.from('reviews').insert({ building_id: id, who: 'You', stars: pick, body: t || '(no comment)' });
+    const { error } = await sb.from('reviews').insert({ building_id: id, who: name || 'Anonymous', stars: pick, body: t || '(no comment)' });
     if (error) {
       btn.disabled = false;
       btn.textContent = 'Post review';

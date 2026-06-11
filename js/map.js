@@ -16,7 +16,7 @@ export function initMap({ pinClick, pinHover }) {
 
   map = new maplibregl.Map({
     container: 'map',
-    style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
     center: [-73.55, 40.78],
     zoom: 9.6,
   });
@@ -38,7 +38,7 @@ export function initMap({ pinClick, pinHover }) {
       id: 'clusters', type: 'circle', source: 'buildings',
       filter: ['has', 'point_count'],
       paint: {
-        'circle-color': '#16211d',
+        'circle-color': '#1d2b26',
         'circle-radius': ['step', ['get', 'point_count'], 12, 10, 16, 50, 21, 150, 26],
         'circle-stroke-width': 2,
         'circle-stroke-color': '#c9ced0',
@@ -89,15 +89,29 @@ export function initMap({ pinClick, pinHover }) {
       },
     });
 
-    map.on('click', 'clusters', async e => {
-      const f = map.queryRenderedFeatures(e.point, { layers: ['clusters'] })[0];
-      const zoom = await map.getSource('buildings').getClusterExpansionZoom(f.properties.cluster_id);
-      map.easeTo({ center: f.geometry.coordinates, zoom: zoom + 0.4 });
-    });
-
-    map.on('click', 'pins', e => {
-      if (!e.features.length) return;
-      onPinClick?.(e.features[0].properties.id);
+    /* One click handler with tolerance: a near-miss within 8px still hits the pin. */
+    map.on('click', async e => {
+      let f = map.queryRenderedFeatures(e.point, { layers: ['clusters', 'pins'] })[0];
+      if (!f) {
+        const pad = 8;
+        const near = map.queryRenderedFeatures(
+          [[e.point.x - pad, e.point.y - pad], [e.point.x + pad, e.point.y + pad]],
+          { layers: ['pins'] }
+        );
+        let bestD = Infinity;
+        for (const n of near) {
+          const p = map.project(n.geometry.coordinates);
+          const d = (p.x - e.point.x) ** 2 + (p.y - e.point.y) ** 2;
+          if (d < bestD) { bestD = d; f = n; }
+        }
+      }
+      if (!f) return;
+      if (f.properties.cluster) {
+        const zoom = await map.getSource('buildings').getClusterExpansionZoom(f.properties.cluster_id);
+        map.easeTo({ center: f.geometry.coordinates, zoom: zoom + 0.4 });
+      } else {
+        onPinClick?.(f.properties.id);
+      }
     });
 
     map.on('mousemove', 'pins', e => {

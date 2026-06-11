@@ -421,12 +421,24 @@ button { font: inherit; color: inherit; }
 #map { position: absolute; inset: 0; }
 .map-shimmer {
   position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(90deg, rgba(245,246,244,0.6) 25%, rgba(228,231,231,0.6) 50%, rgba(245,246,244,0.6) 75%);
+  background: linear-gradient(90deg, rgba(22,33,29,0.7) 25%, rgba(29,43,38,0.7) 50%, rgba(22,33,29,0.7) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
   opacity: 1;
   transition: opacity 400ms var(--ease);
 }
+/* dark theme for MapLibre controls + attribution */
+.maplibregl-ctrl-group {
+  background: var(--ink-800) !important;
+  box-shadow: 0 0 0 1px var(--ink-700), 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+.maplibregl-ctrl-group button + button { border-top: 1px solid var(--ink-700) !important; }
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(0.88); }
+.maplibregl-ctrl-attrib {
+  background: rgba(22, 33, 29, 0.75) !important;
+  color: var(--steel-400) !important;
+}
+.maplibregl-ctrl-attrib a { color: var(--steel-300) !important; }
 .map-shimmer.done { opacity: 0; }
 .map-error {
   position: absolute; left: 50%; top: 40%;
@@ -595,16 +607,18 @@ button { font: inherit; color: inherit; }
 
 .field { display: flex; flex-direction: column; gap: var(--s2); }
 .field label { font-size: 12.5px; font-weight: 600; }
-textarea {
+textarea, .text-input {
   width: 100%;
   border: 1px solid var(--steel-300); border-radius: var(--r-md);
   padding: var(--s3); font: inherit; font-size: 13.5px;
   background: var(--card); color: var(--ink-900);
-  resize: vertical; line-height: 1.5;
+  line-height: 1.5;
   transition: border-color var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
 }
-textarea:focus { outline: none; border-color: var(--green-700); box-shadow: 0 0 0 3px var(--led-soft); }
-textarea::placeholder { color: var(--ink-600); opacity: 0.7; }
+textarea { resize: vertical; }
+.text-input { min-height: 40px; padding: var(--s2) var(--s3); }
+textarea:focus, .text-input:focus { outline: none; border-color: var(--green-700); box-shadow: 0 0 0 3px var(--led-soft); }
+textarea::placeholder, .text-input::placeholder { color: var(--ink-600); opacity: 0.7; }
 
 .btn {
   background: var(--ink-900); color: #fff;

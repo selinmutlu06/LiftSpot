@@ -31,11 +31,14 @@ const GROUPS = [
   },
 ];
 
+import { trapFocus } from './focus.js';
+
 let els = null;
 let lastFocus = null;
 
 export function initResources({ btn, modal, scrim, closeBtn, body }) {
   els = { btn, modal, scrim, closeBtn, body };
+  trapFocus(modal);
 
   body.innerHTML = GROUPS.map(g => `
     <div class="res-group">

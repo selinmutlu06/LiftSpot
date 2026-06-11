@@ -5,6 +5,7 @@ import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocati
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
 import { initResources } from './resources.js';
+import { trapFocus } from './focus.js';
 
 const $ = id => document.getElementById(id);
 
@@ -69,7 +70,7 @@ function renderList() {
     el.innerHTML = `
       <div class="top">
         <div style="min-width:0">
-          <h3>${esc(b.name)}</h3>
+          <div class="bname">${esc(b.name)}</div>
           <div class="type"><span class="ticon" aria-hidden="true">${typeIcon(b.type, 11)}</span>${esc(b.type)}</div>
         </div>
         <div class="stars" aria-hidden="true">${stars(b.rating)}<span class="n led">${Number(b.rating).toFixed(1)}</span></div>
@@ -312,18 +313,32 @@ function initSheet() {
      would anchor to the rail, not the viewport. Move it to <body> while open. */
   const cab = $('cab');
   const cabHome = cab.parentElement;
+  trapFocus(cab);
   $('filtersFab').addEventListener('click', () => {
     document.body.appendChild(cab);
     cab.classList.add('open');
+    cab.setAttribute('role', 'dialog');
+    cab.setAttribute('aria-modal', 'true');
+    cab.setAttribute('aria-label', 'Filters');
     $('filtersFab').setAttribute('aria-expanded', 'true');
     $('cabClose').focus();
   });
-  $('cabClose').addEventListener('click', () => {
+  const closeCab = () => {
     cab.classList.remove('open');
+    cab.removeAttribute('role');
+    cab.removeAttribute('aria-modal');
+    cab.removeAttribute('aria-label');
     cabHome.insertBefore(cab, cabHome.querySelector('.mode'));
     $('filtersFab').setAttribute('aria-expanded', 'false');
     $('filtersFab').focus();
-  });
+  };
+  $('cabClose').addEventListener('click', closeCab);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && cab.classList.contains('open')) {
+      e.stopPropagation();
+      closeCab();
+    }
+  }, true);
 }
 
 /* ── boot ── */

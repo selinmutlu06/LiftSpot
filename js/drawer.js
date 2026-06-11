@@ -1,6 +1,7 @@
 /* Drawer: building detail, door-reveal open, notes, reviews, live rating recalc. */
 
 import { sb, BUILDINGS, state, stars } from './data.js';
+import { trapFocus } from './focus.js';
 
 let els = null;
 let hooks = null;
@@ -12,6 +13,7 @@ export function initDrawer(domEls, callbacks) {
 
   els.closeBtn.addEventListener('click', () => showDrawer(false));
   els.scrim.addEventListener('click', () => showDrawer(false));
+  trapFocus(els.drawer);
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && els.drawer.classList.contains('open')) showDrawer(false);
   });
@@ -72,12 +74,12 @@ export async function openBuilding(id) {
     </div>
 
     <div class="sec">
-      <h4>Reviews</h4>
+      <h3>Reviews</h3>
       <div id="rvList"><div class="empty">Loading…</div></div>
     </div>
 
     <div class="sec">
-      <h4>My private notes</h4>
+      <h3>My private notes</h3>
       <div class="field">
         <label for="noteBox">Saved to this device only</label>
         <textarea class="note-area" id="noteBox" placeholder="e.g. Otis Gen2, glass back, north entrance…" style="min-height:80px">${esc(savedNote)}</textarea>

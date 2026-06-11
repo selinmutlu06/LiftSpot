@@ -168,7 +168,7 @@ function renderPaletteRows() {
         <span class="p-name">${esc(b.name)}</span>
         <span class="p-sub"><span>${esc(b.town)}</span><span>${esc(b.type)}</span></span>
       </span>
-      <span class="p-data led led-lit">${b.stories}F ${b.elevators}E</span>
+      <span class="p-data led">${b.stories}F ${b.elevators}E</span>
     </button>`).join('')
     + `<div class="p-hint"><span>↑↓ browse buildings</span><span><span class="led">↵</span> search places</span></div>`;
   els.input.setAttribute('aria-activedescendant', palIndex >= 0 ? `pal-${palItems[palIndex].id}` : '');

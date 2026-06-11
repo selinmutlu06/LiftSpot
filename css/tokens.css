@@ -24,6 +24,7 @@
   --green-700: #1f6f5c; /* brand on light surfaces, 5.5:1 on paper */
   --green-800: #185c4c;
   --led: #23a47f;       /* illuminated — use on ink surfaces only */
+  --led-text: #36c597;  /* brighter LED for small text — 4.5:1+ on raised ink */
   --led-dim: #1a7a5f;
   --led-glow: rgba(35, 164, 127, 0.45);
   --led-soft: rgba(35, 164, 127, 0.14);

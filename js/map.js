@@ -177,6 +177,7 @@ export function flyToBuilding(b) {
 function makeDot() {
   const el = document.createElement('div');
   el.className = 'loc-dot';
+  el.setAttribute('role', 'img'); // MapLibre adds aria-label; a bare div may not carry one
   return el;
 }
 

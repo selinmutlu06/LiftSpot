@@ -139,7 +139,7 @@ button { font: inherit; color: inherit; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .p-sub { display: flex; gap: var(--s3); color: var(--steel-400); font-size: 11.5px; margin-top: 1px; }
-.p-data { font-size: 11px; white-space: nowrap; }
+.p-data { font-size: 11px; white-space: nowrap; color: var(--led-text); text-shadow: 0 0 8px var(--led-glow); }
 .p-hint {
   display: flex; gap: var(--s4);
   padding: 7px 14px;
@@ -259,7 +259,7 @@ button { font: inherit; color: inherit; }
 }
 .floor-mode button:hover { color: var(--paper); }
 .floor-mode button[aria-checked="true"] {
-  color: var(--led);
+  color: var(--led-text);
   background: var(--led-soft);
   text-shadow: 0 0 8px var(--led-glow);
 }
@@ -351,9 +351,10 @@ button { font: inherit; color: inherit; }
 .card:hover, .card.hover { border-color: var(--steel-400); box-shadow: var(--shadow-md); }
 .card.active { border-color: var(--green-700); box-shadow: 0 0 0 2px var(--led-soft), var(--shadow-sm); }
 .card .top { display: flex; justify-content: space-between; gap: var(--s3); align-items: flex-start; }
-.card h3 {
+.card .bname {
   font-family: var(--font-display);
   font-size: 14px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em;
+  color: var(--ink-900);
 }
 .card .type {
   display: flex; align-items: center; gap: 5px;
@@ -552,7 +553,7 @@ button { font: inherit; color: inherit; }
 
 .sec { margin-top: var(--s6); }
 .sec:first-child { margin-top: 0; }
-.sec h4 {
+.sec h3 {
   font-family: var(--font-body);
   font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
   color: var(--ink-600); margin-bottom: var(--s3); font-weight: 700;
@@ -662,9 +663,13 @@ textarea::placeholder, .text-input::placeholder { color: var(--ink-600); opacity
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
   z-index: 70;
   opacity: 0; visibility: hidden;
-  transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease-out), visibility var(--t-med);
+  /* visibility flips after fade-out on close, instantly on open — focus() needs it visible immediately */
+  transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease-out), visibility 0s var(--t-med);
 }
-.resmodal.open { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+.resmodal.open {
+  opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1);
+  transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease-out), visibility 0s;
+}
 #resScrim { z-index: 65; }
 .res-head {
   position: relative;
@@ -687,7 +692,7 @@ textarea::placeholder, .text-input::placeholder { color: var(--ink-600); opacity
 .res-group h3 {
   font-family: var(--font-body); font-weight: 700;
   font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--led); padding: 0 var(--s2);
+  color: var(--led-text); padding: 0 var(--s2);
   margin-bottom: var(--s1);
 }
 .res-row {

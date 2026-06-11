@@ -36,7 +36,7 @@ export async function openBuilding(id) {
   state.activeId = id;
 
   els.title.textContent = b.name;
-  els.type.textContent = `${b.type} · ${b.town}`;
+  els.type.innerHTML = `<span>${esc(b.type)}</span><span class="town">${esc(b.town)}</span>`;
   els.addr.textContent = b.addr;
   renderDataStrip(b);
 

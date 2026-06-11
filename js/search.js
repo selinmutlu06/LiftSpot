@@ -166,11 +166,11 @@ function renderPaletteRows() {
     <button class="p-row" role="option" id="pal-${b.id}" aria-selected="${i === palIndex}" data-i="${i}">
       <span class="p-main">
         <span class="p-name">${esc(b.name)}</span>
-        <span class="p-sub">${esc(b.town)} · ${esc(b.type)}</span>
+        <span class="p-sub"><span>${esc(b.town)}</span><span>${esc(b.type)}</span></span>
       </span>
-      <span class="p-data led led-lit">${b.stories}F·${b.elevators}E</span>
+      <span class="p-data led led-lit">${b.stories}F ${b.elevators}E</span>
     </button>`).join('')
-    + `<div class="p-hint">↑↓ browse buildings · <span class="led">↵</span> search places</div>`;
+    + `<div class="p-hint"><span>↑↓ browse buildings</span><span><span class="led">↵</span> search places</span></div>`;
   els.input.setAttribute('aria-activedescendant', palIndex >= 0 ? `pal-${palItems[palIndex].id}` : '');
   els.palette.querySelectorAll('.p-row').forEach(row => {
     row.addEventListener('mousedown', e => e.preventDefault()); // keep input focus

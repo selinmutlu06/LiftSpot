@@ -64,7 +64,7 @@
           <button type="button" id="modeMin" role="radio" aria-checked="true">Min</button>
           <button type="button" id="modeExact" role="radio" aria-checked="false">Exact</button>
         </div>
-        <div class="floor-strip" id="floorStrip" role="radiogroup" aria-labelledby="floorLabel"></div>
+        <select id="storySelect" class="story-select" aria-label="Minimum stories"></select>
       </div>
     </div>
 
@@ -83,6 +83,7 @@
       <div class="readout" aria-live="polite">
         <span class="n led led-lit" id="countN">—</span>
         <span class="cap" id="countCap">buildings</span>
+        <span class="sort" id="countSort"></span>
       </div>
       <div class="list" id="list" role="list" aria-label="Buildings" tabindex="-1"></div>
     </div>

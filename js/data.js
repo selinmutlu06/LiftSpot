@@ -11,7 +11,7 @@ export const TYPES = ['Medical', 'Dermatology', 'Physical Therapy', 'Radiology',
 
 export const TYPE_ICON = { Medical: '✚', Dermatology: '◈', 'Physical Therapy': '⊕', Radiology: '◎', Office: '▣', Mall: '◫', Hotel: '⌂', Education: '✎', Government: '⚑', Residential: '⌂', Library: '▦', Transit: '⬡', Legal: '⚖', Entertainment: '♦', Community: '◉', Financial: '$' };
 
-export const FLOOR_STOPS = [0, 1, 2, 3, 4, 5, 6, 8, 10, 15, 20];
+export const maxStories = () => BUILDINGS.reduce((m, b) => Math.max(m, b.stories), 20);
 
 export let BUILDINGS = [];
 

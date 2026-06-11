@@ -59,7 +59,11 @@
         <div class="plate-grid" id="typePlate" role="group" aria-labelledby="plateLabel"></div>
       </div>
       <div class="floors">
-        <div class="cab-label" id="floorLabel">Min stories</div>
+        <div class="cab-label" id="floorLabel">Stories</div>
+        <div class="floor-mode" role="radiogroup" aria-label="Story filter mode">
+          <button type="button" id="modeMin" role="radio" aria-checked="true">Min</button>
+          <button type="button" id="modeExact" role="radio" aria-checked="false">Exact</button>
+        </div>
         <div class="floor-strip" id="floorStrip" role="radiogroup" aria-labelledby="floorLabel"></div>
       </div>
     </div>

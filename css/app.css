@@ -185,8 +185,8 @@ button { font: inherit; color: inherit; }
   box-shadow: inset 0 1px 0 rgba(201, 206, 208, 0.14);
 }
 .cab-label {
-  font-family: var(--font-display); font-weight: 600;
-  font-size: 10px; letter-spacing: 0.14em;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 10px; letter-spacing: 0.07em;
   color: var(--steel-400); text-transform: uppercase;
   margin-bottom: var(--s2);
 }
@@ -237,24 +237,53 @@ button { font: inherit; color: inherit; }
 .pbtn[aria-pressed="true"] .lbl { color: var(--led); }
 
 /* signature 2 — floor indicator strip */
-.floors { flex-shrink: 0; display: flex; flex-direction: column; }
+.floors { flex-shrink: 0; display: flex; flex-direction: column; width: 104px; }
+.floor-mode {
+  display: flex; gap: 2px;
+  background: var(--ink-900);
+  border: 1px solid var(--ink-700);
+  border-radius: var(--r-sm);
+  padding: 2px;
+  margin-bottom: var(--s2);
+}
+.floor-mode button {
+  flex: 1;
+  font-family: var(--font-body); font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--steel-400);
+  background: none; border: none; border-radius: 4px;
+  padding: 4px 2px; cursor: pointer;
+  transition: color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.floor-mode button:hover { color: var(--paper); }
+.floor-mode button[aria-checked="true"] {
+  color: var(--led);
+  background: var(--led-soft);
+  text-shadow: 0 0 8px var(--led-glow);
+}
 .floor-strip {
-  display: flex; flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
   background: var(--ink-900);
   border: 1px solid var(--ink-700);
   border-radius: var(--r-md);
   padding: var(--s1);
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
   flex: 1;
+  overflow-y: auto;
+  max-height: 296px;
+  scrollbar-width: thin; scrollbar-color: var(--ink-700) transparent;
 }
 .fbtn {
   font-family: var(--font-led); font-size: 12px; font-weight: 500;
   color: var(--steel-400);
   background: none; border: none; border-radius: var(--r-sm);
-  min-width: 44px; padding: 3px 8px; flex: 1;
+  min-height: 24px; padding: 2px 4px;
   cursor: pointer; text-align: center;
   transition: color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
 }
+.fbtn[data-n="0"] { grid-column: 1 / -1; }
 .fbtn:hover { color: var(--paper); background: var(--ink-700); }
 .fbtn[aria-checked="true"] {
   color: var(--led);
@@ -303,8 +332,8 @@ button { font: inherit; color: inherit; }
 }
 .readout .n { font-size: 16px; }
 .readout .cap {
-  font-family: var(--font-display); font-weight: 600;
-  font-size: 10px; letter-spacing: 0.12em;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 10px; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--steel-400);
 }
 .list {
@@ -499,8 +528,8 @@ button { font: inherit; color: inherit; }
 .datastrip .cell:first-child { border-left: none; }
 .datastrip .cell .v { font-size: 20px; display: block; }
 .datastrip .cell .k {
-  font-family: var(--font-display); font-weight: 600;
-  font-size: 9px; letter-spacing: 0.14em;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 9px; letter-spacing: 0.07em;
   text-transform: uppercase; color: var(--steel-400);
 }
 
@@ -515,9 +544,9 @@ button { font: inherit; color: inherit; }
 .sec { margin-top: var(--s6); }
 .sec:first-child { margin-top: 0; }
 .sec h4 {
-  font-family: var(--font-display);
-  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
-  color: var(--ink-600); margin-bottom: var(--s3); font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-600); margin-bottom: var(--s3); font-weight: 700;
 }
 
 /* rating block + primary CTA */
@@ -694,9 +723,12 @@ textarea::placeholder { color: var(--ink-600); opacity: 0.7; }
     display: grid !important; place-items: center;
   }
   .plate-grid { grid-template-columns: repeat(4, 1fr); }
-  .floors { margin-top: var(--s3); }
-  .floor-strip { flex-direction: row; overflow-x: auto; }
-  .fbtn { min-height: 44px; }
+  .floors { margin-top: var(--s3); width: auto; }
+  .floor-strip {
+    display: flex; flex-direction: row; overflow-x: auto;
+    max-height: none;
+  }
+  .fbtn { min-height: 44px; min-width: 44px; flex-shrink: 0; }
 
   .filters-fab {
     display: flex; align-items: center; gap: var(--s2);

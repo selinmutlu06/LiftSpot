@@ -28,8 +28,9 @@ export function initMap({ pinClick, pinHover }) {
       data: { type: 'FeatureCollection', features: [] },
       promoteId: 'id',
       cluster: true,
-      clusterRadius: 46,
-      clusterMaxZoom: 13,
+      clusterRadius: 34,
+      clusterMaxZoom: 11, // individual buildings from town-level zoom up
+
     });
 
     /* Clusters: ink discs with a steel ring — big elevator buttons. */
@@ -38,7 +39,7 @@ export function initMap({ pinClick, pinHover }) {
       filter: ['has', 'point_count'],
       paint: {
         'circle-color': '#16211d',
-        'circle-radius': ['step', ['get', 'point_count'], 14, 10, 18, 50, 23, 150, 28],
+        'circle-radius': ['step', ['get', 'point_count'], 12, 10, 16, 50, 21, 150, 26],
         'circle-stroke-width': 2,
         'circle-stroke-color': '#c9ced0',
       },

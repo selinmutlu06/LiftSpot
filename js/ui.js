@@ -1,6 +1,6 @@
 /* Entry: filters (button plate + floor indicator), list, states, toasts, wiring. */
 
-import { TYPES, TYPE_ICON, FLOOR_STOPS, state, BUILDINGS, filtered, stars, loadBuildings } from './data.js';
+import { TYPES, TYPE_ICON, maxStories, state, BUILDINGS, filtered, stars, loadBuildings } from './data.js';
 import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker } from './map.js';
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
@@ -182,15 +182,25 @@ function syncPlate() {
   syncFab();
 }
 
+let floorStops = [0];
+
+function floorAria(n) {
+  if (n === 0) return 'Any number of stories';
+  return state.exactStories ? `Exactly ${n} stories` : `${n} or more stories`;
+}
+
+/* Every floor 1..max, like a real cab button panel. Rebuilt once data arrives. */
 function buildFloors() {
   const strip = $('floorStrip');
-  FLOOR_STOPS.forEach(n => {
+  strip.innerHTML = '';
+  floorStops = [0, ...Array.from({ length: maxStories() }, (_, i) => i + 1)];
+  floorStops.forEach(n => {
     const btn = document.createElement('button');
     btn.className = 'fbtn led';
     btn.type = 'button';
     btn.setAttribute('role', 'radio');
     btn.setAttribute('aria-checked', String(n === state.minStories));
-    btn.setAttribute('aria-label', n === 0 ? 'Any number of stories' : `${n} or more stories`);
+    btn.setAttribute('aria-label', floorAria(n));
     btn.dataset.n = n;
     btn.textContent = n === 0 ? 'ANY' : String(n);
     btn.addEventListener('click', () => {
@@ -200,13 +210,13 @@ function buildFloors() {
       renderList();
     });
     btn.addEventListener('keydown', e => {
-      const idx = FLOOR_STOPS.indexOf(state.minStories);
+      const idx = floorStops.indexOf(state.minStories);
       let next = null;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = Math.min(FLOOR_STOPS.length - 1, idx + 1);
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = Math.min(floorStops.length - 1, idx + 1);
       if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = Math.max(0, idx - 1);
       if (next != null) {
         e.preventDefault();
-        state.minStories = FLOOR_STOPS[next];
+        state.minStories = floorStops[next];
         syncFloors();
         renderList();
         $('floorStrip').querySelector(`[data-n="${state.minStories}"]`)?.focus();
@@ -214,14 +224,28 @@ function buildFloors() {
     });
     strip.appendChild(btn);
   });
+  syncFloors();
 }
 
 function syncFloors() {
   document.querySelectorAll('.fbtn').forEach(b => {
     const checked = +b.dataset.n === state.minStories;
     b.setAttribute('aria-checked', String(checked));
+    b.setAttribute('aria-label', floorAria(+b.dataset.n));
     b.tabIndex = checked || (+b.dataset.n === 0 && state.minStories === 0) ? 0 : -1;
   });
+  $('modeMin').setAttribute('aria-checked', String(!state.exactStories));
+  $('modeExact').setAttribute('aria-checked', String(state.exactStories));
+}
+
+function initFloorMode() {
+  const set = exact => {
+    state.exactStories = exact;
+    syncFloors();
+    renderList();
+  };
+  $('modeMin').addEventListener('click', () => set(false));
+  $('modeExact').addEventListener('click', () => set(true));
 }
 
 function syncFab() {
@@ -277,6 +301,7 @@ async function load() {
     $('countCap').textContent = 'connection error';
     return;
   }
+  buildFloors();
   renderList();
 }
 
@@ -330,7 +355,8 @@ function initSheet() {
 /* ── boot ── */
 function boot() {
   buildPlate();
-  buildFloors();
+  buildFloors();   // default 1–20; rebuilt with the real max once data loads
+  initFloorMode();
   initSheet();
 
   try {

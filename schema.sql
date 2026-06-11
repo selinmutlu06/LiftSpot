@@ -66,17 +66,4 @@ insert into buildings (id, name, type, town, addr, lat, lng, stories, elevators,
 (27, 'Peconic Bay Medical Center',                               'Medical',   'Riverhead',          '1 Heroes Way, Riverhead, NY 11901',                40.9192, -72.6631,  6,  5, 4.3)
 on conflict (id) do nothing;
 
--- ============================================================
--- Seed reviews
--- ============================================================
-insert into reviews (building_id, who, stars, body) values
-(1,  'Marcus', 5, 'Glass-back elevators on the north wing with a great view of the parking structure. Smooth Otis units.'),
-(1,  'Dana',   4, 'Service elevators are huge. Public ones can get busy midday.'),
-(2,  'Theo',   5, 'Destination-dispatch system — you pick your floor on a keypad in the lobby. Very modern.'),
-(3,  'Sam',    4, 'Two glass scenic elevators near the center court. Kids love watching them.'),
-(4,  'Priya',  5, 'One of the tallest buildings on the Island. The tower elevators travel fast and there are a LOT of them.'),
-(6,  'Lena',   4, 'Nice newer elevators by the food court.'),
-(7,  'Omar',   4, 'Big iconic tower. Lots of elevator banks, some original mid-century ones still running.'),
-(8,  'Beth',   5, 'Exposed-back glass elevators overlooking the atrium lobby. A favorite.'),
-(10, 'Ray',    5, 'Classic, well-maintained cab interiors with brass fittings.'),
-(12, 'Carlos', 4, 'New patient tower has very quiet, fast traction elevators.');
+-- Reviews are real submissions only — no seed data.

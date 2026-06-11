@@ -197,7 +197,7 @@ button { font: inherit; color: inherit; }
 .plate-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--s2) var(--s1);
+  gap: var(--s2) var(--s2);
 }
 .cab-close { display: none; }
 .pbtn {
@@ -209,7 +209,7 @@ button { font: inherit; color: inherit; }
 .pbtn .ring {
   width: 40px; height: 40px; border-radius: 50%;
   display: grid; place-items: center;
-  font-size: 15px; color: var(--steel-300);
+  color: var(--steel-300);
   background: radial-gradient(circle at 35% 30%, var(--ink-700), var(--ink-900) 70%);
   border: 2px solid var(--steel-400);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(201, 206, 208, 0.18);
@@ -219,10 +219,9 @@ button { font: inherit; color: inherit; }
               color var(--t-fast) var(--ease);
 }
 .pbtn .lbl {
-  font-size: 8.5px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: 9px; font-weight: 600; line-height: 1.15;
   color: var(--steel-400);
-  max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 100%; text-align: center;
   transition: color var(--t-fast) var(--ease);
 }
 .pbtn:hover .ring { border-color: var(--steel-300); color: var(--paper); }
@@ -230,7 +229,7 @@ button { font: inherit; color: inherit; }
 .pbtn[aria-pressed="true"] .ring {
   border-color: var(--led);
   color: var(--led);
-  text-shadow: 0 0 6px var(--led-glow);
+  filter: drop-shadow(0 0 4px var(--led-glow));
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5),
               0 0 0 1px var(--led),
               0 0 14px var(--led-glow);
@@ -355,9 +354,11 @@ button { font: inherit; color: inherit; }
   font-size: 14px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em;
 }
 .card .type {
-  font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em;
   font-weight: 700; color: var(--ink-600); margin-top: 3px;
 }
+.card .type .ticon { display: flex; color: var(--green-700); }
 .card .addr { font-size: 12px; color: var(--ink-600); margin-top: var(--s2); line-height: 1.45; }
 .card .meta {
   display: flex; gap: var(--s3); align-items: center;

@@ -1,6 +1,6 @@
 /* Entry: filters (button plate + floor indicator), list, states, toasts, wiring. */
 
-import { TYPES, TYPE_ICON, maxStories, state, BUILDINGS, filtered, stars, loadBuildings } from './data.js';
+import { TYPES, typeIcon, maxStories, state, BUILDINGS, filtered, stars, loadBuildings } from './data.js';
 import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker } from './map.js';
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
@@ -69,7 +69,7 @@ function renderList() {
       <div class="top">
         <div style="min-width:0">
           <h3>${esc(b.name)}</h3>
-          <div class="type">${TYPE_ICON[b.type] || '◉'} ${esc(b.type)}</div>
+          <div class="type"><span class="ticon" aria-hidden="true">${typeIcon(b.type, 11)}</span>${esc(b.type)}</div>
         </div>
         <div class="stars" aria-hidden="true">${stars(b.rating)}<span class="n led">${Number(b.rating).toFixed(1)}</span></div>
       </div>
@@ -163,7 +163,7 @@ function buildPlate() {
     btn.setAttribute('aria-label', `Filter: ${t}`);
     btn.title = t;
     btn.dataset.type = t;
-    btn.innerHTML = `<span class="ring" aria-hidden="true">${TYPE_ICON[t] || '◉'}</span><span class="lbl">${t}</span>`;
+    btn.innerHTML = `<span class="ring" aria-hidden="true">${typeIcon(t, 16)}</span><span class="lbl">${t}</span>`;
     btn.addEventListener('click', () => {
       const on = !state.types.has(t);
       on ? state.types.add(t) : state.types.delete(t);

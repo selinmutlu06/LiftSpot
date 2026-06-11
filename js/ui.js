@@ -4,6 +4,7 @@ import { TYPES, typeIcon, maxStories, state, BUILDINGS, filtered, stars, loadBui
 import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker } from './map.js';
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
+import { initResources } from './resources.js';
 
 const $ = id => document.getElementById(id);
 
@@ -380,6 +381,11 @@ function boot() {
       toast,
     }
   );
+
+  initResources({
+    btn: $('resBtn'), modal: $('resModal'), scrim: $('resScrim'),
+    closeBtn: $('resClose'), body: $('resBody'),
+  });
 
   $('radiusRange').addEventListener('input', e => {
     state.radius = +e.target.value;

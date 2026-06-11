@@ -45,6 +45,10 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
       <span>Near me</span>
     </button>
+    <button class="nearme" id="resBtn" aria-expanded="false" aria-controls="resModal" aria-label="Elevator resources">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+      <span>Resources</span>
+    </button>
   </header>
 
   <aside class="rail" id="rail" aria-label="Filters and building list">
@@ -113,6 +117,18 @@
   <div class="datastrip" id="dataStrip" aria-label="Building data"></div>
   <div class="dbody" id="dBody"></div>
   <div class="doors" aria-hidden="true"><div class="door l"></div><div class="door r"></div></div>
+</div>
+
+<div class="scrim" id="resScrim" aria-hidden="true"></div>
+<div class="resmodal" id="resModal" role="dialog" aria-modal="true" aria-labelledby="resTitle" aria-hidden="true">
+  <div class="res-head">
+    <h2 id="resTitle">Elevator resources</h2>
+    <p>The wikis, forums, channels, and places the elevator community has built.</p>
+    <button class="close-btn" id="resClose" aria-label="Close resources">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14"/></svg>
+    </button>
+  </div>
+  <div class="res-body" id="resBody"></div>
 </div>
 
 <div class="toasts" id="toasts" role="status" aria-live="polite"></div>

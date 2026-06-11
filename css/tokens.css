@@ -30,7 +30,9 @@
   --led-soft: rgba(35, 164, 127, 0.14);
 
   /* Accents */
-  --amber: #e8a13a;     /* star glyphs only */
+  --amber: #e8a13a;       /* star glyphs on ink surfaces */
+  --amber-deep: #b87d00;  /* star glyphs on light surfaces — 3.4:1 on white */
+  --star-off: #7c8886;    /* unselected picker stars — 3.7:1 on white */
   --red-600: #b3402f;   /* errors only, 5.4:1 on paper */
   --red-soft: #f7e8e5;
 

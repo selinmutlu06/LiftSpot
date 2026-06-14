@@ -1,7 +1,7 @@
 /* Entry: filters (button plate + floor indicator), list, states, toasts, wiring. */
 
 import { TYPES, typeIcon, maxStories, state, BUILDINGS, filtered, stars, loadBuildings } from './data.js';
-import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker } from './map.js';
+import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker, removeUserMarker } from './map.js';
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
 import { initResources } from './resources.js';
@@ -42,32 +42,56 @@ function skeletons(n = 5) {
     </div>`).join('');
 }
 
+/* One set of delegated listeners for the whole list — attached once, so a
+   600-card rebuild costs one innerHTML parse instead of thousands of nodes
+   plus per-card listeners. */
+let listWired = false;
+function wireList() {
+  if (listWired) return;
+  listWired = true;
+  const list = $('list');
+  const cardOf = e => e.target.closest('.card');
+  list.addEventListener('click', e => { const c = cardOf(e); if (c) open(+c.dataset.id); });
+  list.addEventListener('keydown', e => {
+    const c = cardOf(e);
+    if (!c) return;
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(+c.dataset.id); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); c.nextElementSibling?.focus?.(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); c.previousElementSibling?.focus?.(); }
+  });
+  list.addEventListener('mouseover', e => { const c = cardOf(e); if (c) setHover(+c.dataset.id); });
+  list.addEventListener('mouseout', e => {
+    const c = cardOf(e);
+    if (c && (!e.relatedTarget || !c.contains(e.relatedTarget))) setHover(null);
+  });
+}
+
 function renderList() {
+  wireList();
   const items = filtered();
   const list = $('list');
   $('countN').textContent = items.length;
   $('countCap').textContent = `building${items.length !== 1 ? 's' : ''}`;
   $('countSort').textContent = sortCaption();
 
-  list.innerHTML = '';
+  // Refresh cached distances for everything shown — clears stale values when a
+  // distance-based mode is left (so the drawer never shows "mi away" for a
+  // search you've already cleared).
+  items.forEach(b => {
+    const real = BUILDINGS.find(x => x.id === b.id);
+    if (real) real._dCached = b._d ?? null;
+  });
+
   if (!items.length) {
+    list.innerHTML = '';
     list.appendChild(emptyState());
     setMapData(items);
     return;
   }
 
-  items.forEach(b => {
-    if (b._d != null) {
-      const real = BUILDINGS.find(x => x.id === b.id);
-      if (real) real._dCached = b._d;
-    }
-    const el = document.createElement('div');
-    el.className = 'card' + (b.id === state.activeId ? ' active' : '');
-    el.dataset.id = b.id;
-    el.setAttribute('role', 'listitem');
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('aria-label', `${b.name}, ${b.type} in ${b.town}, ${b.stories} stories, ${b.elevators} elevators, rated ${b.rating} of 5`);
-    el.innerHTML = `
+  list.innerHTML = items.map(b => `
+    <div class="card${b.id === state.activeId ? ' active' : ''}" data-id="${b.id}" role="listitem" tabindex="0"
+      aria-label="${esc(`${b.name}, ${b.type} in ${b.town}, ${b.stories} stories, ${b.elevators} elevators, rated ${b.rating} of 5`)}">
       <div class="top">
         <div style="min-width:0">
           <div class="bname">${esc(b.name)}</div>
@@ -80,18 +104,8 @@ function renderList() {
         <span><span class="led">${b.stories}</span><span class="u">stories</span></span>
         <span><span class="led">${b.elevators}</span><span class="u">elev</span></span>
         ${b._d != null ? `<span><span class="led">${b._d.toFixed(1)}</span><span class="u">mi</span></span>` : ''}
-      </div>`;
-    const activate = () => { open(b.id); };
-    el.addEventListener('click', activate);
-    el.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
-      if (e.key === 'ArrowDown') { e.preventDefault(); el.nextElementSibling?.focus?.(); }
-      if (e.key === 'ArrowUp') { e.preventDefault(); el.previousElementSibling?.focus?.(); }
-    });
-    el.addEventListener('mouseenter', () => setHover(b.id));
-    el.addEventListener('mouseleave', () => setHover(null));
-    list.appendChild(el);
-  });
+      </div>
+    </div>`).join('');
   setMapData(items);
 }
 
@@ -237,13 +251,14 @@ function onModeChange(mode, label, coords) {
     chip.classList.add('show');
     $('modeText').textContent = label === 'your location' ? `Near you · within ${state.radius} mi` : `Near ${label}`;
     if (coords) {
-      if (label === 'your location') setUserMarker(coords);
-      else setLocationMarker(coords);
+      if (label === 'your location') { setUserMarker(coords); removeLocationMarker(); }
+      else { setLocationMarker(coords); removeUserMarker(); }
       map?.flyTo({ center: [coords.lng, coords.lat], zoom: 12 });
     }
   } else {
     radius.classList.remove('show');
     removeLocationMarker();
+    removeUserMarker();
     nearBtn.classList.remove('on');
     nearBtn.setAttribute('aria-pressed', 'false');
     if (mode === 'smart') {
@@ -420,11 +435,18 @@ function boot() {
   });
 
   $('locBtn').addEventListener('click', () => {
+    const btn = $('locBtn');
+    // Already on → toggle off: drop the location filter and the "you are here" dot.
+    if (btn.getAttribute('aria-pressed') === 'true') {
+      state.userLoc = null;
+      clearToTextMode();   // resets mode, removes markers, unpresses the button
+      renderList();
+      return;
+    }
     if (!navigator.geolocation) {
       toast('Your browser doesn’t support location. Search a town instead.', { error: true });
       return;
     }
-    const btn = $('locBtn');
     btn.classList.add('on');
     navigator.geolocation.getCurrentPosition(p => {
       state.userLoc = { lat: p.coords.latitude, lng: p.coords.longitude };

@@ -195,3 +195,6 @@ export function setUserMarker(coords) {
   userMarker = new maplibregl.Marker({ element: makeDot() })
     .setLngLat([coords.lng, coords.lat]).addTo(map);
 }
+export function removeUserMarker() {
+  if (userMarker) { userMarker.remove(); userMarker = null; }
+}

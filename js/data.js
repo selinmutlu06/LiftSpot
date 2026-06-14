@@ -52,7 +52,10 @@ export const state = {
   radius: 5,
 };
 
-export const stars = n => '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n));
+export const stars = n => {
+  const r = Math.max(0, Math.min(5, Math.round(n)));
+  return '★'.repeat(r) + '☆'.repeat(5 - r);
+};
 
 export const dist = (a, b) => {
   const R = 3959, dLat = (b.lat - a.lat) * Math.PI / 180, dLng = (b.lng - a.lng) * Math.PI / 180;
@@ -164,6 +167,6 @@ export function topMatches(q, limit = 8) {
 
 export async function loadBuildings() {
   const { data, error } = await sb.from('buildings').select('*');
-  if (!error) BUILDINGS = data;
+  if (!error) BUILDINGS = data || [];
   return { data, error };
 }

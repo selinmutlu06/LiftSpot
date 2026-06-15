@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Find and rate elevators in buildings across Long Island.</strong><br />
-  Search 600+ buildings, read reviews, and explore on an interactive map.
+  Search 570+ buildings, read reviews, and explore on an interactive map.
 </p>
 
 <p align="center">
@@ -103,7 +103,7 @@ flowchart LR
 
 | Step | What happens |
 |------|--------------|
-| **Load** | All 600+ buildings fetched from Supabase on page load |
+| **Load** | All 570+ buildings fetched from Supabase on page load |
 | **Search** | Query geocoded via Nominatim; if a place is found, switches to radius mode; if multi-word, runs smart keyword scoring |
 | **Filter** | Type chips and story count filter applied client-side in real time |
 | **Detail** | Opening a building fetches its reviews from Supabase and shows specs, notes, and a star picker |

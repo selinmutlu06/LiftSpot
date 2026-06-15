@@ -1,51 +1,135 @@
-/* LiftSpot design tokens — "modern cab interior"
-   Palette: ink (cab panels), brushed steel (rails, hairlines), paper (surfaces),
-   LED green (illuminated states, dark surfaces only), amber (stars only),
-   red (errors only). Spacing on a 4px grid. */
+/* LiftSpot design tokens.
+   Two themes, switched by data-mode on <html>:
+     calm (default) — soft, low-saturation, low-motion, roomy. Built for
+       sensory comfort and predictability.
+     full           — the "modern cab interior": ink panels, LED glow,
+       shimmer, door reveal. Opt-in via the Full detail toggle.
+   Calm values live on :root; full overrides them under html[data-mode="full"].
+   Component rules read the semantic tokens, so switching a theme never needs
+   duplicated style rules. Spacing is a 4px grid. */
 
 :root {
-  /* Ink — dark surfaces and text */
+  /* ── raw palette (shared) ── */
   --ink-900: #16211d;
   --ink-800: #1d2b26;
   --ink-700: #2a3a34;
-  --ink-600: #44524c;   /* muted text on paper, ≥7:1 */
-
-  /* Steel — rails, rings, hairlines */
+  --ink-600: #44524c;
   --steel-400: #aab2b3;
   --steel-300: #c9ced0;
   --steel-200: #d9dddd;
   --steel-150: #e4e7e7;
-
-  /* Surfaces */
   --paper: #f5f6f4;
   --card: #ffffff;
-
-  /* Signal green */
-  --green-700: #1f6f5c; /* brand on light surfaces, 5.5:1 on paper */
+  --green-700: #1f6f5c;
   --green-800: #185c4c;
-  --led: #23a47f;       /* illuminated — use on ink surfaces only */
-  --led-text: #36c597;  /* brighter LED for small text — 4.5:1+ on raised ink */
+  --led: #23a47f;
+  --led-text: #36c597;
   --led-dim: #1a7a5f;
   --led-glow: rgba(35, 164, 127, 0.45);
   --led-soft: rgba(35, 164, 127, 0.14);
-
-  /* Accents */
-  --amber: #e8a13a;       /* star glyphs on ink surfaces */
-  --amber-deep: #b87d00;  /* star glyphs on light surfaces — 3.4:1 on white */
-  --star-off: #7c8886;    /* unselected picker stars — 3.7:1 on white */
-  --red-600: #b3402f;   /* errors only, 5.4:1 on paper */
+  --amber: #e8a13a;
+  --amber-deep: #b87d00;
+  --star-off: #7c8886;
+  --red-600: #b3402f;
   --red-soft: #f7e8e5;
 
-  /* Type */
+  /* ── type ── */
   --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-led: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Spacing — 4px grid */
+  /* ── spacing (4px grid) ── */
   --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
   --s5: 20px; --s6: 24px; --s7: 28px; --s8: 32px;
 
-  /* Shape + depth */
+  /* ── shape + depth ── */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(22, 33, 29, 0.06);
+  --shadow-md: 0 2px 10px rgba(22, 33, 29, 0.08), 0 12px 32px rgba(22, 33, 29, 0.10);
+  --shadow-drawer: -16px 0 48px rgba(22, 33, 29, 0.16);
+
+  /* ── motion ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 120ms;
+  --t-med: 180ms;
+  --t-door: 230ms;
+
+  /* ── layout ── */
+  --rail-w: 400px;
+  --topbar-h: 60px;
+  --tap: 44px;            /* minimum interactive target */
+
+  /* ════════ semantic theme tokens — CALM defaults ════════ */
+
+  /* accent + signal */
+  --accent: #2f7d68;            /* primary green: links, active, icons (≈4.8:1 on white) */
+  --accent-strong: #276a58;
+  --accent-soft: rgba(47, 125, 104, 0.12);
+  --focus-ring: #2f7d68;
+  --num: #2a3a34;               /* mono numerals */
+  --glow: 0 0 #0000;            /* additive glow slot — none in calm */
+  --glow-text: none;            /* numeral text-shadow — none in calm */
+
+  /* body + rail */
+  --app-bg: #eef1ef;            /* calm backdrop behind the cards */
+
+  /* topbar */
+  --topbar-bg: #ffffff;
+  --topbar-border: var(--steel-200);
+  --topbar-fg: var(--ink-900);
+  --topbar-muted: var(--ink-600);
+
+  /* text fields (search, story select) */
+  --field-bg: #ffffff;
+  --field-border: #cfd6d3;
+  --field-fg: var(--ink-900);
+  --field-placeholder: #6b7872;
+
+  /* secondary controls (Near me, Resources, Full detail, clear) */
+  --control-bg: #ffffff;
+  --control-border: #cfd6d3;
+  --control-fg: var(--ink-700);
+  --control-hover: var(--paper);
+
+  /* cab / filter panel */
+  --cab-bg: #eef2f0;
+  --cab-border: var(--steel-200);
+  --cab-label: var(--ink-600);
+
+  /* type-filter button faces */
+  --ring-bg: #ffffff;
+  --ring-border: #c2cac6;
+  --ring-fg: var(--ink-600);
+  --ring-shadow: var(--shadow-sm);
+
+  /* indicator panels (count readout, drawer data strip) */
+  --indicator-bg: #ffffff;
+  --indicator-border: var(--steel-200);
+  --indicator-label: var(--ink-600);
+
+  /* popovers (search palette, resources modal) */
+  --pop-bg: #ffffff;
+  --pop-border: var(--steel-200);
+  --pop-fg: var(--ink-900);
+  --pop-muted: var(--ink-600);
+  --pop-hover: var(--paper);
+  --pop-shadow: var(--shadow-md);
+
+  /* toasts */
+  --toast-bg: #ffffff;
+  --toast-border: var(--steel-200);
+  --toast-fg: var(--ink-900);
+
+  /* loading placeholders (flat + still in calm) */
+  --skel-bg: #e6eae8;
+  --map-load-bg: #dfe6e3;
+}
+
+/* ════════ FULL DETAIL overrides — the lit cab ════════ */
+html[data-mode="full"] {
   --r-sm: 6px;
   --r-md: 10px;
   --r-lg: 14px;
@@ -53,14 +137,55 @@
   --shadow-md: 0 2px 8px rgba(22, 33, 29, 0.10), 0 12px 32px rgba(22, 33, 29, 0.12);
   --shadow-drawer: -16px 0 48px rgba(22, 33, 29, 0.22);
 
-  /* Motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --t-fast: 120ms;
-  --t-med: 180ms;
-  --t-door: 230ms;
+  --accent: var(--led);
+  --accent-strong: var(--led);
+  --accent-soft: var(--led-soft);
+  --focus-ring: var(--led);
+  --num: var(--led);
+  --glow: 0 0 12px var(--led-glow);
+  --glow-text: 0 0 8px var(--led-glow);
 
-  /* Layout */
-  --rail-w: 380px;
-  --topbar-h: 56px;
+  --app-bg: var(--paper);
+
+  --topbar-bg: linear-gradient(180deg, var(--ink-800), var(--ink-900));
+  --topbar-border: var(--ink-700);
+  --topbar-fg: var(--paper);
+  --topbar-muted: var(--steel-400);
+
+  --field-bg: var(--ink-900);
+  --field-border: var(--ink-700);
+  --field-fg: var(--paper);
+  --field-placeholder: var(--steel-400);
+
+  --control-bg: var(--ink-800);
+  --control-border: var(--ink-700);
+  --control-fg: var(--steel-300);
+  --control-hover: var(--ink-700);
+
+  --cab-bg: linear-gradient(180deg, var(--ink-800) 0%, var(--ink-900) 100%);
+  --cab-border: var(--steel-300);
+  --cab-label: var(--steel-400);
+
+  --ring-bg: radial-gradient(circle at 35% 30%, var(--ink-700), var(--ink-900) 70%);
+  --ring-border: var(--steel-400);
+  --ring-fg: var(--steel-300);
+  --ring-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(201, 206, 208, 0.18);
+
+  --indicator-bg: var(--ink-900);
+  --indicator-border: var(--steel-300);
+  --indicator-label: var(--steel-400);
+
+  --pop-bg: var(--ink-800);
+  --pop-border: var(--ink-700);
+  --pop-fg: var(--paper);
+  --pop-muted: var(--steel-400);
+  --pop-hover: var(--ink-700);
+  --pop-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+
+  --toast-bg: var(--ink-900);
+  --toast-border: var(--ink-700);
+  --toast-fg: var(--paper);
+
+  --skel-bg: var(--steel-150);
+  --map-load-bg: transparent;
 }

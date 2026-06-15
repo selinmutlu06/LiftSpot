@@ -1,7 +1,7 @@
 /* Entry: filters (button plate + floor indicator), list, states, toasts, wiring. */
 
 import { TYPES, typeIcon, maxStories, state, BUILDINGS, filtered, stars, loadBuildings } from './data.js';
-import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker, removeUserMarker } from './map.js';
+import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker, removeUserMarker, setMapTheme } from './map.js';
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
 import { initResources } from './resources.js';
@@ -356,12 +356,32 @@ function initSheet() {
   }, true);
 }
 
+/* ── calm / full detail theme toggle ── */
+function initModeToggle() {
+  const btn = $('modeBtn');
+  const sync = () => {
+    const full = document.documentElement.dataset.mode === 'full';
+    btn.classList.toggle('on', full);
+    btn.setAttribute('aria-pressed', String(full));
+    btn.setAttribute('aria-label', full ? 'Turn off full detail view' : 'Turn on full detail view');
+  };
+  sync();
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.mode === 'full' ? 'calm' : 'full';
+    document.documentElement.dataset.mode = next;
+    try { localStorage.setItem('liftspot_mode', next); } catch { /* storage unavailable */ }
+    sync();
+    setMapTheme(next);
+  });
+}
+
 /* ── boot ── */
 function boot() {
   buildPlate();
   buildFloors();   // default 1–20; rebuilt with the real max once data loads
   initFloorMode();
   initSheet();
+  initModeToggle();
 
   try {
     initMap({

@@ -117,7 +117,8 @@ function bindInteractions() {
     if (!map.getLayer('pins')) return;
     let f = map.queryRenderedFeatures(e.point, { layers: ['clusters', 'pins'] })[0];
     if (!f) {
-      const pad = 8;
+      // Bigger forgiving hit area for finger taps than for a mouse cursor.
+      const pad = matchMedia('(pointer: coarse)').matches ? 18 : 8;
       const near = map.queryRenderedFeatures(
         [[e.point.x - pad, e.point.y - pad], [e.point.x + pad, e.point.y + pad]],
         { layers: ['pins'] }

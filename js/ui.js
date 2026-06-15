@@ -383,6 +383,14 @@ function boot() {
   initSheet();
   initModeToggle();
 
+  // Shorter placeholder on phones so it never truncates mid-word in the narrow bar.
+  const mqNarrow = matchMedia('(max-width: 860px)');
+  const syncPlaceholder = () => {
+    $('q').placeholder = mqNarrow.matches ? 'Search…' : 'Search buildings, towns, or places…';
+  };
+  syncPlaceholder();
+  mqNarrow.addEventListener('change', syncPlaceholder);
+
   try {
     initMap({
       pinClick: id => {

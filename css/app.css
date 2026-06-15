@@ -756,8 +756,11 @@ textarea::placeholder, .text-input::placeholder { color: var(--ink-600); opacity
   .brand h1 { display: none; }
   .search { max-width: none; }
   .search .kbd { display: none; }
+  .search input { padding-right: 44px; }
+  /* >=16px keeps iOS Safari from auto-zooming the page when a field is focused */
+  .search input, textarea, .text-input, .story-select, .floor-mode button { font-size: 16px; }
   .ctrl span { display: none; }
-  .ctrl { padding: 8px 10px; min-width: var(--tap); justify-content: center; }
+  .ctrl { padding: 8px; min-width: var(--tap); justify-content: center; }
 
   /* rail becomes a bottom sheet */
   .rail {

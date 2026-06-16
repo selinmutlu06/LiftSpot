@@ -1,6 +1,6 @@
 /* Drawer: building detail, door-reveal open, notes, reviews, live rating recalc. */
 
-import { sb, BUILDINGS, state, stars } from './data.js';
+import { sb, BUILDINGS, state, stars, rated, verified } from './data.js';
 import { trapFocus } from './focus.js';
 
 let els = null;
@@ -38,17 +38,20 @@ export async function openBuilding(id) {
   state.activeId = id;
 
   els.title.textContent = b.name;
-  els.type.innerHTML = `<span>${esc(b.type)}</span><span class="town">${esc(b.town)}</span>`;
+  els.type.innerHTML = `<span>${esc(b.type)}</span><span class="town">${esc(b.town)}</span>`
+    + (verified(b) ? '' : `<span class="badge-unverified" title="This building hasn’t been confirmed against OpenStreetMap. Details are unverified estimates.">Unverified</span>`);
   els.addr.textContent = b.addr;
   renderDataStrip(b);
 
   const savedNote = localStorage.getItem(`liftspot_note_${id}`) || '';
   els.body.innerHTML = `
     <div class="sec">
-      <div class="rating-block">
+      <div class="rating-block${rated(b) ? '' : ' unrated'}">
+        ${rated(b) ? `
         <span class="big led led-rating">${fmtRating(b.rating)}</span>
         <span class="of">/ 5</span>
-        <span class="stars" aria-hidden="true">${stars(b.rating)}</span>
+        <span class="stars" aria-hidden="true">${stars(b.rating)}</span>` : `
+        <span class="stars empty" aria-hidden="true">${stars(0)}</span>`}
         <span class="rcount" id="rvCount"></span>
       </div>
       <button class="cta" id="rateCta" aria-expanded="false" aria-controls="rform">
@@ -99,10 +102,15 @@ export async function openBuilding(id) {
 
 function renderDataStrip(b) {
   const d = b._dCached;
-  els.dataStrip.innerHTML = `
-    <div class="cell"><span class="v led led-lit">${b.stories}</span><span class="k">stories</span></div>
-    <div class="cell"><span class="v led led-lit">${b.elevators}</span><span class="k">elevators</span></div>
-    ${d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : ''}`;
+  const v = verified(b);
+  // For unverified buildings, stories are flagged as estimates and the
+  // (always-unsourced) elevator count is hidden rather than presented as fact.
+  const stories = `<div class="cell${v ? '' : ' est'}"><span class="v led led-lit">${b.stories}</span><span class="k">stories${v ? '' : ' · est'}</span></div>`;
+  const elevators = v
+    ? `<div class="cell"><span class="v led led-lit">${b.elevators}</span><span class="k">elevators</span></div>`
+    : `<div class="cell est"><span class="v led led-lit">—</span><span class="k">elevators</span></div>`;
+  els.dataStrip.innerHTML = `${stories}${elevators}` +
+    (d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : '');
 }
 
 function wireForm(b) {
@@ -186,12 +194,18 @@ async function refreshReviews(id) {
     }
   }
   if (rvList) rvList.innerHTML = renderReviews(b);
+  const block = els.body.querySelector('.rating-block');
+  if (block) {
+    block.classList.toggle('unrated', !rated(b));
+    block.innerHTML = `${rated(b) ? `
+        <span class="big led led-rating">${fmtRating(b.rating)}</span>
+        <span class="of">/ 5</span>
+        <span class="stars" aria-hidden="true">${stars(b.rating)}</span>` : `
+        <span class="stars empty" aria-hidden="true">${stars(0)}</span>`}
+        <span class="rcount" id="rvCount"></span>`;
+  }
   const rvCount = document.getElementById('rvCount');
   if (rvCount) rvCount.textContent = b.reviews.length ? `${b.reviews.length} review${b.reviews.length > 1 ? 's' : ''}` : 'No reviews yet';
-  const big = els.body.querySelector('.rating-block .big');
-  if (big) big.textContent = fmtRating(b.rating);
-  const starsEl = els.body.querySelector('.rating-block .stars');
-  if (starsEl) starsEl.textContent = stars(b.rating);
   renderDataStrip(b);
   const rvText = document.getElementById('rvText');
   const btn = document.getElementById('postReview');

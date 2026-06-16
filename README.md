@@ -57,8 +57,8 @@ So I built one.
   </tr>
   <tr>
     <td width="33%" valign="top">
-      <h3>Elevator Reviews</h3>
-      <p>Star ratings and written reviews stored in Supabase. Live rating updates as reviews come in.</p>
+      <h3>Honest Reviews</h3>
+      <p>Ratings come from real submitted reviews only — never a seeded number. A building shows "No reviews yet" until someone actually rates it, then the score recalculates live.</p>
     </td>
     <td width="33%" valign="top">
       <h3>Private Notes</h3>
@@ -76,12 +76,22 @@ So I built one.
 ## Screenshots
 
 <p align="center">
-  <img src="docs/images/app-main.png" alt="LiftSpot full app view with sidebar and map" width="100%" />
+  <img src="docs/images/app-main.png" alt="LiftSpot main view: calm sidebar of filters and building list beside a live Long Island map with clustered pins" width="100%" />
 </p>
 
 <p align="center">
-  <img src="docs/images/app-drawer.png" alt="LiftSpot building detail drawer with reviews" width="100%" />
+  <img src="docs/images/app-drawer.png" alt="LiftSpot building detail drawer showing specs, a real elevator review, and private notes" width="100%" />
 </p>
+
+<p align="center">
+  <img src="docs/images/app-mobile.png" alt="LiftSpot on mobile: map-first layout with a draggable bottom sheet of buildings" width="320" />
+</p>
+
+---
+
+## Design
+
+LiftSpot opens in a **calm default** — a quiet "modern cab interior" palette, low motion, and only the essentials on screen. A **Full detail** toggle reveals the denser specs view for power users. The whole interface is built to be readable and low-stimulation (it was designed with an autism-friendly default in mind), stays axe-clean across every state, honours `prefers-reduced-motion`, and works map-first on mobile with a draggable sheet.
 
 ---
 
@@ -107,7 +117,7 @@ flowchart LR
 | **Search** | Query geocoded via Nominatim; if a place is found, switches to radius mode; if multi-word, runs smart keyword scoring |
 | **Filter** | Type chips and story count filter applied client-side in real time |
 | **Detail** | Opening a building fetches its reviews from Supabase and shows specs, notes, and a star picker |
-| **Review** | New reviews inserted into Supabase; building rating recalculated live |
+| **Review** | New reviews inserted into Supabase; rating recalculated live from real reviews only (no reviews → "No reviews yet", never a fabricated score) |
 
 ---
 
@@ -132,6 +142,19 @@ reviews   (id, building_id, who, stars, body, created_at)
 ```
 
 16 building types: Medical, Dermatology, Physical Therapy, Radiology, Office, Mall, Hotel, Education, Government, Residential, Library, Transit, Legal, Entertainment, Community, Financial.
+
+---
+
+## Data accuracy
+
+The building catalogue was originally seeded, and seeded data lies — invented floor counts, guessed elevator counts, and a fake default rating on every row. That's being corrected, with a clear rule: **don't present a guess as a fact.**
+
+- **Ratings** are derived from real reviews only. Buildings with no reviews show "No reviews yet" — the fabricated default scores were stripped (`migrations/001_unfake_ratings.sql`).
+- **Existence & location** were audited against [OpenStreetMap](https://www.openstreetmap.org). `scripts/verify_buildings.py` looks up every building by name and location; the **108** that matched a real OSM feature near their pin are flagged `verified` (`migrations/002_add_verified.sql`). The rest could not be confirmed — some are fabricated, some are real buildings the geocoder couldn't match.
+- **Unverified buildings** carry an "Unverified" badge, and their floor count is shown as an estimate (`· est`). The full per-building triage is in `scripts/verify_triage.csv`.
+- **Elevator counts** have no authoritative public source, so they're shown only for verified buildings and otherwise hidden (`—`) until confirmed on a real visit.
+
+This is an ongoing cleanup — the goal is a catalogue where every shown number is either verified or honestly marked as not.
 
 ---
 
@@ -162,6 +185,8 @@ js/drawer.js        # Building detail, door-reveal animation, reviews, notes
 js/ui.js            # Entry module: filters, list, toasts, wiring
 schema.sql          # Supabase table definitions and RLS policies
 seed_more*.sql      # Building seed data
+migrations/         # Incremental SQL changes — run in the Supabase SQL editor
+scripts/            # Data tooling — OpenStreetMap verification audit
 docs/               # README assets + redesign plan
 ```
 

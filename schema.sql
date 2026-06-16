@@ -12,7 +12,8 @@ create table if not exists buildings (
   lng        double precision not null,
   stories    int not null,
   elevators  int not null,
-  rating     numeric(3,1) not null default 0
+  rating     numeric(3,1) not null default 0,
+  verified   boolean not null default false   -- OSM-confirmed real building (see migrations/002)
 );
 
 create table if not exists reviews (

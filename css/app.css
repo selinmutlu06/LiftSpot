@@ -564,7 +564,24 @@ button { font: inherit; color: inherit; }
 .rating-block .big { font-size: 28px; color: var(--num); }
 .rating-block .of { font-size: 13px; color: var(--ink-600); }
 .rating-block .stars { font-size: 16px; }
+.rating-block .stars.empty { color: var(--steel-200); }
 .rcount { font-size: 13px; color: var(--ink-600); }
+/* Unrated: no fabricated score — just empty stars + "No reviews yet" */
+.stars.unrated { color: var(--ink-600); font-size: 12px; font-style: italic; letter-spacing: 0; }
+
+/* Unverified data: don't present unconfirmed specs as fact */
+.badge-unverified {
+  display: inline-block; margin-left: 8px; padding: 1px 7px;
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  color: var(--ink-600); background: var(--steel-150);
+  border: 1px solid var(--steel-300); border-radius: 999px;
+  vertical-align: middle;
+}
+.dot-unverified {
+  display: inline-block; width: 6px; height: 6px; margin-left: 6px;
+  background: var(--steel-300); border-radius: 50%; vertical-align: middle;
+}
+.cell.est .v, .cell.est .k { color: var(--ink-600); }
 
 .cta {
   display: flex; align-items: center; justify-content: center; gap: var(--s2);

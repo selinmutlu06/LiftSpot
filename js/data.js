@@ -57,6 +57,16 @@ export const stars = n => {
   return '★'.repeat(r) + '☆'.repeat(5 - r);
 };
 
+// A building is only "rated" once it has real reviews. Rating is recalculated
+// from reviews on every post (see drawer.js); 0 means no reviews exist yet, so
+// we never show a fabricated score.
+export const rated = b => Number(b.rating) > 0;
+
+// `verified` = confirmed against OpenStreetMap as a real building at this
+// location (see migrations/002). Unverified specs are shown as estimates, not
+// facts. Note: verification covers existence/location, not floor/elevator counts.
+export const verified = b => b.verified === true;
+
 export const dist = (a, b) => {
   const R = 3959, dLat = (b.lat - a.lat) * Math.PI / 180, dLng = (b.lng - a.lng) * Math.PI / 180;
   const x = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) * Math.cos(b.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;

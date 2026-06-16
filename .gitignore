@@ -1,2 +1,9 @@
 # Local Netlify folder
 .netlify
+
+# OS / editor cruft
+.DS_Store
+
+# Python / audit run artifacts
+scripts/__pycache__/
+scripts/*.log

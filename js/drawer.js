@@ -1,6 +1,6 @@
 /* Drawer: building detail, door-reveal open, notes, reviews, live rating recalc. */
 
-import { sb, BUILDINGS, state, stars, rated, verified } from './data.js';
+import { sb, BUILDINGS, state, stars, rated, verified, storiesVerified } from './data.js';
 import { trapFocus } from './focus.js';
 
 let els = null;
@@ -102,13 +102,12 @@ export async function openBuilding(id) {
 
 function renderDataStrip(b) {
   const d = b._dCached;
-  const v = verified(b);
-  // For unverified buildings, stories are flagged as estimates and the
-  // (always-unsourced) elevator count is hidden rather than presented as fact.
-  const stories = `<div class="cell${v ? '' : ' est'}"><span class="v led led-lit">${b.stories}</span><span class="k">stories${v ? '' : ' · est'}</span></div>`;
-  const elevators = v
-    ? `<div class="cell"><span class="v led led-lit">${b.elevators}</span><span class="k">elevators</span></div>`
-    : `<div class="cell est"><span class="v led led-lit">—</span><span class="k">elevators</span></div>`;
+  // Stories are a fact only when OSM building:levels confirms them; otherwise an
+  // estimate. Elevator counts have no public source, so they are ALWAYS a
+  // community estimate (shown as "~N · est"), never presented as fact.
+  const sv = storiesVerified(b);
+  const stories = `<div class="cell${sv ? '' : ' est'}"><span class="v led led-lit">${b.stories}</span><span class="k">stories${sv ? '' : ' · est'}</span></div>`;
+  const elevators = `<div class="cell est"><span class="v led led-lit">~${b.elevators}</span><span class="k">elevators · est</span></div>`;
   els.dataStrip.innerHTML = `${stories}${elevators}` +
     (d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : '');
 }

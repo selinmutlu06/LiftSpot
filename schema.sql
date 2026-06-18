@@ -13,7 +13,8 @@ create table if not exists buildings (
   stories    int not null,
   elevators  int not null,
   rating     numeric(3,1) not null default 0,
-  verified   boolean not null default false   -- OSM-confirmed real building (see migrations/002)
+  verified   boolean not null default false,  -- OSM-confirmed real building (see migrations/003)
+  stories_verified boolean not null default false  -- floor count confirmed by OSM building:levels (migrations/005); else it's an estimate
 );
 
 create table if not exists reviews (

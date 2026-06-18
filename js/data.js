@@ -63,9 +63,15 @@ export const stars = n => {
 export const rated = b => Number(b.rating) > 0;
 
 // `verified` = confirmed against OpenStreetMap as a real building at this
-// location (see migrations/002). Unverified specs are shown as estimates, not
-// facts. Note: verification covers existence/location, not floor/elevator counts.
+// location (see migrations/003). It covers existence/location ONLY.
 export const verified = b => b.verified === true;
+
+// Floor count is a confirmed fact only where OSM building:levels backs it
+// (migrations/005); otherwise it's a community estimate, shown as "· est".
+export const storiesVerified = b => b.stories_verified === true;
+
+// Elevator counts have NO authoritative public source, so they are never a
+// confirmed fact — always a community estimate, on every building.
 
 export const dist = (a, b) => {
   const R = 3959, dLat = (b.lat - a.lat) * Math.PI / 180, dLng = (b.lng - a.lng) * Math.PI / 180;

@@ -1,7 +1,7 @@
 /* Search: command palette dropdown, debounced geocode with cache + rate limit,
    mode switching (text / smart / location). */
 
-import { state, topMatches, verified } from './data.js';
+import { state, topMatches, storiesVerified } from './data.js';
 
 const LI_VIEWBOX = '-74.05,40.45,-71.75,41.15';
 const geocodeCache = new Map();          // query -> result | null
@@ -168,7 +168,7 @@ function renderPaletteRows() {
         <span class="p-name">${esc(b.name)}</span>
         <span class="p-sub"><span>${esc(b.town)}</span><span>${esc(b.type)}</span></span>
       </span>
-      <span class="p-data led">${verified(b) ? `${b.stories}F ${b.elevators}E` : `${b.stories}F est`}</span>
+      <span class="p-data led">${b.stories}F${storiesVerified(b) ? '' : ' est'}</span>
     </button>`).join('')
     + `<div class="p-hint"><span>↑↓ browse buildings</span><span><span class="led">↵</span> search places</span></div>`;
   els.input.setAttribute('aria-activedescendant', palIndex >= 0 ? `pal-${palItems[palIndex].id}` : '');

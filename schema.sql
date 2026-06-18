@@ -30,9 +30,17 @@ alter table buildings enable row level security;
 alter table reviews   enable row level security;
 
 create policy "Public read buildings"   on buildings for select using (true);
-create policy "Public update buildings" on buildings for update using (true);
 create policy "Public read reviews"     on reviews   for select using (true);
 create policy "Public insert reviews"   on reviews   for insert with check (true);
+
+-- The public may update buildings, but ONLY the rating column (recomputed from
+-- real reviews by the app). Column-level grants enforce this — RLS gates rows,
+-- not columns — so no anonymous visitor can touch verified, coordinates, or
+-- specs. See migrations/004 for the rationale.
+revoke update on table buildings from anon, authenticated;
+grant  update (rating) on table buildings to anon, authenticated;
+create policy "Public update building rating"
+  on buildings for update using (true) with check (true);
 
 -- ============================================================
 -- Seed buildings

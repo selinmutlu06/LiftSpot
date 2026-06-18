@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Find and rate elevators in buildings across Long Island.</strong><br />
-  Search 570+ buildings, read reviews, and explore on an interactive map.
+  Search 572 buildings, read reviews, and explore on an interactive map.
 </p>
 
 <p align="center">
@@ -113,7 +113,7 @@ flowchart LR
 
 | Step | What happens |
 |------|--------------|
-| **Load** | All 570+ buildings fetched from Supabase on page load |
+| **Load** | All 572 buildings fetched from Supabase on page load |
 | **Search** | Query geocoded via Nominatim; if a place is found, switches to radius mode; if multi-word, runs smart keyword scoring |
 | **Filter** | Type chips and story count filter applied client-side in real time |
 | **Detail** | Opening a building fetches its reviews from Supabase and shows specs, notes, and a star picker |
@@ -150,9 +150,11 @@ reviews   (id, building_id, who, stars, body, created_at)
 The building catalogue was originally seeded, and seeded data lies — invented floor counts, guessed elevator counts, and a fake default rating on every row. That's being corrected, with a clear rule: **don't present a guess as a fact.**
 
 - **Ratings** are derived from real reviews only. Buildings with no reviews show "No reviews yet" — the fabricated default scores were stripped (`migrations/001_unfake_ratings.sql`).
-- **Existence & location** were audited against [OpenStreetMap](https://www.openstreetmap.org). `scripts/verify_buildings.py` looks up every building by name and location; the **108** that matched a real OSM feature near their pin are flagged `verified` (`migrations/002_add_verified.sql`). The rest could not be confirmed — some are fabricated, some are real buildings the geocoder couldn't match.
-- **Unverified buildings** carry an "Unverified" badge, and their floor count is shown as an estimate (`· est`). The full per-building triage is in `scripts/verify_triage.csv`.
-- **Elevator counts** have no authoritative public source, so they're shown only for verified buildings and otherwise hidden (`—`) until confirmed on a real visit.
+- **Existence & location** are audited against [OpenStreetMap](https://www.openstreetmap.org). A first pass used Nominatim name search (`scripts/verify_buildings.py`) and could only confirm **108**. A second pass uses the Overpass API to ask the stronger question — *is there a real feature of this type at this pin?* — and confirms **202** (`scripts/verify_overpass.py`, applied by `migrations/003_overpass_verification.sql`). It is **precision-first**: a building is only flagged `verified` when OSM confirms it by name, or an unnamed building of the right type sits right on the pin. Anything uncertain stays unverified — the worklist is `scripts/overpass_review.csv`.
+- **Wrong coordinates** are corrected. The Overpass pass also found **39** buildings whose seed pin was off and snapped them to the real OSM feature (only trustworthy name matches are moved; see migration 003).
+- **Unverified buildings** carry an "Unverified" badge, their floor count is shown as an estimate (`· est`), and their elevator count is hidden (`—`). `not_found` is **not** treated as proof of fabrication — it includes real buildings OSM simply tags differently — so nothing is deleted.
+- **Elevator counts** have no authoritative public source, so they're shown only for verified buildings and otherwise hidden until confirmed on a real visit.
+- **Writes are locked down.** The public can update exactly one column — `rating`, recomputed from real reviews — so no anonymous visitor can flip `verified`, move a pin, or edit specs (`migrations/004_lock_building_writes.sql`).
 
 This is an ongoing cleanup — the goal is a catalogue where every shown number is either verified or honestly marked as not.
 

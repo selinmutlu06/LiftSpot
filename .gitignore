@@ -7,3 +7,9 @@
 # Python / audit run artifacts
 scripts/__pycache__/
 scripts/*.log
+
+# Google Places API key (never commit secrets)
+scripts/.google_key
+google_report.json
+scripts/.yelp_key
+yelp_report.json

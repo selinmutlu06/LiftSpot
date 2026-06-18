@@ -72,6 +72,10 @@ def main():
         for t in tk(b["name"]):
             df[t] += 1
 
+    # Optional Yelp evidence (scripts/yelp_report.json), keyed by building id.
+    yelp_path = os.path.join(ROOT, "scripts", "yelp_report.json")
+    yelp = {int(k): v for k, v in json.load(open(yelp_path)).items()} if os.path.exists(yelp_path) else {}
+
     STREET = {"road", "rd", "street", "st", "avenue", "ave", "boulevard", "blvd",
               "lane", "ln", "drive", "dr", "highway", "hwy", "turnpike", "tpke",
               "parkway", "pkwy", "expressway"}
@@ -98,7 +102,7 @@ def main():
             return True
         return not landform
 
-    def name_match(seed, town, other, kind="", stype="", dist_m=None):
+    def name_match(seed, town, other, kind="", stype="", dist_m=None, strict=False):
         A, B = ntk(seed), ntk(other)
         if not A or not B or is_street(other):
             return False
@@ -130,6 +134,10 @@ def main():
             return True
         # a single shared token that is distinctive (rare in the corpus, not the
         # town, not a generic building word): Newsday, Topping, Oheka, Gurney's...
+        # Disabled for very dense sources (Yelp), where a shared locality token
+        # ("Bayview" Tower vs "Bayview" Diner) would otherwise slip through.
+        if strict:
+            return False
         distinctive = (tk(seed) - tt) & (tk(other) - tt)
         return any(df[t] <= 3 for t in distinctive)
 
@@ -170,14 +178,31 @@ def main():
             if wd["dist_m"] > 160:
                 new_lat, new_lng = wd["lat"], wd["lng"]
 
+        # Yelp: a real business at the pin whose name matches. Stricter (no
+        # single-token matches) because Yelp's density makes locality-token
+        # collisions likely. Pick the best name-matching candidate.
+        yelp_hit = None
+        if decided is None and b["id"] in yelp:
+            for c in yelp[b["id"]].get("candidates", []):
+                if name_match(b["name"], b["town"], c["name"], "business",
+                              b["type"], c.get("dist_m"), strict=True):
+                    yelp_hit = c
+                    break
+        if decided is None and yelp_hit:
+            decided = "yelp"
+            if yelp_hit["dist_m"] > 160 and move_trust(b["name"], b["town"], yelp_hit["name"], yelp_hit["dist_m"]):
+                new_lat, new_lng = yelp_hit["lat"], yelp_hit["lng"]
+
         verified = decided is not None
+        matched = {"osm": (osm or {}).get("name"), "wiki": (wd or {}).get("label"),
+                   "yelp": (yelp_hit or {}).get("name")}.get(decided)
+        matched_d = {"osm": (osm or {}).get("dist_m"), "wiki": (wd or {}).get("dist_m"),
+                     "yelp": (yelp_hit or {}).get("dist_m")}.get(decided)
         if verified:
             verify.append(b["id"])
             src_counts[decided] += 1
             if new_lat is not None:
-                moves.append((b["id"], new_lat, new_lng, b["name"],
-                              (osm["name"] if decided == "osm" else wd["label"]),
-                              (osm["dist_m"] if decided == "osm" else wd["dist_m"])))
+                moves.append((b["id"], new_lat, new_lng, b["name"], matched, matched_d))
             if decided == "osm" and osm.get("levels") and osm["levels"] != b["stories"]:
                 story_fixes.append((b["id"], osm["levels"], b["name"], b["stories"]))
 
@@ -188,6 +213,7 @@ def main():
             "osm_dist_m": (osm or {}).get("dist_m", ""), "osm_kind": (osm or {}).get("kind", ""),
             "wd_label": (wd or {}).get("label", ""), "wd_desc": (wd or {}).get("desc", ""),
             "wd_dist_m": (wd or {}).get("dist_m", ""),
+            "yelp_name": (yelp_hit or {}).get("name", ""), "yelp_dist_m": (yelp_hit or {}).get("dist_m", ""),
             "census_match": (cen or {}).get("match", ""), "census_dist_m": (cen or {}).get("dist_m", ""),
             "new_lat": new_lat or "", "new_lng": new_lng or "",
         })
@@ -200,11 +226,11 @@ def main():
     with open(out, "w") as f:
         w = f.write
         w("-- ============================================================\n")
-        w("-- 007 — Multi-source verification (OSM + Wikidata + Census)\n")
+        w("-- 007 — Multi-source verification (OSM + Wikidata + Census + Yelp)\n")
         w("-- Run in the Supabase SQL Editor. Safe to re-run. Supersedes 006.\n")
         w("--\n")
         w(f"-- {len(verify)} buildings confirmed BY NAME by an authoritative source\n")
-        w(f"--   OSM: {src_counts['osm']}   Wikidata: {src_counts['wiki']}\n")
+        w(f"--   OSM: {src_counts['osm']}   Wikidata: {src_counts['wiki']}   Yelp: {src_counts['yelp']}\n")
         w(f"-- {len(moves)} pins relocated to the matched feature; {len(story_fixes)} floor counts from OSM.\n")
         w("-- Precision-first: address-only matches do NOT verify (see scripts/sources_evidence.csv).\n")
         w("-- ============================================================\n\n")
@@ -238,7 +264,7 @@ def main():
         wr.writerows(evidence)
 
     print(f"total buildings: {len(data)}")
-    print(f"verified:        {len(verify)}   (osm {src_counts['osm']}, wikidata {src_counts['wiki']})")
+    print(f"verified:        {len(verify)}   (osm {src_counts['osm']}, wikidata {src_counts['wiki']}, yelp {src_counts['yelp']})")
     print(f"pins relocated:  {len(moves)}")
     print(f"floor fixes:     {len(story_fixes)}")
     print(f"migration:       {out}")

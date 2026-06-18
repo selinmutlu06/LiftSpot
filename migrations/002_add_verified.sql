@@ -1,4 +1,10 @@
 -- ============================================================
+-- ⚠️  SUPERSEDED — DO NOT RUN. Use migrations/003 instead.
+--     This is the old Nominatim-era audit (108 buildings). Migration 003
+--     re-does verification with Overpass (full-name match, 106 buildings,
+--     plus pin relocations) and resets the flag itself. Running this file
+--     reverts 003's work. Kept only for history.
+-- ============================================================
 -- 002 — Mark which buildings are real
 -- Run in the Supabase SQL Editor (after 001).
 --

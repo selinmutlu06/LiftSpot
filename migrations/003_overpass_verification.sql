@@ -8,7 +8,7 @@
 -- building by asking 'is there a real feature of this type at this spot?'.
 -- See scripts/verify_overpass.py and scripts/build_migration_003.py.
 --
--- Result: 202 buildings verified (was 108), 39 pins
+-- Result: 106 buildings verified (was 108), 38 pins
 -- relocated to their real OSM position, 2 story counts corrected.
 -- Precision-first: anything uncertain stays unverified (see scripts/overpass_review.csv).
 -- `verified` still means existence + location only — never elevator counts.
@@ -17,20 +17,14 @@
 -- 1) Reset and set the verified flag from the Overpass audit.
 update buildings set verified = false;
 update buildings set verified = true where id in (
-  3, 4, 5, 6, 7, 8, 9, 11, 13, 14, 15, 16, 18, 19, 20,
-  21, 22, 23, 24, 25, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42,
-  43, 44, 46, 47, 51, 53, 55, 59, 60, 61, 63, 64, 67, 70, 71,
-  74, 75, 76, 77, 88, 90, 92, 95, 96, 97, 99, 100, 101, 102, 103,
-  105, 109, 112, 114, 115, 116, 120, 122, 123, 124, 127, 128, 131, 141, 142,
-  150, 152, 154, 156, 159, 160, 162, 164, 166, 167, 168, 171, 172, 193, 196,
-  197, 203, 207, 208, 209, 210, 211, 212, 214, 216, 218, 219, 220, 224, 231,
-  232, 233, 234, 237, 242, 244, 247, 249, 250, 251, 253, 254, 256, 258, 259,
-  262, 264, 273, 275, 276, 277, 278, 279, 280, 283, 295, 302, 309, 313, 316,
-  317, 318, 319, 320, 324, 327, 328, 329, 330, 331, 334, 338, 360, 364, 371,
-  372, 374, 375, 377, 388, 396, 404, 428, 432, 436, 437, 438, 439, 442, 448,
-  456, 461, 462, 463, 467, 468, 473, 482, 483, 487, 488, 489, 496, 512, 534,
-  536, 541, 542, 557, 561, 563, 566, 574, 575, 581, 583, 584, 585, 587, 590,
-  592, 593, 594, 599, 612, 614, 663
+  3, 4, 6, 7, 8, 13, 14, 15, 16, 20, 21, 22, 23, 25, 28,
+  31, 32, 33, 34, 35, 38, 39, 42, 43, 46, 59, 61, 63, 74, 75,
+  76, 77, 88, 90, 95, 96, 97, 99, 100, 101, 109, 112, 120, 124, 127,
+  128, 131, 141, 150, 196, 197, 203, 207, 208, 209, 210, 212, 214, 216, 218,
+  219, 220, 224, 234, 244, 247, 249, 250, 251, 253, 254, 256, 262, 302, 309,
+  319, 328, 360, 372, 375, 377, 388, 404, 432, 436, 437, 438, 439, 442, 448,
+  512, 541, 542, 574, 575, 581, 583, 584, 585, 587, 590, 592, 593, 594, 599,
+  663
 );
 
 -- 2) Relocate pins whose seed coordinate was wrong, to the real OSM feature.
@@ -49,7 +43,6 @@ update buildings set lat = 40.774571, lng = -73.408304 where id = 61;  -- Newsda
 update buildings set lat = 40.5843, lng = -73.666412 where id = 75;  -- The Allegria Hotel -> Allegria Hotel (544m)
 update buildings set lat = 41.015123, lng = -71.993171 where id = 76;  -- Gurney's Montauk Resort & Seawater Spa -> Gurney's Inn Resort and Spa (207m)
 update buildings set lat = 41.101577, lng = -72.362572 where id = 88;  -- The Menhaden Hotel -> The Menhaden (291m)
-update buildings set lat = 40.729597, lng = -73.596746 where id = 92;  -- Nassau Community College — Library -> M Nassau Hall (601m)
 update buildings set lat = 40.707379, lng = -73.623207 where id = 109;  -- Nassau County District Court -> Nassau County District Court (403m)
 update buildings set lat = 40.655849, lng = -73.638204 where id = 120;  -- The Sutton at Rockville Centre -> Sutton House (858m)
 update buildings set lat = 40.938232, lng = -72.300259 where id = 196;  -- Topping Rose House -> Topping Rose House (888m)

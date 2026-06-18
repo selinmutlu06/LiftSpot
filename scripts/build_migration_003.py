@@ -58,6 +58,12 @@ def tk(s):
     return {t for t in re.split(r"[^a-z0-9]+", (s or "").lower()) if len(t) > 3} - STOP
 
 
+def ntk(s):
+    # Full-name tokens — town and generic words KEPT (used for name correspondence,
+    # not identity-distinctiveness). Only punctuation and tiny words are dropped.
+    return {t for t in re.split(r"[^a-z0-9]+", (s or "").lower()) if len(t) > 2}
+
+
 def dirs(s):
     return {t for t in re.split(r"[^a-z0-9]+", (s or "").lower())} & DIRS
 
@@ -68,6 +74,24 @@ def main():
     for x in rep:
         for t in tk(x["name"]):
             df[t] += 1
+
+    def name_match(x):
+        # Does OSM's feature genuinely correspond to THIS named building?
+        # Compares full names (town + generic words kept) so a building whose
+        # whole identity is its town survives ("Stony Brook University Hospital"
+        # == OSM's exact same name), while a fabricated name backed only by a
+        # nearby same-category feature does NOT ("Elmont Medical Center" sitting
+        # 32 m from an optometrist called "Elmont Eye Care" — 1 shared token of 3).
+        A, B = ntk(x["name"]), ntk(x["osm_name"])
+        if not A or not B:
+            return False
+        sim = len(A & B) / min(len(A), len(B))          # overlap vs the shorter name
+        shared = (tk(x["name"]) - tk(x["town"])) & (tk(x["osm_name"]) - tk(x["town"]))
+        rare_shared = any(df[t] <= 3 for t in shared)    # a shared *distinctive* token
+        # Trust a near-complete name match outright; a partial match only when the
+        # shared token is rare (so "...Bank" == "...Bank" or shared town words alone
+        # never qualify).
+        return sim >= 0.8 or (sim >= 0.5 and rare_shared)
 
     def move_ok(x):
         w = tk(x["name"]) - tk(x["town"])
@@ -84,35 +108,32 @@ def main():
             return True
         return False
 
+    # PRECISION-FIRST: a building is verified ONLY when OSM confirms it by NAME.
+    # We dropped the earlier "type-at-pin" rule (verify because *some* feature of
+    # the right category is near the pin) — it laundered fabricated names like
+    # "Elmont Medical Center" into "verified" off an unrelated neighbour. A real
+    # building OSM tags differently or unnamed now stays honestly unverified.
     verify_keep, verify_move, review = [], [], []
     for x in rep:
         v = x["verdict"]
-        if v == "confirmed" and x["name_ok"]:
-            verify_keep.append(x)
-        elif v == "confirmed" and not x["name_ok"]:
-            # type-at-pin: a feature of the right type sits on the seed pin.
-            # Safe to verify UNLESS OSM records a genuinely different identity —
-            # i.e. both names carry distinctive (non-generic, non-town) tokens
-            # that don't overlap. That flags brand clashes like a seed "Courtyard
-            # Marriott" sitting on OSM's "La Quinta Inn", while still trusting
-            # unnamed buildings and benign rephrasings ("Mineola Village Hall" vs
-            # "Village of Mineola", where neither side has a distinctive token).
-            seed_id = tk(x["name"]) - tk(x["town"])
-            osm_id = tk(x["osm_name"]) - tk(x["town"])
-            conflict = seed_id and osm_id and not (seed_id & osm_id)
-            (review if conflict else verify_keep).append(x)
-        elif v == "relocate" and move_ok(x):
-            verify_move.append(x)
+        if v == "confirmed" and name_match(x):
+            verify_keep.append(x)                 # named match at the pin: keep coords
+        elif v == "relocate" and name_match(x) and move_ok(x):
+            verify_move.append(x)                 # named match nearby: snap to it
         else:
             review.append(x)
 
     verify_ids = sorted(x["id"] for x in verify_keep + verify_move)
     moves = sorted(verify_move, key=lambda x: x["id"])
-    # story fixes: verified + name-matched + OSM levels present and different
+    # story fixes: OSM building:levels is authoritative for the building it sits on.
+    # Trust it when we matched the building by name (verified) OR when the OSM
+    # feature is essentially on the seed pin (<=50 m) — an exact-location match like
+    # "585 Stewart Ave" -> "585 Stewart Avenue". (osm_levels is only ever recorded
+    # for name-matched features, so this never adopts a stray neighbour's height.)
     verify_set = {x["id"] for x in verify_keep + verify_move}
     story_fixes = sorted(
-        (x for x in rep if x["id"] in verify_set and x["name_ok"]
-         and x["osm_levels"] and x["osm_levels"] != x["stories"]),
+        (x for x in rep if x["osm_levels"] and x["osm_levels"] != x["stories"]
+         and (x["id"] in verify_set or (x["dist_m"] is not None and x["dist_m"] <= 50))),
         key=lambda x: x["id"])
 
     # ---- write the migration ----

@@ -72,9 +72,12 @@ def main():
         for t in tk(b["name"]):
             df[t] += 1
 
-    # Optional Yelp evidence (scripts/yelp_report.json), keyed by building id.
-    yelp_path = os.path.join(ROOT, "scripts", "yelp_report.json")
-    yelp = {int(k): v for k, v in json.load(open(yelp_path)).items()} if os.path.exists(yelp_path) else {}
+    # Optional commercial-POI evidence (Yelp / Foursquare), keyed by building id.
+    def _load(name):
+        p = os.path.join(ROOT, "scripts", name)
+        return {int(k): v for k, v in json.load(open(p)).items()} if os.path.exists(p) else {}
+    yelp = _load("yelp_report.json")
+    fsq = _load("fsq_report.json")
 
     STREET = {"road", "rd", "street", "st", "avenue", "ave", "boulevard", "blvd",
               "lane", "ln", "drive", "dr", "highway", "hwy", "turnpike", "tpke",
@@ -178,26 +181,33 @@ def main():
             if wd["dist_m"] > 160:
                 new_lat, new_lng = wd["lat"], wd["lng"]
 
-        # Yelp: a real business at the pin whose name matches. Stricter (no
-        # single-token matches) because Yelp's density makes locality-token
-        # collisions likely. Pick the best name-matching candidate.
-        yelp_hit = None
-        if decided is None and b["id"] in yelp:
-            for c in yelp[b["id"]].get("candidates", []):
+        # Commercial POIs (Yelp, Foursquare): a real business at the pin whose
+        # name matches. Stricter (no single-token matches) because their density
+        # makes locality-token collisions likely. Pick the best matching candidate.
+        def biz_hit(report):
+            if b["id"] not in report:
+                return None
+            for c in report[b["id"]].get("candidates", []):
                 if name_match(b["name"], b["town"], c["name"], "business",
                               b["type"], c.get("dist_m"), strict=True):
-                    yelp_hit = c
+                    return c
+            return None
+
+        biz = None
+        if decided is None:
+            for src, rep in (("yelp", yelp), ("fsq", fsq)):
+                biz = biz_hit(rep)
+                if biz:
+                    decided = src
+                    if biz["dist_m"] > 160 and move_trust(b["name"], b["town"], biz["name"], biz["dist_m"]):
+                        new_lat, new_lng = biz["lat"], biz["lng"]
                     break
-        if decided is None and yelp_hit:
-            decided = "yelp"
-            if yelp_hit["dist_m"] > 160 and move_trust(b["name"], b["town"], yelp_hit["name"], yelp_hit["dist_m"]):
-                new_lat, new_lng = yelp_hit["lat"], yelp_hit["lng"]
 
         verified = decided is not None
         matched = {"osm": (osm or {}).get("name"), "wiki": (wd or {}).get("label"),
-                   "yelp": (yelp_hit or {}).get("name")}.get(decided)
+                   "yelp": (biz or {}).get("name"), "fsq": (biz or {}).get("name")}.get(decided)
         matched_d = {"osm": (osm or {}).get("dist_m"), "wiki": (wd or {}).get("dist_m"),
-                     "yelp": (yelp_hit or {}).get("dist_m")}.get(decided)
+                     "yelp": (biz or {}).get("dist_m"), "fsq": (biz or {}).get("dist_m")}.get(decided)
         if verified:
             verify.append(b["id"])
             src_counts[decided] += 1
@@ -213,7 +223,7 @@ def main():
             "osm_dist_m": (osm or {}).get("dist_m", ""), "osm_kind": (osm or {}).get("kind", ""),
             "wd_label": (wd or {}).get("label", ""), "wd_desc": (wd or {}).get("desc", ""),
             "wd_dist_m": (wd or {}).get("dist_m", ""),
-            "yelp_name": (yelp_hit or {}).get("name", ""), "yelp_dist_m": (yelp_hit or {}).get("dist_m", ""),
+            "biz_name": (biz or {}).get("name", ""), "biz_dist_m": (biz or {}).get("dist_m", ""),
             "census_match": (cen or {}).get("match", ""), "census_dist_m": (cen or {}).get("dist_m", ""),
             "new_lat": new_lat or "", "new_lng": new_lng or "",
         })
@@ -230,7 +240,7 @@ def main():
         w("-- Run in the Supabase SQL Editor. Safe to re-run. Supersedes 006.\n")
         w("--\n")
         w(f"-- {len(verify)} buildings confirmed BY NAME by an authoritative source\n")
-        w(f"--   OSM: {src_counts['osm']}   Wikidata: {src_counts['wiki']}   Yelp: {src_counts['yelp']}\n")
+        w(f"--   OSM: {src_counts['osm']}   Wikidata: {src_counts['wiki']}   Yelp: {src_counts['yelp']}   Foursquare: {src_counts['fsq']}\n")
         w(f"-- {len(moves)} pins relocated to the matched feature; {len(story_fixes)} floor counts from OSM.\n")
         w("-- Precision-first: address-only matches do NOT verify (see scripts/sources_evidence.csv).\n")
         w("-- ============================================================\n\n")
@@ -264,7 +274,7 @@ def main():
         wr.writerows(evidence)
 
     print(f"total buildings: {len(data)}")
-    print(f"verified:        {len(verify)}   (osm {src_counts['osm']}, wikidata {src_counts['wiki']}, yelp {src_counts['yelp']})")
+    print(f"verified:        {len(verify)}   (osm {src_counts['osm']}, wikidata {src_counts['wiki']}, yelp {src_counts['yelp']}, fsq {src_counts['fsq']})")
     print(f"pins relocated:  {len(moves)}")
     print(f"floor fixes:     {len(story_fixes)}")
     print(f"migration:       {out}")

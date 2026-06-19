@@ -13,3 +13,5 @@ scripts/.google_key
 google_report.json
 scripts/.yelp_key
 yelp_report.json
+scripts/.fsq_key
+fsq_report.json

@@ -37,6 +37,10 @@ STOP = {
     "department", "services", "institute", "campus", "branch", "north", "south",
     "east", "west", "saint", "national", "regional", "community", "public", "bank",
     "apartments", "arts", "station", "terminal",
+    # Region words — on Long Island these are everywhere and never identify a
+    # specific building ("Catholic Charities Long Island" != "Mosquito Authority
+    # - Long Island"). Treated like town words.
+    "long", "island", "shore", "fork", "nassau", "suffolk",
 }
 DIRS = {"north", "south", "east", "west", "northern", "southern", "eastern", "western"}
 
@@ -105,7 +109,7 @@ def main():
             return True
         return not landform
 
-    def name_match(seed, town, other, kind="", stype="", dist_m=None, strict=False):
+    def name_match(seed, town, other, kind="", stype="", dist_m=None, strict=False, crowd=False):
         A, B = ntk(seed), ntk(other)
         if not A or not B or is_street(other):
             return False
@@ -120,6 +124,20 @@ def main():
         ov = A & B
         if not ov:
             return False
+        # Crowd-sourced sources (Yelp/Foursquare) carry fuzzy, user-submitted
+        # entries, so require >=2 shared DISTINCTIVE words (non-generic, non-town).
+        # Accepts real names like "Schweiger Dermatology Group" / "Zwanger-Pesiri
+        # Radiology"; rejects "Elmont Medical Center" -> "Elmont Medical Care
+        # Center" (0 distinctive shared) and "Bayview Tower" -> "Bayview Diner" (1).
+        if crowd:
+            if dist_m is not None and dist_m > 800:   # crowd entries far from the pin are too shaky
+                return False
+            # Need >=2 shared distinctive words AND high overall name overlap, so
+            # two different buildings in the same district ("Half Hollow Hills
+            # Community Library" vs "...High School") don't match on the district.
+            shared_distinctive = (tk(seed) - tt) & (tk(other) - tt)
+            jac = len(ov) / len(A | B)
+            return len(shared_distinctive) >= 2 and jac >= 0.6
         jac = len(ov) / len(A | B)
         if jac >= 0.85:                              # near-exact full name: trust it
             return True
@@ -189,7 +207,7 @@ def main():
                 return None
             for c in report[b["id"]].get("candidates", []):
                 if name_match(b["name"], b["town"], c["name"], "business",
-                              b["type"], c.get("dist_m"), strict=True):
+                              b["type"], c.get("dist_m"), crowd=True):
                     return c
             return None
 

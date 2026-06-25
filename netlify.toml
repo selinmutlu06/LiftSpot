@@ -1,0 +1,8 @@
+# LiftSpot is a zero-build static site. This file just tells Netlify where the
+# static files live and where to find the serverless functions (the voice-token
+# minter that keeps the ElevenLabs API key off the browser).
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"

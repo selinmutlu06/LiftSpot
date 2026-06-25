@@ -1,6 +1,9 @@
 # Local Netlify folder
 .netlify
 
+# Local secrets for `netlify dev` (ElevenLabs key, etc.) — never commit
+.env
+
 # OS / editor cruft
 .DS_Store
 

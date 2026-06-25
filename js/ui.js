@@ -5,6 +5,7 @@ import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocati
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
 import { initResources } from './resources.js';
+import { initVoice } from './voice.js';
 import { trapFocus } from './focus.js';
 
 const $ = id => document.getElementById(id);
@@ -446,6 +447,13 @@ function boot() {
     btn: $('resBtn'), modal: $('resModal'), scrim: $('resScrim'),
     closeBtn: $('resClose'), body: $('resBody'),
   });
+
+  initVoice({
+    btn: $('voiceBtn'), status: $('voiceStatus'),
+    overlay: $('voiceOverlay'), cab: $('voiceCab'),
+    statusText: $('voiceStatusText'), caption: $('voiceCaption'),
+    endBtn: $('voiceEnd'), closeBtn: $('voiceClose'),
+  }, { toast });
 
   $('radiusRange').addEventListener('input', e => {
     state.radius = +e.target.value;

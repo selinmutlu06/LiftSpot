@@ -35,7 +35,7 @@ export function typeIcon(t, size = 16) {
   return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
 }
 
-export const maxStories = () => BUILDINGS.reduce((m, b) => Math.max(m, b.stories), 20);
+export const maxStories = () => BUILDINGS.reduce((m, b) => Math.max(m, b.stories ?? 0), 20);
 
 export let BUILDINGS = [];
 
@@ -66,12 +66,14 @@ export const rated = b => Number(b.rating) > 0;
 // location (see migrations/003). It covers existence/location ONLY.
 export const verified = b => b.verified === true;
 
-// Floor count is a confirmed fact only where OSM building:levels backs it
-// (migrations/005); otherwise it's a community estimate, shown as "· est".
+// Floor count is a confirmed fact only where a name-matched OSM building
+// polygon carries building:levels (migrations/008). A non-null unverified value
+// comes from an unnamed OSM polygon at the point ("· est"); NULL means no
+// source has the number and the UI shows "?" instead of a guess.
 export const storiesVerified = b => b.stories_verified === true;
 
-// Elevator counts have NO authoritative public source, so they are never a
-// confirmed fact — always a community estimate, on every building.
+// Elevator counts have NO authoritative public source, so they are NULL until
+// the community reports them — never a fabricated number.
 
 export const dist = (a, b) => {
   const R = 3959, dLat = (b.lat - a.lat) * Math.PI / 180, dLng = (b.lng - a.lng) * Math.PI / 180;
@@ -118,7 +120,7 @@ export function smartScore(b, q) {
     }
   }
   const want = parseStoryCount(ql);
-  if (want !== null) {
+  if (want !== null && b.stories != null) {
     if (b.stories === want) score += 8;
     else if (Math.abs(b.stories - want) === 1) score += 2;
   }
@@ -130,8 +132,9 @@ export function smartScore(b, q) {
 function applyChipFilters(arr) {
   if (state.types.size) arr = arr.filter(b => state.types.has(b.type));
   if (state.minStories > 0) {
+    // Buildings with an unknown floor count can't satisfy a stories filter.
     if (state.exactStories) arr = arr.filter(b => b.stories === state.minStories);
-    else arr = arr.filter(b => b.stories >= state.minStories);
+    else arr = arr.filter(b => b.stories != null && b.stories >= state.minStories);
   }
   return arr;
 }

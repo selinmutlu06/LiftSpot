@@ -92,7 +92,7 @@ function renderList() {
 
   list.innerHTML = items.map(b => `
     <div class="card${b.id === state.activeId ? ' active' : ''}" data-id="${b.id}" role="listitem" tabindex="0"
-      aria-label="${esc(`${b.name}, ${b.type} in ${b.town}, ${storiesVerified(b) ? `${b.stories} stories` : `about ${b.stories} stories estimated`}, about ${b.elevators} elevators estimated, ${rated(b) ? `rated ${b.rating} of 5` : 'no reviews yet'}`)}">
+      aria-label="${esc(`${b.name}, ${b.type} in ${b.town}, ${b.stories == null ? 'floor count unknown' : storiesVerified(b) ? `${b.stories} stories` : `about ${b.stories} stories estimated`}, ${b.elevators == null ? 'elevator count not yet reported' : `about ${b.elevators} elevators estimated`}, ${rated(b) ? `rated ${b.rating} of 5` : 'no reviews yet'}`)}">
       <div class="top">
         <div style="min-width:0">
           <div class="bname">${esc(b.name)}${verified(b) ? '' : '<span class="dot-unverified" title="Unverified building" aria-hidden="true"></span>'}</div>
@@ -104,8 +104,8 @@ function renderList() {
       </div>
       <div class="addr">${esc(b.addr)}</div>
       <div class="meta">
-        <span><span class="led">${b.stories}</span><span class="u">stories${storiesVerified(b) ? '' : ' · est'}</span></span>
-        <span><span class="led">~${b.elevators}</span><span class="u">elev · est</span></span>
+        <span><span class="led">${b.stories ?? '?'}</span><span class="u">stories${b.stories == null || storiesVerified(b) ? '' : ' · est'}</span></span>
+        <span><span class="led">${b.elevators == null ? '?' : `~${b.elevators}`}</span><span class="u">${b.elevators == null ? 'elev' : 'elev · est'}</span></span>
         ${b._d != null ? `<span><span class="led">${b._d.toFixed(1)}</span><span class="u">mi</span></span>` : ''}
       </div>
     </div>`).join('');

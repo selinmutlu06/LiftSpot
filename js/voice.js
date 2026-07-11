@@ -45,9 +45,9 @@ async function findBuildings({ query, limit }) {
       type: b.type,
       town: b.town,
       address: b.addr,
-      floors: b.stories,
+      floors: b.stories,                      // null → no source has the count; say "unknown"
       floors_confirmed: storiesVerified(b),   // false → it's an estimate, say "about"
-      elevators_estimate: b.elevators,        // ALWAYS an estimate, never exact
+      elevators_estimate: b.elevators,        // null until the community reports one
       verified: verified(b),                  // false → not independently confirmed yet
       rating: rated(b) ? Number(b.rating) : null,  // null → "no reviews yet"
       review_count: reviews.length,
@@ -61,7 +61,7 @@ async function findBuildings({ query, limit }) {
     buildings,
     reminder: ranked.length === 0
       ? 'No building in the LiftSpot directory matched this query. Do not invent one.'
-      : 'elevators_estimate is always a community estimate (say "about"). floors are an estimate unless floors_confirmed is true. If verified is false, the building is not independently confirmed. rating is null when there are no real reviews.',
+      : 'A null floors or elevators_estimate means nobody has the number — say it is unknown, never guess one. Non-null elevators_estimate is a community estimate (say "about"). floors are an estimate unless floors_confirmed is true. If verified is false, the building is not independently confirmed. rating is null when there are no real reviews.',
   });
 }
 

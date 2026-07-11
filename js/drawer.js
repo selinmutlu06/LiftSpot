@@ -102,12 +102,17 @@ export async function openBuilding(id) {
 
 function renderDataStrip(b) {
   const d = b._dCached;
-  // Stories are a fact only when OSM building:levels confirms them; otherwise an
-  // estimate. Elevator counts have no public source, so they are ALWAYS a
-  // community estimate (shown as "~N · est"), never presented as fact.
+  // Stories are a fact only when a name-matched OSM building polygon carries
+  // building:levels; an unnamed polygon's tag shows as "· est"; NULL means no
+  // source has the number, so we show "?" — never an invented count. Elevator
+  // counts have no public source anywhere: NULL until the community reports one.
   const sv = storiesVerified(b);
-  const stories = `<div class="cell${sv ? '' : ' est'}"><span class="v led led-lit">${b.stories}</span><span class="k">stories${sv ? '' : ' · est'}</span></div>`;
-  const elevators = `<div class="cell est"><span class="v led led-lit">~${b.elevators}</span><span class="k">elevators · est</span></div>`;
+  const stories = b.stories == null
+    ? `<div class="cell est"><span class="v led">?</span><span class="k">stories · unknown</span></div>`
+    : `<div class="cell${sv ? '' : ' est'}"><span class="v led led-lit">${b.stories}</span><span class="k">stories${sv ? '' : ' · est'}</span></div>`;
+  const elevators = b.elevators == null
+    ? `<div class="cell est"><span class="v led">?</span><span class="k">elevators · unreported</span></div>`
+    : `<div class="cell est"><span class="v led led-lit">~${b.elevators}</span><span class="k">elevators · est</span></div>`;
   els.dataStrip.innerHTML = `${stories}${elevators}` +
     (d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : '');
 }

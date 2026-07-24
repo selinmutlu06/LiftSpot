@@ -68,6 +68,36 @@ def full_name_in(name, title):
     return n and n in t
 
 
+# Words that don't identify a building on their own ("D Building", "Hall 2",
+# "Holiday Inn") — used to decide how much geography a title must confirm.
+GENERIC = {"building", "buildings", "hall", "halls", "school", "room", "house",
+           "center", "tower", "annex", "wing", "block", "main", "north",
+           "south", "east", "west", "new", "old", "life", "science", "sciences",
+           "business", "academic", "gym", "gymnasium", "generator", "inn",
+           "hotel", "motel", "apartment", "apartments", "library", "plaza",
+           "ave", "st", "rd", "blvd", "dr", "ln", "pkwy", "hwy", "rte"}
+
+
+def strong_name(name):
+    """Distinctive enough that a name match alone (plus any NY cue) is safe."""
+    toks = sig_tokens(name)
+    words = [t for t in toks if t.isalpha() and len(t) > 1 and t not in GENERIC]
+    digits = [t for t in toks if t.isdigit()]
+    return len(words) >= 2 or (bool(digits) and len(words) >= 1)
+
+
+def geo_ok(b, title):
+    """The title must place the video: the building's own town for weak names;
+    any NY/Long Island cue is enough for strong ones. Kills 'Sun Valley' (Idaho)
+    and 'Holiday Inn' (anywhere) style false matches."""
+    tt = set(norm_tokens(title))
+    town_toks = [t for t in sig_tokens(b.get("town", "")) if t]
+    town_in = bool(town_toks) and all(t in tt for t in town_toks)
+    if strong_name(b["name"]):
+        return town_in or bool(tt & {"ny", "york", "island"})
+    return town_in
+
+
 def fetch_buildings():
     req = urllib.request.Request(
         f"{SUPABASE}/rest/v1/buildings?select=id,name,town,type&order=id",
@@ -98,7 +128,7 @@ def classify(b, entries):
         hit = {"title": title, "url": e.get("url"),
                "channel": e.get("channel"), "views": e.get("view_count"),
                "score": round(score, 2)}
-        if full_name_in(b["name"], title) or score >= 0.8:
+        if (full_name_in(b["name"], title) or score >= 0.8) and geo_ok(b, title):
             confirmed.append(hit)
         elif score >= 0.45:
             review.append(hit)
@@ -202,9 +232,12 @@ def emit_sql():
         if r.get("error"):
             continue
         conf = r["confirmed"]
+        # confirmed=0 with near-misses pending review: we can't honestly claim
+        # "none found", so store NULL — no claim, no badge, until a human looks.
+        n = len(conf) if conf or not r["review"] else "null"
         url = conf[0]["url"].replace("'", "''") if conf else None
         url_sql = f"'{url}'" if url else "null"
-        lines.append(f"update buildings set yt_videos = {len(conf)}, yt_url = {url_sql}, yt_checked = '{date}' where id = {bid};")
+        lines.append(f"update buildings set yt_videos = {n}, yt_url = {url_sql}, yt_checked = '{date}' where id = {bid};")
     lines += ["", "-- Sanity check:",
               "select count(*) filter (where yt_checked is not null) as checked,",
               "       count(*) filter (where yt_videos = 0)          as unfilmed,",

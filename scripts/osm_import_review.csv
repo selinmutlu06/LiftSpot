@@ -1,0 +1,96 @@
+id,osm,name,type,town,stories,yt_videos
+1000,node/10900676795,Brunswick Hospital Center,Medical,Amityville,,0
+1001,relation/19345227,South Woods Middle School,Education,Syosset,2,0
+1002,relation/6071933,Piping Rock Club Clubhouse,Office,Locust Valley,3,0
+1003,relation/6892290,Eastport-South Manor Jr-Sr High School,Education,Manorville,2,0
+1004,relation/6924270,Saint Joseph's Roman Catholic Church,Education,Babylon,2,0
+1005,relation/7833945,Yeshivath Gesher,Education,Lawrence,3,0
+1006,relation/7943713,Plainview-Old Bethpage John F. Kennedy High School,Education,Plainview,2,0
+1007,relation/8047729,"Canon USA, Inc.",Office,Melville,4,0
+1008,way/1051639009,Memorial Sloan Kettering Cancer Center – Nassau,Medical,Uniondale,,0
+1009,way/1070358510,Rambam Mesivta,Education,Lawrence,3,0
+1010,way/1290787542,East Neck Nursing and Rehabilitation Center,Medical,West Babylon,,0
+1011,way/1304131318,Buiding 2,Residential,Uniondale,3,0
+1012,way/1374522512,FairField Metro,Residential,Floral Park,4,0
+1013,way/1540044171,North District Lofts,Residential,North Bay Shore,5,0
+1014,way/311248066,Northport Public Library,Library,Northport,3,9
+1015,way/311789750,Northport Veterans Hospital,Medical,Northport,,0
+1016,way/316472413,Rockville Centre Public Library,Library,Rockville Centre,3,4
+1017,way/320700600,Department of Veterans Affairs Medical Center - Bldg 200,Education,Northport,4,0
+1018,way/323405389,Stony Brook Eastern Long Island Hospital,Medical,Greenport,,0
+1019,way/328645758,T.Rowe Price,Office,Garden City,4,0
+1020,way/328660197,Orange Parking Deck,Office,Uniondale,4,4
+1021,way/337012829,Botel,Hotel,Fire Island Pines,3,0
+1022,way/346331997,Fire Island Lighthouse Visitors Center,Government,Robert Moses State Park,2,0
+1023,way/346332003,Fresnel Lens Building,Government,Kismet,2,0
+1024,way/364529078,Mount Sinai South Nassau,Medical,Oceanside,,0
+1025,way/374512162,Sun Valley,Residential,Valley stream,6,0
+1026,way/376164547,Ammann College,Residential,Stony Brook,4,0
+1027,way/376164548,Gray College,Residential,Stony Brook,4,0
+1028,way/381329250,Wyandanch Village Apartments,Residential,Wyandanch,5,0
+1029,way/405039783,Portledge Lower School,Education,Locust Valley,3,0
+1030,way/405889147,Locust Valley Library,Library,Locust Valley,3,0
+1031,way/438644419,Portledge Upper School,Education,Matinecock,3,0
+1032,way/438644423,Portledge Middle School,Education,Matinecock,3,0
+1033,way/438894202,Glen Pearsall,Residential,Glen Cove,5,0
+1034,way/443696586,The Tides Motor Inn,Hotel,Locust Valley,3,0
+1035,way/451743426,Five Towns Inn,Hotel,Lawrence,3,0
+1036,way/463375670,Sayan Center at TSCW,Entertainment,East Shoreham,2,0
+1037,way/464725496,Holiday Inn,Hotel,Centereach,7,0
+1038,way/464749711,1377 Motor Parkway,Office,Islandia,4,0
+1039,way/468059944,NYU Langone Hospital-Suffolk,Medical,East Patchogue,4,0
+1040,way/468450014,Garden City Center,Office,Garden City,5,1
+1041,way/469775537,Natural Science Bulding,Education,Old Westbury,4,0
+1042,way/470065187,Horton Hall,Education,Melville,2,1
+1043,way/470067577,Lupton Hall,Education,East Farmingdale,2,0
+1044,way/471655742,Montauk Tower,Residential,Montauk,8,0
+1045,way/473183665,Roger Memorial Library,Library,Southampton,2,0
+1046,way/49325425,Howitt Middle School - East Building,Education,Farmingdale,3,0
+1047,way/49332847,Thompson Hall,Education,East Farmingdale,2,0
+1048,way/49332853,Whitman Hall,Education,East Farmingdale,2,0
+1049,way/49415109,Saint Catherine of Sienna Medical Center,Medical,Smithtown,,4
+1050,way/49419411,Good Samaritan Hospital Medical Center,Medical,West Islip,,0
+1051,way/49589817,Nassau County Supreme Court,Legal,Mineola,6,0
+1052,way/49789940,Southside Hospital,Medical,Bay Shore,,1
+1053,way/526596642,The Grand Rehabilitation and Nursing,Medical,Manhasset,,0
+1054,way/543402791,Suffolk County Police 4th Precinct,Government,Hauppauge,2,0
+1055,way/545086368,Marshall Hall,Education,Old Westbury,5,0
+1056,way/545086369,NYIT Office of Residence Life / Bear Lair,Education,Old Westbury,2,0
+1057,way/545086371,Bolivar Hall,Education,Old Westbury,5,0
+1058,way/545086372,Kennedy Hall,Education,Old Westbury,5,0
+1059,way/554198869,One Kensington Gate,Residential,Great Neck,3,0
+1060,way/554559361,Maple Crest,Residential,Valley Stream,3,0
+1061,way/562153241,Northwell Health Urgent Care,Medical,Mineola,,0
+1062,way/563197389,The President Apartments,Residential,Mineola,5,0
+1063,way/564002095,"The Town Agency, Inc.",Office,Garden City,3,0
+1064,way/564421702,1103 Stewart Avenue,Office,Garden City,3,2
+1065,way/565162738,595 Stewart AVenue,Office,Uniondale,7,3
+1066,way/589705053,Springfield Apartment,Residential,Garden City,3,0
+1067,way/589708643,Shelter Rock Public Library,Library,Albertson,2,0
+1068,way/590248743,1101 Stewart Avenue,Office,Garden City,3,1
+1069,way/590272195,Kahn Discovery Center,Education,Brookville,2,2
+1070,way/590914687,Roosevelt Hall,Education,Old Westbury,5,0
+1071,way/590914688,King Hall,Education,Old Westbury,5,0
+1072,way/590914689,Anthony Hall,Education,Old Westbury,5,0
+1073,way/595698586,Wisser Memorial Library,Education,Wheatley,4,2
+1074,way/60911990,Social and Behavioral Sciences,Education,Stony Brook,7,0
+1075,way/60911992,Light Engineering,Education,Stony Brook,2,5
+1076,way/60922552,Health Sciences Center,Office,South Setauket,18,0
+1077,way/60922564,Basic Sciences Tower,Education,South Setauket,18,0
+1078,way/60922577,Mount College,Residential,Stony Brook,4,1
+1079,way/60922585,Hendrix College,Residential,Stony Brook,4,0
+1080,way/613239296,Chelsea Plaza,Residential,Great Neck,4,0
+1081,way/613239307,1 Townhouse Place,Residential,Great Neck,4,0
+1082,way/613559155,Maestro,Office,Great Neck,8,0
+1083,way/662724581,Nassau University Medical Center,Medical,East Meadow,,0
+1084,way/722379477,Harbor Landing at Garvies Point,Residential,Glen Cove Landing,5,0
+1085,way/750303419,Village Square,Residential,Glen Cove,6,0
+1086,way/751073730,Portledge Commons,Education,Matinecock,3,0
+1087,way/784886573,Organically Yours,Office,Northport,3,0
+1088,way/803143324,Physical Fitness Center,Office,Mineola,3,0
+1089,way/83397454,Peconic Bay Medical Center,Medical,Riverhead,,0
+1090,way/87821725,Shulamith School for Girls,Education,Cedarhurst,3,0
+1091,way/88646092,NYU Langone Hospital Long Island,Medical,Mineola,,0
+1092,way/961194668,Horizon of Westbury,Residential,Westbury,4,0
+1093,way/970511875,Hagerman Burn Building,Office,Hagerman,3,0
+1094,way/970511876,South Country Ambulance Company - Station 1,Office,Bellport,4,0

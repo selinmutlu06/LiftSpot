@@ -10,11 +10,14 @@ create table if not exists buildings (
   addr       text not null,
   lat        double precision not null,
   lng        double precision not null,
-  stories    int not null,
-  elevators  int not null,
+  stories    int,           -- NULL = no source has the number (migrations/008)
+  elevators  int,           -- NULL until the community reports one; no public source exists (migrations/008)
   rating     numeric(3,1) not null default 0,
   verified   boolean not null default false,  -- OSM-confirmed real building (see migrations/003)
-  stories_verified boolean not null default false  -- floor count confirmed by OSM building:levels (migrations/005); else it's an estimate
+  stories_verified boolean not null default false,  -- floor count confirmed by OSM building:levels (migrations/005); else it's an estimate
+  yt_videos  integer,       -- confirmed YouTube elevator videos as of yt_checked (migrations/010)
+  yt_url     text,          -- most-viewed confirmed video
+  yt_checked date           -- when we searched; 0 videos means "none found as of this date"
 );
 
 create table if not exists reviews (

@@ -79,7 +79,9 @@ export const storiesVerified = b => b.stories_verified === true;
 // "Unfilmed" = our YouTube search (scripts/check_youtube.py) found no video of
 // this building's elevators as of yt_checked. Absence can't be proven, so the
 // UI always dates the claim ("none found as of ...") — never "never filmed".
-export const unfilmed = b => b.yt_checked != null && (b.yt_videos ?? 0) === 0;
+// yt_videos NULL with yt_checked set = ambiguous near-miss matches pending
+// human review: no claim in either direction, so no badge.
+export const unfilmed = b => b.yt_checked != null && b.yt_videos === 0;
 export const ytChecked = b => b.yt_checked != null;
 
 export const dist = (a, b) => {

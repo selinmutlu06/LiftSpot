@@ -121,9 +121,10 @@ function renderDataStrip(b) {
 // YouTube footage status (migrations/010). We searched, so we can only say what
 // we FOUND as of the check date — "no footage found", never "never filmed".
 function footageRow(b) {
-  if (b.yt_checked == null) return '';
+  // yt_videos NULL = either never checked or only ambiguous matches — no claim.
+  if (b.yt_checked == null || b.yt_videos == null) return '';
   const when = new Date(b.yt_checked + 'T00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-  if ((b.yt_videos ?? 0) === 0) {
+  if (b.yt_videos === 0) {
     return `<div class="footage none"><span class="pill-first">Be the first</span>
       No YouTube videos of these elevators found as of ${when}. Film yours and claim it.</div>`;
   }

@@ -44,6 +44,7 @@ export const state = {
   types: new Set(),
   minStories: 0,
   exactStories: false,
+  firstOnly: false,
   userLoc: null,
   activeId: null,
   searchMode: 'text',     // 'text' | 'smart' | 'location'
@@ -74,6 +75,12 @@ export const storiesVerified = b => b.stories_verified === true;
 
 // Elevator counts have NO authoritative public source, so they are NULL until
 // the community reports them — never a fabricated number.
+
+// "Unfilmed" = our YouTube search (scripts/check_youtube.py) found no video of
+// this building's elevators as of yt_checked. Absence can't be proven, so the
+// UI always dates the claim ("none found as of ...") — never "never filmed".
+export const unfilmed = b => b.yt_checked != null && (b.yt_videos ?? 0) === 0;
+export const ytChecked = b => b.yt_checked != null;
 
 export const dist = (a, b) => {
   const R = 3959, dLat = (b.lat - a.lat) * Math.PI / 180, dLng = (b.lng - a.lng) * Math.PI / 180;
@@ -131,6 +138,7 @@ export function smartScore(b, q) {
 
 function applyChipFilters(arr) {
   if (state.types.size) arr = arr.filter(b => state.types.has(b.type));
+  if (state.firstOnly) arr = arr.filter(unfilmed);
   if (state.minStories > 0) {
     // Buildings with an unknown floor count can't satisfy a stories filter.
     if (state.exactStories) arr = arr.filter(b => b.stories === state.minStories);

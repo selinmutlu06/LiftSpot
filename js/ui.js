@@ -1,6 +1,6 @@
 /* Entry: filters (button plate + floor indicator), list, states, toasts, wiring. */
 
-import { TYPES, typeIcon, maxStories, state, BUILDINGS, filtered, stars, rated, verified, storiesVerified, loadBuildings } from './data.js';
+import { TYPES, typeIcon, maxStories, state, BUILDINGS, filtered, stars, rated, verified, storiesVerified, unfilmed, loadBuildings } from './data.js';
 import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker, removeUserMarker, setMapTheme } from './map.js';
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
@@ -92,7 +92,7 @@ function renderList() {
 
   list.innerHTML = items.map(b => `
     <div class="card${b.id === state.activeId ? ' active' : ''}" data-id="${b.id}" role="listitem" tabindex="0"
-      aria-label="${esc(`${b.name}, ${b.type} in ${b.town}, ${b.stories == null ? 'floor count unknown' : storiesVerified(b) ? `${b.stories} stories` : `about ${b.stories} stories estimated`}, ${b.elevators == null ? 'elevator count not yet reported' : `about ${b.elevators} elevators estimated`}, ${rated(b) ? `rated ${b.rating} of 5` : 'no reviews yet'}`)}">
+      aria-label="${esc(`${b.name}, ${b.type} in ${b.town}, ${b.stories == null ? 'floor count unknown' : storiesVerified(b) ? `${b.stories} stories` : `about ${b.stories} stories estimated`}, ${b.elevators == null ? 'elevator count not yet reported' : `about ${b.elevators} elevators estimated`}, ${rated(b) ? `rated ${b.rating} of 5` : 'no reviews yet'}${unfilmed(b) ? ', not yet filmed on YouTube' : ''}`)}">
       <div class="top">
         <div style="min-width:0">
           <div class="bname">${esc(b.name)}${verified(b) ? '' : '<span class="dot-unverified" title="Unverified building" aria-hidden="true"></span>'}</div>
@@ -107,6 +107,7 @@ function renderList() {
         <span><span class="led">${b.stories ?? '?'}</span><span class="u">stories${b.stories == null || storiesVerified(b) ? '' : ' · est'}</span></span>
         <span><span class="led">${b.elevators == null ? '?' : `~${b.elevators}`}</span><span class="u">${b.elevators == null ? 'elev' : 'elev · est'}</span></span>
         ${b._d != null ? `<span><span class="led">${b._d.toFixed(1)}</span><span class="u">mi</span></span>` : ''}
+        ${unfilmed(b) ? `<span class="pill-first" title="Our YouTube search found no videos of these elevators. Film it and be the first.">Be the first</span>` : ''}
       </div>
     </div>`).join('');
   setMapData(items);
@@ -126,10 +127,13 @@ function emptyState() {
       renderList();
     }));
   }
-  if (state.types.size || state.minStories > 0) {
+  if (state.types.size || state.minStories > 0 || state.firstOnly) {
     actions.appendChild(ghost('Clear filters', () => {
       state.types.clear();
       state.minStories = 0;
+      state.firstOnly = false;
+      $('firstToggle').setAttribute('aria-checked', 'false');
+      $('firstToggle').classList.remove('on');
       syncPlate();
       syncFloors();
       renderList();
@@ -225,6 +229,16 @@ function syncFloors() {
   $('modeExact').setAttribute('aria-checked', String(state.exactStories));
 }
 
+function initFirstFilm() {
+  $('firstToggle').addEventListener('click', () => {
+    state.firstOnly = !state.firstOnly;
+    $('firstToggle').setAttribute('aria-checked', String(state.firstOnly));
+    $('firstToggle').classList.toggle('on', state.firstOnly);
+    syncFab();
+    renderList();
+  });
+}
+
 function initFloorMode() {
   $('storySelect').addEventListener('change', e => {
     state.minStories = +e.target.value;
@@ -241,7 +255,7 @@ function initFloorMode() {
 }
 
 function syncFab() {
-  $('filtersFab').classList.toggle('active', state.types.size > 0 || state.minStories > 0);
+  $('filtersFab').classList.toggle('active', state.types.size > 0 || state.minStories > 0 || state.firstOnly);
 }
 
 /* ── mode chip + radius ── */
@@ -383,6 +397,7 @@ function boot() {
   buildPlate();
   buildFloors();   // default 1–20; rebuilt with the real max once data loads
   initFloorMode();
+  initFirstFilm();
   initSheet();
   initModeToggle();
 

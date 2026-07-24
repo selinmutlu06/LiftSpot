@@ -114,7 +114,21 @@ function renderDataStrip(b) {
     ? `<div class="cell est"><span class="v led">?</span><span class="k">elevators · unreported</span></div>`
     : `<div class="cell est"><span class="v led led-lit">~${b.elevators}</span><span class="k">elevators · est</span></div>`;
   els.dataStrip.innerHTML = `${stories}${elevators}` +
-    (d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : '');
+    (d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : '') +
+    footageRow(b);
+}
+
+// YouTube footage status (migrations/010). We searched, so we can only say what
+// we FOUND as of the check date — "no footage found", never "never filmed".
+function footageRow(b) {
+  if (b.yt_checked == null) return '';
+  const when = new Date(b.yt_checked + 'T00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  if ((b.yt_videos ?? 0) === 0) {
+    return `<div class="footage none"><span class="pill-first">Be the first</span>
+      No YouTube videos of these elevators found as of ${when}. Film yours and claim it.</div>`;
+  }
+  return `<div class="footage"><a href="${b.yt_url}" target="_blank" rel="noopener">
+    Watch elevator footage</a> · ${b.yt_videos} video${b.yt_videos === 1 ? '' : 's'} on YouTube as of ${when}</div>`;
 }
 
 function wireForm(b) {

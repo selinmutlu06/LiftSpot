@@ -280,6 +280,45 @@ button { font: inherit; color: inherit; }
 .story-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .story-select option { background: var(--field-bg); color: var(--field-fg); }
 
+/* YouTube "not filmed yet" toggle */
+.firstfilm { display: flex; flex-direction: row; align-items: center; gap: var(--s3); }
+.firstfilm .cab-label { margin-bottom: 0; flex-shrink: 0; }
+.first-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 38px;
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--field-placeholder);
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: var(--r-sm);
+  padding: 4px 12px; cursor: pointer;
+  transition: color var(--t-fast) var(--ease), background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.first-toggle:hover { color: var(--accent-strong); border-color: var(--accent); }
+.first-toggle.on { color: #fff; background: var(--accent); border-color: var(--accent); }
+
+/* "Be the first" pill: card meta row + drawer footage row */
+.pill-first {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-body); font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--accent-strong);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+/* drawer footage row */
+.footage {
+  flex-basis: 100%;
+  display: flex; align-items: center; gap: var(--s2);
+  font-size: 12px; color: var(--cab-label);
+  padding-top: var(--s2);
+}
+.footage a { color: var(--accent-strong); font-weight: 600; }
+
 /* radius row (location mode) */
 .radius {
   display: none;
@@ -519,9 +558,13 @@ button { font: inherit; color: inherit; }
 
 /* data strip — indicator panel */
 .datastrip {
-  display: flex;
+  display: flex; flex-wrap: wrap;
   background: var(--indicator-bg);
   border-bottom: 1px solid var(--indicator-border);
+}
+.datastrip .footage {
+  border-top: 1px solid var(--indicator-border);
+  padding: var(--s2) var(--s4);
 }
 .datastrip .cell {
   flex: 1; text-align: center;

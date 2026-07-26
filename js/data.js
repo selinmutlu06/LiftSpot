@@ -80,8 +80,11 @@ export const storiesVerified = b => b.stories_verified === true;
 // this building's elevators as of yt_checked. Absence can't be proven, so the
 // UI always dates the claim ("none found as of ...") — never "never filmed".
 // yt_videos NULL with yt_checked set = ambiguous near-miss matches pending
-// human review: no claim in either direction, so no badge.
-export const unfilmed = b => b.yt_checked != null && b.yt_videos === 0;
+// human review: no claim in either direction, so no badge. Same for
+// reddit_posts (migrations/012). A source that hasn't been checked yet (column
+// absent from the row) doesn't block the badge — it just isn't claimed.
+export const unfilmed = b => b.yt_checked != null && b.yt_videos === 0
+  && (!('reddit_posts' in b) || b.reddit_posts === 0);
 export const ytChecked = b => b.yt_checked != null;
 
 export const dist = (a, b) => {

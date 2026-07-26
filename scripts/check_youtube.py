@@ -86,6 +86,23 @@ def strong_name(name):
     return len(words) >= 2 or (bool(digits) and len(words) >= 1)
 
 
+DIRECTIONAL = {"north", "south", "east", "west", "upper", "lower", "mid",
+               "middle", "new", "old"}
+
+
+def directional_conflict(name, title):
+    """'Hempstead Town Hall' must NOT match 'North Hempstead Town Hall' —
+    a directional word in the title right before the name is a different
+    building (same lesson as the East/West guard in the OSM verifiers)."""
+    nt = norm_tokens(name)
+    first = next((t for t in nt if t not in STOP), None)
+    if not first:
+        return False
+    tt = norm_tokens(title)
+    return any(tt[i] in DIRECTIONAL and tt[i] not in nt and tt[i + 1] == first
+               for i in range(len(tt) - 1))
+
+
 def geo_ok(b, title):
     """The title must place the video: the building's own town for weak names;
     any NY/Long Island cue is enough for strong ones. Kills 'Sun Valley' (Idaho)
@@ -128,7 +145,8 @@ def classify(b, entries):
         hit = {"title": title, "url": e.get("url"),
                "channel": e.get("channel"), "views": e.get("view_count"),
                "score": round(score, 2)}
-        if (full_name_in(b["name"], title) or score >= 0.8) and geo_ok(b, title):
+        if (full_name_in(b["name"], title) or score >= 0.8) and geo_ok(b, title) \
+                and not directional_conflict(b["name"], title):
             confirmed.append(hit)
         elif score >= 0.45:
             review.append(hit)

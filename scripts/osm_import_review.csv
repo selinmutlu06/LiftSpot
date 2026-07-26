@@ -13,7 +13,7 @@ id,osm,name,type,town,stories,yt_videos
 1011,way/1304131318,Buiding 2,Residential,Uniondale,3,0
 1012,way/1374522512,FairField Metro,Residential,Floral Park,4,0
 1013,way/1540044171,North District Lofts,Residential,North Bay Shore,5,0
-1014,way/311248066,Northport Public Library,Library,Northport,3,9
+1014,way/311248066,Northport Public Library,Library,Northport,3,1
 1015,way/311789750,Northport Veterans Hospital,Medical,Northport,,0
 1016,way/316472413,Rockville Centre Public Library,Library,Rockville Centre,3,4
 1017,way/320700600,Department of Veterans Affairs Medical Center - Bldg 200,Education,Northport,4,0
@@ -39,7 +39,7 @@ id,osm,name,type,town,stories,yt_videos
 1037,way/464725496,Holiday Inn,Hotel,Centereach,7,0
 1038,way/464749711,1377 Motor Parkway,Office,Islandia,4,0
 1039,way/468059944,NYU Langone Hospital-Suffolk,Medical,East Patchogue,4,0
-1040,way/468450014,Garden City Center,Office,Garden City,5,1
+1040,way/468450014,Garden City Center,Office,Garden City,5,2
 1041,way/469775537,Natural Science Bulding,Education,Old Westbury,4,0
 1042,way/470065187,Horton Hall,Education,Melville,2,1
 1043,way/470067577,Lupton Hall,Education,East Farmingdale,2,0

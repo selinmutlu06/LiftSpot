@@ -107,7 +107,7 @@ function renderList() {
         <span><span class="led">${b.stories ?? '?'}</span><span class="u">stories${b.stories == null || storiesVerified(b) ? '' : ' · est'}</span></span>
         <span><span class="led">${b.elevators == null ? '?' : `~${b.elevators}`}</span><span class="u">${b.elevators == null ? 'elev' : 'elev · est'}</span></span>
         ${b._d != null ? `<span><span class="led">${b._d.toFixed(1)}</span><span class="u">mi</span></span>` : ''}
-        ${unfilmed(b) ? `<span class="pill-first" title="Our YouTube search found no videos of these elevators. Film it and be the first.">Be the first</span>` : ''}
+        ${unfilmed(b) ? `<span class="pill-first" title="No coverage of these elevators found on YouTube or Reddit. Film it and be the first.">Be the first</span>` : ''}
       </div>
     </div>`).join('');
   setMapData(items);

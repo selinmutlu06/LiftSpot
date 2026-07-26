@@ -118,18 +118,28 @@ function renderDataStrip(b) {
     footageRow(b);
 }
 
-// YouTube footage status (migrations/010). We searched, so we can only say what
-// we FOUND as of the check date — "no footage found", never "never filmed".
+// Coverage status: YouTube (migrations/010) + Reddit (migrations/012). We
+// searched, so we can only say what we FOUND as of the check date — "none
+// found", never "never filmed". NULL = ambiguous near-misses — no claim.
 function footageRow(b) {
-  // yt_videos NULL = either never checked or only ambiguous matches — no claim.
-  if (b.yt_checked == null || b.yt_videos == null) return '';
+  if (b.yt_checked == null) return '';
   const when = new Date(b.yt_checked + 'T00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-  if (b.yt_videos === 0) {
-    return `<div class="footage none"><span class="pill-first">Be the first</span>
-      No YouTube videos of these elevators found as of ${when}. Film yours and claim it.</div>`;
+  const rows = [];
+  if (b.yt_videos > 0) {
+    rows.push(`<div class="footage"><a href="${b.yt_url}" target="_blank" rel="noopener">
+      Watch elevator footage</a> · ${b.yt_videos} video${b.yt_videos === 1 ? '' : 's'} on YouTube as of ${when}</div>`);
   }
-  return `<div class="footage"><a href="${b.yt_url}" target="_blank" rel="noopener">
-    Watch elevator footage</a> · ${b.yt_videos} video${b.yt_videos === 1 ? '' : 's'} on YouTube as of ${when}</div>`;
+  if (b.reddit_posts > 0) {
+    rows.push(`<div class="footage"><a href="${b.reddit_url}" target="_blank" rel="noopener">
+      Discussed on Reddit</a> · ${b.reddit_posts} post${b.reddit_posts === 1 ? '' : 's'} as of ${when}</div>`);
+  }
+  if (rows.length) return rows.join('');
+  if (b.yt_videos === 0) {
+    const sources = b.reddit_posts === 0 ? 'YouTube videos or Reddit posts' : 'YouTube videos';
+    return `<div class="footage none"><span class="pill-first">Be the first</span>
+      No ${sources} about these elevators found as of ${when}. Film yours and claim it.</div>`;
+  }
+  return '';
 }
 
 function wireForm(b) {

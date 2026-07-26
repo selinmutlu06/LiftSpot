@@ -1,0 +1,2262 @@
+{
+ "check_date": "2026-07-24",
+ "buildings": {
+  "3": {
+   "id": 3,
+   "name": "Roosevelt Field Mall",
+   "town": "Garden City",
+   "arctic": [
+    {
+     "title": "Roosevelt Field Mall",
+     "subreddit": "longisland",
+     "permalink": "/r/longisland/comments/1q0nhb4/roosevelt_field_mall/",
+     "score": 149,
+     "body": "To those who grew up on Long Island, or have been here a long time, I\u2019m curious what everyone\u2019s earliest memories of Roosevelt Field Mall are. It has changed so much since I was little, and I grew up in the 2000\u2019s. Here are the earliest things I remember:\n\n-The round food court with the Zeppelin\n-The carousel (wasn\u2019t there also a train next to it?)\n- The pet store where I think Chipotle is now (anyone remember the name of the pet store?)\n- Sam Goody\n- KB Toys\n-B Dalton\n- Noodle Kidoodle (the swirly walls are still there)\n-Radio shack\n- The horse and roller coaster rides in front of where build a bear workshop used to be\n- In the main level, in front of JC Penney, they used to have these glass blue water massage machines.\n-the big glass elevator where the playground is now\n-The tailors shop with the big spool that\u2019s still there (I used to think it was a milk bottle)\n-more rides downstairs\n-Discovery Channel Store (I think)\n-Disney store\n-Long Island Catholic Supply\n-Sbarro\n\n\u2026Just to name a handful. So many awesome memories going to Roosevelt Field. While many of these places aren\u2019t there anymore, it is so nice to see it is evolving and expanding with many cool new stores. \n\nI know the mall changed so much even before all of this. It would be great to hear other things in the mall anyone else remembers! Or if anyone also remembers any of the places I mentioned!\n"
+    }
+   ],
+   "confirmed": [],
+   "review": [
+    {
+     "title": "Roosevelt Field Mall",
+     "url": "https://www.reddit.com/r/longisland/comments/1q0nhb4/roosevelt_field_mall/",
+     "subreddit": "longisland",
+     "score": 149
+    }
+   ]
+  },
+  "4": {
+   "id": 4,
+   "name": "Stony Brook University Hospital",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "6": {
+   "id": 6,
+   "name": "Walt Whitman Shops",
+   "town": "Huntington Station",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "8": {
+   "id": 8,
+   "name": "Long Island Marriott",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "9": {
+   "id": 9,
+   "name": "Hofstra University \u2014 Axinn Library",
+   "town": "Hempstead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "11": {
+   "id": 11,
+   "name": "Tanger Outlets Deer Park",
+   "town": "Deer Park",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "13": {
+   "id": 13,
+   "name": "North Shore University Hospital",
+   "town": "Manhasset",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "14": {
+   "id": 14,
+   "name": "Long Island Jewish Valley Stream (Northwell Health)",
+   "town": "Valley Stream",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "15": {
+   "id": 15,
+   "name": "Green Acres Mall",
+   "town": "Valley Stream",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "16": {
+   "id": 16,
+   "name": "Adelphi University \u2014 Post Hall",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "17": {
+   "id": 17,
+   "name": "1 Jericho Plaza",
+   "town": "Jericho",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "20": {
+   "id": 20,
+   "name": "Huntington Hospital (Northwell Health)",
+   "town": "Huntington",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "21": {
+   "id": 21,
+   "name": "Hilton Long Island / Huntington",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "22": {
+   "id": 22,
+   "name": "Melville Marriott Long Island",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "23": {
+   "id": 23,
+   "name": "Good Samaritan University Hospital",
+   "town": "West Islip",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "25": {
+   "id": 25,
+   "name": "Smith Haven Mall",
+   "town": "Lake Grove",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "26": {
+   "id": 26,
+   "name": "Frank Melville Jr. Memorial Library, Stony Brook University",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "28": {
+   "id": 28,
+   "name": "John T. Mather Memorial Hospital",
+   "town": "Port Jefferson",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "29": {
+   "id": 29,
+   "name": "South Shore University Hospital",
+   "town": "Bay Shore",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "31": {
+   "id": 31,
+   "name": "Eastern Long Island Hospital",
+   "town": "Greenport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "32": {
+   "id": 32,
+   "name": "Stony Brook Southampton Hospital",
+   "town": "Southampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "33": {
+   "id": 33,
+   "name": "Mercy Medical Center",
+   "town": "Rockville Centre",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "34": {
+   "id": 34,
+   "name": "St. Francis Hospital The Heart Center",
+   "town": "Roslyn",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "35": {
+   "id": 35,
+   "name": "Glen Cove Hospital",
+   "town": "Glen Cove",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "36": {
+   "id": 36,
+   "name": "Plainview Hospital",
+   "town": "Plainview",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "37": {
+   "id": 37,
+   "name": "Syosset Hospital",
+   "town": "Syosset",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "38": {
+   "id": 38,
+   "name": "Long Island Jewish Medical Center",
+   "town": "New Hyde Park",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "39": {
+   "id": 39,
+   "name": "Cohen Children's Medical Center",
+   "town": "New Hyde Park",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "41": {
+   "id": 41,
+   "name": "Northport VA Medical Center",
+   "town": "Northport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "42": {
+   "id": 42,
+   "name": "St. Charles Hospital",
+   "town": "Port Jefferson",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "43": {
+   "id": 43,
+   "name": "St. Joseph Hospital",
+   "town": "Bethpage",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "44": {
+   "id": 44,
+   "name": "South Oaks Hospital",
+   "town": "Amityville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "46": {
+   "id": 46,
+   "name": "2 Jericho Plaza",
+   "town": "Jericho",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "48": {
+   "id": 48,
+   "name": "333 Earle Ovington Blvd",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "50": {
+   "id": 50,
+   "name": "900 Stewart Ave",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "51": {
+   "id": 51,
+   "name": "585 Stewart Avenue",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "52": {
+   "id": 52,
+   "name": "175 Broadhollow Rd",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "53": {
+   "id": 53,
+   "name": "1010 Northern Blvd",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "55": {
+   "id": 55,
+   "name": "Henry Schein HQ",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "58": {
+   "id": 58,
+   "name": "Broadridge Financial Solutions HQ",
+   "town": "Lake Success",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "59": {
+   "id": 59,
+   "name": "Pall Corporation HQ",
+   "town": "Port Washington",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "62": {
+   "id": 62,
+   "name": "1111 Marcus Ave",
+   "town": "Lake Success",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "63": {
+   "id": 63,
+   "name": "400 Crossways Park Drive",
+   "town": "Woodbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "67": {
+   "id": 67,
+   "name": "445 Broadhollow Rd",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "70": {
+   "id": 70,
+   "name": "1000 Woodbury Rd",
+   "town": "Woodbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "74": {
+   "id": 74,
+   "name": "Hyatt Regency Long Island",
+   "town": "Hauppauge",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "75": {
+   "id": 75,
+   "name": "The Allegria Hotel",
+   "town": "Long Beach",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "76": {
+   "id": 76,
+   "name": "Gurney's Montauk Resort & Seawater Spa",
+   "town": "Montauk",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "77": {
+   "id": 77,
+   "name": "Hampton Inn Long Island Commack",
+   "town": "Commack",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "78": {
+   "id": 78,
+   "name": "Hilton Garden Inn Roslyn",
+   "town": "Roslyn",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "88": {
+   "id": 88,
+   "name": "The Menhaden Hotel",
+   "town": "Greenport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "90": {
+   "id": 90,
+   "name": "SUNY Old Westbury \u2014 Campus Center",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "91": {
+   "id": 91,
+   "name": "Farmingdale State College \u2014 Gleeson Hall",
+   "town": "Farmingdale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "95": {
+   "id": 95,
+   "name": "Touro Law Center",
+   "town": "Central Islip",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "96": {
+   "id": 96,
+   "name": "Molloy University \u2014 Public Square",
+   "town": "Rockville Centre",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "97": {
+   "id": 97,
+   "name": "St. Joseph's University \u2014 Callahan Library",
+   "town": "Patchogue",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "98": {
+   "id": 98,
+   "name": "Stony Brook University \u2014 Wang Center",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "99": {
+   "id": 99,
+   "name": "Stony Brook University \u2014 Administration",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "100": {
+   "id": 100,
+   "name": "Hofstra University \u2014 Student Center",
+   "town": "Hempstead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "101": {
+   "id": 101,
+   "name": "Five Towns College",
+   "town": "Dix Hills",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "102": {
+   "id": 102,
+   "name": "Nassau County Courthouse",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "109": {
+   "id": 109,
+   "name": "Nassau County District Court",
+   "town": "Hempstead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "112": {
+   "id": 112,
+   "name": "Hempstead Town Hall",
+   "town": "Hempstead",
+   "arctic": [],
+   "confirmed": [],
+   "review": [
+    {
+     "title": "[Local] - Elevator repair coming to Tully Park, North Hempstead Town Hall",
+     "url": "https://www.reddit.com/r/NEWSDAYauto/comments/6k3d9x/local_elevator_repair_coming_to_tully_park_north/",
+     "subreddit": "NEWSDAYauto",
+     "score": 1
+    }
+   ]
+  },
+  "113": {
+   "id": 113,
+   "name": "Suffolk County Family Court",
+   "town": "Central Islip",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "124": {
+   "id": 124,
+   "name": "Huntington Public Library",
+   "town": "Huntington",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "125": {
+   "id": 125,
+   "name": "Port Washington Public Library",
+   "town": "Port Washington",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "127": {
+   "id": 127,
+   "name": "Middle Country Public Library (Centereach)",
+   "town": "Centereach",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "128": {
+   "id": 128,
+   "name": "Sachem Public Library",
+   "town": "Holbrook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "129": {
+   "id": 129,
+   "name": "Long Island MacArthur Airport Terminal",
+   "town": "Ronkonkoma",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "130": {
+   "id": 130,
+   "name": "MacArthur Airport Parking Garage",
+   "town": "Ronkonkoma",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "131": {
+   "id": 131,
+   "name": "Pilgrim Psychiatric Center",
+   "town": "Brentwood",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "141": {
+   "id": 141,
+   "name": "Sagamore Children's Psychiatric Center",
+   "town": "Dix Hills",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "150": {
+   "id": 150,
+   "name": "3000 Marcus Ave",
+   "town": "Lake Success",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "151": {
+   "id": 151,
+   "name": "400 Garden City Plaza",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "152": {
+   "id": 152,
+   "name": "1000 Franklin Ave",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "158": {
+   "id": 158,
+   "name": "900 Merchants Concourse",
+   "town": "Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "159": {
+   "id": 159,
+   "name": "290 Broadhollow Rd",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "167": {
+   "id": 167,
+   "name": "100 Motor Pkwy",
+   "town": "Hauppauge",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "168": {
+   "id": 168,
+   "name": "534 Broadhollow Rd",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "169": {
+   "id": 169,
+   "name": "999 Stewart Avenue",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "174": {
+   "id": 174,
+   "name": "990 Stewart Ave",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "177": {
+   "id": 177,
+   "name": "300 Garden City Plaza",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "180": {
+   "id": 180,
+   "name": "Meltzer Lippe Goldstein & Breitstone LLP",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "182": {
+   "id": 182,
+   "name": "Bond Schoeneck & King PLLC",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "185": {
+   "id": 185,
+   "name": "Campolo Middleton & McCormick LLP",
+   "town": "Ronkonkoma",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "186": {
+   "id": 186,
+   "name": "Hamburger Maxson Yaffe & McNally LLP",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "187": {
+   "id": 187,
+   "name": "Farrell Fritz PC",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "189": {
+   "id": 189,
+   "name": "Ruskin Moscou Faltischek PC",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "194": {
+   "id": 194,
+   "name": "Gurney's Star Island Resort",
+   "town": "Montauk",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "196": {
+   "id": 196,
+   "name": "Topping Rose House",
+   "town": "Bridgehampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "197": {
+   "id": 197,
+   "name": "The Maidstone Hotel",
+   "town": "East Hampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "203": {
+   "id": 203,
+   "name": "Sunset Beach Hotel",
+   "town": "Shelter Island",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "207": {
+   "id": 207,
+   "name": "American Hotel Sag Harbor",
+   "town": "Sag Harbor",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "208": {
+   "id": 208,
+   "name": "Montauk Yacht Club",
+   "town": "Montauk",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "209": {
+   "id": 209,
+   "name": "Cold Spring Harbor Laboratory",
+   "town": "Cold Spring Harbor",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "210": {
+   "id": 210,
+   "name": "Stony Brook University \u2014 Engineering Bldg",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "211": {
+   "id": 211,
+   "name": "Stony Brook University \u2014 Life Sciences Bldg",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "212": {
+   "id": 212,
+   "name": "Hofstra University \u2014 Breslin Hall",
+   "town": "Hempstead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "214": {
+   "id": 214,
+   "name": "Adelphi University \u2014 Earle Hall",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "218": {
+   "id": 218,
+   "name": "Molloy University \u2014 Hagan Hall",
+   "town": "Rockville Centre",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "219": {
+   "id": 219,
+   "name": "Islip Town Hall",
+   "town": "Islip",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "220": {
+   "id": 220,
+   "name": "North Hempstead Town Hall",
+   "town": "Manhasset",
+   "arctic": [],
+   "confirmed": [],
+   "review": [
+    {
+     "title": "[Local] - Elevator repair coming to Tully Park, North Hempstead Town Hall",
+     "url": "https://www.reddit.com/r/NEWSDAYauto/comments/6k3d9x/local_elevator_repair_coming_to_tully_park_north/",
+     "subreddit": "NEWSDAYauto",
+     "score": 1
+    }
+   ]
+  },
+  "224": {
+   "id": 224,
+   "name": "East Hampton Town Hall",
+   "town": "East Hampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "225": {
+   "id": 225,
+   "name": "Southampton Town Hall",
+   "town": "Southampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "228": {
+   "id": 228,
+   "name": "Theodore Roosevelt Exec & Legislative Bldg",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "234": {
+   "id": 234,
+   "name": "Lynbrook Gardens",
+   "town": "Lynbrook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "244": {
+   "id": 244,
+   "name": "The Smithtown Library \u2014 Main Branch",
+   "town": "Smithtown",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "247": {
+   "id": 247,
+   "name": "Great Neck Public Library \u2014 Main Branch",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "248": {
+   "id": 248,
+   "name": "Babylon Public Library",
+   "town": "Babylon",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "251": {
+   "id": 251,
+   "name": "Broadway Mall",
+   "town": "Hicksville",
+   "arctic": [],
+   "confirmed": [
+    {
+     "title": "OTIS Freight Elevator #5 at IKEA at Broadway Mall in Hicksville, NY",
+     "url": "https://www.reddit.com/r/DeepIntoYouTube/comments/2jkuj9/otis_freight_elevator_5_at_ikea_at_broadway_mall/",
+     "subreddit": "DeepIntoYouTube",
+     "score": 1
+    }
+   ],
+   "review": []
+  },
+  "253": {
+   "id": 253,
+   "name": "The Paramount Huntington",
+   "town": "Huntington",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "254": {
+   "id": 254,
+   "name": "Tilles Center for the Performing Arts",
+   "town": "Brookville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "255": {
+   "id": 255,
+   "name": "Long Island Aquarium and Exhibition Center",
+   "town": "Riverhead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "256": {
+   "id": 256,
+   "name": "Nassau Veterans Memorial Coliseum",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "257": {
+   "id": 257,
+   "name": "Long Island Children's Museum",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "259": {
+   "id": 259,
+   "name": "Stony Brook University Sports Complex",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "262": {
+   "id": 262,
+   "name": "Gurwin Jewish Nursing & Rehabilitation Center",
+   "town": "Commack",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "263": {
+   "id": 263,
+   "name": "Peconic Landing at Southold",
+   "town": "Greenport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "264": {
+   "id": 264,
+   "name": "The Bristal Assisted Living at Westbury",
+   "town": "Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "269": {
+   "id": 269,
+   "name": "Glengariff Healthcare Center",
+   "town": "Glen Cove",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "295": {
+   "id": 295,
+   "name": "Baron's Cove Hotel",
+   "town": "Sag Harbor",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "302": {
+   "id": 302,
+   "name": "Holiday Inn Westbury",
+   "town": "Carle Place",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "305": {
+   "id": 305,
+   "name": "North Fork Table & Inn",
+   "town": "Southold",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "331": {
+   "id": 331,
+   "name": "700 Old Country Rd",
+   "town": "Plainview",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "360": {
+   "id": 360,
+   "name": "Northwell Health Ophthalmology Great Neck",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "362": {
+   "id": 362,
+   "name": "Riverhead Town Hall",
+   "town": "Riverhead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "372": {
+   "id": 372,
+   "name": "Stony Brook University \u2014 Harriman Hall",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "375": {
+   "id": 375,
+   "name": "Adelphi University \u2014 Nexus Building",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "377": {
+   "id": 377,
+   "name": "Nassau BOCES Administrative Center",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "383": {
+   "id": 383,
+   "name": "Cradle of Aviation Museum",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "384": {
+   "id": 384,
+   "name": "Parrish Art Museum",
+   "town": "Water Mill",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "385": {
+   "id": 385,
+   "name": "Suffolk County Vanderbilt Museum",
+   "town": "Centerport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "389": {
+   "id": 389,
+   "name": "Patchogue Theatre for the Performing Arts",
+   "town": "Patchogue",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "392": {
+   "id": 392,
+   "name": "Huntington YMCA",
+   "town": "Huntington",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "404": {
+   "id": 404,
+   "name": "Mid-Island Y JCC",
+   "town": "Plainview",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "409": {
+   "id": 409,
+   "name": "Nassau County Museum of Art",
+   "town": "Roslyn Harbor",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "432": {
+   "id": 432,
+   "name": "Levittown Public Library",
+   "town": "Levittown",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "436": {
+   "id": 436,
+   "name": "Syosset Public Library",
+   "town": "Syosset",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "437": {
+   "id": 437,
+   "name": "Lindenhurst Memorial Library",
+   "town": "Lindenhurst",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "438": {
+   "id": 438,
+   "name": "Bay Shore\u2013Brightwaters Public Library",
+   "town": "Bay Shore",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "439": {
+   "id": 439,
+   "name": "Patchogue\u2013Medford Library",
+   "town": "Patchogue",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "442": {
+   "id": 442,
+   "name": "Commack Public Library",
+   "town": "Commack",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "443": {
+   "id": 443,
+   "name": "North Babylon Public Library",
+   "town": "North Babylon",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "444": {
+   "id": 444,
+   "name": "Elmont Public Library",
+   "town": "Elmont",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "447": {
+   "id": 447,
+   "name": "Lynbrook Village Hall",
+   "town": "Lynbrook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "448": {
+   "id": 448,
+   "name": "Mineola Village Hall",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "452": {
+   "id": 452,
+   "name": "Amityville Village Hall",
+   "town": "Amityville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "455": {
+   "id": 455,
+   "name": "Farmingdale Village Hall",
+   "town": "Farmingdale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "457": {
+   "id": 457,
+   "name": "New Hyde Park Village Hall",
+   "town": "New Hyde Park",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "462": {
+   "id": 462,
+   "name": "2 Huntington Quadrangle",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "483": {
+   "id": 483,
+   "name": "Lake Success Shopping Center",
+   "town": "Lake Success",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "491": {
+   "id": 491,
+   "name": "Memorial Sloan Kettering Commack",
+   "town": "Commack",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "511": {
+   "id": 511,
+   "name": "New York Community Bancorp HQ",
+   "town": "Hicksville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "512": {
+   "id": 512,
+   "name": "Bethpage Federal Credit Union HQ",
+   "town": "Bethpage",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "537": {
+   "id": 537,
+   "name": "East Hampton Village Green",
+   "town": "East Hampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "541": {
+   "id": 541,
+   "name": "1770 House Restaurant & Inn",
+   "town": "East Hampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "542": {
+   "id": 542,
+   "name": "The Greenporter Hotel",
+   "town": "Greenport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "559": {
+   "id": 559,
+   "name": "500 Old Country Rd",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "561": {
+   "id": 561,
+   "name": "350 Jericho Turnpike",
+   "town": "Jericho",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "574": {
+   "id": 574,
+   "name": "Sag Harbor Village Hall",
+   "town": "Sag Harbor",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "575": {
+   "id": 575,
+   "name": "Westhampton Beach Village Hall",
+   "town": "Westhampton Beach",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "576": {
+   "id": 576,
+   "name": "Nassau County Traffic & Parking Agency",
+   "town": "Hempstead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "581": {
+   "id": 581,
+   "name": "Jericho Middle / High School",
+   "town": "Jericho",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "583": {
+   "id": 583,
+   "name": "William A. Shine Great Neck South High School",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "584": {
+   "id": 584,
+   "name": "Garden City High School",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "587": {
+   "id": 587,
+   "name": "Half Hollow Hills High School East",
+   "town": "Dix Hills",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "590": {
+   "id": 590,
+   "name": "Bethpage High School",
+   "town": "Bethpage",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "591": {
+   "id": 591,
+   "name": "Oheka Castle",
+   "town": "Huntington",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "592": {
+   "id": 592,
+   "name": "Planting Fields \u2014 Coe Hall",
+   "town": "Oyster Bay",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "594": {
+   "id": 594,
+   "name": "Sagamore Hill \u2014 Roosevelt Home",
+   "town": "Oyster Bay",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "597": {
+   "id": 597,
+   "name": "Adventureland Amusement Park",
+   "town": "Farmingdale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "599": {
+   "id": 599,
+   "name": "Splish Splash Water Park",
+   "town": "Calverton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "601": {
+   "id": 601,
+   "name": "Temple Beth-El of Great Neck",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "602": {
+   "id": 602,
+   "name": "Islamic Center of Long Island",
+   "town": "Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "615": {
+   "id": 615,
+   "name": "Jericho Terrace Plaza",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1000": {
+   "id": 1000,
+   "name": "Brunswick Hospital Center",
+   "town": "Amityville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1001": {
+   "id": 1001,
+   "name": "South Woods Middle School",
+   "town": "Syosset",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1002": {
+   "id": 1002,
+   "name": "Piping Rock Club Clubhouse",
+   "town": "Locust Valley",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1003": {
+   "id": 1003,
+   "name": "Eastport-South Manor Jr-Sr High School",
+   "town": "Manorville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1004": {
+   "id": 1004,
+   "name": "Saint Joseph's Roman Catholic Church",
+   "town": "Babylon",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1005": {
+   "id": 1005,
+   "name": "Yeshivath Gesher",
+   "town": "Lawrence",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1006": {
+   "id": 1006,
+   "name": "Plainview-Old Bethpage John F. Kennedy High School",
+   "town": "Plainview",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1007": {
+   "id": 1007,
+   "name": "Canon USA, Inc.",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1008": {
+   "id": 1008,
+   "name": "Memorial Sloan Kettering Cancer Center \u2013 Nassau",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1009": {
+   "id": 1009,
+   "name": "Rambam Mesivta",
+   "town": "Lawrence",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1010": {
+   "id": 1010,
+   "name": "East Neck Nursing and Rehabilitation Center",
+   "town": "West Babylon",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1011": {
+   "id": 1011,
+   "name": "Buiding 2",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1012": {
+   "id": 1012,
+   "name": "FairField Metro",
+   "town": "Floral Park",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1013": {
+   "id": 1013,
+   "name": "North District Lofts",
+   "town": "North Bay Shore",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1014": {
+   "id": 1014,
+   "name": "Northport Public Library",
+   "town": "Northport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1015": {
+   "id": 1015,
+   "name": "Northport Veterans Hospital",
+   "town": "Northport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1016": {
+   "id": 1016,
+   "name": "Rockville Centre Public Library",
+   "town": "Rockville Centre",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1017": {
+   "id": 1017,
+   "name": "Department of Veterans Affairs Medical Center - Bldg 200",
+   "town": "Northport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1018": {
+   "id": 1018,
+   "name": "Stony Brook Eastern Long Island Hospital",
+   "town": "Greenport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1019": {
+   "id": 1019,
+   "name": "T.Rowe Price",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1020": {
+   "id": 1020,
+   "name": "Orange Parking Deck",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1021": {
+   "id": 1021,
+   "name": "Botel",
+   "town": "Fire Island Pines",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1022": {
+   "id": 1022,
+   "name": "Fire Island Lighthouse Visitors Center",
+   "town": "Robert Moses State Park",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1023": {
+   "id": 1023,
+   "name": "Fresnel Lens Building",
+   "town": "Kismet",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1024": {
+   "id": 1024,
+   "name": "Mount Sinai South Nassau",
+   "town": "Oceanside",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1025": {
+   "id": 1025,
+   "name": "Sun Valley",
+   "town": "Valley stream",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1026": {
+   "id": 1026,
+   "name": "Ammann College",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1027": {
+   "id": 1027,
+   "name": "Gray College",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1028": {
+   "id": 1028,
+   "name": "Wyandanch Village Apartments",
+   "town": "Wyandanch",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1029": {
+   "id": 1029,
+   "name": "Portledge Lower School",
+   "town": "Locust Valley",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1030": {
+   "id": 1030,
+   "name": "Locust Valley Library",
+   "town": "Locust Valley",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1031": {
+   "id": 1031,
+   "name": "Portledge Upper School",
+   "town": "Matinecock",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1032": {
+   "id": 1032,
+   "name": "Portledge Middle School",
+   "town": "Matinecock",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1033": {
+   "id": 1033,
+   "name": "Glen Pearsall",
+   "town": "Glen Cove",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1034": {
+   "id": 1034,
+   "name": "The Tides Motor Inn",
+   "town": "Locust Valley",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1035": {
+   "id": 1035,
+   "name": "Five Towns Inn",
+   "town": "Lawrence",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1036": {
+   "id": 1036,
+   "name": "Sayan Center at TSCW",
+   "town": "East Shoreham",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1037": {
+   "id": 1037,
+   "name": "Holiday Inn",
+   "town": "Centereach",
+   "arctic": [
+    {
+     "title": "Help need the elevator to work",
+     "subreddit": "Elevators",
+     "permalink": "/r/Elevators/comments/1mc7djs/help_need_the_elevator_to_work/",
+     "score": 4,
+     "body": "So i work at a holiday inn expresss and our fire alarms went off last night. I cannot get the elevator to work for the life of me. Anyone on here know what i need to do "
+    },
+    {
+     "title": "Water sounds in elevator?",
+     "subreddit": "Elevators",
+     "permalink": "/r/Elevators/comments/1etdbyk/water_sounds_in_elevator/",
+     "score": 2,
+     "body": "I\u2019m staying at a Holiday Inn Express and noticed it sounds like rushing water whenever I ride the elevator. Should I be concerned? Take the stairs instead?"
+    }
+   ],
+   "confirmed": [],
+   "review": [
+    {
+     "title": "Help need the elevator to work",
+     "url": "https://www.reddit.com/r/Elevators/comments/1mc7djs/help_need_the_elevator_to_work/",
+     "subreddit": "Elevators",
+     "score": 4
+    },
+    {
+     "title": "Water sounds in elevator?",
+     "url": "https://www.reddit.com/r/Elevators/comments/1etdbyk/water_sounds_in_elevator/",
+     "subreddit": "Elevators",
+     "score": 2
+    },
+    {
+     "title": "This is a elevator wall at a Holiday Inn in Chicago. Yet it reminds me of the Sierra Madre Hotel &amp; Casino",
+     "url": "https://www.reddit.com/r/fnv/comments/e390j1/this_is_a_elevator_wall_at_a_holiday_inn_in/",
+     "subreddit": "fnv",
+     "score": 794
+    },
+    {
+     "title": "Service Dog and Karen at the Holiday Inn Express Salem",
+     "url": "https://www.reddit.com/r/traumatizeThemBack/comments/1i4ru6j/service_dog_and_karen_at_the_holiday_inn_express/",
+     "subreddit": "traumatizeThemBack",
+     "score": 1636
+    },
+    {
+     "title": "Two teenage girls and a man are in serious condition Wednesday night after they were stuck inside an elevator at the Holiday Inn Express on Kuhio Avenue, Honolulu EMS officials said.",
+     "url": "https://www.reddit.com/r/Honolulu/comments/1ctapcf/two_teenage_girls_and_a_man_are_in_serious/",
+     "subreddit": "Honolulu",
+     "score": 11
+    }
+   ]
+  },
+  "1038": {
+   "id": 1038,
+   "name": "1377 Motor Parkway",
+   "town": "Islandia",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1039": {
+   "id": 1039,
+   "name": "NYU Langone Hospital-Suffolk",
+   "town": "East Patchogue",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1040": {
+   "id": 1040,
+   "name": "Garden City Center",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1041": {
+   "id": 1041,
+   "name": "Natural Science Bulding",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1042": {
+   "id": 1042,
+   "name": "Horton Hall",
+   "town": "Melville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1043": {
+   "id": 1043,
+   "name": "Lupton Hall",
+   "town": "East Farmingdale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1044": {
+   "id": 1044,
+   "name": "Montauk Tower",
+   "town": "Montauk",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1045": {
+   "id": 1045,
+   "name": "Roger Memorial Library",
+   "town": "Southampton",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1046": {
+   "id": 1046,
+   "name": "Howitt Middle School - East Building",
+   "town": "Farmingdale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1047": {
+   "id": 1047,
+   "name": "Thompson Hall",
+   "town": "East Farmingdale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1048": {
+   "id": 1048,
+   "name": "Whitman Hall",
+   "town": "East Farmingdale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1049": {
+   "id": 1049,
+   "name": "Saint Catherine of Sienna Medical Center",
+   "town": "Smithtown",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1050": {
+   "id": 1050,
+   "name": "Good Samaritan Hospital Medical Center",
+   "town": "West Islip",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1051": {
+   "id": 1051,
+   "name": "Nassau County Supreme Court",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1052": {
+   "id": 1052,
+   "name": "Southside Hospital",
+   "town": "Bay Shore",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1053": {
+   "id": 1053,
+   "name": "The Grand Rehabilitation and Nursing",
+   "town": "Manhasset",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1054": {
+   "id": 1054,
+   "name": "Suffolk County Police 4th Precinct",
+   "town": "Hauppauge",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1055": {
+   "id": 1055,
+   "name": "Marshall Hall",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1056": {
+   "id": 1056,
+   "name": "NYIT Office of Residence Life / Bear Lair",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1057": {
+   "id": 1057,
+   "name": "Bolivar Hall",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1058": {
+   "id": 1058,
+   "name": "Kennedy Hall",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1059": {
+   "id": 1059,
+   "name": "One Kensington Gate",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1060": {
+   "id": 1060,
+   "name": "Maple Crest",
+   "town": "Valley Stream",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1061": {
+   "id": 1061,
+   "name": "Northwell Health Urgent Care",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1062": {
+   "id": 1062,
+   "name": "The President Apartments",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1063": {
+   "id": 1063,
+   "name": "The Town Agency, Inc.",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1064": {
+   "id": 1064,
+   "name": "1103 Stewart Avenue",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1065": {
+   "id": 1065,
+   "name": "595 Stewart AVenue",
+   "town": "Uniondale",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1066": {
+   "id": 1066,
+   "name": "Springfield Apartment",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1067": {
+   "id": 1067,
+   "name": "Shelter Rock Public Library",
+   "town": "Albertson",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1068": {
+   "id": 1068,
+   "name": "1101 Stewart Avenue",
+   "town": "Garden City",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1069": {
+   "id": 1069,
+   "name": "Kahn Discovery Center",
+   "town": "Brookville",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1070": {
+   "id": 1070,
+   "name": "Roosevelt Hall",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1071": {
+   "id": 1071,
+   "name": "King Hall",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1072": {
+   "id": 1072,
+   "name": "Anthony Hall",
+   "town": "Old Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1073": {
+   "id": 1073,
+   "name": "Wisser Memorial Library",
+   "town": "Wheatley",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1074": {
+   "id": 1074,
+   "name": "Social and Behavioral Sciences",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1075": {
+   "id": 1075,
+   "name": "Light Engineering",
+   "town": "Stony Brook",
+   "arctic": [
+    {
+     "title": "Schindler PORT Help for a New Facilities Guy - Should These Light Up?",
+     "subreddit": "Elevators",
+     "permalink": "/r/Elevators/comments/1otimjo/schindler_port_help_for_a_new_facilities_guy/",
+     "score": 20,
+     "body": "Hey there, I recently got hired on in a building's facilities department, and I've been trying to figure this one out for a few weeks. The 10 main elevators in this building run off a Schindler PORT  system with what looks like Linea 100 or FI GS fixtures. These car indicators are very hard to read in the building's 5500K LED lights, which makes me think they're supposed to light up when the assigned car is arriving. I'm not a tech, but these elevators are in my area of responsibility, so I need to start calling vendors if these need to be fixed. Can anyone provide some insight into these? For context, the original building design and engineering team which built this place from 2020-2022 isn't at the company anymore, and the current leadership doesn't have any knowledge on these systems, including the director. I've looked through the blueprints & schematics that I have access to, but I don't see anything related to these indicators in those documents. The elevators look to be 3300's with a 3500lb capacity, and don't have floor buttons inside the car. Help!"
+    }
+   ],
+   "confirmed": [],
+   "review": [
+    {
+     "title": "Schindler PORT Help for a New Facilities Guy - Should These Light Up?",
+     "url": "https://www.reddit.com/r/Elevators/comments/1otimjo/schindler_port_help_for_a_new_facilities_guy/",
+     "subreddit": "Elevators",
+     "score": 20
+    }
+   ]
+  },
+  "1076": {
+   "id": 1076,
+   "name": "Health Sciences Center",
+   "town": "South Setauket",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1077": {
+   "id": 1077,
+   "name": "Basic Sciences Tower",
+   "town": "South Setauket",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1078": {
+   "id": 1078,
+   "name": "Mount College",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1079": {
+   "id": 1079,
+   "name": "Hendrix College",
+   "town": "Stony Brook",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1080": {
+   "id": 1080,
+   "name": "Chelsea Plaza",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1081": {
+   "id": 1081,
+   "name": "1 Townhouse Place",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1082": {
+   "id": 1082,
+   "name": "Maestro",
+   "town": "Great Neck",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1083": {
+   "id": 1083,
+   "name": "Nassau University Medical Center",
+   "town": "East Meadow",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1084": {
+   "id": 1084,
+   "name": "Harbor Landing at Garvies Point",
+   "town": "Glen Cove Landing",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1085": {
+   "id": 1085,
+   "name": "Village Square",
+   "town": "Glen Cove",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1086": {
+   "id": 1086,
+   "name": "Portledge Commons",
+   "town": "Matinecock",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1087": {
+   "id": 1087,
+   "name": "Organically Yours",
+   "town": "Northport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1088": {
+   "id": 1088,
+   "name": "Physical Fitness Center",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1089": {
+   "id": 1089,
+   "name": "Peconic Bay Medical Center",
+   "town": "Riverhead",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1090": {
+   "id": 1090,
+   "name": "Shulamith School for Girls",
+   "town": "Cedarhurst",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1091": {
+   "id": 1091,
+   "name": "NYU Langone Hospital Long Island",
+   "town": "Mineola",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1092": {
+   "id": 1092,
+   "name": "Horizon of Westbury",
+   "town": "Westbury",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1093": {
+   "id": 1093,
+   "name": "Hagerman Burn Building",
+   "town": "Hagerman",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  },
+  "1094": {
+   "id": 1094,
+   "name": "South Country Ambulance Company - Station 1",
+   "town": "Bellport",
+   "arctic": [],
+   "confirmed": [],
+   "review": []
+  }
+ }
+}

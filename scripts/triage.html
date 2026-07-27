@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiftSpot coverage triage</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { font: 15px/1.5 -apple-system, "Segoe UI", sans-serif; margin: 0; padding: 24px;
+         background: light-dark(#f6f5f2, #14171a); color: light-dark(#1e2429, #e8e6e1); max-width: 880px; margin-inline: auto; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: light-dark(#5c6670, #9aa4ad); font-size: 13px; margin-bottom: 20px; }
+  .progress { position: sticky; top: 0; background: inherit; padding: 10px 0; font-weight: 600; z-index: 2;
+              border-bottom: 1px solid light-dark(#ddd, #2b3237); margin-bottom: 16px; }
+  .b { background: light-dark(#fff, #1c2126); border: 1px solid light-dark(#e2e0da, #2b3237);
+       border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  .b.done { opacity: 0.45; }
+  .bname { font-weight: 700; font-size: 16px; }
+  .btown { color: light-dark(#5c6670, #9aa4ad); font-size: 13px; margin-bottom: 10px; }
+  .cand { display: flex; gap: 10px; align-items: center; padding: 8px 0;
+          border-top: 1px solid light-dark(#eee, #262c31); }
+  .ct { flex: 1; min-width: 0; }
+  .ct a { color: light-dark(#0b6e4f, #6fd3ae); text-decoration: none; }
+  .ct a:hover { text-decoration: underline; }
+  .src { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+         color: light-dark(#8a939b, #77828b); }
+  button { font: inherit; padding: 5px 14px; border-radius: 7px; cursor: pointer;
+           border: 1px solid light-dark(#cfcdc6, #3a424a); background: transparent; color: inherit; }
+  button:hover { border-color: light-dark(#0b6e4f, #6fd3ae); }
+  .yes.on { background: #0b6e4f; color: #fff; border-color: #0b6e4f; }
+  .no.on  { background: #a33b3b; color: #fff; border-color: #a33b3b; }
+  .allno { margin-top: 10px; font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>Coverage triage</h1>
+<div class="sub">For each candidate: <b>Yes</b> = this really is footage/a post about this building's elevators. <b>No</b> = different building or not elevator coverage. Leave untouched to keep the building unclaimed. Every click saves.</div>
+<div class="progress" id="prog"></div>
+<div id="list"></div>
+<script>
+let DATA = [], DEC = {};
+const save = () => fetch('/save', {method: 'POST', body: JSON.stringify(DEC)});
+const key = c => c.source + '|' + c.url;
+
+function render() {
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  let decided = 0;
+  for (const b of DATA) {
+    const d = DEC[b.id] || {};
+    const allDecided = b.candidates.every(c => key(c) in d);
+    if (allDecided) decided++;
+    const el = document.createElement('div');
+    el.className = 'b' + (allDecided ? ' done' : '');
+    el.innerHTML = `<div class="bname">${esc(b.name)}</div><div class="btown">#${b.id} · ${esc(b.town)}</div>`;
+    for (const c of b.candidates) {
+      const row = document.createElement('div');
+      row.className = 'cand';
+      row.innerHTML = `<div class="ct"><span class="src">${c.source}${c.channel ? ' · ' + esc(c.channel) : ''}</span><br>
+        <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a></div>`;
+      for (const v of ['yes', 'no']) {
+        const btn = document.createElement('button');
+        btn.textContent = v;
+        btn.className = v + (d[key(c)] === v ? ' on' : '');
+        btn.onclick = () => { (DEC[b.id] = DEC[b.id] || {})[key(c)] = v; save(); render(); };
+        row.appendChild(btn);
+      }
+      el.appendChild(row);
+    }
+    const allno = document.createElement('button');
+    allno.className = 'allno';
+    allno.textContent = 'All no for this building';
+    allno.onclick = () => { DEC[b.id] = DEC[b.id] || {}; b.candidates.forEach(c => DEC[b.id][key(c)] = 'no'); save(); render(); };
+    el.appendChild(allno);
+    list.appendChild(el);
+  }
+  document.getElementById('prog').textContent = `${decided} / ${DATA.length} buildings fully decided`;
+}
+const esc = s => (s || '').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+Promise.all([fetch('/data').then(r => r.json()), fetch('/decisions').then(r => r.json())])
+  .then(([d, dec]) => { DATA = d; DEC = dec; render(); });
+</script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # LiftSpot
 
+Data pipeline is validated and cleaned using [liftspot-data-tool](https://github.com/selinmutlu06/liftspot-data-tool).
+
 Find and rate elevators in buildings across Long Island. 572 buildings, searchable, filterable, reviewable, live at [liftspot.netlify.app](https://liftspot.netlify.app).
 
 <img src="docs/images/elevator.gif" alt="Pressing the elevator button" width="320" />

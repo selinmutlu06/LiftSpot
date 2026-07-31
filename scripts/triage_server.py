@@ -5,13 +5,17 @@ Tiny local server for the coverage triage page. Serves scripts/triage.html at
 scripts/triage_decisions.json via POST /save (idempotent full-state writes, so
 closing the tab loses nothing).
 
-  python3 scripts/triage_server.py     # then open http://localhost:8899
+  python3 scripts/triage_server.py                              # original worklist
+  python3 scripts/triage_server.py scripts/recheck_triage.json  # held re-check near-misses
+then open http://localhost:8899. Decisions always land in the same
+triage_decisions.json ledger, whichever worklist is loaded.
 """
-import json, os
+import json, os, sys
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "scripts", "triage_data.json")
+DATA = os.path.join(ROOT, sys.argv[1]) if len(sys.argv) > 1 \
+    else os.path.join(ROOT, "scripts", "triage_data.json")
 DECISIONS = os.path.join(ROOT, "scripts", "triage_decisions.json")
 PAGE = os.path.join(ROOT, "scripts", "triage.html")
 

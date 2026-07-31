@@ -310,6 +310,13 @@ async function load() {
   }
   buildFloors();
   renderList();
+
+  // Deep link: ?b=<id> opens that building (how the hunt list jumps to the map).
+  const linked = +new URLSearchParams(location.search).get('b');
+  if (linked && BUILDINGS.some(b => b.id === linked)) {
+    open(linked);
+    scrollCardIntoView(linked);
+  }
 }
 
 /* ── mobile sheet ── */

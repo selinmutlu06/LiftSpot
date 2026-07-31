@@ -297,6 +297,11 @@ button { font: inherit; color: inherit; }
 }
 .first-toggle:hover { color: var(--accent-strong); border-color: var(--accent); }
 .first-toggle.on { color: #fff; background: var(--accent); border-color: var(--accent); }
+.hunt-link {
+  font-size: 12px; font-weight: 600; color: var(--accent-strong);
+  text-decoration: none; white-space: nowrap; margin-left: auto;
+}
+.hunt-link:hover { text-decoration: underline; }
 
 /* "Be the first" pill: card meta row + drawer footage row */
 .pill-first {
@@ -595,6 +600,8 @@ button { font: inherit; color: inherit; }
   font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
   color: var(--ink-600); margin-bottom: var(--s4); font-weight: 700;
 }
+.sec-hint { font-size: 13px; color: var(--ink-600); margin: calc(-1 * var(--s2)) 0 var(--s4); }
+.sec .field { margin-bottom: var(--s3); }
 
 /* rating block + primary CTA */
 .rating-block {

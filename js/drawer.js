@@ -76,6 +76,19 @@ export async function openBuilding(id) {
       </div>
     </div>
 
+    ${b.yt_checked != null && b.yt_videos === 0 ? `
+    <div class="sec">
+      <h3>Filmed these elevators?</h3>
+      <p class="sec-hint">Paste your YouTube link to claim this building. Your video shows up here after a quick review.</p>
+      <div class="field">
+        <label for="subUrl">YouTube link</label>
+        <input class="text-input" id="subUrl" inputmode="url" placeholder="https://www.youtube.com/watch?v=…" />
+      </div>
+      <p class="form-error" id="subError">That doesn’t look like a YouTube video link.</p>
+      <button class="btn" id="subSend">Submit video</button>
+      <div class="savednote" id="subPending"></div>
+    </div>` : ''}
+
     <div class="sec">
       <h3>Reviews</h3>
       <div id="rvList"><div class="empty">Loading…</div></div>
@@ -97,7 +110,60 @@ export async function openBuilding(id) {
   showDrawer(true);
   els.closeBtn.focus();
   wireForm(b);
+  wireSubmitVideo(b);
   await refreshReviews(id);
+}
+
+/* "Filmed these elevators?" — visitors paste a YouTube link on an unfilmed
+   building. Rows land in the submissions table as pending (migrations/014) and
+   only appear on the site once approved, so the honesty rules hold: an
+   unreviewed link is a claim, not a fact. */
+const YT_URL_RE = /^https:\/\/((www|m)\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{6,}/i;
+
+function wireSubmitVideo(b) {
+  const send = document.getElementById('subSend');
+  if (!send) return;
+  const input = document.getElementById('subUrl');
+  const err = document.getElementById('subError');
+  const pending = document.getElementById('subPending');
+
+  const showPending = n => {
+    if (!n) return;
+    pending.innerHTML = `
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      ${n} video${n === 1 ? '' : 's'} submitted, waiting for review`;
+    pending.classList.add('show');
+  };
+  // Best effort: if the table doesn't exist yet or the count fails, the
+  // section still works — the count line just stays hidden.
+  sb.from('submissions').select('id', { count: 'exact', head: true })
+    .eq('building_id', b.id).eq('status', 'pending')
+    .then(({ count, error }) => { if (!error) showPending(count); });
+
+  input.addEventListener('input', () => err.classList.remove('show'));
+  send.addEventListener('click', async () => {
+    const url = input.value.trim();
+    if (!YT_URL_RE.test(url)) {
+      err.classList.add('show');
+      input.focus();
+      return;
+    }
+    send.disabled = true;
+    send.textContent = 'Submitting…';
+    const { error } = await sb.from('submissions').insert({ building_id: b.id, url });
+    send.disabled = false;
+    send.textContent = 'Submit video';
+    if (error) {
+      if (error.code === '23505') hooks.toast('That video was already submitted for this building.');
+      else hooks.toast('Couldn’t submit the video. Check your connection and try again.', { error: true });
+      return;
+    }
+    input.value = '';
+    hooks.toast('Video submitted. It shows up once it’s reviewed.');
+    const { count, error: cErr } = await sb.from('submissions').select('id', { count: 'exact', head: true })
+      .eq('building_id', b.id).eq('status', 'pending');
+    if (!cErr) showPending(count);
+  });
 }
 
 function renderDataStrip(b) {

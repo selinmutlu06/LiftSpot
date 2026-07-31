@@ -90,6 +90,48 @@ export async function openBuilding(id) {
     </div>` : ''}
 
     <div class="sec">
+      <h3>The elevators inside</h3>
+      <div id="repList"><div class="empty">Loading…</div></div>
+      <button class="btn" id="repCta" aria-expanded="false" aria-controls="repform" style="margin-top:var(--s3)">Report what's inside</button>
+      <div class="rform" id="repform">
+        <p class="sec-hint">Ridden these? Count, brand, drive type, whatever you know. It shows up after a quick review, labeled as reported, not as official specs.</p>
+        <div class="field" style="margin-bottom:8px">
+          <label for="repCount">How many elevators</label>
+          <input class="text-input" id="repCount" type="number" min="1" max="100" inputmode="numeric" placeholder="e.g. 2" />
+        </div>
+        <div class="field" style="margin-bottom:8px">
+          <label for="repBrand">Brand</label>
+          <input class="text-input" id="repBrand" maxlength="40" list="brandList" placeholder="e.g. Otis" />
+          <datalist id="brandList">
+            <option>Otis</option><option>Schindler</option><option>ThyssenKrupp</option>
+            <option>TK Elevator</option><option>KONE</option><option>Dover</option>
+            <option>Fujitec</option><option>Mitsubishi</option><option>Montgomery</option>
+            <option>Westinghouse</option><option>Armor</option><option>Burlington</option>
+          </datalist>
+        </div>
+        <div class="field" style="margin-bottom:8px">
+          <label for="repKind">Drive type</label>
+          <select class="text-input" id="repKind">
+            <option value="">Not sure</option>
+            <option value="hydraulic">Hydraulic</option>
+            <option value="traction">Traction</option>
+          </select>
+        </div>
+        <div class="field" style="margin-bottom:8px">
+          <label for="repNotes">Notes</label>
+          <textarea id="repNotes" maxlength="500" placeholder="e.g. glass back, rebuilt 2019, freight in the rear" style="min-height:60px"></textarea>
+        </div>
+        <div class="field" style="margin-bottom:8px">
+          <label for="repName">Name (shown with your report)</label>
+          <input class="text-input" id="repName" maxlength="40" placeholder="Anonymous"
+            value="${esc(localStorage.getItem('liftspot_reviewer_name') || '')}" />
+        </div>
+        <p class="form-error" id="repError">Give at least a count, a brand, or a drive type.</p>
+        <button class="btn" id="repSend">Send report</button>
+      </div>
+    </div>
+
+    <div class="sec">
       <h3>Reviews</h3>
       <div id="rvList"><div class="empty">Loading…</div></div>
     </div>
@@ -111,7 +153,85 @@ export async function openBuilding(id) {
   els.closeBtn.focus();
   wireForm(b);
   wireSubmitVideo(b);
+  wireReports(b);
   await refreshReviews(id);
+}
+
+/* Community elevator reports (migrations/015): the only source of elevator
+   counts that exists. Approved reports render here with their provenance;
+   new ones go in pending and touch nothing until reviewed. */
+async function refreshReports(id) {
+  const list = document.getElementById('repList');
+  if (!list) return;
+  const { data, error } = await sb.from('elevator_reports').select('*')
+    .eq('building_id', id).order('created_at', { ascending: false });
+  if (error) {
+    list.innerHTML = '<div class="empty">Nobody has reported these elevators yet.</div>';
+    return;
+  }
+  const approved = data.filter(r => r.status === 'approved');
+  const pending = data.filter(r => r.status === 'pending').length;
+  const bits = approved.map(r => {
+    const what = [
+      r.elevators != null ? `${r.elevators} elevator${r.elevators === 1 ? '' : 's'}` : null,
+      r.brand, r.kind,
+    ].filter(Boolean).join(' · ');
+    const when = new Date(r.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    return `<div class="review">
+      <div class="rhead"><span class="who">${esc(r.who)}</span><span class="rstars">${when}</span></div>
+      <p><b>${esc(what)}</b></p>${r.notes ? `<p>${esc(r.notes)}</p>` : ''}
+    </div>`;
+  });
+  if (pending) bits.push(`<div class="empty">${pending} report${pending === 1 ? '' : 's'} waiting for review</div>`);
+  if (!bits.length) bits.push('<div class="empty">Nobody has reported these elevators yet. Ridden them? You’re the source.</div>');
+  list.innerHTML = bits.join('');
+}
+
+function wireReports(b) {
+  const cta = document.getElementById('repCta');
+  if (!cta) return;
+  refreshReports(b.id);
+  const form = document.getElementById('repform');
+  const err = document.getElementById('repError');
+  cta.addEventListener('click', () => {
+    const open = form.classList.toggle('open');
+    cta.setAttribute('aria-expanded', String(open));
+    if (open) document.getElementById('repCount').focus();
+  });
+  document.getElementById('repSend').addEventListener('click', async () => {
+    const n = parseInt(document.getElementById('repCount').value, 10);
+    const brand = document.getElementById('repBrand').value.trim().slice(0, 40);
+    const kind = document.getElementById('repKind').value;
+    const notes = document.getElementById('repNotes').value.trim().slice(0, 500);
+    const who = document.getElementById('repName').value.trim().slice(0, 40);
+    if (!(n >= 1 && n <= 100) && !brand && !kind) {
+      err.classList.add('show');
+      return;
+    }
+    err.classList.remove('show');
+    if (who) localStorage.setItem('liftspot_reviewer_name', who);
+    const btn = document.getElementById('repSend');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    const { error } = await sb.from('elevator_reports').insert({
+      building_id: b.id,
+      elevators: n >= 1 && n <= 100 ? n : null,
+      brand: brand || null,
+      kind: kind || null,
+      notes: notes || null,
+      who: who || 'Anonymous',
+    });
+    btn.disabled = false;
+    btn.textContent = 'Send report';
+    if (error) {
+      hooks.toast('Couldn’t send the report. Check your connection and try again.', { error: true });
+      return;
+    }
+    form.classList.remove('open');
+    cta.setAttribute('aria-expanded', 'false');
+    hooks.toast('Report sent. It shows up once it’s reviewed.');
+    refreshReports(b.id);
+  });
 }
 
 /* "Filmed these elevators?" — visitors paste a YouTube link on an unfilmed
@@ -176,9 +296,12 @@ function renderDataStrip(b) {
   const stories = b.stories == null
     ? `<div class="cell est"><span class="v led">?</span><span class="k">stories · unknown</span></div>`
     : `<div class="cell${sv ? '' : ' est'}"><span class="v led led-lit">${b.stories}</span><span class="k">stories${sv ? '' : ' · est'}</span></div>`;
+  // Since the purge (migrations/008) every elevator count was NULL; the only
+  // way one exists now is an approved community report (migrations/015), so a
+  // non-null count is labeled "reported" — a rider said so, not an estimate.
   const elevators = b.elevators == null
     ? `<div class="cell est"><span class="v led">?</span><span class="k">elevators · unreported</span></div>`
-    : `<div class="cell est"><span class="v led led-lit">~${b.elevators}</span><span class="k">elevators · est</span></div>`;
+    : `<div class="cell"><span class="v led led-lit">${b.elevators}</span><span class="k">elevators · reported</span></div>`;
   els.dataStrip.innerHTML = `${stories}${elevators}` +
     (d != null ? `<div class="cell"><span class="v led led-lit">${d.toFixed(1)}</span><span class="k">mi away</span></div>` : '') +
     footageRow(b);

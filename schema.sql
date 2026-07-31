@@ -46,6 +46,52 @@ grant  update (rating) on table buildings to anon, authenticated;
 create policy "Public update building rating"
   on buildings for update using (true) with check (true);
 
+-- Visitor video submissions (migrations/014): pending until reviewed by
+-- scripts/review_submissions.py; an approved video counts toward yt_videos.
+create table if not exists submissions (
+  id          bigserial primary key,
+  building_id bigint not null references buildings(id) on delete cascade,
+  url         text not null,
+  status      text not null default 'pending'
+              check (status in ('pending', 'approved', 'rejected')),
+  created_at  timestamptz not null default now(),
+  constraint youtube_url check (
+    url ~* '^https://((www|m)\.)?(youtube\.com/watch\?v=|youtu\.be/)[A-Za-z0-9_-]{6,}'
+  ),
+  unique (building_id, url)
+);
+alter table submissions enable row level security;
+create policy "Public insert pending submissions" on submissions
+  for insert with check (status = 'pending');
+create policy "Public read submissions" on submissions
+  for select using (true);
+revoke update, delete on table submissions from anon, authenticated;
+
+-- Community elevator reports (migrations/015): the only source of elevator
+-- counts that exists. Pending until reviewed; an approved count becomes
+-- buildings.elevators and renders as "reported", never as verified fact.
+create table if not exists elevator_reports (
+  id          bigserial primary key,
+  building_id bigint not null references buildings(id) on delete cascade,
+  elevators   int check (elevators between 1 and 100),
+  brand       text check (char_length(brand) <= 40),
+  kind        text check (kind in ('hydraulic', 'traction')),
+  notes       text check (char_length(notes) <= 500),
+  who         text not null default 'Anonymous' check (char_length(who) <= 40),
+  status      text not null default 'pending'
+              check (status in ('pending', 'approved', 'rejected')),
+  created_at  timestamptz not null default now(),
+  constraint says_something check (
+    elevators is not null or brand is not null or kind is not null
+  )
+);
+alter table elevator_reports enable row level security;
+create policy "Public insert pending reports" on elevator_reports
+  for insert with check (status = 'pending');
+create policy "Public read reports" on elevator_reports
+  for select using (true);
+revoke update, delete on table elevator_reports from anon, authenticated;
+
 -- ============================================================
 -- Seed buildings
 -- ============================================================

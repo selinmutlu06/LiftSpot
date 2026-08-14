@@ -1,7 +1,11 @@
 /* Map: MapLibre init, native clustering, button pins, hover/active sync.
    The basemap and marker colors follow the theme: a light basemap for the
    calm default, the dark "cab" basemap for full detail. Layers are rebuilt
-   whenever the style changes, so switching themes never loses the pins. */
+   whenever the style changes, so switching themes never loses the pins.
+   "Be the first" buildings (no coverage found anywhere) get amber pins so
+   the hunt is visible on the map itself, not just in the list. */
+
+import { unfilmed } from './data.js';
 
 export let map = null;
 
@@ -24,10 +28,12 @@ const PAINT = {
   calm: {
     clusterFill: '#2f7d68', clusterStroke: '#ffffff', clusterText: '#ffffff',
     pinFill: '#2f7d68', pinActive: '#1f5a4a', pinStroke: '#ffffff', halo: '#2f7d68',
+    pinFirst: '#b87d00',
   },
   full: {
     clusterFill: '#1d2b26', clusterStroke: '#c9ced0', clusterText: '#23a47f',
     pinFill: '#f5f6f4', pinActive: '#23a47f', pinStroke: '#16211d', halo: '#23a47f',
+    pinFirst: '#e8a13a',
   },
 };
 
@@ -102,7 +108,9 @@ function addLayers() {
     filter: ['!', ['has', 'point_count']],
     paint: {
       'circle-radius': 7,
-      'circle-color': ['case', litState, c.pinActive, c.pinFill],
+      'circle-color': ['case', litState, c.pinActive,
+        ['boolean', ['get', 'first'], false], c.pinFirst,
+        c.pinFill],
       'circle-stroke-width': 2.5,
       'circle-stroke-color': c.pinStroke,
     },
@@ -166,7 +174,7 @@ function applyData() {
       type: 'Feature',
       id: b.id,
       geometry: { type: 'Point', coordinates: [b.lng, b.lat] },
-      properties: { id: b.id },
+      properties: { id: b.id, first: unfilmed(b) },
     })),
   });
   if (activeId != null) trySetState(activeId, { active: true });

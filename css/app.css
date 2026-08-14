@@ -303,6 +303,20 @@ button { font: inherit; color: inherit; }
 }
 .hunt-link:hover { text-decoration: underline; }
 
+/* map pin legend: covered (green) vs be-the-first (amber) */
+.map-legend {
+  position: absolute; bottom: 28px; left: 12px; z-index: 2;
+  display: flex; align-items: center; gap: var(--s2);
+  font-size: 11px; font-weight: 600; color: var(--control-fg);
+  background: var(--control-bg); border: 1px solid var(--control-border);
+  border-radius: 99px; padding: 4px 10px; box-shadow: var(--shadow-sm);
+  pointer-events: none;
+}
+.map-legend .dot { width: 9px; height: 9px; border-radius: 50%; }
+.map-legend .dot.covered { background: var(--accent); }
+.map-legend .dot.first { background: var(--amber-deep); }
+html[data-mode="full"] .map-legend .dot.first { background: var(--amber); }
+
 /* "Be the first" pill: card meta row + drawer footage row */
 .pill-first {
   display: inline-flex; align-items: center;

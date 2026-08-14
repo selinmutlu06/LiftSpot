@@ -26,6 +26,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from check_youtube import check_building
 from check_reddit import arctic, classify_posts
+from recheck_coverage import elsewhere
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 YT = os.path.join(ROOT, "scripts", "youtube_report.json")
@@ -89,6 +90,8 @@ def emit_sql(qbk):
 
 
 def add(items, bid, name, town, source, cands):
+    # A near-miss whose title names another state is junk, not a maybe.
+    cands = [c for c in cands if not elsewhere(c["title"])]
     if not cands:
         return
     it = items.setdefault(bid, {"id": bid, "name": name, "town": town, "candidates": []})

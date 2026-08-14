@@ -6,18 +6,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "West Coast Elevator 1730 Bald Eagle Dr Naples, FL",
-    "url": "https://www.youtube.com/watch?v=YkBL3Mv7OaM",
-    "channel": "Jon's Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Modernized Eagle Traction Elevators | 440 West Condos (West Building) | Clearwater Beach, FL",
-    "url": "https://www.youtube.com/watch?v=-odFh-PPrW8",
-    "channel": "NEOH Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Transel Hydraulic Elevator @ American Eagle, Times Square, New York City",
     "url": "https://www.youtube.com/watch?v=F_r04GgooVI",
     "channel": "Photoelectric Elevators"
@@ -27,12 +15,6 @@
     "title": "1982 Otis Lexan Hydraulic West Elevator at Eagle Ridge Hospital in Port Moody BC",
     "url": "https://www.youtube.com/watch?v=BrBJQw0zW0w",
     "channel": "BC'sVators"
-   },
-   {
-    "source": "youtube",
-    "title": "Amazing SCENIC Schindler 400A Traction Elevators (West) | Eagle Gate Garage | Salt Lake City, UT",
-    "url": "https://www.youtube.com/watch?v=b511SBvXvpM",
-    "channel": "The Elevator and Airplane Finder"
    },
    {
     "source": "reddit",
@@ -192,12 +174,6 @@
    },
    {
     "source": "youtube",
-    "title": "Boring Schindler 330a Hydraulic Elevator near Dicks @ Augusta Mall, Augusta, GA",
-    "url": "https://www.youtube.com/watch?v=rldillo5auk",
-    "channel": "Rural Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Classic Montgomery/Otis hydraulic elevator at Augusta mall in Augusta GA",
     "url": "https://www.youtube.com/watch?v=yX12fbyP3AQ",
     "channel": "hotelfan99"
@@ -207,12 +183,6 @@
     "title": "Schindler HT 330A Scenic Elevator At The Food Court Augusta Mall in Augusta GA",
     "url": "https://www.youtube.com/watch?v=GSqud_L9vqs",
     "channel": "Elevator Man16"
-   },
-   {
-    "source": "youtube",
-    "title": "[BUSY AF 100x] Hydraulic Elevator @ Augusta Mall, Augusta, GA",
-    "url": "https://www.youtube.com/watch?v=GEZJkkJMe4c",
-    "channel": "Rural Elevators"
    }
   ]
  },
@@ -232,12 +202,6 @@
     "title": "Buckingham Building - Replaced Thyssenkrupp Evoultion1 Traction Elevators",
     "url": "https://www.youtube.com/watch?v=fhjdHugzabc",
     "channel": "CapitolExplorer HK Lifts"
-   },
-   {
-    "source": "youtube",
-    "title": "BUCKINGHAM PALACE CAB! GORGEOUS Otis Black Button Traction Elevator in Cleveland, OH",
-    "url": "https://www.youtube.com/watch?v=75QCOVRSfrg",
-    "channel": "Floridian Elevators > The Elevator Nomad"
    },
    {
     "source": "youtube",
@@ -261,84 +225,10 @@
   ]
  },
  {
-  "id": 2023,
-  "name": "One Willoughby Square",
-  "town": "Gowanus",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Older Otis Series 1 Hydraulic Elevator @ Interstate Square 2 Willoughby Ohio",
-    "url": "https://www.youtube.com/watch?v=Abt3QwowO5E",
-    "channel": "ElevatorMan45"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Hydraulic Elevator @ Interstate Square 1 Willoughby Ohio",
-    "url": "https://www.youtube.com/watch?v=M1m_SiDk6ZY",
-    "channel": "ElevatorMan45"
-   },
-   {
-    "source": "youtube",
-    "title": "GAL Otis Hydraulic Elevator at Interstate Square 1 in Willoughby, OH",
-    "url": "https://www.youtube.com/watch?v=RZjQwCEav2M",
-    "channel": "Brandon"
-   },
-   {
-    "source": "youtube",
-    "title": "Non ADA Early Otis Series 1 Hydraulic Elevator at Interstate Square 2 in Willoughby, OH",
-    "url": "https://www.youtube.com/watch?v=JKUv-QtjJTQ",
-    "channel": "Brandon"
-   }
-  ]
- },
- {
-  "id": 2024,
-  "name": "The Willoughby",
-  "town": "Gowanus",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Elevator Season 20 Episode 9D: The Willoughby (South Tower) Elevator, Chevy Chase, MD, USA *DN*",
-    "url": "https://www.youtube.com/watch?v=tccgrLtNxOM",
-    "channel": "Elevators in DC and Maryland!"
-   },
-   {
-    "source": "youtube",
-    "title": "Elevator Season 20 Episode 9B: The Willoughby (North Tower) Elevator, Chevy Chase, MD, USA",
-    "url": "https://www.youtube.com/watch?v=jkmo-PBsnCM",
-    "channel": "Elevators in DC and Maryland!"
-   },
-   {
-    "source": "youtube",
-    "title": "Elevator Season 20 Episode 9A: The Willoughby (South Tower) Elevator, Chevy Chase, MD, USA",
-    "url": "https://www.youtube.com/watch?v=QCWn1NYeams",
-    "channel": "Elevators in DC and Maryland!"
-   },
-   {
-    "source": "youtube",
-    "title": "Older Otis Series 1 Hydraulic Elevator @ Interstate Square 2 Willoughby Ohio",
-    "url": "https://www.youtube.com/watch?v=Abt3QwowO5E",
-    "channel": "ElevatorMan45"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Hydraulic Elevator @ Interstate Square 1 Willoughby Ohio",
-    "url": "https://www.youtube.com/watch?v=M1m_SiDk6ZY",
-    "channel": "ElevatorMan45"
-   }
-  ]
- },
- {
   "id": 2027,
   "name": "Webster Bank",
   "town": "Midwood",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Westinghouse Selectomatic Elevators - Webster Hall - Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=9ApO6CzHHqA",
-    "channel": "PAelevators"
-   },
    {
     "source": "youtube",
     "title": "2025 Ride on the Dover Elevator at US Bank in Webster Groves",
@@ -347,34 +237,9 @@
    },
    {
     "source": "youtube",
-    "title": "Summer 2019 Checkup of the Dover Elevator at US Bank in Webster Groves, MO",
-    "url": "https://www.youtube.com/watch?v=03HBBWss3i0",
-    "channel": "STL Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis series 4 elevators at Webster Bank Arena Parking Garage Bridgeport Connecticut",
-    "url": "https://www.youtube.com/watch?v=wjlDpj_C_Hs",
-    "channel": "Jake K\u2019s Elevator & Transportation Channel "
-   },
-   {
-    "source": "youtube",
     "title": "Let's check up on the WONDERFUL Dover Elevator @ US Bank Webster Groves!",
     "url": "https://www.youtube.com/watch?v=p9sKsWiwTD0",
     "channel": "STL Elevators"
-   }
-  ]
- },
- {
-  "id": 2029,
-  "name": "The Terraces",
-  "town": "Brooklyn",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Nice OTIS Series 1 Traction Elevators - The Terraces - Pleasant Hill, CA",
-    "url": "https://www.youtube.com/watch?v=1WK7mV98HaY",
-    "channel": "Jowevator 3219"
    }
   ]
  },
@@ -394,12 +259,6 @@
     "title": "Otis Traction Elevator At The Marriott Hotel (South Tower) In Downtown Brooklyn NYC (07/14/2026)",
     "url": "https://www.youtube.com/watch?v=OGs9gIjAyF4",
     "channel": "Lexie Media Transit + Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Elevator Season 20 Episode 9C: The Willoughby (South Tower) Elevator, Chevy Chase, MD, USA *ROOF*",
-    "url": "https://www.youtube.com/watch?v=E4FpitBQiyo",
-    "channel": "Elevators in DC and Maryland!"
    }
   ]
  },
@@ -416,64 +275,9 @@
    },
    {
     "source": "youtube",
-    "title": "Wonderful Westinghouse! Traction Elevators-Sweeney Hall-SJSU-San Jose, CA",
-    "url": "https://www.youtube.com/watch?v=riJGSuPYrqc",
-    "channel": "Jowevator 3219"
-   },
-   {
-    "source": "youtube",
     "title": "STRANGE Schindler hydraulic elevator at Sweeney Hall, ISU, Ames IA",
     "url": "https://www.youtube.com/watch?v=-6QrUJMMQJ0",
     "channel": "Star City Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "ALMOST STUCK - Messed Up Generic Hydraulic Elevator @ Sweeney Hall, ISU, Ames, IA",
-    "url": "https://www.youtube.com/watch?v=kZ5qCp23zpE",
-    "channel": "APR2E - Minnesota Elevator Review"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse Traction Elevators at SJSU Sweeney Hall in San Jose, CA",
-    "url": "https://www.youtube.com/watch?v=3uRH-q1vV-k",
-    "channel": "upanddownadventures"
-   }
-  ]
- },
- {
-  "id": 2034,
-  "name": "Chestnut Commons",
-  "town": "East New York",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Elevator at the Cleveland Clinic Chestnut Commons in Elyria Ohio!!!!!!",
-    "url": "https://www.youtube.com/watch?v=Vl6lHLFBdho",
-    "channel": "Ground Saving"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover Impulse elevator at Boston College Corcoran Commons Dining Hall Chestnut Hill Massachusetts",
-    "url": "https://www.youtube.com/watch?v=-YlBOWyIN60",
-    "channel": "Jake K\u2019s Elevator & Transportation Channel "
-   },
-   {
-    "source": "youtube",
-    "title": "Otis/All City Elevator - Chestnut Building - Stillwater, Minnesota",
-    "url": "https://www.youtube.com/watch?v=-fB2CidRf58",
-    "channel": "Northland Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Elevator No.2 - Chestnut Street Parking Garage - New Britain, CT",
-    "url": "https://www.youtube.com/watch?v=BwN6GSnoi6E",
-    "channel": "Rock & Roll Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Unknown elevator at McElroy Commons Boston College Chestnut Hill Massachusetts",
-    "url": "https://www.youtube.com/watch?v=1DF8MB_XTcg",
-    "channel": "Jake K\u2019s Elevator & Transportation Channel "
    }
   ]
  },
@@ -482,12 +286,6 @@
   "name": "Sky Three",
   "town": "West Brighton",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Elevator @ Terminal 3 | Sky Harbor International Airport - Phoenix, AZ",
-    "url": "https://www.youtube.com/watch?v=OdFP0gQHCvw",
-    "channel": "QCriderBrandon"
-   },
    {
     "source": "youtube",
     "title": "Oliver Tree - Elevator To The Sky [Lyric Video]",
@@ -520,36 +318,6 @@
   "town": "Flatbush",
   "candidates": [
    {
-    "source": "youtube",
-    "title": "Modernized General \"A\" elevators - Lawrence Hall - Point Park University - Downtown, Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=cK4fHsQiToo",
-    "channel": "Elevating Western PA"
-   },
-   {
-    "source": "youtube",
-    "title": "A tour of the elevators at Lawrence Hall -  point park  University -Downtown Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=CJNVUWVzWtc",
-    "channel": "Bobby Evans"
-   },
-   {
-    "source": "youtube",
-    "title": "Large MEI freight elevator - Playhouse - Point Park University - Downtown, Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=P9kScdR33fI",
-    "channel": "Elevating Western PA"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Gen2 \"B\" elevator - George Rowland White Performing Center - Point Park Uni. - Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=gfrfD5awULk",
-    "channel": "Elevating Western PA"
-   },
-   {
-    "source": "youtube",
-    "title": "Modernized General Elevators - Academic Hall - Point Park University - Downtown, Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=Ab0DV91fvnA",
-    "channel": "Elevating Western PA"
-   },
-   {
     "source": "reddit",
     "title": "Brooklyn, Brokers, and BS",
     "url": "https://www.reddit.com/r/Brooklyn/comments/vj2oa/brooklyn_brokers_and_bs/",
@@ -562,12 +330,6 @@
   "name": "Ramada",
   "town": "Flatlands",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Advanced HIGHdraulic Elevator at Ramada by Wyndham by City Center in Oakland, CA.",
-    "url": "https://www.youtube.com/watch?v=bfVdsk1Vc4A",
-    "channel": "JimLiElevators"
-   },
    {
     "source": "youtube",
     "title": "Dover Death Trap hydraulic elevator @ Ramada Inn Roanoke VA",
@@ -587,12 +349,6 @@
     "channel": "DieselDucy"
    },
    {
-    "source": "youtube",
-    "title": "Long Hydraulic Elevator at the Ramada in Springfield, IL",
-    "url": "https://www.youtube.com/watch?v=5ZSdZou2KCI",
-    "channel": "STL Elevators"
-   },
-   {
     "source": "reddit",
     "title": "Otis Elevator in the Ramada Lethbridge, Alberta. I personally like these older elevators better than the new ones.",
     "url": "https://www.reddit.com/r/Elevators/comments/egxv1s/otis_elevator_in_the_ramada_lethbridge_alberta_i/",
@@ -605,18 +361,6 @@
   "name": "665 Union",
   "town": "Gowanus",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "EPIC Original OTIS Traction Freight Elevator #1 - 665 3rd St - San Francisco, CA",
-    "url": "https://www.youtube.com/watch?v=Ke9lgxVT_RE",
-    "channel": "Jowevator 3219"
-   },
-   {
-    "source": "youtube",
-    "title": "Defunct Emco Freight Elevator Student Union East University of Texas at El Paso (UTEP) El Paso, TX",
-    "url": "https://www.youtube.com/watch?v=91OHFuKjM1o",
-    "channel": "Skyvator"
-   },
    {
     "source": "youtube",
     "title": "Amazing Late 1800\u2019s-Early 1900\u2019s Manually Controlled Traction Freight Elevator In Union City NJ",
@@ -644,21 +388,9 @@
    },
    {
     "source": "youtube",
-    "title": "Dover SPF Elevators at Golden Triangle II, Greenbelt, MD",
-    "url": "https://www.youtube.com/watch?v=3KTSPIL5390",
-    "channel": "AdazElevatorz"
-   },
-   {
-    "source": "youtube",
     "title": "\u3010iPhone 13 Pro Test #2\u3011 Schindler Elevator at Golden Triangle Condominium, Penang, Malaysia.",
     "url": "https://www.youtube.com/watch?v=IkFnFjoM9jA",
     "channel": "ZJ EleVids Productions (ZJEP)"
-   },
-   {
-    "source": "youtube",
-    "title": "1051. TK Endura Hydraulic Elevator at Junction Six Forks - Raleigh, NC",
-    "url": "https://www.youtube.com/watch?v=Gsl8hEUCkFY",
-    "channel": "Elevating North Carolina"
    }
   ]
  },
@@ -684,12 +416,6 @@
     "title": "Mongrain hydraulic glass elevator at the Jay Street - MetroTech R station (Brooklyn, NY)",
     "url": "https://www.youtube.com/watch?v=tdq7YVvuFtU",
     "channel": "Elevator, toilet, and transit fan"
-   },
-   {
-    "source": "youtube",
-    "title": "Lowell, MA: Dover Hydraulic Elevator @ Gateway Center (10 George St)",
-    "url": "https://www.youtube.com/watch?v=aSvxWbTJvZU",
-    "channel": "georgef551"
    },
    {
     "source": "youtube",
@@ -746,36 +472,6 @@
     "title": "Awesome Otis Lexan Hydraulic Elevator @ The Bay, Pickering Town Centre, Pickering ON",
     "url": "https://www.youtube.com/watch?v=IG9pKhrxeE8",
     "channel": "Ontario's Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Singapore MRT Elevator ( Otis Gen2\u00ae ) - Gardens by the Bay Station | 09/...",
-    "url": "https://www.reddit.com/r/Elevators/comments/1tb5y0m/singapore_mrt_elevator_otis_gen2_gardens_by_the/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "I want to become a elevator technician",
-    "url": "https://www.reddit.com/r/Elevators/comments/1t64xxc/i_want_to_become_a_elevator_technician/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Access panel latch info, please",
-    "url": "https://www.reddit.com/r/Elevators/comments/1qickb5/access_panel_latch_info_please/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Gardens by the Bay | Elevator, Dragonfly Bridge & Supertree Grove | Sile...",
-    "url": "https://www.reddit.com/r/Elevators/comments/1mmpg7j/gardens_by_the_bay_elevator_dragonfly_bridge/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "How do i go about this",
-    "url": "https://www.reddit.com/r/Elevators/comments/1mg7wnp/how_do_i_go_about_this/",
-    "channel": "Elevators"
    }
   ]
  },
@@ -845,24 +541,6 @@
     "title": "?? Traction Elevator At 100 Livingston Street In Downtown Brooklyn NYC",
     "url": "https://www.youtube.com/watch?v=gW8iVXmIaEo",
     "channel": "South FL&NYC Elevators And Beyond"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse Hydraulic Freight Elevator @ Sears at Livingston Mall in Livingston, NJ",
-    "url": "https://www.youtube.com/watch?v=OkfVnQsOxFo",
-    "channel": "Transit +PLUS"
-   },
-   {
-    "source": "youtube",
-    "title": "12/14/14: Dover Impulse Hydraulic Elevator at 19-43 South Livingston Avenue in Livingston, NJ",
-    "url": "https://www.youtube.com/watch?v=yMD5MiE_F8Q",
-    "channel": "David Ng"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse Hydraulic Elevator @ Sears, Livingston Mall, Livingston, NJ",
-    "url": "https://www.youtube.com/watch?v=0JLwEaO3zXg",
-    "channel": "Transit +PLUS"
    }
   ]
  },
@@ -886,30 +564,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Modernized Glass Elevators at the North Crown Building in San Antonio, TX",
-    "url": "https://www.youtube.com/watch?v=FS97z893L9A",
-    "channel": "DieselDucy"
-   },
-   {
-    "source": "youtube",
-    "title": "1974 US Hydraulic Elevator @ Crown Point Villas Condos, San Diego, CA",
-    "url": "https://www.youtube.com/watch?v=mlX8X1Qk6lE",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 330A Hydraulic Elevator at New Town West in Crown Point, IN",
-    "url": "https://www.youtube.com/watch?v=TL1XhHNg6i8",
-    "channel": "Michiana Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse Elevators At Crown Center In Independence Ohio",
-    "url": "https://www.youtube.com/watch?v=X6--5fwrlaA",
-    "channel": "ZORROMETEL"
-   },
-   {
-    "source": "youtube",
     "title": "AWESOME Vintage 1968 Elevator Electric Hydraulic Elevator @ 3970 Crown Point Drive Condos San Diego",
     "url": "https://www.youtube.com/watch?v=hDbTEnbwTbk",
     "channel": "Traction151"
@@ -921,12 +575,6 @@
   "name": "Park Lane Condominium",
   "town": "Queens",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Dover Traction Elevators at Park Lane Condominiums, Denver, CO",
-    "url": "https://www.youtube.com/watch?v=vp6l5eX_430",
-    "channel": "Elevating Denver \ud83e\udc62 NK Exploration"
-   },
    {
     "source": "youtube",
     "title": "Hitachi Traction Elevators at The Park Lane Hotel, Jakarta",
@@ -944,25 +592,6 @@
     "title": "The Park Lane - Otis Skyrise and Mitsubishi GPS Traction Elevators",
     "url": "https://www.youtube.com/watch?v=1yEC9hbWZco",
     "channel": "CapitolExplorer HK Lifts"
-   }
-  ]
- },
- {
-  "id": 2067,
-  "name": "North Shore Towers Building 2",
-  "town": "Queens",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "AMAZING 1963 Reliance Gated Traction Elevator @ The North Shore Building - Highland Park, IL",
-    "url": "https://www.youtube.com/watch?v=dJ3cVg_KkNc",
-    "channel": "STL Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Haughton/Millar?/Otis Gen2 elevator 2 - The Preserve at Heinz - North Shore, Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=zRjqXKI1Avg",
-    "channel": "Elevating Western PA"
    }
   ]
  },
@@ -985,21 +614,9 @@
    },
    {
     "source": "youtube",
-    "title": "Otis Traction Elevators at 5885 Hollis St. in Emeryville, CA",
-    "url": "https://www.youtube.com/watch?v=RFiEINRZ-AA",
-    "channel": "upanddownadventures"
-   },
-   {
-    "source": "youtube",
     "title": "Dover Elevator in the Centennial Building (1660 Hollis Street)",
     "url": "https://www.youtube.com/watch?v=h5UBTgFrg2A",
     "channel": "swirlyvision"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis 211 Hydraulic Elevator at 5885 Hollis St. in Emeryville, CA",
-    "url": "https://www.youtube.com/watch?v=fkcPlJBhIVc",
-    "channel": "upanddownadventures"
    }
   ]
  },
@@ -1029,33 +646,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Modernized OTIS (Eastern) Elevator - The Camelot Apartments - Oakland-Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=PjNv4wWqNWI",
-    "channel": "PAelevators"
-   },
-   {
-    "source": "youtube",
     "title": "Otis series one elevators at the Camelot resort in Myrtle Beach SC",
     "url": "https://www.youtube.com/watch?v=rw9M_5uZzbc",
     "channel": "WONKAVATOR2005"
-   },
-   {
-    "source": "youtube",
-    "title": "[SM] Slap-On Modded General Basement-Traction Elevator - Camelot A - Ocean City, MD | ECFE",
-    "url": "https://www.youtube.com/watch?v=g-lY3R6WcSg",
-    "channel": "Elevator & Ceiling Fan Enthusiasm"
-   },
-   {
-    "source": "youtube",
-    "title": "Delaware Basement-Traction Modernized Elevator - Camelot A Condominium - Ocean City, MD | ECFE",
-    "url": "https://www.youtube.com/watch?v=l7aGKGxarRM",
-    "channel": "Elevator & Ceiling Fan Enthusiasm"
-   },
-   {
-    "source": "youtube",
-    "title": "Delaware Basement-Traction Modernized Elevator - Camelot A Condominium - Ocean City, MD | ECFE",
-    "url": "https://www.youtube.com/watch?v=p6zAENe0QnQ",
-    "channel": "Elevator & Ceiling Fan Enthusiasm"
    }
   ]
  },
@@ -1106,12 +699,6 @@
     "title": "BRAND NEW!!! KONE Posh Ecodisc MRL Traction elevator @ Globen",
     "url": "https://www.youtube.com/watch?v=-LePFjQcif4",
     "channel": "All the Elevators! - By SummerADDE"
-   },
-   {
-    "source": "youtube",
-    "title": "(Very Posh) Rooms Elevator in Hotel \"Hilton\" in K.L. in Washington, USA",
-    "url": "https://www.youtube.com/watch?v=OvbYcFzlueQ",
-    "channel": "KWLiftsFan969 Animations \ud83e\uddc0\ud83c\udf55 Miss Jennings "
    },
    {
     "source": "youtube",
@@ -1177,33 +764,15 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Otis Series 1 Hydraulic Elevator @ 15 Executive Boulevard, Orange, CT",
-    "url": "https://www.youtube.com/watch?v=yE0taVc-z8U",
-    "channel": "jaemre288 Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "A very orange elevator at Underground Atlanta",
     "url": "https://www.youtube.com/watch?v=64eSST2F6Ng",
     "channel": "Brock's Sketchbook"
    },
    {
     "source": "youtube",
-    "title": "Burlington, MA.: O/W/H Westinghouse Hydraulic Elevator @ Sears, Burlington Mall (\"Orange Pavilion\")",
-    "url": "https://www.youtube.com/watch?v=CkrEkXE0auc",
-    "channel": "georgef551"
-   },
-   {
-    "source": "youtube",
     "title": "Dover Hydraulic Elevator at Days Inn Orange Ave Roanoke VA",
     "url": "https://www.youtube.com/watch?v=vNvIMRwuM60",
     "channel": "DieselDucy"
-   },
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Signa4 Endura MRL Hydraulic Elevator at the Savanna Cafe in West Orange, NJ",
-    "url": "https://www.youtube.com/watch?v=BE3xo865N7E",
-    "channel": "David Ng"
    }
   ]
  },
@@ -1239,24 +808,6 @@
    },
    {
     "source": "youtube",
-    "title": "Abell? Hydraulic Elevator | Brook Public Library - Brook, IN | 07/20/2026",
-    "url": "https://www.youtube.com/watch?v=8AYeWGSVb5s",
-    "channel": "Hoosier State Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 330A Hydraulic Elevator | The Container Store \u2022 Oak Brook, IL",
-    "url": "https://www.youtube.com/watch?v=CQTwcYyHjQs",
-    "channel": "Hoosier State Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler Hydraulic Elevator ~ The Container Store - Oakbrook Center ~ Oak Brook, IL",
-    "url": "https://www.youtube.com/watch?v=j5BH_ACWeAg",
-    "channel": "Southern Sunshine Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "AMAZING RELAYS - 1967 Burlington elevator - Department of Psychology B, Stony Brook University",
     "url": "https://www.youtube.com/watch?v=qPs6IkmfVnY",
     "channel": "TransitUSA"
@@ -1276,21 +827,9 @@
    },
    {
     "source": "youtube",
-    "title": "Westinghouse Elevator \ud83d\uded7 at Hanover House  at Atlanta, GA",
-    "url": "https://www.youtube.com/watch?v=CjcT-N3KoJE",
-    "channel": "Elevator Boi"
-   },
-   {
-    "source": "youtube",
     "title": "I've got into both lifts in Hanover House!",
     "url": "https://www.youtube.com/watch?v=CDUNudw_67E",
     "channel": "Joes LiftChannel (Vids since Pancake Day)"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover/Schindler Hydraulic Elevator at the Parking Deck near AMC Theater, East Hanover, NJ",
-    "url": "https://www.youtube.com/watch?v=K9d2636gSCQ",
-    "channel": "Elevators, BE, & More by cmc2002"
    },
    {
     "source": "youtube",
@@ -1371,36 +910,6 @@
     "title": "2020 Thyssenkrupp Hydraulic Elevator No PES1 At King George Hub in Surrey BC",
     "url": "https://www.youtube.com/watch?v=YIN1JXCnZ9A",
     "channel": "Johnnie Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Frankfurt's Infamous IG Farben 'Elevator of Death'...Riding a Rare Paternoster Lift Over The Top!",
-    "url": "https://www.reddit.com/r/Elevators/comments/1negm2c/frankfurts_infamous_ig_farben_elevator_of/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Design for Manufacturing for elevators",
-    "url": "https://www.reddit.com/r/Elevators/comments/1bvlss5/design_for_manufacturing_for_elevators/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "We\u2019ve been having issues w one of our elevators at a local arena. Work hub, I\u2019m not in elevators. Thought of y\u2019all.",
-    "url": "https://www.reddit.com/r/Elevators/comments/12d10kf/weve_been_having_issues_w_one_of_our_elevators_at/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "OTIS Elevator ad - transport hub (John Berkey, 1975)",
-    "url": "https://www.reddit.com/r/Elevators/comments/ldnynv/otis_elevator_ad_transport_hub_john_berkey_1975/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Ground Zero, NYC, 13 Years Later: The state of the World Trade Center as of 9/11/2014, a building-by-building breakdown",
-    "url": "https://www.reddit.com/r/nyc/comments/2g5h68/ground_zero_nyc_13_years_later_the_state_of_the/",
-    "channel": "nyc"
    }
   ]
  },
@@ -1424,12 +933,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Delaware Hydraulic elevator @ Havre De Grace Medical Clinic Havre De Grace MD",
-    "url": "https://www.youtube.com/watch?v=KgEa9NCmWNM",
-    "channel": "DieselDucy"
-   },
-   {
-    "source": "youtube",
     "title": "General/Rotary Gated Hydraulic piston pump elevator @ Kirkwood Medical Building Kirkwood MO",
     "url": "https://www.youtube.com/watch?v=4Q1A1HNf6-Q",
     "channel": "DieselDucy"
@@ -1439,18 +942,6 @@
     "title": "Thyssenkrupp Hydraulic OR Elevator At Baylor Medical Center At Plano",
     "url": "https://www.youtube.com/watch?v=c7oVmeKlLgs",
     "channel": "gluse"
-   },
-   {
-    "source": "youtube",
-    "title": "Lowell, MA: Confusing Trodella Hydraulic Elevator @ Lowell General Hospital, Medical Office Building",
-    "url": "https://www.youtube.com/watch?v=GooLvpCQ754",
-    "channel": "georgef551"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Hydraulic Elevator at Sherwood Hall Medical Center in Alexandria, VA",
-    "url": "https://www.youtube.com/watch?v=V65AN3z6VIg",
-    "channel": "DieselDucy"
    },
    {
     "source": "reddit",
@@ -1469,18 +960,6 @@
     "title": "Elevators Installation in Bangalore for Homes & Commercial Buildings",
     "url": "https://www.reddit.com/r/Elevators/comments/1r1osc3/elevators_installation_in_bangalore_for_homes/",
     "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "TKE - what the heck?",
-    "url": "https://www.reddit.com/r/Elevators/comments/1oku1ey/tke_what_the_heck/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Elevator Modernization Costs",
-    "url": "https://www.reddit.com/r/Elevators/comments/1lag8ji/elevator_modernization_costs/",
-    "channel": "Elevators"
    }
   ]
  },
@@ -1489,12 +968,6 @@
   "name": "Tyler Towers",
   "town": "Hillside",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Dover traction elevator at regions building Tyler, TX",
-    "url": "https://www.youtube.com/watch?v=IRK5MwFoTCI",
-    "channel": "curtthurepearson"
-   },
    {
     "source": "youtube",
     "title": "Tyler Traction Elevators At Century 21 At The Outlets At The Bergen Town Center In Paramus NJ",
@@ -1506,12 +979,6 @@
     "title": "(\ud835\udc0b\ud835\udc00\ud835\udc13\ud835\udc04 \ud835\udc14\ud835\udc0f\ud835\udc0b\ud835\udc0e\ud835\udc00\ud835\udc03) P8+9 Elevator @ Union STN With Tyler M",
     "url": "https://www.youtube.com/watch?v=TZe96hfG1mU",
     "channel": "Michael Walters Elevators, Roblox, and More"
-   },
-   {
-    "source": "youtube",
-    "title": "Tyler Traction elevators at Century 21 Bergen Towne Center, Paramus, NJ",
-    "url": "https://www.youtube.com/watch?v=A2UHUz-nIWo",
-    "channel": "aceee06"
    },
    {
     "source": "youtube",
@@ -1534,12 +1001,6 @@
    },
    {
     "source": "youtube",
-    "title": "The Belvedere Condo II Elevator (18 floors) Arlington, VA, USA",
-    "url": "https://www.youtube.com/watch?v=o4L1mK-OqnI",
-    "channel": "Elevators in DC and Maryland!"
-   },
-   {
-    "source": "youtube",
     "title": "Elcor Platform Elevator at Belvedere LRT Station, Edmonton, AB",
     "url": "https://www.youtube.com/watch?v=kZDeww_0kEQ",
     "channel": "YEG Trains and Elevators"
@@ -1549,12 +1010,6 @@
     "title": "Consolidated Traction Elevators @ The Belvedere Hotel-New York City",
     "url": "https://www.youtube.com/watch?v=uVuJIuMHNhc",
     "channel": "Elevator Man60"
-   },
-   {
-    "source": "youtube",
-    "title": "The Belvedere Condo I Elevator (19 floors) Arlington, VA, USA",
-    "url": "https://www.youtube.com/watch?v=ykp0Jjl8CWY",
-    "channel": "Elevators in DC and Maryland!"
    }
   ]
  },
@@ -1588,18 +1043,6 @@
   "name": "Fairfield Manor Apartments",
   "town": "Douglaston",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Vintage Home Hydraulic Elevator @ Carmel Manor Apartments - Walnut Creek, CA",
-    "url": "https://www.youtube.com/watch?v=gwp-7h3TXQE",
-    "channel": "CAelevators"
-   },
-   {
-    "source": "youtube",
-    "title": "705. Otis Hydraulic Elevator 3 at Camden Manor Park Apartments - Raleigh, NC",
-    "url": "https://www.youtube.com/watch?v=X5HHITPh96E",
-    "channel": "Elevating North Carolina"
-   },
    {
     "source": "youtube",
     "title": "Throwback: EPIC 1978 Esco Hydraulic Elevator - Riverside Manor Apartments",
@@ -1636,18 +1079,6 @@
     "title": "Dover Hydraulic Elevator at the Parkview Professional Bldg.",
     "url": "https://www.youtube.com/watch?v=BXR4IoWOGq4",
     "channel": "CenTexElevators489"
-   },
-   {
-    "source": "youtube",
-    "title": "RARE ThyssenKrupp ISIS Traction Elevator @  Parkview Center - Irvine, CA",
-    "url": "https://www.youtube.com/watch?v=mp9Cr2SeQ0A",
-    "channel": "CAelevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Slow & Weird KONE EcoSpace KSS 370 Traction Elevators @ ParkView at City Centre, Kissimmee, Florida",
-    "url": "https://www.youtube.com/watch?v=4L3Tokr7SDs",
-    "channel": "Elevators with Owen"
    }
   ]
  },
@@ -1695,30 +1126,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Elevator Season 29 Episode 5 - The Saxony Elevator, Washington, DC, USA",
-    "url": "https://www.youtube.com/watch?v=SNFNcDITzQ4",
-    "channel": "Elevators in DC and Maryland!"
-   },
-   {
-    "source": "youtube",
-    "title": "Vintage Northwestern HIGHdraulic Elevator @ The Saxony - Madison, WI.",
-    "url": "https://www.youtube.com/watch?v=YvJ7XZLsjkE",
-    "channel": "ElevatorsofLakeCounty"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover (Northwestern) Elevators - The Saxony Apartments In Madison, WI",
-    "url": "https://www.youtube.com/watch?v=fjFCawHpfvU",
-    "channel": "ParamountFanatic2002"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover (Northwestern) Elevators - The Saxony Apartments In Madison, WI",
-    "url": "https://www.youtube.com/watch?v=Q--ZIl4CqjU",
-    "channel": "ParamountFanatic2002"
-   },
-   {
-    "source": "youtube",
     "title": "Another Dover/Northwestern Hydraulic Elevator @ Saxony Apartments Madison WI",
     "url": "https://www.youtube.com/watch?v=3vi57HQXjYY",
     "channel": "The Gaston\u2019s Fan Media World 23"
@@ -1730,18 +1137,6 @@
   "name": "The Opal",
   "town": "Queens",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Empire Back Elevator - The Opal - San Francisco, California",
-    "url": "https://www.youtube.com/watch?v=fxmtkAnbZ38",
-    "channel": "nationalelevator"
-   },
-   {
-    "source": "youtube",
-    "title": "Empire Front Elevator - The Opal - San Francisco, California",
-    "url": "https://www.youtube.com/watch?v=NIys02FIpn4",
-    "channel": "nationalelevator"
-   },
    {
     "source": "youtube",
     "title": "Beautiful ThyssenKrupp Hydraulic Elevators At The Opal Grand Resort&Spa In Delray Beach FL",
@@ -1858,18 +1253,6 @@
     "title": "Lightning Fast Mitsubishi Service Elevators At Modernham Towers In Skyscrapersim",
     "url": "https://www.youtube.com/watch?v=JIPlY_THIjM",
     "channel": "The Ultimate Skyscrapersim Channel Videos"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover Oildraulic Elevator - Robert S Carey Student Center - St. Vincent College - Unity Township, PA",
-    "url": "https://www.youtube.com/watch?v=S9u-HG0_ZOY",
-    "channel": "Elevating Western PA"
-   },
-   {
-    "source": "youtube",
-    "title": "thyssenkrupp Oildraulic elevator - Dupr\u00e9 Science Pavilion - St. Vincent College - Unity Township, PA",
-    "url": "https://www.youtube.com/watch?v=xM7eGej2JLc",
-    "channel": "Elevating Western PA"
    }
   ]
  },
@@ -1987,56 +1370,6 @@
   ]
  },
  {
-  "id": 2118,
-  "name": "Luna Park Houses 5",
-  "town": "West Brighton",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Unknown Gated Hydraulic Elevator (Car 5) | Toll Physics Building | Univ of MD | College Park, MD",
-    "url": "https://www.youtube.com/watch?v=JSa_qdUUO2o",
-    "channel": "AdazElevatorz"
-   }
-  ]
- },
- {
-  "id": 2123,
-  "name": "Ocean Tower Professional Center",
-  "town": "Brighton Beach",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Montgomery/Schindler Traction Elevators @ B Ocean Marina Tower, Fort Lauderdale, FL",
-    "url": "https://www.youtube.com/watch?v=e-QFcnW4qH8",
-    "channel": "Southern Sunshine Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "MODDED: Modded Westinghouse/Schindler Hydraulic Elevators @ B Ocean Beach Tower, Fort Lauderdale, FL",
-    "url": "https://www.youtube.com/watch?v=h4AxpzS6hBY",
-    "channel": "Southern Sunshine Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Hydraulic Elevator to Skywalk @ B Ocean Clipper Tower, Fort Lauderdale, FL",
-    "url": "https://www.youtube.com/watch?v=IrRWxOVP024",
-    "channel": "Southern Sunshine Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Impulse Oildraulic Elevator - The Professional Centre at 795 - Reisterstown, MD | ECFE",
-    "url": "https://www.youtube.com/watch?v=UHD1WW3h09o",
-    "channel": "Elevator & Ceiling Fan Enthusiasm"
-   },
-   {
-    "source": "youtube",
-    "title": "Older Otis Series 1 Hydraulic Elevators - Ocean County Justice Center PG - Toms River, NJ",
-    "url": "https://www.youtube.com/watch?v=XbOPpOgv7CY",
-    "channel": "Garden State Elevators"
-   }
-  ]
- },
- {
   "id": 2125,
   "name": "Brighton Towers",
   "town": "Brighton Beach",
@@ -2058,12 +1391,6 @@
     "title": "Nice fast Otis 2000 car park lift @ Churchill Square In Brighton",
     "url": "https://www.youtube.com/watch?v=0RvxOqQIssQ",
     "channel": "Nicks Transport Hub"
-   },
-   {
-    "source": "youtube",
-    "title": "350 FPM Traction Elevators at the Kingston Plantation Brighton Tower in North Myrtle Beach, SC",
-    "url": "https://www.youtube.com/watch?v=vlXo78xdv3s",
-    "channel": "Rural Elevators"
    },
    {
     "source": "youtube",
@@ -2101,12 +1428,6 @@
     "title": "Otis elevator @ valley Bank Building Roanoke va w/ dieselducy",
     "url": "https://www.youtube.com/watch?v=5XMyA66SHOA",
     "channel": "Evan Stone Productions"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 hydraulic elevator at Valley National Bank, 31-00 Broadway, Fair Lawn, NJ",
-    "url": "https://www.youtube.com/watch?v=BpgiXqRSefs",
-    "channel": "aceee06"
    }
   ]
  },
@@ -2135,12 +1456,6 @@
    },
    {
     "source": "youtube",
-    "title": "9 Floor 330A! Schindler Hydraulic Elevator at the Crown Plaza Hotel - Bethel Park, PA",
-    "url": "https://www.youtube.com/watch?v=HcDgNDfQDYk",
-    "channel": "PAelevators"
-   },
-   {
-    "source": "youtube",
     "title": "Crown Lift Trucks Automotive Technician Vince Martinez Talks Universal Technical Institute",
     "url": "https://www.youtube.com/watch?v=7I9o59RlwEc",
     "channel": "Universal Technical Institute"
@@ -2150,30 +1465,6 @@
     "title": "Frankfurt's Infamous IG Farben 'Elevator of Death'...Riding a Rare Paternoster Lift Over The Top!",
     "url": "https://www.reddit.com/r/Elevators/comments/1negm2c/frankfurts_infamous_ig_farben_elevator_of/",
     "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Crown gear shackle table",
-    "url": "https://www.reddit.com/r/Elevators/comments/1aedm29/crown_gear_shackle_table/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "New York Iconic Monuments & Skyscrapers You Must See",
-    "url": "https://www.reddit.com/r/nyc/comments/1re6v0p/new_york_iconic_monuments_skyscrapers_you_must_see/",
-    "channel": "nyc"
-   },
-   {
-    "source": "reddit",
-    "title": "Could anyone help me figure out what a good 1BR rent should be based on this criteria?",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/1hic4rz/could_anyone_help_me_figure_out_what_a_good_1br/",
-    "channel": "Brooklyn"
-   },
-   {
-    "source": "reddit",
-    "title": "Was told yesterday we need to move out by 6/1- advice on looking for apts?",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/u8nur5/was_told_yesterday_we_need_to_move_out_by_61/",
-    "channel": "Brooklyn"
    }
   ]
  },
@@ -2240,20 +1531,8 @@
    },
    {
     "source": "youtube",
-    "title": "The vintage Westbrook Elevator in Cheatham Hall at Virginia Tech was modded by Schindler!",
-    "url": "https://www.youtube.com/watch?v=HDTTGu-rJ50",
-    "channel": "DieselDucy"
-   },
-   {
-    "source": "youtube",
     "title": "Historic Westbrook Elevator in 3rd Person with epic motor",
     "url": "https://www.youtube.com/watch?v=AWnQYxwu_6o",
-    "channel": "DieselDucy"
-   },
-   {
-    "source": "youtube",
-    "title": "Old Westbrook Traction Elevator in Danville, VA",
-    "url": "https://www.youtube.com/watch?v=L1hm7vmcfeY",
     "channel": "DieselDucy"
    }
   ]
@@ -2292,30 +1571,6 @@
     "title": "Kone Elevator in The Wave Apartment building Seattle",
     "url": "https://www.youtube.com/watch?v=8rVFgY4NG3c",
     "channel": "punkrawker4783"
-   },
-   {
-    "source": "reddit",
-    "title": "Elevator Repair Estimate After Motor Room Fire",
-    "url": "https://www.reddit.com/r/Elevators/comments/1lq1e1n/elevator_repair_estimate_after_motor_room_fire/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Two weeks back I traveled to NYC. Here are a few of my observations about New Yorkers.",
-    "url": "https://www.reddit.com/r/nyc/comments/1e4osx0/two_weeks_back_i_traveled_to_nyc_here_are_a_few/",
-    "channel": "nyc"
-   },
-   {
-    "source": "reddit",
-    "title": "If you're back at work or going back before 2021, what procedures are in place for you?",
-    "url": "https://www.reddit.com/r/nyc/comments/hzeekc/if_youre_back_at_work_or_going_back_before_2021/",
-    "channel": "nyc"
-   },
-   {
-    "source": "reddit",
-    "title": "A Plea From Your Local Emergency Medical Services",
-    "url": "https://www.reddit.com/r/nyc/comments/lcloo/a_plea_from_your_local_emergency_medical_services/",
-    "channel": "nyc"
    }
   ]
  },
@@ -2324,12 +1579,6 @@
   "name": "Aqua",
   "town": "Brooklyn",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Otis High Rise (53-81) Elevators @ Aqua - Chicago, IL.",
-    "url": "https://www.youtube.com/watch?v=CHaE0Fg00Vg",
-    "channel": "ElevatorsofLakeCounty"
-   },
    {
     "source": "youtube",
     "title": "Aqua Dom, the really big aquarium (with a lift inside!) in the middle of hotel, Berlin, Germany",
@@ -2431,56 +1680,6 @@
   ]
  },
  {
-  "id": 2143,
-  "name": "Americana",
-  "town": "Queens",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Authentic Delaware Traction Elevators @ Americana Hotel in Ocean City, MD",
-    "url": "https://www.youtube.com/watch?v=9KhNITc-GOo",
-    "channel": "MohSonic Daybreaker The Elevator Critic"
-   },
-   {
-    "source": "youtube",
-    "title": "Vintage Dover Hydraulic Elevator at the Americana Building in Austin, TX",
-    "url": "https://www.youtube.com/watch?v=EiylGWR-CoM",
-    "channel": "DieselDucy"
-   },
-   {
-    "source": "youtube",
-    "title": "Delaware Hydraulic Elevator @ Americana One Condos in Ocean City, MD",
-    "url": "https://www.youtube.com/watch?v=9W2i-pqPe8U",
-    "channel": "MohSonic Daybreaker The Elevator Critic"
-   },
-   {
-    "source": "youtube",
-    "title": "(Night Video) Outstanding Otis Gen2 Scenic Elevators @ Americana at Brand Garage, Glendale, CA",
-    "url": "https://www.youtube.com/watch?v=83OSp8nmbGk",
-    "channel": "GucciPowerGrizzlyBearDopeAF"
-   },
-   {
-    "source": "youtube",
-    "title": "Awesome OTIS Series 4 traction elevators at the Americana in Glendale California",
-    "url": "https://www.youtube.com/watch?v=M3wjm8vQ7Bg",
-    "channel": "TheElevatorAdventureChannel"
-   }
-  ]
- },
- {
-  "id": 2144,
-  "name": "Hudson House Luxury Apartments",
-  "town": "Queens",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "736. 2019 TK Endura Hydraulic Elevator at Brizo Luxury Apartments Building 1 - RTP, NC",
-    "url": "https://www.youtube.com/watch?v=asJPBMaA1Uc",
-    "channel": "Elevating North Carolina"
-   }
-  ]
- },
- {
   "id": 2145,
   "name": "Avalon Terrace",
   "town": "Hillside",
@@ -2493,21 +1692,9 @@
    },
    {
     "source": "youtube",
-    "title": "AWESOME Mitsubishi Sigma AI 2200 Traction Elevators @ Avalon Pasadena Apartments, Pasadena, CA",
-    "url": "https://www.youtube.com/watch?v=86kXRh6dXAk",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
     "title": "Otis Elevator At the Avalon Mall (August 2013 Take)",
     "url": "https://www.youtube.com/watch?v=OFaogHLKxLY",
     "channel": "MrVideodude709"
-   },
-   {
-    "source": "youtube",
-    "title": "BUSY AND SLOW Otis GEM Elevators at Avalon Ballston Square Apartments, Arlington, VA",
-    "url": "https://www.youtube.com/watch?v=uCFwZz9gBiU",
-    "channel": "AdazElevatorz"
    },
    {
     "source": "youtube",
@@ -2542,12 +1729,6 @@
    },
    {
     "source": "youtube",
-    "title": "Schindler Hydraulic Elevator @ Dillard's - Hillside Village - Cedar Hill, TX",
-    "url": "https://www.youtube.com/watch?v=wPwmgQuEQ30",
-    "channel": "TXMN Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Thyssenkrupp Elevator at Sportchek Hillside Victoria",
     "url": "https://www.youtube.com/watch?v=_dChHQHazn0",
     "channel": "Kira1106"
@@ -2573,18 +1754,6 @@
    },
    {
     "source": "youtube",
-    "title": "Epic Fail!? Otis Traction Elevators at International Tower, Hyatt Regency in Downtown Atlanta, GA.",
-    "url": "https://www.youtube.com/watch?v=EY1DwMzpVXo",
-    "channel": "JimLiElevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Awesome Otis Traction Elevators - Hyatt Regency Atlanta (International Tower) Atlanta, GA",
-    "url": "https://www.youtube.com/watch?v=mcLTeMlJyE4",
-    "channel": "Elevation321"
-   },
-   {
-    "source": "youtube",
     "title": "Mitsubishi Elevator At the GT International Tower Makati City, Philippines ",
     "url": "https://www.youtube.com/watch?v=E9PnV8np660",
     "channel": "Sean's Buses and Trains PH"
@@ -2598,95 +1767,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "KONE Scenic Elevator #2 at Haddonfield Station, 1 Kings Hwy and Washington AVE, Haddonfield NJ",
-    "url": "https://www.youtube.com/watch?v=89smroYPll0",
-    "channel": "GH32143"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Hydraulic Elevator @ Maple Shade Mews | Maple Shade, NJ",
-    "url": "https://www.youtube.com/watch?v=RM2Pbl5lQUw",
-    "channel": "JohnElevatorFAN!!!!!!!!!!!"
-   },
-   {
-    "source": "youtube",
     "title": "Shindler elevator at Burlington (Kings plaza, NY)",
     "url": "https://www.youtube.com/watch?v=3WMAeIcosWQ",
     "channel": "TBEC Fanner"
-   }
-  ]
- },
- {
-  "id": 2150,
-  "name": "The Saybrook",
-  "town": "Elmhurst",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Hydraulic Elevator @ Saybrook Junction, Old Saybrook, CT",
-    "url": "https://www.youtube.com/watch?v=Jx_aQDrtdlk",
-    "channel": "jaemre288 Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Hydraulic Elevator @ Edgewater Office Building, Old Saybrook, CT",
-    "url": "https://www.youtube.com/watch?v=u0GjWkCBZcU",
-    "channel": "jaemre288 Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Hydraulic Elevators @ Old Saybrook Amtrak Station, Old Saybrook, CT",
-    "url": "https://www.youtube.com/watch?v=YHzGaUfqhiU",
-    "channel": "jaemre288 Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Impulse Hydraulic Elevator @ Saybrook Landing, Old Saybrook, CT",
-    "url": "https://www.youtube.com/watch?v=rsmIgNw8X4Q",
-    "channel": "jaemre288 Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "EPIC 1971 Dover Hydraulic Elevator @ Cove Business Center, Old Saybrook, CT",
-    "url": "https://www.youtube.com/watch?v=-kM8hPFtDkw",
-    "channel": "jaemre288 Elevators"
-   }
-  ]
- },
- {
-  "id": 2151,
-  "name": "Arcadia Condominium",
-  "town": "Gravesend",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Mitsubishi/MCE Hydraulic Scenic Elevators @ Arcadia Gold Line Station, Arcadia, CA",
-    "url": "https://www.youtube.com/watch?v=An-EzhNVI0I",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "KONE EcoSpace Traction Nordstrom Parking Elevator @ Santa Anita Mall, Arcadia, CA",
-    "url": "https://www.youtube.com/watch?v=kABZSUw3fDA",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "1972 Westinghouse (mod KONE) Traction Elevator @ Macy\u2019s, Arcadia, CA",
-    "url": "https://www.youtube.com/watch?v=Qfye674wRBw",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "KONE EcoSpace Traction External Service Elevator @ Santa Anita Mall, Arcadia, CA",
-    "url": "https://www.youtube.com/watch?v=pl3F_r5PKs0",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "AWFUL 2008 OTIS Series 5 Hydraulic Elevator @ H&M, Arcadia, CA",
-    "url": "https://www.youtube.com/watch?v=O6fWta0GJlM",
-    "channel": "Traction151"
    }
   ]
  },
@@ -2728,12 +1811,6 @@
    },
    {
     "source": "youtube",
-    "title": "LOW-PITCHED Schindler HT 321A Hydraulic Elevator @ Metropolis Ballroom, Arlington Heights, IL",
-    "url": "https://www.youtube.com/watch?v=dqZNPE0Fdfc",
-    "channel": "ElevatorDog100"
-   },
-   {
-    "source": "youtube",
     "title": "Sigma Elevator at Mal Metropolitan Bekasi (Extention Building)",
     "url": "https://www.youtube.com/watch?v=YsiRFOQ5FBE",
     "channel": "Orisa's Elevatour"
@@ -2771,21 +1848,9 @@
    },
    {
     "source": "youtube",
-    "title": "Modernized OTIS Freight Elevator - CubeSmart Storage (For. Sears) - Monroeville, PA",
-    "url": "https://www.youtube.com/watch?v=LRaXP7ejOWA",
-    "channel": "PAelevators"
-   },
-   {
-    "source": "youtube",
     "title": "Otis Hydraulic Elevator at Cubesmart Storage Unit",
     "url": "https://www.youtube.com/watch?v=ZPdgbZ4RoAw",
     "channel": "Elevators of Arizona"
-   },
-   {
-    "source": "youtube",
-    "title": "New, Schindler 330A Hydraulic elevator at CubeSmart Self Storage Building 1 NE Tacoma Washington",
-    "url": "https://www.youtube.com/watch?v=zlDdyrNykD4",
-    "channel": "bigburgerboi2005 (Main Channel) miscellaneous vids"
    }
   ]
  },
@@ -2796,21 +1861,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Otis Traction Elevators (Series M1 Fixtures) at Hooters Casino Hotel Oceanview Tower, Las Vegas, NV",
-    "url": "https://www.youtube.com/watch?v=J3P2UT_xEuc",
-    "channel": "upanddownadventures"
-   },
-   {
-    "source": "youtube",
     "title": "Amazing Oceanview Dover/Northern?? Traction Elevators @ Tropicana (North Tower) Atlantic City NJ",
     "url": "https://www.youtube.com/watch?v=kYC5a0GaUSc",
     "channel": "PAFL Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Locked DOVER Hydraulic Elevator - Oceanview Promedae - Huntington Beach, CA",
-    "url": "https://www.youtube.com/watch?v=MABRiWG9A3w",
-    "channel": "NW Indiana Elevators"
    }
   ]
  },
@@ -2827,27 +1880,9 @@
    },
    {
     "source": "youtube",
-    "title": "Waterview Condo Elevator (30 floors) Arlington, VA, USA",
-    "url": "https://www.youtube.com/watch?v=qnksvqU9hbA",
-    "channel": "Elevators in DC and Maryland!"
-   },
-   {
-    "source": "youtube",
     "title": "Dover Traction Elevators At Points At Waterview",
     "url": "https://www.youtube.com/watch?v=CZA3UgsP7r0",
     "channel": "gluse"
-   },
-   {
-    "source": "youtube",
-    "title": "KONE Traction Elevators at Waterview Three, Centennial, CO",
-    "url": "https://www.youtube.com/watch?v=iuwm_cetLV4",
-    "channel": "Elevating Denver \ud83e\udc62 NK Exploration"
-   },
-   {
-    "source": "youtube",
-    "title": "KONE MonoSpace 500 elevators @ Midtown Waterview Garage, Tampa, FL",
-    "url": "https://www.youtube.com/watch?v=CN9CN5M5TYM",
-    "channel": "Sunshine State Elevators"
    }
   ]
  },
@@ -2875,18 +1910,6 @@
     "channel": "alpalJL"
    },
    {
-    "source": "youtube",
-    "title": "Montgomery Hydraulic Elevators @ Verizon Center - Mankato, MN",
-    "url": "https://www.youtube.com/watch?v=0IvFe0Gq7S0",
-    "channel": "STL Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "648. Dover Impulse HIGHdraulic Elevators at The Verizon Parking Deck - Cary, NC",
-    "url": "https://www.youtube.com/watch?v=RxtC598Nh9I",
-    "channel": "Elevating North Carolina"
-   },
-   {
     "source": "reddit",
     "title": "Cost Effective Elevator POTS Replacement using Cellular Voice Gateway",
     "url": "https://www.reddit.com/r/Elevators/comments/1d3xn16/cost_effective_elevator_pots_replacement_using/",
@@ -2897,12 +1920,6 @@
     "title": "Elevator has been beeping for weeks",
     "url": "https://www.reddit.com/r/Elevators/comments/19el0zl/elevator_has_been_beeping_for_weeks/",
     "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Room for rent- Prospect Lefferts Garden- $1185- New Building- Central AC, rooftop, elevator, patio. Beginning or mid-August move in.",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/ce0nx6/room_for_rent_prospect_lefferts_garden_1185_new/",
-    "channel": "Brooklyn"
    }
   ]
  },
@@ -2922,31 +1939,6 @@
     "title": "Z Flip 5: Modded 1992 US Traction Elevator 248 | UW School of Medicine (K-Wing) | Seattle WA",
     "url": "https://www.youtube.com/watch?v=7bnfdSry4bc",
     "channel": "WACALifts International"
-   }
-  ]
- },
- {
-  "id": 2168,
-  "name": "Bay Vista Condominiums",
-  "town": "New Utrecht",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Kone Traction Elevator - Bueno Vista Condominiums - Gulf Shores, AL",
-    "url": "https://www.youtube.com/watch?v=AkoaMg8ZJ9Y",
-    "channel": "Elevator Colonel LA"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 330A Hydraulic Elevator @ Vista Mar Condominiums, Wildwood, NJ",
-    "url": "https://www.youtube.com/watch?v=dM6kiwTRbSg",
-    "channel": "CityScapeScale Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Modernized 1991 DOVER Impulse Oildraulic Elevator @ 660 Bay Blvd, Chula Vista, CA",
-    "url": "https://www.youtube.com/watch?v=0IQlo-mx3rA",
-    "channel": "Traction151"
    }
   ]
  },
@@ -2994,12 +1986,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Kone Series 220 Hydraulic Glass Elevator at Mark Louis Middle School, St. Louis, MO",
-    "url": "https://www.youtube.com/watch?v=WgcuMy-AZUM",
-    "channel": "Elevators, BE, & More by cmc2002"
-   },
-   {
-    "source": "youtube",
     "title": "Kone 220 Elevator at Zach Elementary School",
     "url": "https://www.youtube.com/watch?v=6kCTSwg8-b8",
     "channel": "Elevation nation"
@@ -3009,12 +1995,6 @@
     "title": "EPIC MOTOR! Kone KSS 220 Hydraulic Elevator/Mark Louis Middle School/Robloxia",
     "url": "https://www.youtube.com/watch?v=6OoQ9W0tpyY",
     "channel": "bus5657"
-   },
-   {
-    "source": "youtube",
-    "title": "FINAL RIDE: ThyssenKrupp hydraulic elevator at McDowell Intermediate High School. Erie, PA",
-    "url": "https://www.youtube.com/watch?v=u7P43WCfre4",
-    "channel": "Elevators Are Amazing"
    },
    {
     "source": "youtube",
@@ -3031,18 +2011,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Schindler HT 300A Traction Elevator At Jewish Community Center In Omaha Nebraska",
-    "url": "https://www.youtube.com/watch?v=ndoZmL2_30I",
-    "channel": "Shihtzu Fan"
-   },
-   {
-    "source": "youtube",
-    "title": "Thyssenkrupp Hydraulic Elevator @ The Jewish Community Center (JCC) Scottsdale, AZ",
-    "url": "https://www.youtube.com/watch?v=uqi7dLHFnno",
-    "channel": "Stephen Phillips"
-   },
-   {
-    "source": "youtube",
     "title": "Dover Hydraulic Elevator At Jewish Community Center of Omaha ",
     "url": "https://www.youtube.com/watch?v=GT4E71TSYb4",
     "channel": "BenOyler"
@@ -3052,12 +2020,6 @@
     "title": "Otis Gen2 Elevator At The JCC Jewish Community Center In Brighton NY",
     "url": "https://www.youtube.com/watch?v=ieHGnfnoZxs",
     "channel": "Elijah Ladiges"
-   },
-   {
-    "source": "youtube",
-    "title": "Thyssenkrupp elevator At jewish community center (JCC) Scottsdale, AZ",
-    "url": "https://www.youtube.com/watch?v=x9dGsgESWEY",
-    "channel": "Elevatorboy886"
    }
   ]
  },
@@ -3118,24 +2080,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Thyssenkrupp elevator at the Bristol Public library in Bristol, Connecticut, \ufffc\ufffc\ufffc\ufffc",
-    "url": "https://www.youtube.com/watch?v=VFgbdFZ-UYQ",
-    "channel": "Jake\u2019s Elevator Adventures"
-   },
-   {
-    "source": "youtube",
-    "title": "Update on the Bristol Public library elevator in Bristol, Connecticut \ufffc",
-    "url": "https://www.youtube.com/watch?v=e6-uocuksLc",
-    "channel": "Jake\u2019s Elevator Adventures"
-   },
-   {
-    "source": "youtube",
-    "title": "Thyssenkrupp elevator at Bristol health Hospital in Bristol, Connecticut \ufffc\ufffc\ufffc\ufffc",
-    "url": "https://www.youtube.com/watch?v=ZXAt3smNwKI",
-    "channel": "Jake\u2019s Elevator Adventures"
-   },
-   {
-    "source": "youtube",
     "title": "Update on the Bristol Townhall elevator ",
     "url": "https://www.youtube.com/watch?v=dpWZF7rZ2-w",
     "channel": "Jake\u2019s Elevator Adventures"
@@ -3163,18 +2107,6 @@
     "title": "Looking for a lift engineering apprenticeship in Bristol \u2013 am I wasting my time emailing in August?",
     "url": "https://www.reddit.com/r/Elevators/comments/1mbti1g/looking_for_a_lift_engineering_apprenticeship_in/",
     "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Got to see Otis Elevator test tower",
-    "url": "https://www.reddit.com/r/Elevators/comments/1isosa0/got_to_see_otis_elevator_test_tower/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "How Can I Get a Lift Engineer Apprenticeship in Bristol, UK? (Need Help)",
-    "url": "https://www.reddit.com/r/Elevators/comments/1i53o1i/how_can_i_get_a_lift_engineer_apprenticeship_in/",
-    "channel": "Elevators"
    }
   ]
  },
@@ -3183,12 +2115,6 @@
   "name": "The Marc",
   "town": "Brooklyn",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "OTIS Traction Elevators - The Marc Apartments - Palo Alto, CA",
-    "url": "https://www.youtube.com/watch?v=dAGub92zdDQ",
-    "channel": "Jowevator 3219"
-   },
    {
     "source": "youtube",
     "title": "The MARC Elevator at the Rockville Metro Station, Rockville MD",
@@ -3203,12 +2129,6 @@
    },
    {
     "source": "youtube",
-    "title": "Otis GEM Traction Elevators @ The Marc Hotel | Milwaukee, WI",
-    "url": "https://www.youtube.com/watch?v=W9C0tn36Sd8",
-    "channel": "Cook County Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Marc and Mandy Show- Garaventa Lift Home Elevator Showcase",
     "url": "https://www.youtube.com/watch?v=DQTuiRJWEqY",
     "channel": "Garaventa Lift BC"
@@ -3220,24 +2140,6 @@
   "name": "Melrose Court",
   "town": "Brooklyn",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Oildraulic Elevator @ James Medical Center - Melrose Park, IL",
-    "url": "https://www.youtube.com/watch?v=ehPGM2RyDCo",
-    "channel": "Prospect Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "BEAUTIFUL 2003 OTIS Series 1 Hydraulic Elevator @ Melrose Law Center, Vista, CA",
-    "url": "https://www.youtube.com/watch?v=QMTx1-ynH-k",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "Epic Motor! Fun Minnesota Hydraulic Elevator | Menards | Melrose Park, IL",
-    "url": "https://www.youtube.com/watch?v=ghkYL_DWNus",
-    "channel": "Elevators of Northern Illinois"
-   },
    {
     "source": "youtube",
     "title": "Melrose Grain & Elevator Company",
@@ -3294,24 +2196,6 @@
   "name": "Yale-Court",
   "town": "Brooklyn",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "OTIS series M2 traction elevators @ South Pavilion, Yale Medical hospital in New Haven, CT",
-    "url": "https://www.youtube.com/watch?v=eFoM-VyMlM0",
-    "channel": "Elevators of Connecticut"
-   },
-   {
-    "source": "youtube",
-    "title": "HUGE Fujitec Traction Elevator @ Yale University Art Gallery New Haven, CT",
-    "url": "https://www.youtube.com/watch?v=2VN6PmrlyUo",
-    "channel": "airplanegod"
-   },
-   {
-    "source": "youtube",
-    "title": "(New Haven, CT) Very interesting thyssenkrupp elevator at Yale university ",
-    "url": "https://www.youtube.com/watch?v=AXuPn86-Imc",
-    "channel": "Ctelevators"
-   },
    {
     "source": "youtube",
     "title": "Epic Motor: Beautiful ThyssenKrupp Dry Powered Hydraulic Elevator At Yale In New Haven CT",
@@ -3428,12 +2312,6 @@
     "title": "(Now Modded) Vintage OTIS Traction Elevators at Clark Hall Cornell University (For ElementElevators)",
     "url": "https://www.youtube.com/watch?v=waDwHts8z6c",
     "channel": "Flower City Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Chicago, IL: Piss in an Elevator: Clark and Lake CTA Station",
-    "url": "https://www.youtube.com/watch?v=e7JzXbzeQOo",
-    "channel": "DieselDucy"
    }
   ]
  },
@@ -3444,33 +2322,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Otis Traction Elevators at 50 Penn Place Tower, Oklahoma City, OK",
-    "url": "https://www.youtube.com/watch?v=mYPA2B0Zwbw",
-    "channel": "lumix14"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis (Mod. by ThyssenKrupp) Traction Elevator @ 50 Penn Place - Oklahoma City, OK",
-    "url": "https://www.youtube.com/watch?v=alLhm0Vp-BM",
-    "channel": "TXMN Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Traction Elevators | 50 Penn Place Oklahoma City",
-    "url": "https://www.youtube.com/watch?v=RKATzyqyrpw",
-    "channel": "Southern Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Woman grabbed in 50 Penn Place elevator,; man arrested",
     "url": "https://www.youtube.com/watch?v=f1sTT8rJfTE",
     "channel": "KFOR Oklahoma's News 4"
-   },
-   {
-    "source": "youtube",
-    "title": "Modernized Haughton Traction Elevators at the Penn Building in Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=AvfkdN1AEoM",
-    "channel": "DieselDucy"
    }
   ]
  },
@@ -3551,35 +2405,10 @@
   ]
  },
  {
-  "id": 2223,
-  "name": "Oro Condominium",
-  "town": "Brooklyn",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "AMAZING 1982 MONTGOMERY G&P Hydraulic Elevator @ 8143 Camino Del Oro, La Jolla, CA",
-    "url": "https://www.youtube.com/watch?v=anXKJmH-8iY",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover Took An L! Broken Dover Hydraulic Elevator @ Ironwood Ridge High School, Oro Valley, AZ",
-    "url": "https://www.youtube.com/watch?v=hcBJT_3A_fI",
-    "channel": "(STUAA2026) Shea's Hobby Corner"
-   }
-  ]
- },
- {
   "id": 2228,
   "name": "J Condos",
   "town": "Dumbo",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "1327. Otis HydroAccel Hydraulic Elevator at The Ocean Club Condos Building J - Indian Beach, NC",
-    "url": "https://www.youtube.com/watch?v=NKR9vjo2WjE",
-    "channel": "Elevating North Carolina"
-   },
    {
     "source": "youtube",
     "title": "Schindler HT 330boring Hydraullic Elevator At The Ocean Club Condos Building J, Indian Beach NC",
@@ -3613,21 +2442,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Otis traction elevators (Bergen wing) at Valley Hospital, Ridgewood, NJ",
-    "url": "https://www.youtube.com/watch?v=roVm5gQkhiU",
-    "channel": "aceee06"
-   },
-   {
-    "source": "youtube",
     "title": "Schindler Hydraulic Elevator By The Movie Theater At The Shops At Atlas Park In Queens NYC",
     "url": "https://www.youtube.com/watch?v=wy62TX9xWsI",
     "channel": "South FL&NYC Elevators And Beyond"
-   },
-   {
-    "source": "youtube",
-    "title": "Arrow hydraulic entry elevator at Ridgewood YMCA YWCA, Ridgewood, NJ",
-    "url": "https://www.youtube.com/watch?v=PqvUPlOes6c",
-    "channel": "aceee06"
    },
    {
     "source": "youtube",
@@ -3650,27 +2467,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Boston, MA! - The Omni Parker House! - The Elevators!",
-    "url": "https://www.youtube.com/watch?v=2k63EXTvWlo",
-    "channel": "Andrew Quinney"
-   },
-   {
-    "source": "youtube",
-    "title": "Boston, MA! - The Omni Parker House! - Riding The Elevator!",
-    "url": "https://www.youtube.com/watch?v=YPF8y4diB14",
-    "channel": "Andrew Quinney"
-   },
-   {
-    "source": "youtube",
     "title": "1927 (Modernised 2002 by Otis) Elevator @ Omni Parker House in Boston",
     "url": "https://www.youtube.com/watch?v=NRFM3P9zAt0",
     "channel": "Jimwoodward1212"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Elevators Omni Parker House Hotel Boston, MA",
-    "url": "https://www.youtube.com/watch?v=fgvptDiB-zc",
-    "channel": "elevatortimes"
    },
    {
     "source": "youtube",
@@ -3730,24 +2529,6 @@
    },
    {
     "source": "youtube",
-    "title": "United States Elevator - 620 Folsom - San Francisco, California",
-    "url": "https://www.youtube.com/watch?v=0i7t-zQqDD4",
-    "channel": "nationalelevator"
-   },
-   {
-    "source": "youtube",
-    "title": "United States Circle Button Hydraulic Elevator - Weber Hall, UOP - Stockton, CA",
-    "url": "https://www.youtube.com/watch?v=PFtulbMgD3M",
-    "channel": "Jowevator 3219"
-   },
-   {
-    "source": "youtube",
-    "title": "Defunct 1975 United States Elevator at Apartments in Las Vegas, NV",
-    "url": "https://www.youtube.com/watch?v=5M8Ndxsmaes",
-    "channel": "John Elevator (Elevating the World)"
-   },
-   {
-    "source": "youtube",
     "title": "RARE Offerman/United State Elevator - 111 Main - LockPort, NY",
     "url": "https://www.youtube.com/watch?v=hY7sCsKRQ-8",
     "channel": "PAelevators"
@@ -3759,12 +2540,6 @@
   "name": "Montclair Gardens",
   "town": "Woodside",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "EPIC FAIL! EMOTIONAL DAMAGE! Montgomery Hydraulic Elevator | JCP | Montclair Place | Montclair, CA",
-    "url": "https://www.youtube.com/watch?v=1Ppy9oD3obY",
-    "channel": "Lucky Gnomes Productions (LGP)"
-   },
    {
     "source": "youtube",
     "title": "(Retake) Hydraulic Westinghouse (Moded by Schindler) Elevator @ Sears in Montclair Plaza",
@@ -3779,12 +2554,6 @@
    },
    {
     "source": "youtube",
-    "title": "Otis Gen2 Traction Elevators at Montclair State University in Montclair, NJ",
-    "url": "https://www.youtube.com/watch?v=z-4zJYkT340",
-    "channel": "David Ng"
-   },
-   {
-    "source": "youtube",
     "title": "Hydraulic Glass Montgomey (Moded by Thyssenkrupp) Elevator @ Montclair Plaza",
     "url": "https://www.youtube.com/watch?v=NKmbveq1DIg",
     "channel": "ch 009"
@@ -3796,12 +2565,6 @@
   "name": "Brooklyn Music School",
   "town": "Gowanus",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "High Tech Traction Elevator at Octopus Music School New Brunswick, NJ",
-    "url": "https://www.youtube.com/watch?v=OZPpSV5eaN8",
-    "channel": "Y. HO"
-   },
    {
     "source": "youtube",
     "title": "Williams Hydraulic Elevator @ Aaron Copland School of Music, Queens College, New York, NY",
@@ -3889,12 +2652,6 @@
   "name": "Holiday Inn Express Long Island City E",
   "town": "Long Island City",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Otis 211 elevator - Holiday Inn Express Pittsburgh E-Waterfront Dr, an IHG Hotel - Munhall, PA",
-    "url": "https://www.youtube.com/watch?v=iC12JW8al54",
-    "channel": "Elevating Western PA"
-   },
    {
     "source": "youtube",
     "title": "(NOW CLOSED!) Consolidated Traction Elevators - Holiday Inn Manhattan View in Long Island City, NY",
@@ -4046,12 +2803,6 @@
    },
    {
     "source": "youtube",
-    "title": "2000th Viewer Special: Historic 1890's Gated OTIS Elevator at Cycle Warehouse: Butler, PA",
-    "url": "https://www.youtube.com/watch?v=FWEBJoH1h-g",
-    "channel": "Nathan Davis' Videos"
-   },
-   {
-    "source": "youtube",
     "title": "Otis Elevator at Warehouse",
     "url": "https://www.youtube.com/watch?v=y1lq8gfG22M",
     "channel": "ElevateMN"
@@ -4063,12 +2814,6 @@
   "name": "The Oakland",
   "town": "Williamsburg",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "2026 Take! Flawless Mitsubishi Traction Elevators- Pacific Renaissance Plaza- Oakland, CA",
-    "url": "https://www.youtube.com/watch?v=QswnKzAo8ow",
-    "channel": "DYelevators"
-   },
    {
     "source": "youtube",
     "title": "Oakland Elevator At The Next Sprucefield",
@@ -4133,32 +2878,6 @@
   ]
  },
  {
-  "id": 2261,
-  "name": "Arcadia Sunnyside",
-  "town": "Woodside",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Otis Series 5 Hydraulic Elevator Kaiser Permanente Sunnybrook Sunnyside, OR",
-    "url": "https://www.youtube.com/watch?v=myvN5i_uXqs",
-    "channel": "PNWElevator & Aviation"
-   }
-  ]
- },
- {
-  "id": 2263,
-  "name": "Madison Bldg, Berkeley Towers",
-  "town": "Woodside",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Westinghouse Traction Elevator @ Physics North bldg. - UCB in Berkeley, CA.",
-    "url": "https://www.youtube.com/watch?v=Xl4rEBiBUmk",
-    "channel": "Vince Transport Productions"
-   }
-  ]
- },
- {
   "id": 2265,
   "name": "Park Plaza",
   "town": "Woodside",
@@ -4171,12 +2890,6 @@
    },
    {
     "source": "youtube",
-    "title": "LOUD but EPIC MOTOR! Montgomery Hydraulic Elevators at Crystal Park Plaza in College Station, TX.",
-    "url": "https://www.youtube.com/watch?v=KEN4FK0OS54",
-    "channel": "JimLiElevators"
-   },
-   {
-    "source": "youtube",
     "title": "Historic Otis Traction Elevator at the Plaza Hotel, Central Park, New York, NY",
     "url": "https://www.youtube.com/watch?v=BeDF2LEdzA0",
     "channel": "SchindlerHaughton"
@@ -4186,12 +2899,6 @@
     "title": "Otis Traction Elevators Modernized By Kone? At Park Plaza Tower",
     "url": "https://www.youtube.com/watch?v=gCrfvBE1NCs",
     "channel": "gluse"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Hydraulic Service Elevator | College Park Plaza | Indianapolis, IN",
-    "url": "https://www.youtube.com/watch?v=EQeqHhzxNDg",
-    "channel": "The Elevator and Airplane Finder"
    }
   ]
  },
@@ -4202,70 +2909,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Revisiting the Early Otis Series 1 Hydraulic Elevator At Oakwood Manor I Gladstone, Missouri",
-    "url": "https://www.youtube.com/watch?v=J0qV6l6u-Ik",
-    "channel": "MissouriElevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Early Otis Series 1 Hydraulic Elevator At Oakwood Manor I Gladstone, Missouri",
-    "url": "https://www.youtube.com/watch?v=DCLD9w7G0aM",
-    "channel": "MissouriElevators"
-   },
-   {
-    "source": "youtube",
     "title": "Dover Impulse Hydraulic Elevator @ Oakwood Village Library & Arts Centre, York ON",
     "url": "https://www.youtube.com/watch?v=MJKW15pdTaw",
     "channel": "Ontario's Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "1983 Otis Series 1 Hydraulic Elevator At Oakwood Manor I Gladstone, Missouri",
-    "url": "https://www.youtube.com/watch?v=db3hcJONioI",
-    "channel": "MissouriElevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Early Otis Series 1 Hydraulic Elevator At Oakwood Manor II Gladstone, Missouri",
-    "url": "https://www.youtube.com/watch?v=ZyGT3gA7Aoo",
-    "channel": "MissouriElevators"
-   }
-  ]
- },
- {
-  "id": 2267,
-  "name": "Washington",
-  "town": "Woodside",
-  "candidates": [
-   {
-    "source": "youtube",
-    "title": "Elegant Schindler Miconic 10 Elevators - JW Marriott - Washington DC",
-    "url": "https://www.youtube.com/watch?v=rRswSims3E4",
-    "channel": "suzzex "
-   },
-   {
-    "source": "youtube",
-    "title": "US Elevator Traction elevator @ Rosslyn Metro Station Washington DC",
-    "url": "https://www.youtube.com/watch?v=ayb2SLJ9SKk",
-    "channel": "DieselDucy"
-   },
-   {
-    "source": "youtube",
-    "title": "FAMOUS Schindler Miconic 10 TXPress Modded Elevators at JW Marriott, Washington, D.C.",
-    "url": "https://www.youtube.com/watch?v=wxk2-oib91w",
-    "channel": "AdazElevatorz"
-   },
-   {
-    "source": "youtube",
-    "title": "W Washington Elevator (11 floors) Washington, DC, USA",
-    "url": "https://www.youtube.com/watch?v=ZoFKpJQKLNA",
-    "channel": "Elevators in DC and Maryland!"
-   },
-   {
-    "source": "youtube",
-    "title": "Full Restoration of Washington Elevator & Capitol Fertilizer in Washington Township MI",
-    "url": "https://www.youtube.com/watch?v=udQwHHxperU",
-    "channel": "Orchard Construction Inc"
    }
   ]
  },
@@ -4276,33 +2922,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Schindler Hydraulic Scenic Elevator ~ Mayfair ~ Wauwatosa, WI",
-    "url": "https://www.youtube.com/watch?v=NV9ZfSem2nY",
-    "channel": "Southern Sunshine Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Schindler Glass Hydraulic Elevator | Mayfair Mall",
     "url": "https://www.youtube.com/watch?v=GJv9zsj_nkI",
     "channel": "NBVideos Presents"
-   },
-   {
-    "source": "youtube",
-    "title": "Rotary/Dover Traction Office Building Elevators ~ Mayfair ~ Wauwatosa, WI",
-    "url": "https://www.youtube.com/watch?v=2z2Yr2mG8bk",
-    "channel": "Southern Sunshine Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover Traction Elevators - The Offices At Mayfair (2500 Building) - Wauwatosa, WI",
-    "url": "https://www.youtube.com/watch?v=aAgAoicM1WY",
-    "channel": "Smurfy Studios"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler Hydraulic Elevator - Mayfair - Wauwatosa, WI",
-    "url": "https://www.youtube.com/watch?v=LsmAQJeF4TY",
-    "channel": "Smurfy Studios"
    }
   ]
  },
@@ -4368,12 +2990,6 @@
    },
    {
     "source": "youtube",
-    "title": "Elevators at Texas Medical Center Professional Building",
-    "url": "https://www.youtube.com/watch?v=DeUT2aavqkU",
-    "channel": "Tennessee Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Otis Series-1 Hydraulic Elevator at the Marathon Professional Building.",
     "url": "https://www.youtube.com/watch?v=KgRQRh84xso",
     "channel": "CenTexElevators489"
@@ -4383,30 +2999,6 @@
     "title": "Teknix Elevators \u2013 Trusted Elevator Company Delivering Safe & Smart Vertical Mobility Solutions",
     "url": "https://www.reddit.com/r/Elevators/comments/1vhue99/teknix_elevators_trusted_elevator_company/",
     "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Complete Guide to Lifts in Bangalore \u2013 Installation & Service Insights",
-    "url": "https://www.reddit.com/r/Elevators/comments/1r1ow1e/complete_guide_to_lifts_in_bangalore_installation/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Reliable Lifts Installation Services in Bangalore Explained",
-    "url": "https://www.reddit.com/r/Elevators/comments/1r1otre/reliable_lifts_installation_services_in_bangalore/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Elevators Installation in Bangalore for Homes & Commercial Buildings",
-    "url": "https://www.reddit.com/r/Elevators/comments/1r1osc3/elevators_installation_in_bangalore_for_homes/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "$990/Month Room in 4Bdrm, East Harlem Apartment, June 15 (Lease): Female Roommate, Pet-Free, Very Clean [Photos in Post]",
-    "url": "https://www.reddit.com/r/nyc/comments/35frop/990month_room_in_4bdrm_east_harlem_apartment_june/",
-    "channel": "nyc"
    }
   ]
  },
@@ -4516,21 +3108,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "\ud83d\ude80 Elevator Lift The Gantry at LC-39 KSC Titusville Florida ",
-    "url": "https://www.youtube.com/watch?v=7ht4KlVv4W8",
-    "channel": "Parenting Autism"
-   },
-   {
-    "source": "youtube",
     "title": "How Engineers Designed a Panoramic Gantry Elevator with a 170mm Pit",
     "url": "https://www.youtube.com/watch?v=bmGhPs1ttck",
     "channel": "EKCNE elevator Evelyn"
-   },
-   {
-    "source": "youtube",
-    "title": "Unknown Traction Elevators - The Gantry at LC 39 - Kennedy Space Center in Merritt Island, FL.",
-    "url": "https://www.youtube.com/watch?v=bqG0cc0q1Dc",
-    "channel": "Vince Transport Productions"
    },
    {
     "source": "youtube",
@@ -4568,12 +3148,6 @@
     "title": "?? Traction Elevators,Howard Johnson,LIC,Ny",
     "url": "https://www.youtube.com/watch?v=16wMDCcbtjQ",
     "channel": "South FL&NYC Elevators And Beyond"
-   },
-   {
-    "source": "youtube",
-    "title": "Old Cavinder Hydraulic Elevators at Howard Johnson By Wyndham Benton Harbor, MI",
-    "url": "https://www.youtube.com/watch?v=kaJlFEvYol0",
-    "channel": "Elevator Michael"
    }
   ]
  },
@@ -4584,27 +3158,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "High-Rise Otis Elevators at the Crescent Beach Club condominium in Clearwater, FL 6-8-22",
-    "url": "https://www.youtube.com/watch?v=lPFxQMrhPxs",
-    "channel": "NoahTrainFan and More"
-   },
-   {
-    "source": "youtube",
-    "title": "INTERESTING Scenic Modded Dover Oildraulic Elevator at Towers Crescent Garage, Tysons Corner, VA",
-    "url": "https://www.youtube.com/watch?v=pTXFxQCTgCY",
-    "channel": "AdazElevatorz"
-   },
-   {
-    "source": "youtube",
     "title": "Elevator Shops & Restaurants of the Crescent (North)",
     "url": "https://www.youtube.com/watch?v=L-6dgi7FD9Q",
     "channel": "Elevating New Orleans"
-   },
-   {
-    "source": "youtube",
-    "title": "Worn-out ThyssenKrupp H-Power? Elevator \u2013 Seascape Condo \u2013 Crescent Beach, N. Myrtle Beach, SC",
-    "url": "https://www.youtube.com/watch?v=jWn6b6rGTZ8",
-    "channel": "Elevating Western PA"
    },
    {
     "source": "youtube",
@@ -4624,30 +3180,6 @@
     "title": "Tour of the Elevators @ Packard Shopping Center",
     "url": "https://www.youtube.com/watch?v=-uTzD9bQSHA",
     "channel": "Elevator1512 Productions"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Northeast Traction Elevator Packard Parking Garage Arizona State University (ASU) Tempe, AZ",
-    "url": "https://www.youtube.com/watch?v=jnf0pmpnLck",
-    "channel": "Skyvator"
-   },
-   {
-    "source": "youtube",
-    "title": "S22: Otis Northeast Elevator Packard Parking Garage Arizona State University (ASU) Tempe, AZ",
-    "url": "https://www.youtube.com/watch?v=yekhLjGyOrk",
-    "channel": "Skyvator"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Southwest Traction Elevators Packard Parking Garage Arizona State University (ASU) Tempe, AZ",
-    "url": "https://www.youtube.com/watch?v=QqqZ0NJvJLo",
-    "channel": "Skyvator"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse Elevator That Likes to Chime a Lot at the Packard Building in Charlotte, NC",
-    "url": "https://www.youtube.com/watch?v=6xC3fXEN36o",
-    "channel": "TJElevatorfan"
    }
   ]
  },
@@ -4664,27 +3196,9 @@
    },
    {
     "source": "youtube",
-    "title": "The Silver Star elevator in Park City Utah",
-    "url": "https://www.youtube.com/watch?v=lhn0pr86Daw",
-    "channel": "JDK Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Another fifth Silver Star elevator in Park City Utah",
-    "url": "https://www.youtube.com/watch?v=KXmSdENvVWs",
-    "channel": "JDK Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Going up the Silver Star Comet Express Chair Lift",
     "url": "https://www.youtube.com/watch?v=pexhs3lURfU",
     "channel": "okanaganrusty"
-   },
-   {
-    "source": "youtube",
-    "title": "Another third Silver Star elevator in Park City Utah",
-    "url": "https://www.youtube.com/watch?v=KJO_RA9qE4E",
-    "channel": "JDK Elevators"
    }
   ]
  },
@@ -4704,18 +3218,6 @@
     "title": "Another Guthrie Hydraulic Elevator (Unknown Mod) At Luna Lodge",
     "url": "https://www.youtube.com/watch?v=Yte_zG1xR8o",
     "channel": "gluse"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 400AE scenic elevator bank \"B\" - UPMC Luna Garage - Bloomfield, Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=wUgXPhqNQEM",
-    "channel": "Elevating Western PA"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 400AE elevator bank \"A\" - UPMC Luna Garage - Bloomfield, Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=YX1JCIGRgXU",
-    "channel": "Elevating Western PA"
    },
    {
     "source": "youtube",
@@ -4759,36 +3261,6 @@
     "title": "Schindler HT Elevator Independent Service Demonstration",
     "url": "https://www.youtube.com/watch?v=iMpw50xJFXY",
     "channel": "msj191961"
-   },
-   {
-    "source": "reddit",
-    "title": "Seeking info on sudden \"Service Mode\"",
-    "url": "https://www.reddit.com/r/Elevators/comments/1vgxebd/seeking_info_on_sudden_service_mode/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Keeping doors open without open button and independent Service?",
-    "url": "https://www.reddit.com/r/Elevators/comments/1uy1vg1/keeping_doors_open_without_open_button_and/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Does a home elevator require any government permits or approvals in Bangalore?",
-    "url": "https://www.reddit.com/r/Elevators/comments/1uwj1ea/does_a_home_elevator_require_any_government/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Dover",
-    "url": "https://www.reddit.com/r/Elevators/comments/1uw090c/dover/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Elevator relevelling ev100",
-    "url": "https://www.reddit.com/r/Elevators/comments/1usqsd4/elevator_relevelling_ev100/",
-    "channel": "Elevators"
    }
   ]
  },
@@ -4854,12 +3326,6 @@
    },
    {
     "source": "youtube",
-    "title": "OTIS LVM Hydraulic Elevator | Vantage Mosaic South Garage, Merrifield, VA",
-    "url": "https://www.youtube.com/watch?v=w72FaEL13OU",
-    "channel": "Washtenaw Elevator Station"
-   },
-   {
-    "source": "youtube",
     "title": "Automatic Lift Gate Assembly Cell | +Vantage | Metrology & Assembly Solutions",
     "url": "https://www.youtube.com/watch?v=FP5a_FHYXWk",
     "channel": "R\u014dBEX LLC"
@@ -4906,12 +3372,6 @@
     "title": "Burlington Dover Elevator At The Chase Bank On 1st Avenue & East 72nd Street In Manhattan NYC",
     "url": "https://www.youtube.com/watch?v=4rgS5A_fWDE",
     "channel": "Lexie Media Transit + Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Buildings Under Foreclosure",
-    "url": "https://www.reddit.com/r/nyc/comments/1p1wbi5/buildings_under_foreclosure/",
-    "channel": "nyc"
    }
   ]
  },
@@ -4949,24 +3409,6 @@
     "title": "Residential Lift Elevators in Bangalore for Modern Living",
     "url": "https://www.reddit.com/r/Elevators/comments/1r1ov7a/residential_lift_elevators_in_bangalore_for/",
     "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Residential Elevator Recommendations",
-    "url": "https://www.reddit.com/r/Elevators/comments/1qux4bx/residential_elevator_recommendations/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Why are control voltages so high?",
-    "url": "https://www.reddit.com/r/Elevators/comments/1pm543l/why_are_control_voltages_so_high/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Emergency Phone Monitoring",
-    "url": "https://www.reddit.com/r/Elevators/comments/1m0ix5a/emergency_phone_monitoring/",
-    "channel": "Elevators"
    }
   ]
  },
@@ -4983,21 +3425,9 @@
    },
    {
     "source": "youtube",
-    "title": "MEI Hydraulic Glass Elevator - Menards - Bridgeview, IL",
-    "url": "https://www.youtube.com/watch?v=kpohWivUFi4",
-    "channel": "NW Indiana Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "1989 Otis Elevator @ Motel 6 in Chicago Bridgeview",
     "url": "https://www.youtube.com/watch?v=WJs0_vpBxAI",
     "channel": "Jimwoodward1212"
-   },
-   {
-    "source": "youtube",
-    "title": "MEI Hydraulic Glass Elevator @ Menards in Bridgeview, IL",
-    "url": "https://www.youtube.com/watch?v=bk6ax9r9-wk",
-    "channel": "Sirens And Elevators"
    },
    {
     "source": "youtube",
@@ -5012,18 +3442,6 @@
   "name": "Bridgeview 1",
   "town": "Astoria",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Hydraulic Elevator at the Parkside Inn Bridgeview, Mackinaw City, MI",
-    "url": "https://www.youtube.com/watch?v=czstHXlVqJg",
-    "channel": "TrueWolverine87"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Hydraulic Elevator at Super 8 by Wyndham (Bridgeview Location), Mackinaw City, MI",
-    "url": "https://www.youtube.com/watch?v=pOzobdMUhI8",
-    "channel": "TrueWolverine87"
-   },
    {
     "source": "youtube",
     "title": "Otis Hydraulic Elevator at Super 8 by Wyndham Bridgeview of Mackinaw City in Mackinaw City MI",
@@ -5115,30 +3533,6 @@
     "title": "Broken elevator now fixed after people with disabilities stranded during the heat wave at S. Clinton",
     "url": "https://www.youtube.com/watch?v=OVgv6enDNEk",
     "channel": "News10NBC"
-   },
-   {
-    "source": "reddit",
-    "title": "Clinton Hill Sublease Female",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/1ih8ssl/clinton_hill_sublease_female/",
-    "channel": "Brooklyn"
-   },
-   {
-    "source": "reddit",
-    "title": "Could anyone help me figure out what a good 1BR rent should be based on this criteria?",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/1hic4rz/could_anyone_help_me_figure_out_what_a_good_1br/",
-    "channel": "Brooklyn"
-   },
-   {
-    "source": "reddit",
-    "title": "Vibe in Flatbush? Looking for neighborhood that\u2019s the right fit for me",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/11yhahl/vibe_in_flatbush_looking_for_neighborhood_thats/",
-    "channel": "Brooklyn"
-   },
-   {
-    "source": "reddit",
-    "title": "Subletting in Brooklyn",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/flv7m/subletting_in_brooklyn/",
-    "channel": "Brooklyn"
    }
   ]
  },
@@ -5152,12 +3546,6 @@
     "title": "Montgomery Hydraulic Elevator Modernized By Kone At Hillcrest Village",
     "url": "https://www.youtube.com/watch?v=y948MGU1VMU",
     "channel": "gluse"
-   },
-   {
-    "source": "youtube",
-    "title": "Delta Hydraulic Elevator @ Hillcrest Plaza - Orlando, FL",
-    "url": "https://www.youtube.com/watch?v=B2TkBqFJ2mw",
-    "channel": "TXMN Elevators"
    },
    {
     "source": "youtube",
@@ -5186,12 +3574,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Montgomery Traction Elevators @ President Abraham Lincoln Hotel - Springfield, IL",
-    "url": "https://www.youtube.com/watch?v=Ytpwd6q3xcg",
-    "channel": "North American Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Riding Abraham Lincoln's Elevator!",
     "url": "https://www.youtube.com/watch?v=PsESFMVx6WE",
     "channel": "thewildeeper"
@@ -5201,12 +3583,6 @@
     "title": "USS Abraham Lincoln Aircraft Elevator",
     "url": "https://www.youtube.com/watch?v=RMSsZeQJIxw",
     "channel": "MTV2725"
-   },
-   {
-    "source": "youtube",
-    "title": "Montgomery Traction Elevators @ President Abraham Lincoln Springfield, Springfield, Illinois",
-    "url": "https://www.youtube.com/watch?v=YBKgg3JDb0E",
-    "channel": "NW Indiana Elevators"
    },
    {
     "source": "youtube",
@@ -5221,12 +3597,6 @@
   "name": "Hamilton House",
   "town": "Queens",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Elevator Season 29 Episode 4 - Hamilton House Elevator, Washington, DC, USA",
-    "url": "https://www.youtube.com/watch?v=jeFAuMwcSN8",
-    "channel": "Elevators in DC and Maryland!"
-   },
    {
     "source": "youtube",
     "title": "Original Otis Lifts, Stokes Croft Hamilton House",
@@ -5281,12 +3651,6 @@
     "title": "Otis Elevator Kirk Family YMCA Roanoke VA",
     "url": "https://www.youtube.com/watch?v=ifai5op_2nQ",
     "channel": "Weatherstar4000video"
-   },
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Synergy MRL Traction Elevator at YMCA Building, TAMU in College Station, TX.",
-    "url": "https://www.youtube.com/watch?v=N9rQaWMCjQw",
-    "channel": "JimLiElevators"
    }
   ]
  },
@@ -5445,18 +3809,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Esco Hydraulic Elevator At Hillside Municipal Building In Hillside, NJ",
-    "url": "https://www.youtube.com/watch?v=zcgSIBxE5gQ",
-    "channel": "Bryan Badillo Bryan Badillo"
-   },
-   {
-    "source": "youtube",
-    "title": "Esco Hydraulic Elevator At Hillside Municipal Building In Hillside, NJ",
-    "url": "https://www.youtube.com/watch?v=MLwPZuYrya0",
-    "channel": "Bryan Badillo"
-   },
-   {
-    "source": "youtube",
     "title": "Residential Outdoor Hillside Elevator. Project from start to finish! www.hillsidelifts.com",
     "url": "https://www.youtube.com/watch?v=Q95L0WhRhxA",
     "channel": "Hillside Lifts"
@@ -5540,12 +3892,6 @@
     "title": "Midstate Hydraulic Elevator At Sagamore Hotel Fitness Center Pool And Spa",
     "url": "https://www.youtube.com/watch?v=1J0tW08E1-A",
     "channel": "gluse"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 5500 VR Elevators @ Sagamore Pendry Hotel in Fells Point, Baltimore, MD",
-    "url": "https://www.youtube.com/watch?v=hSDiXfCEHhU",
-    "channel": "HotelandElevator1236"
    }
   ]
  },
@@ -5559,30 +3905,6 @@
     "title": "Revisiting the Dover/Montgomery KONE Elevators at The Cheshire, St Louis MO",
     "url": "https://www.youtube.com/watch?v=E6SkFF0-op4",
     "channel": "The Elevator Channel"
-   },
-   {
-    "source": "youtube",
-    "title": "Dover Hydraulic Elevators at the Cheshire in Richmond Heights, MO",
-    "url": "https://www.youtube.com/watch?v=T47BoN7aBBo",
-    "channel": "STL Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Elevator - 455 Highland Avenue - Cheshire, CT",
-    "url": "https://www.youtube.com/watch?v=ZXyP1xc_ktc",
-    "channel": "Rock & Roll Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Elevator- Cheshire Town Hall - Cheshire, CT",
-    "url": "https://www.youtube.com/watch?v=_pqzX56FjJg",
-    "channel": "Rock & Roll Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 1 Elevator  - H&R block building - Cheshire, CT",
-    "url": "https://www.youtube.com/watch?v=xNW9t-EPKzE",
-    "channel": "Rock & Roll Elevators"
    }
   ]
  },
@@ -5593,33 +3915,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Hyattsville, MD | NEW Otis Gen3 Elevators | The Devon Apartments",
-    "url": "https://www.youtube.com/watch?v=LNVL5N53J7s",
-    "channel": "AdazElevatorz"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Hydraulic Elevator at the Courtyard Marriott, Devon, PA",
-    "url": "https://www.youtube.com/watch?v=DxFez2MMcM0",
-    "channel": "owenhinton"
-   },
-   {
-    "source": "youtube",
     "title": "DEVON EXPLAINS WHY HE STOPPED DOING PRONATION LIFT & WHY HE DOESN'T TRAIN HIS BICEPS EITHER",
     "url": "https://www.youtube.com/watch?v=aYu9WWI16v4",
     "channel": "Kankrit Albawgh"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler Traction Elevator at the Devon Garage in Clearwater, FL",
-    "url": "https://www.youtube.com/watch?v=RpQuHdu4cXA",
-    "channel": "STL Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Elegant Schindler Traction Lobby Elevator at the Devon Energy Center in Oklahoma City, OK",
-    "url": "https://www.youtube.com/watch?v=PocL1qZr2ac",
-    "channel": "DieselDucy"
    }
   ]
  },
@@ -5705,18 +4003,6 @@
    },
    {
     "source": "youtube",
-    "title": "OTIS Series 1 Hydraulic Elevator - 255 South B St - San Mateo, CA",
-    "url": "https://www.youtube.com/watch?v=SRfde4Hkc10",
-    "channel": "Jowevator 3219"
-   },
-   {
-    "source": "youtube",
-    "title": "DOVER Impulse Hydraulic Elevators at 255 RT-17 S in Hackensack, NJ",
-    "url": "https://www.youtube.com/watch?v=I8qbIfq33JI",
-    "channel": "Chris Cronin"
-   },
-   {
-    "source": "youtube",
     "title": "Schindler 330A Hydraulic Elevators at Target (255 Greenwich St), New York NY",
     "url": "https://www.youtube.com/watch?v=FnPUBuZLu1c",
     "channel": "Elevators & Railfanning in Ontario"
@@ -5736,33 +4022,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "TRIANGLE BUTTON Westinghouse Elevator - An Apartment Building - North Oakland, PA",
-    "url": "https://www.youtube.com/watch?v=ubxYiwI8bHE",
-    "channel": "PAelevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Hadfield traction elevator - Triangle Building - Downtown, Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=40Mv_3VnyrY",
-    "channel": "Elevating Western PA"
-   },
-   {
-    "source": "youtube",
     "title": "\"Triangle building\" elevator",
     "url": "https://www.youtube.com/watch?v=xKYv0cVWEGA",
     "channel": "Prettiful Day"
-   },
-   {
-    "source": "youtube",
-    "title": "INCREDIBLE 1941 King Machine Traction Elevator - Pacific Triangle Building - Beverly Hills, CA",
-    "url": "https://www.youtube.com/watch?v=HP0CA9q7qwY",
-    "channel": "Jowevator 3219"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler Hydraulic Elevator at Triangle Town Center in Raleigh, North Carolina",
-    "url": "https://www.youtube.com/watch?v=3CpMblIjS5E",
-    "channel": "Theodore the Gameboy"
    }
   ]
  },
@@ -5782,12 +4044,6 @@
     "title": "TWO EPIC MOTORS: Two Awesome Hydraulic Elevators @ CubeSmart Self Storage, Bethpage, NY",
     "url": "https://www.youtube.com/watch?v=5HbV-QTHYeM",
     "channel": "Photoelectric Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Modernized OTIS Freight Elevator - CubeSmart Storage (For. Sears) - Monroeville, PA",
-    "url": "https://www.youtube.com/watch?v=LRaXP7ejOWA",
-    "channel": "PAelevators"
    },
    {
     "source": "youtube",
@@ -5837,12 +4093,6 @@
     "title": "Elevator Tour St  John Street Garage",
     "url": "https://www.youtube.com/watch?v=qzlg8UR0jDM",
     "channel": "Will Hughey"
-   },
-   {
-    "source": "reddit",
-    "title": "A Double-Wide Manhattan Townhouse Asking a Record-Breaking $85 Million Finds a Buyer",
-    "url": "https://www.reddit.com/r/nyc/comments/1tu5nt0/a_doublewide_manhattan_townhouse_asking_a/",
-    "channel": "nyc"
    }
   ]
  },
@@ -5862,12 +4112,6 @@
     "title": "ThyssenKrupp Hydraulic Elevator at Flushing Community Health Center - Flushing, NY",
     "url": "https://www.youtube.com/watch?v=pS-7XVnb6VA",
     "channel": "UltraEric"
-   },
-   {
-    "source": "youtube",
-    "title": "Montgomery VECTOR Traction Elevators @ CentraState Medical Center Hospital Freehold, NJ",
-    "url": "https://www.youtube.com/watch?v=Ux3un_qaU60",
-    "channel": "CityScapeScale Elevators"
    },
    {
     "source": "youtube",
@@ -5933,12 +4177,6 @@
    },
    {
     "source": "youtube",
-    "title": "Otis Gen2 Traction Elevators @ Atelier at University Park - Denver, CO.",
-    "url": "https://www.youtube.com/watch?v=mg_JY0FU34g",
-    "channel": "ElevatorsofLakeCounty"
-   },
-   {
-    "source": "youtube",
     "title": "Nice 2021 Kone Monospace 500 DX MRL traction elevator@Nespresso Atelier, Vienna, Austria",
     "url": "https://www.youtube.com/watch?v=k_3BxTllAao",
     "channel": "Elevators from Italy"
@@ -5995,33 +4233,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Long Hydraulic Elevator @ 1515 N Harlem - Oak Park, IL.",
-    "url": "https://www.youtube.com/watch?v=z85947Daj2o",
-    "channel": "ElevatorsofLakeCounty"
-   },
-   {
-    "source": "youtube",
-    "title": "234. TK 1515 MRL Traction Elevator at The Factory - Wake Forest, NC",
-    "url": "https://www.youtube.com/watch?v=2Z_dkzOIdn8",
-    "channel": "Elevating North Carolina"
-   },
-   {
-    "source": "youtube",
     "title": "Inside the glass elevator at Ron Jon Surf Shop",
     "url": "https://www.youtube.com/watch?v=r_LDGKyezUk",
     "channel": "Jack Carter"
-   },
-   {
-    "source": "youtube",
-    "title": "Vintage San Francisco Hydraulic Elevator @ Surf Motel - San Francisco, CA",
-    "url": "https://www.youtube.com/watch?v=2mHgcEvdoRc",
-    "channel": "STL Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Nice Westinghouse Elevator - 1515 River Park Drive - Sacramento, CA",
-    "url": "https://www.youtube.com/watch?v=MROKOT5_u6g",
-    "channel": "alpalJL"
    }
   ]
  },
@@ -6058,27 +4272,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Awesome 1000 FPM Otis Traction Elevators at the Vue in Uptown Charlotte, NC",
-    "url": "https://www.youtube.com/watch?v=lbjAhxYnkWo",
-    "channel": "Rural Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "NEW! KONE MonoSpace 300 DX Traction Elevators @ Vue at the Ridge, Apopka, Florida",
-    "url": "https://www.youtube.com/watch?v=JYuJYHCN0v8",
-    "channel": "Elevators with Owen"
-   },
-   {
-    "source": "youtube",
     "title": "VUE ORLEANS elevator ride up to the 34th floor",
     "url": "https://www.youtube.com/watch?v=g7ZvdUPT9S8",
     "channel": "A.D. Berry"
-   },
-   {
-    "source": "youtube",
-    "title": "Kone Traction Elevator 2 - The Vue at Bluestone Apartments - Duluth, MN",
-    "url": "https://www.youtube.com/watch?v=4bAy5eGkrzg",
-    "channel": "Northland Elevators"
    },
    {
     "source": "youtube",
@@ -6128,12 +4324,6 @@
     "title": "EPIC FAIL: Can\u2019t film Elevator at 3402 Ocean Drive - Vero Beach FL",
     "url": "https://www.youtube.com/watch?v=ppkSuGvZjVQ",
     "channel": "Elevators, Trains, & More by Transportation930 "
-   },
-   {
-    "source": "reddit",
-    "title": "Thinking About an Elevator Installation Career. ",
-    "url": "https://www.reddit.com/r/Elevators/comments/1hhvzew/thinking_about_an_elevator_installation_career/",
-    "channel": "Elevators"
    }
   ]
  },
@@ -6193,12 +4383,6 @@
    },
    {
     "source": "youtube",
-    "title": "OTIS Gen2 Elevators @ John Hopkin's All Childrens Hospital- St. Petersburg, FL",
-    "url": "https://www.youtube.com/watch?v=By2299t4VDw",
-    "channel": "TheElevatorGuru"
-   },
-   {
-    "source": "youtube",
     "title": "Very unique Otis elevator@St Johns hospital Springfield IL",
     "url": "https://www.youtube.com/watch?v=U-F2TlmYxBw",
     "channel": "Darth Vator"
@@ -6248,18 +4432,6 @@
   "name": "Brookdale Hospital Medical Center",
   "town": "Brownsville",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Otis Hydraulic Service Elevator @ Brookdale Community College (Student Life Center) - Lincroft, NJ",
-    "url": "https://www.youtube.com/watch?v=T0NIWG0gc7E",
-    "channel": "Garden State Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Montgomery VECTOR Traction Elevators @ CentraState Medical Center Hospital Freehold, NJ",
-    "url": "https://www.youtube.com/watch?v=7Nq4DaaLFnw",
-    "channel": "CityScapeScale Elevators"
-   },
    {
     "source": "youtube",
     "title": "Emergency Room Elevator West Jefferson Medical Center",
@@ -6362,33 +4534,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Generose Elevator Update... (Saint Mary's Hospital, Rochester, MN)",
-    "url": "https://www.youtube.com/watch?v=zaygzAEj41Q",
-    "channel": "NLind"
-   },
-   {
-    "source": "youtube",
     "title": "CKG Hydraulic Elevators at Waters Section at St Mary\u2019s Medical Center",
     "url": "https://www.youtube.com/watch?v=R_iPyPtCLo8",
     "channel": "Julian Sappia"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse HIGHdralic Elevators-St. Mary's Hospital PS-Reno, NV",
-    "url": "https://www.youtube.com/watch?v=RH3puYNcass",
-    "channel": "Jowevator 3219"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Hydraulic Elevator at St. Mary's Hospital Wing A, Jefferson City, MO",
-    "url": "https://www.youtube.com/watch?v=VMOoljIJwSI",
-    "channel": "The Elevator Channel"
-   },
-   {
-    "source": "youtube",
-    "title": "OTIS Gen2 Traction Elevators-St Mary's Hospital PS-Reno, NV",
-    "url": "https://www.youtube.com/watch?v=bAEO02FgEIs",
-    "channel": "Jowevator 3219 #2"
    }
   ]
  },
@@ -6415,12 +4563,6 @@
     "title": "Otis Traction Elevators At Mt Sinai Hospital In NYC",
     "url": "https://www.youtube.com/watch?v=0m_NDnOhzu4",
     "channel": "South FL&NYC Elevators And Beyond"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Traction Elevators @ Mt. Sinai Hospital deHirsch Meyer Tower | Miami Beach, FL",
-    "url": "https://www.youtube.com/watch?v=UTxLa6K_fv8",
-    "channel": "Southern Sunshine Elevators"
    },
    {
     "source": "youtube",
@@ -6480,12 +4622,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Awesome Scenic Schindler Hydraulic Elevators | Ridgepark Medical Center | Brooklyn, OH",
-    "url": "https://www.youtube.com/watch?v=cMdYiHuMfx0",
-    "channel": "NEOH Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Hydraulic Elevator (Bank B) @ Atlantic Center, Brooklyn, NY",
     "url": "https://www.youtube.com/watch?v=SK3w-TvqLKA",
     "channel": "Transit +PLUS"
@@ -6495,12 +4631,6 @@
     "title": "Hydraulic Elevators (Bank A) @ Atlantic Center, Brooklyn, NY",
     "url": "https://www.youtube.com/watch?v=6MZ5dtMKZqw",
     "channel": "Transit +PLUS"
-   },
-   {
-    "source": "youtube",
-    "title": "Unknown Traction Elevators at Cancer Center of Rutgers University Hospital in Newark, NJ",
-    "url": "https://www.youtube.com/watch?v=C_ws_rMrUUo",
-    "channel": "Eric\u2019s Ice Cream Truck & School Bus Videos & More"
    },
    {
     "source": "youtube",
@@ -6517,33 +4647,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Otis Hydraulic Elevator @ Goodwill - Minneapolis, MN",
-    "url": "https://www.youtube.com/watch?v=riOeHCmG3PY",
-    "channel": "TXMN Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Goodwill | What is an Elevator Speech",
     "url": "https://www.youtube.com/watch?v=aocfofaIGqg",
     "channel": "Goodwill of Central & Northern Arizona"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 330A Elevator @ Goodwill Store - St. Paul, MN",
-    "url": "https://www.youtube.com/watch?v=HHOb6k7e6o8",
-    "channel": "Elevator Adventures Inc."
-   },
-   {
-    "source": "youtube",
-    "title": "Otis Series 7 Gen2 MRL Traction Elevator @ Goodwill Fredericksburg, VA",
-    "url": "https://www.youtube.com/watch?v=Y1FQYeC_Yv8",
-    "channel": "22408aaron"
-   },
-   {
-    "source": "youtube",
-    "title": "Otis hydraulic elevator at Goodwill in Minneapolis, MN",
-    "url": "https://www.youtube.com/watch?v=Co6EDSOajbs",
-    "channel": "Will Sheposh"
    }
   ]
  },
@@ -6554,33 +4660,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "WV Traction Elevators | Delta by Marriott Huntington West/Ashland Downtown | Ashland,KY",
-    "url": "https://www.youtube.com/watch?v=TOW_LMkbeyI",
-    "channel": "LU&D-Life\u2019s Ups and Downs "
-   },
-   {
-    "source": "youtube",
     "title": "Interesting Otis Traction Elevator at the Ashland Springs Hotel, Ashland OR.",
     "url": "https://www.youtube.com/watch?v=0BkFSMrxCYU",
     "channel": "Mr. B\u2019s Traveling Adventures"
-   },
-   {
-    "source": "youtube",
-    "title": "WV Elevators | Delta by Marriott Huntington West-Ashland Downtown | Ashland,KY",
-    "url": "https://www.youtube.com/watch?v=4DMr8eaUacg",
-    "channel": "LU&D-Life\u2019s Ups and Downs "
-   },
-   {
-    "source": "youtube",
-    "title": "KONE Glass Elevator At The Ashland PATCO Train Station In Voorhees Township New Jersey: (08/02/2022)",
-    "url": "https://www.youtube.com/watch?v=rO6SazJL13A",
-    "channel": "Lexie Media Transit + Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "KONE Glass Elevator At The Ashland PATCO Train Station In Voorhees Township New Jersey: (12/19/2022)",
-    "url": "https://www.youtube.com/watch?v=tWU1-t-d8H8",
-    "channel": "Lexie Media Transit + Elevators"
    }
   ]
  },
@@ -6589,12 +4671,6 @@
   "name": "EVEN Hotel",
   "town": "Gowanus",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "Slow Schindler 3300 Elevators @ Even Hotel Pittsburgh, PA with Room Tour",
-    "url": "https://www.youtube.com/watch?v=chfaRpLjn_4",
-    "channel": "QuarioQuario54321"
-   },
    {
     "source": "youtube",
     "title": "TKE/Miami Hydraulic Elevators @ The EVEN Hotel Lakewood Ranch-Sarasota FL",
@@ -6606,18 +4682,6 @@
     "title": "Generic Traction Elevators @ The EVEN Hotel Midtown East-New York City",
     "url": "https://www.youtube.com/watch?v=GSkBnpGoWd0",
     "channel": "Elevator Man60"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 3300 MRL Traction Elevators - EVEN Hotel Pittsburgh Downtown - Pittsburgh, PA",
-    "url": "https://www.youtube.com/watch?v=fLT7Z3wceUE",
-    "channel": "NW Indiana Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler 5000 Elevators (Bank B) at EVEN Hotel/Staybridge Suites- Universal Blvd- Orlando, FL, USA",
-    "url": "https://www.youtube.com/watch?v=GJFbKiyB3_I",
-    "channel": "TheElevatorGuru"
    },
    {
     "source": "reddit",
@@ -6635,18 +4699,6 @@
     "source": "reddit",
     "title": "Capsule Lift in Delhi \u2013 Where Luxury Meets Convenience",
     "url": "https://www.reddit.com/r/Elevators/comments/1nd8c1s/capsule_lift_in_delhi_where_luxury_meets/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Capsule Lift in Delhi \u2013 Where Luxury Meets Convenience",
-    "url": "https://www.reddit.com/r/Elevators/comments/1nd8bjg/capsule_lift_in_delhi_where_luxury_meets/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Hotel Hacks?",
-    "url": "https://www.reddit.com/r/Elevators/comments/1mcffhs/hotel_hacks/",
     "channel": "Elevators"
    }
   ]
@@ -6698,12 +4750,6 @@
     "title": "Awesome Schindler Houghton/Millar Traction Scenic Elevators At 65 Willowbrook Boulevard In Wayne NJ",
     "url": "https://www.youtube.com/watch?v=3R8oxKKKhpg",
     "channel": "South FL&NYC Elevators And Beyond"
-   },
-   {
-    "source": "youtube",
-    "title": "OTIS Series 1 Hydralic Elevators at 65 Harristown Road in Glen Rock, NJ",
-    "url": "https://www.youtube.com/watch?v=rHD5XG3N_2k",
-    "channel": "Chris Cronin"
    },
    {
     "source": "youtube",
@@ -6795,12 +4841,6 @@
    },
    {
     "source": "youtube",
-    "title": "TERRIBLE Schindler 330A Hydraulic Elevator | Days Inn Near Frost Bank Center | San Antonio, TX",
-    "url": "https://www.youtube.com/watch?v=Z1iVy79CffI",
-    "channel": "SETexas Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "Schindler Hydraulic Elevator @ Days Inn Forest Park GA",
     "url": "https://www.youtube.com/watch?v=P-OhLNW9vyQ",
     "channel": "DieselDucy"
@@ -6810,12 +4850,6 @@
     "title": "Ascenseurs Drolet-Kone Elevator - H\u00f4tel Days Inn in St-Laurent QC",
     "url": "https://www.youtube.com/watch?v=CrjxP5Xe0Ac",
     "channel": "Flower City Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Grungy Dover Hydraulic Elevators at Days Inn Civic Center, Roanoke, VA",
-    "url": "https://www.youtube.com/watch?v=aahJbdewNlk",
-    "channel": "The Elevator Channel"
    }
   ]
  },
@@ -6832,12 +4866,6 @@
    },
    {
     "source": "youtube",
-    "title": "4K60: AWESOME & FAMOUS Mitsubishi Traction Elevators at The JW Marriott Water Street in Tampa, FL",
-    "url": "https://www.youtube.com/watch?v=1KqPZQ4pycQ",
-    "channel": "Floridian Elevators > The Elevator Nomad"
-   },
-   {
-    "source": "youtube",
     "title": "MY FIRST MITSUBISHI!  Traction Elevators @ The JW Marriott Tampa Water Street-Tampa FL",
     "url": "https://www.youtube.com/watch?v=_Z81HvYmjdk",
     "channel": "Elevator Man60"
@@ -6847,12 +4875,6 @@
     "title": "Scenic Westinghouse Hydraulic Ballroom Elevators @ The Marriott Tampa Water Street-Tampa FL",
     "url": "https://www.youtube.com/watch?v=_kQkWZ2jnIc",
     "channel": "Elevator Man60"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse Hydraulic Elevators at 60 W. Broad St, Bethlehem, PA",
-    "url": "https://www.youtube.com/watch?v=T9ATqwT3beE",
-    "channel": "Uncommon Elevators"
    },
    {
     "source": "reddit",
@@ -6903,30 +4925,6 @@
     "title": "Gross KONE MonoSpace MRL Traction Elevators | Track 1, Clinton Train Station, Clinton CT",
     "url": "https://www.youtube.com/watch?v=gf_9Tigx_Fc",
     "channel": "Hunt"
-   },
-   {
-    "source": "youtube",
-    "title": "BRAND NEW KONE MRL Traction Scenic Elevators - Clinton SLE Station; Clinton, CT",
-    "url": "https://www.youtube.com/watch?v=aRmTEYX129A",
-    "channel": "NewEnglandElevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Montgomery KONE Hydraulic Elevator | Clinton Community Center | Clinton, MO. | Vulpix4025",
-    "url": "https://www.youtube.com/watch?v=GKkEZxTRmtU",
-    "channel": "Vulpix4025"
-   },
-   {
-    "source": "youtube",
-    "title": "Clinton, MA: Dover Impulse Hydraulic Elevator (#1) @ Clinton Hospital",
-    "url": "https://www.youtube.com/watch?v=RlRe5Wl7eUk",
-    "channel": "georgef551"
-   },
-   {
-    "source": "youtube",
-    "title": "Clinton, MA: Dover Impulse Hydraulic Elevator @ Clinton Bigelow Public Library",
-    "url": "https://www.youtube.com/watch?v=69ndHiMARBI",
-    "channel": "georgef551"
    }
   ]
  },
@@ -6979,18 +4977,6 @@
   "name": "Eagle Lofts Tower",
   "town": "Long Island City",
   "candidates": [
-   {
-    "source": "youtube",
-    "title": "RARE Westinghouse Gearless Traction Elevators @ Golden Eagle Plaza Tower, San Diego, CA",
-    "url": "https://www.youtube.com/watch?v=E45B5yJD_Vo",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
-    "title": "Westinghouse (Kruppy Mod) Traction Parking Elevators @ Golden Eagle Plaza Tower, San Diego, CA",
-    "url": "https://www.youtube.com/watch?v=IobVekozxWM",
-    "channel": "Traction151"
-   },
    {
     "source": "youtube",
     "title": "Otis Traction Lifts @ Gold Tower (10 Eagle St)",
@@ -7070,36 +5056,6 @@
     "title": "Elevator System Low-Level Design | Class Diagram & Code Explained",
     "url": "https://www.youtube.com/watch?v=FcyRwb_D5wY",
     "channel": "udaykiran\u2024tech"
-   },
-   {
-    "source": "reddit",
-    "title": "safety question!",
-    "url": "https://www.reddit.com/r/Elevators/comments/1v9rfkz/safety_question/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "make the jump to elevators or stay put?",
-    "url": "https://www.reddit.com/r/Elevators/comments/1umohk4/make_the_jump_to_elevators_or_stay_put/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Do I have to completely change this Elevator or there is any way to remove this level of rust??",
-    "url": "https://www.reddit.com/r/Elevators/comments/1ue7f6a/do_i_have_to_completely_change_this_elevator_or/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Both elevators not working",
-    "url": "https://www.reddit.com/r/Elevators/comments/1u9laq8/both_elevators_not_working/",
-    "channel": "Elevators"
-   },
-   {
-    "source": "reddit",
-    "title": "Lift recycling.",
-    "url": "https://www.reddit.com/r/Elevators/comments/1u8pht4/lift_recycling/",
-    "channel": "Elevators"
    }
   ]
  },
@@ -7137,36 +5093,6 @@
     "title": "INSIDE a Greenpoint Full-Floor Home with Elevator & Private Outdoor Space | SERHANT. Tour",
     "url": "https://www.youtube.com/watch?v=AHxWPi2myf4",
     "channel": "SERHANT."
-   },
-   {
-    "source": "reddit",
-    "title": "Should I live in West Village or Williamsburg?!",
-    "url": "https://www.reddit.com/r/nyc/comments/19c5cl1/should_i_live_in_west_village_or_williamsburg/",
-    "channel": "nyc"
-   },
-   {
-    "source": "reddit",
-    "title": "Renting during offseason worth it? + dog friendly areas",
-    "url": "https://www.reddit.com/r/nyc/comments/aa03rg/renting_during_offseason_worth_it_dog_friendly/",
-    "channel": "nyc"
-   },
-   {
-    "source": "reddit",
-    "title": "Help deciding which neighborhood for studio?",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/1nukwo9/help_deciding_which_neighborhood_for_studio/",
-    "channel": "Brooklyn"
-   },
-   {
-    "source": "reddit",
-    "title": "Do not rent from Brookfield Properties",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/1jr19r9/do_not_rent_from_brookfield_properties/",
-    "channel": "Brooklyn"
-   },
-   {
-    "source": "reddit",
-    "title": "What do you think about the area right below Prospect Park? Between Parkside and Church Av B/Q",
-    "url": "https://www.reddit.com/r/Brooklyn/comments/yck7gc/what_do_you_think_about_the_area_right_below/",
-    "channel": "Brooklyn"
    }
   ]
  },
@@ -7198,12 +5124,6 @@
     "title": "Jackson Elevators at Bristol Children\u2019s Hospital",
     "url": "https://www.youtube.com/watch?v=zuOQfJPgNW0",
     "channel": "Escandelift"
-   },
-   {
-    "source": "youtube",
-    "title": "Modernized Otis Elevator at the Jackson Ramp in St. Paul, MN",
-    "url": "https://www.youtube.com/watch?v=jKuPaMRNY6Q",
-    "channel": "DieselDucy"
    }
   ]
  },
@@ -7263,18 +5183,6 @@
    },
    {
     "source": "youtube",
-    "title": "Arrow Hydraulic Elevator (South) @ 20 Murray Hill Parkway - East Rutherford, NJ",
-    "url": "https://www.youtube.com/watch?v=g8_EMmbVvvQ",
-    "channel": "TXMN Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Arrow Hydraulic Elevator #2 (South) at 20 Murray Hill Parkway in East Rutherford, NJ",
-    "url": "https://www.youtube.com/watch?v=9XlXd1qVlrk",
-    "channel": "Chris Cronin"
-   },
-   {
-    "source": "youtube",
     "title": "1980s Otis Series 1 Hydraulic Elevator - Building 3 - ECC South - Orchard Park, NY",
     "url": "https://www.youtube.com/watch?v=U9WRiSWKwQY",
     "channel": "Brandon Miller"
@@ -7291,24 +5199,6 @@
     "title": "Schindler HT Hydraulic Elevator - Holiday Inn South Houston",
     "url": "https://www.youtube.com/watch?v=Zp4InypRR_Y",
     "channel": "ArtiePenguin1"
-   },
-   {
-    "source": "youtube",
-    "title": "Interesting 2010 Vertical Systems Hydraulic Elevators At The Wingate Inn In Fairborn, OH",
-    "url": "https://www.youtube.com/watch?v=jNcJW2V7BAE",
-    "channel": "Quad City Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Vertical Systems Baxter & Sons Hydraulic Elevator at Residence Inn Marriott Erlanger, KY",
-    "url": "https://www.youtube.com/watch?v=7A_AnfD5OG0",
-    "channel": "Mike M"
-   },
-   {
-    "source": "youtube",
-    "title": "Brass/Mirrored Otis Hydraulic Elevator @ Hilton Garden Inn Park Place in Milwaukee, WI",
-    "url": "https://www.youtube.com/watch?v=F05W6n9k-3w",
-    "channel": "Milwaukee County Elevators"
    },
    {
     "source": "youtube",
@@ -7350,24 +5240,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Very Nice TKE Traction Elevators, The Watermark Hotel, Tyson\u2019s, VA",
-    "url": "https://www.youtube.com/watch?v=p72B2z6PLfI",
-    "channel": "FLMD Elevators"
-   },
-   {
-    "source": "youtube",
-    "title": "Virtual Tour | 249 Watermark Way | St. Joe Beach, FL | Private Pool, Elevator & 6 Suites",
-    "url": "https://www.youtube.com/watch?v=fsy4yWhaMNg",
-    "channel": "Kaye Haddock | Beach Properties Real Estate"
-   },
-   {
-    "source": "youtube",
-    "title": "Thyssenkrupp Elevators at The Watermark Hotel in Tysons Corner, VA",
-    "url": "https://www.youtube.com/watch?v=S2Q3ubokwsc",
-    "channel": "Elevatingaroundtown"
-   },
-   {
-    "source": "youtube",
     "title": "iPhone 16 Pro Max: Tour Of Elevators/Lifts @ Watermark Tempe AZ",
     "url": "https://www.youtube.com/watch?v=txGj5omVfc4",
     "channel": "Gage Williams"
@@ -7387,12 +5259,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Westinghouse Traction Elevators at the Edison Hotel in Edison, NJ",
-    "url": "https://www.youtube.com/watch?v=9ZFwYl4gQfg",
-    "channel": "Transit +PLUS"
-   },
-   {
-    "source": "youtube",
     "title": "Heights Glass Elevator #1 At The Edison NJ Transit NEC Line Train Station In Edison NJ: (01/14/2022)",
     "url": "https://www.youtube.com/watch?v=O0wVvqHGUaA",
     "channel": "Lexie Media Transit + Elevators"
@@ -7402,12 +5268,6 @@
     "title": "ATROCIOUSLY BAD Otis Hydraulic Glass Elevator at Menlo Park Mall Edison NJ",
     "url": "https://www.youtube.com/watch?v=gV4pICujIG8",
     "channel": "The Disabled Railfan"
-   },
-   {
-    "source": "youtube",
-    "title": "NASTY OTIS Hydraulic Elevator @ The Royal Albert's Palace Hotel in Edison, NJ",
-    "url": "https://www.youtube.com/watch?v=npq8liVetR4",
-    "channel": "Aaron's Railfanning Productions"
    },
    {
     "source": "youtube",
@@ -7451,12 +5311,6 @@
     "title": "Fitchburg: 1 Year Later, How's the Eagle Hydraulic Elevator Doing? Condike Science Building, FSU",
     "url": "https://www.youtube.com/watch?v=9iMsoZUi2C4",
     "channel": "georgef551"
-   },
-   {
-    "source": "youtube",
-    "title": "ThyssenKrupp Hydraulic North Elevator, Apartments of Eagle View Parkway condos, Fairfax, VA",
-    "url": "https://www.youtube.com/watch?v=8d1yw8mz0M4",
-    "channel": "Jake Le"
    }
   ]
  },
@@ -7482,18 +5336,6 @@
     "title": "KONE Traction elevators @ the University Hospital in \u00d6rebro",
     "url": "https://www.youtube.com/watch?v=eXLX8Q1DFMg",
     "channel": "All the Elevators! - By SummerADDE"
-   },
-   {
-    "source": "youtube",
-    "title": "Unknown Traction Elevators at Cancer Center of Rutgers University Hospital in Newark, NJ",
-    "url": "https://www.youtube.com/watch?v=C_ws_rMrUUo",
-    "channel": "Eric\u2019s Ice Cream Truck & School Bus Videos & More"
-   },
-   {
-    "source": "youtube",
-    "title": "Unknown Hydraulic Elevators at Rutgers University Hospital Parking Garage in Newark, NJ",
-    "url": "https://www.youtube.com/watch?v=lRM7mJOdspI",
-    "channel": "Eric\u2019s Ice Cream Truck & School Bus Videos & More"
    }
   ]
  },
@@ -7529,12 +5371,6 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Fast Traction Elevators (Street - Mezz East Side) at Medical Center Metro Station, Bethesda, MD",
-    "url": "https://www.youtube.com/watch?v=zMQy8FwoABw",
-    "channel": "Uncommon Elevators"
-   },
-   {
-    "source": "youtube",
     "title": "85. ThyssenKrupp Hydraulic elevator at Childrens med. center Green Garage",
     "url": "https://www.youtube.com/watch?v=IztRkdyQ6Wo",
     "channel": "Elevators of DFW"
@@ -7550,12 +5386,6 @@
     "title": "Schindler Hydraulic North Service Elevators At BS&W Centennial Medical Center",
     "url": "https://www.youtube.com/watch?v=fvjlBVei9Nk",
     "channel": "gluse"
-   },
-   {
-    "source": "youtube",
-    "title": "EPIC MOTORS | Mid-American Glass Hydraulic Elevators | Medical Center Tunnel | Bethesda, MD",
-    "url": "https://www.youtube.com/watch?v=BiI-pFIiswQ",
-    "channel": "Predicament | Meaning of Predicament"
    },
    {
     "source": "reddit",
@@ -7647,21 +5477,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Summer 2010 Video: Fujitec Traction Elevators at Magnolia Hotel in Downtown Houston, TX.",
-    "url": "https://www.youtube.com/watch?v=FWdJ-uk3CfY",
-    "channel": "JimLiElevators"
-   },
-   {
-    "source": "youtube",
     "title": "Schindler HT 330A Hydraulic South Elevator at Magnolia St. Parking Garage",
     "url": "https://www.youtube.com/watch?v=NS_F9gczT9E",
     "channel": "Harper Craft"
-   },
-   {
-    "source": "youtube",
-    "title": "262. Otis Series 1 Hydraulic Elevator at Magnolia Place - Raleigh, NC",
-    "url": "https://www.youtube.com/watch?v=2b8Yst3jJ7w",
-    "channel": "Elevating North Carolina"
    },
    {
     "source": "youtube",
@@ -7684,21 +5502,9 @@
   "candidates": [
    {
     "source": "youtube",
-    "title": "Modded 1973 United States Traction Elevators @ Shore Tower Condominiums, La Jolla, CA",
-    "url": "https://www.youtube.com/watch?v=dfoKIHS9Los",
-    "channel": "Traction151"
-   },
-   {
-    "source": "youtube",
     "title": "Elevator to Unit Park Shore Tower",
     "url": "https://www.youtube.com/watch?v=_JTPimPDeBw",
     "channel": "Live Florida Style"
-   },
-   {
-    "source": "youtube",
-    "title": "Schindler Traction North Tower Elevator ~ Ocean Reef Resort ~ Myrtle Beach, SC",
-    "url": "https://www.youtube.com/watch?v=NavQhfKxQg8",
-    "channel": "Southern Sunshine Elevators"
    },
    {
     "source": "youtube",

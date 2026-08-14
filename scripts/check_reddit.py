@@ -44,7 +44,10 @@ CHECK_DATE = "2026-07-24"
 
 # Subreddits that are themselves geography/community signals.
 ELEV_SUBS = {"elevators", "elevator"}
-LI_SUBS = {"longisland", "nassaucountyny", "suffolkcountyny", "stonybrook", "hofstra"}
+LI_SUBS = {"longisland", "nassaucountyny", "suffolkcountyny", "stonybrook", "hofstra",
+           # Queens/Brooklyn (import 016) are on the island too:
+           "nyc", "newyorkcity", "brooklyn", "queens", "astoria", "longislandcity",
+           "williamsburg", "bushwick", "parkslope", "ridgewood", "flushing"}
 
 
 def all_buildings():

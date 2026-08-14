@@ -16,61 +16,106 @@ What each field means stays honest:
   - verified = true by construction (the OSM feature IS the source)
   - stories: from building:levels on the named feature -> stories_verified
   - elevators: NULL (no public source; community reports only)
-  - yt_*: filled by the same YouTube check as scripts/check_youtube.py
-  - town: addr:city, else Nominatim reverse geocode (cached in the report)
+  - yt_* / reddit_*: same coverage checks as scripts/check_youtube.py and
+    scripts/check_reddit.py (Arctic Shift archive), run per region
+  - town: LI = addr:city else reverse geocode; NYC boroughs = the
+    NEIGHBORHOOD from Nominatim ("Astoria", not "Queens" 200 times)
+
+Regions:
+  li   Nassau + Suffolk (the 2026-07-24 run; kept for its report files)
+  qbk  Queens + Brooklyn — still Long Island, ids from 2000, migration 016
 
 Usage:
-  python3 scripts/import_osm.py            # fetch + filter + towns + yt (resumes)
-  python3 scripts/import_osm.py --sql      # emit migrations/011 from report
-  python3 scripts/import_osm.py --no-yt    # skip the YouTube pass (faster dry run)
+  python3 scripts/import_osm.py --region qbk           # full pipeline (resumes)
+  python3 scripts/import_osm.py --region qbk --sql     # emit the migration
+  python3 scripts/import_osm.py --region qbk --no-yt --no-reddit  # dry run
 """
-import argparse, csv, json, os, sys, threading, time, urllib.parse, urllib.request
+import argparse, csv, datetime, json, os, sys, threading, time, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from check_youtube import (SUPABASE, ANON_KEY, CHECK_DATE, match_score,
-                           check_building, sig_tokens, GENERIC)
+from check_youtube import (SUPABASE, ANON_KEY, match_score, check_building,
+                           sig_tokens, GENERIC)
+from check_reddit import arctic, classify_posts
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RAW = os.path.join(ROOT, "scripts", "osm_import_raw.json")
-REPORT = os.path.join(ROOT, "scripts", "osm_import_report.json")
-REVIEW = os.path.join(ROOT, "scripts", "osm_import_review.csv")
-MIGRATION = os.path.join(ROOT, "migrations", "011_import_osm_buildings.sql")
 
-OVERPASS = "https://overpass-api.de/api/interpreter"
+OVERPASS_HOSTS = ["https://overpass-api.de/api/interpreter",
+                  "https://overpass.kumi.systems/api/interpreter"]
 NOMINATIM = "https://nominatim.openstreetmap.org/reverse"
 UA = "LiftSpot importer (github.com/selinmutlu06/LiftSpot)"
-FIRST_ID = 1000
 YT_WORKERS = 4
 
-QUERY = """
+REGIONS = {
+    # The original Long Island run (migrations/011). Its report files feed
+    # build_triage.py and check_reddit.py, so their names never change.
+    "li": dict(
+        counties=["Nassau County", "Suffolk County"],
+        bbox=(40.53, 41.20, -73.79, -71.83),   # lat min/max, lng min/max
+        first_id=1000, slug="",
+        migration="011_import_osm_buildings.sql", number="011",
+        label="Long Island, NY", check_date="2026-07-23",
+        neighborhood_towns=False, reddit_subs=None,
+    ),
+    # Queens + Brooklyn: geographically Long Island, practically NYC.
+    "qbk": dict(
+        counties=["Queens County", "Kings County"],
+        bbox=(40.49, 40.82, -74.06, -73.69),
+        first_id=2000, slug="_qbk",
+        migration="016_import_queens_brooklyn.sql", number="016",
+        label="New York, NY", check_date=datetime.date.today().isoformat(),
+        neighborhood_towns=True,
+        reddit_subs=[("Elevators", "{name}"), ("elevator", "{name}"),
+                     ("nyc", "{name} elevator"), ("brooklyn", "{name} elevator"),
+                     ("queens", "{name} elevator")],
+    ),
+}
+
+R = None          # active region config, set in __main__
+RAW = REPORT = REVIEW = MIGRATION = None
+
+
+def set_region(key):
+    global R, RAW, REPORT, REVIEW, MIGRATION
+    R = REGIONS[key]
+    RAW = os.path.join(ROOT, "scripts", f"osm_import_raw{R['slug']}.json")
+    REPORT = os.path.join(ROOT, "scripts", f"osm_import_report{R['slug']}.json")
+    REVIEW = os.path.join(ROOT, "scripts", f"osm_import_review{R['slug']}.csv")
+    MIGRATION = os.path.join(ROOT, "migrations", R["migration"])
+
+
+def overpass_query():
+    areas = "\n".join(f'  area["name"="{c}"]["admin_level"="6"](area.ny);'
+                      for c in R["counties"])
+    return f"""
 [out:json][timeout:180];
 area["name"="New York"]["admin_level"="4"]->.ny;
 (
-  area["name"="Nassau County"]["admin_level"="6"](area.ny);
-  area["name"="Suffolk County"]["admin_level"="6"](area.ny);
-)->.li;
+{areas}
+)->.zone;
 (
-  nwr["building"]["name"]["building:levels"](area.li);
-  nwr["amenity"~"^(hospital|clinic|library|townhall|courthouse|university|college|community_centre|theatre|cinema|bank)$"]["name"](area.li);
-  nwr["healthcare"~"^(hospital|clinic|physiotherapist|radiology)$"]["name"](area.li);
-  nwr["shop"~"^(mall|department_store)$"]["name"](area.li);
-  nwr["tourism"~"^(hotel|museum)$"]["name"](area.li);
-  nwr["railway"="station"]["name"](area.li);
+  nwr["building"]["name"]["building:levels"](area.zone);
+  nwr["amenity"~"^(hospital|clinic|library|townhall|courthouse|university|college|community_centre|theatre|cinema|bank)$"]["name"](area.zone);
+  nwr["healthcare"~"^(hospital|clinic|physiotherapist|radiology)$"]["name"](area.zone);
+  nwr["shop"~"^(mall|department_store)$"]["name"](area.zone);
+  nwr["tourism"~"^(hotel|museum)$"]["name"](area.zone);
+  nwr["railway"="station"]["name"](area.zone);
 );
 out tags center;
 """
+
 
 NEVER = {"house", "detached", "semidetached_house", "garage", "garages", "shed",
          "hut", "roof", "carport", "greenhouse", "barn", "bungalow", "cabin",
          "lighthouse"}
 
-# Long Island only — the Overpass area filter also matches Suffolk County MA
-# (Boston!), so every candidate must sit inside this box.
-LI_BBOX = (40.53, 41.20, -73.79, -71.83)   # lat min/max, lng min/max
 
-def on_long_island(lat, lng):
-    return LI_BBOX[0] <= lat <= LI_BBOX[1] and LI_BBOX[2] <= lng <= LI_BBOX[3]
+def in_bbox(lat, lng):
+    """County names repeat across states (Suffolk MA, Queens... nowhere else,
+    but keep the belt with the suspenders) — every candidate must sit inside
+    the region's box."""
+    b = R["bbox"]
+    return b[0] <= lat <= b[1] and b[2] <= lng <= b[3]
 
 
 # (predicate on tags) -> (LiftSpot type, min building:levels to qualify);
@@ -133,18 +178,24 @@ def keeps(t):
 def fetch_overpass():
     if os.path.exists(RAW):
         return json.load(open(RAW))
-    req = urllib.request.Request(OVERPASS,
-        data=urllib.parse.urlencode({"data": QUERY}).encode(),
-        headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=300) as r:
-        d = json.load(r)
-    json.dump(d, open(RAW, "w"))
-    return d
+    data = urllib.parse.urlencode({"data": overpass_query()}).encode()
+    last = None
+    for host in OVERPASS_HOSTS:
+        try:
+            req = urllib.request.Request(host, data=data, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=300) as r:
+                d = json.load(r)
+            json.dump(d, open(RAW, "w"))
+            return d
+        except Exception as e:
+            print(f"{host} failed ({e}), trying next mirror")
+            last = e
+    raise last
 
 
 def fetch_existing():
     req = urllib.request.Request(
-        f"{SUPABASE}/rest/v1/buildings?select=id,name,lat,lng&order=id",
+        f"{SUPABASE}/rest/v1/buildings?select=id,name,lat,lng&order=id&limit=2000",
         headers={"apikey": ANON_KEY})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.load(r)
@@ -152,26 +203,37 @@ def fetch_existing():
 
 def dist_m(lat1, lng1, lat2, lng2):
     import math
-    R = 6371000
+    R_ = 6371000
     dlat, dlng = math.radians(lat2 - lat1), math.radians(lng2 - lng1)
     x = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlng / 2) ** 2
-    return R * 2 * math.asin(math.sqrt(x))
+    return R_ * 2 * math.asin(math.sqrt(x))
 
 
 def town_of(tags, cache, lat, lng):
-    for k in ("addr:city", "addr:hamlet", "addr:town", "addr:village"):
-        if tags.get(k):
-            return tags[k]
+    # In the boroughs addr:city is "New York" or "Brooklyn" — useless for
+    # grouping. The neighborhood is the real "town", so go straight to
+    # Nominatim there; on LI the addr tags are the neighborhoods already.
+    if not R["neighborhood_towns"]:
+        for k in ("addr:city", "addr:hamlet", "addr:town", "addr:village"):
+            if tags.get(k):
+                return tags[k]
     key = f"{lat:.4f},{lng:.4f}"
     if key in cache:
         return cache[key]
-    url = f"{NOMINATIM}?format=json&zoom=14&lat={lat}&lon={lng}"
+    # Boroughs sit at Nominatim's "suburb" level, so zoom 14 answers "Brooklyn";
+    # neighborhoods need zoom 16.
+    zoom = 16 if R["neighborhood_towns"] else 14
+    url = f"{NOMINATIM}?format=json&zoom={zoom}&lat={lat}&lon={lng}"
     try:
         req = urllib.request.Request(url, headers={"User-Agent": UA})
         with urllib.request.urlopen(req, timeout=30) as r:
             a = json.load(r).get("address", {})
-        town = (a.get("hamlet") or a.get("village") or a.get("town")
-                or a.get("suburb") or a.get("city") or "")
+        if R["neighborhood_towns"]:
+            town = (a.get("neighbourhood") or a.get("quarter") or a.get("suburb")
+                    or a.get("borough") or a.get("city") or "")
+        else:
+            town = (a.get("hamlet") or a.get("village") or a.get("town")
+                    or a.get("suburb") or a.get("city") or "")
     except Exception:
         town = ""
     cache[key] = town
@@ -185,7 +247,7 @@ def addr_of(tags, town):
     if street:
         line = f"{num} {street}".strip() + (f", {town}, NY" if town else ", NY")
     else:
-        line = f"{town}, NY" if town else "Long Island, NY"
+        line = f"{town}, NY" if town else R["label"]
     return line + (f" {zipc}" if zipc and street else "")
 
 
@@ -202,8 +264,8 @@ def build_candidates():
         lng = e.get("lon") or e.get("center", {}).get("lon")
         if not name or lat is None:
             continue
-        if not on_long_island(lat, lng):
-            skipped.append((name, "outside Long Island"))
+        if not in_bbox(lat, lng):
+            skipped.append((name, "outside region"))
             continue
         kept = keeps(t)
         if not kept:
@@ -240,8 +302,24 @@ def build_candidates():
     return fresh, skipped
 
 
-def run(with_yt=True):
-    report = json.load(open(REPORT)) if os.path.exists(REPORT) else {"check_date": CHECK_DATE, "towns": {}, "buildings": []}
+def reddit_check(c):
+    posts = []
+    for sub, q in R["reddit_subs"]:
+        got = arctic(sub, q.format(name=c["name"]))
+        if got is None:
+            return None
+        posts += [{"title": p.get("title"), "subreddit": p.get("subreddit"),
+                   "permalink": p.get("permalink"), "score": p.get("score"),
+                   "body": (p.get("selftext") or "")[:4000]} for p in got]
+        time.sleep(2.0)
+    conf, rev = classify_posts({"name": c["name"], "town": c["town"]}, posts)
+    return {"posts": len(conf), "review": len(rev),
+            "url": conf[0]["url"] if conf else None}
+
+
+def run(with_yt=True, with_reddit=True):
+    report = json.load(open(REPORT)) if os.path.exists(REPORT) else \
+        {"check_date": R["check_date"], "towns": {}, "buildings": []}
     if not report["buildings"]:
         fresh, skipped = build_candidates()
         cache = report["towns"]
@@ -250,14 +328,14 @@ def run(with_yt=True):
             t = town_of(c["tags"], cache, c["lat"], c["lng"])
             c["town"] = _re.sub(r"^(Village|Town|Hamlet|City) of ", "", t)
             if (i + 1) % 50 == 0:
-                print(f"towns {i + 1}/{len(fresh)}")
+                print(f"towns {i + 1}/{len(fresh)}", flush=True)
                 json.dump(report, open(REPORT, "w"))
         for c in fresh:
             c["addr"] = addr_of(c["tags"], c["town"])
             del c["tags"]
         fresh.sort(key=lambda c: c["osm"])
         for i, c in enumerate(fresh):
-            c["id"] = FIRST_ID + i
+            c["id"] = R["first_id"] + i
         report["buildings"] = fresh
         report["skipped"] = [list(s) for s in skipped]
         json.dump(report, open(REPORT, "w"), indent=1)
@@ -278,18 +356,41 @@ def run(with_yt=True):
                                    "url": r["confirmed"][0]["url"] if r["confirmed"] else None}
                     done += 1
                     if done % 25 == 0:
-                        print(f"yt {done}/{len(todo)}")
+                        print(f"yt {done}/{len(todo)}", flush=True)
                         json.dump(report, open(REPORT, "w"))
+        json.dump(report, open(REPORT, "w"), indent=1)
+
+    if with_reddit and R["reddit_subs"]:
+        # SERIAL on purpose: Arctic Shift throttles anything faster (a
+        # 3-worker attempt on 2026-08-05 got ~85% of its queries refused).
+        todo = [c for c in report["buildings"] if "rd" not in c]
+        print(f"Reddit check: {len(todo)} to do "
+              f"(about {len(todo) * len(R['reddit_subs']) * 2}s of archive rate limits)")
+        for i, c in enumerate(todo, 1):
+            rd = reddit_check(c)
+            if rd is not None:
+                c["rd"] = rd
+            else:
+                print(f"rd #{c['id']} throttled, cooling down 60s", flush=True)
+                time.sleep(60)
+            # Sleep/wake kills this job a lot — checkpoint often so a kill
+            # costs minutes, not the run.
+            if i % 5 == 0:
+                print(f"rd {i}/{len(todo)}", flush=True)
+                json.dump(report, open(REPORT, "w"))
         json.dump(report, open(REPORT, "w"), indent=1)
 
     with open(REVIEW, "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["id", "osm", "name", "type", "town", "stories", "yt_videos"])
+        w.writerow(["id", "osm", "name", "type", "town", "stories", "yt_videos", "reddit_posts"])
         for c in report["buildings"]:
             w.writerow([c["id"], c["osm"], c["name"], c["type"], c["town"],
-                        c["stories"] or "", c.get("yt", {}).get("videos", "")])
-    unfilmed = sum(1 for c in report["buildings"] if c.get("yt", {}).get("videos") == 0)
-    print(f"\n{len(report['buildings'])} new buildings ({unfilmed} with no YouTube footage). Review: {REVIEW}")
+                        c["stories"] or "", c.get("yt", {}).get("videos", ""),
+                        c.get("rd", {}).get("posts", "")])
+    first = sum(1 for c in report["buildings"]
+                if c.get("yt", {}).get("videos") == 0 and not c.get("yt", {}).get("review")
+                and c.get("rd", {}).get("posts") == 0 and not c.get("rd", {}).get("review"))
+    print(f"\n{len(report['buildings'])} new buildings ({first} clean be-the-first). Review: {REVIEW}")
 
 
 def sql_str(s):
@@ -302,44 +403,52 @@ def emit_sql():
     rows = report["buildings"]
     lines = [
         "-- ============================================================",
-        f"-- 011 — Import {len(rows)} elevator-likely buildings straight from OSM",
-        "-- Generated by scripts/import_osm.py. Run in the Supabase SQL Editor",
-        "-- AFTER 010. Safe to re-run (on conflict do nothing).",
+        f"-- {R['number']} — Import {len(rows)} elevator-likely buildings from OSM"
+        f" ({' + '.join(R['counties'])})",
+        "-- Generated by scripts/import_osm.py. Run in the Supabase SQL Editor.",
+        "-- Safe to re-run (on conflict do nothing).",
         "--",
         "-- Every row is a named OSM feature that passed the elevator-likelihood",
         "-- gate (hospitals/malls always; others need building:levels >= 2-3;",
         "-- stations need elevator=yes), so verified = true by construction.",
         "-- stories come from the feature's own building:levels (fact); elevators",
-        f"-- stay NULL; yt_* from the same YouTube check as 010, run {date}.",
+        "-- stay NULL (community reports only); yt_*/reddit_* from the same",
+        f"-- coverage checks as 010/012, run {date}. A 0 with near-misses",
+        "-- pending review is stored as NULL — no claim until a human looks.",
         "-- ============================================================",
         "",
-        "insert into buildings (id, name, type, town, addr, lat, lng, stories, elevators, rating, verified, stories_verified, yt_videos, yt_url, yt_checked) values",
+        "insert into buildings (id, name, type, town, addr, lat, lng, stories, elevators, rating, verified, stories_verified, yt_videos, yt_url, yt_checked, reddit_posts, reddit_url) values",
     ]
     vals = []
     for c in rows:
         st = c["stories"] if c["stories"] else "null"
         sv = "true" if c["stories"] else "false"
-        yt = c.get("yt")
+        yt, rd = c.get("yt"), c.get("rd")
         # 0-with-near-misses is not an honest "none found" — store NULL (see 010).
         ytv = "null" if not yt or (yt["videos"] == 0 and yt.get("review")) else yt["videos"]
         ytu = sql_str(yt["url"]) if yt and yt["url"] else "null"
         ytc = f"'{date}'" if yt else "null"
+        rdp = "null" if not rd or (rd["posts"] == 0 and rd.get("review")) else rd["posts"]
+        rdu = sql_str(rd["url"]) if rd and rd["url"] else "null"
         vals.append(f"({c['id']}, {sql_str(c['name'])}, {sql_str(c['type'])}, {sql_str(c['town'])}, {sql_str(c['addr'])}, "
-                    f"{c['lat']}, {c['lng']}, {st}, null, 0, true, {sv}, {ytv}, {ytu}, {ytc})")
+                    f"{c['lat']}, {c['lng']}, {st}, null, 0, true, {sv}, {ytv}, {ytu}, {ytc}, {rdp}, {rdu})")
     lines.append(",\n".join(vals))
     lines[-1] += "\non conflict (id) do nothing;"
     lines += ["", "-- Sanity check:",
-              "select count(*) as buildings, count(*) filter (where id >= 1000) as imported from buildings;", ""]
+              f"select count(*) as buildings, count(*) filter (where id >= {R['first_id']}) as this_import from buildings;", ""]
     open(MIGRATION, "w").write("\n".join(lines))
     print(f"Wrote {MIGRATION} ({len(rows)} rows)")
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
+    ap.add_argument("--region", choices=list(REGIONS), default="li")
     ap.add_argument("--sql", action="store_true")
     ap.add_argument("--no-yt", action="store_true")
+    ap.add_argument("--no-reddit", action="store_true")
     a = ap.parse_args()
+    set_region(a.region)
     if a.sql:
         emit_sql()
     else:
-        run(with_yt=not a.no_yt)
+        run(with_yt=not a.no_yt, with_reddit=not a.no_reddit)

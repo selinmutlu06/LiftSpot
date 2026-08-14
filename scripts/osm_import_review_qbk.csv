@@ -1,0 +1,446 @@
+id,osm,name,type,town,stories,yt_videos,reddit_posts
+2000,node/12777770326,Linden Orthopaedics,Medical,Queens,,0,0
+2001,node/5366311662,Katz Women's Hospital,Medical,Queens,,0,0
+2002,relation/14304500,Eagle + West,Residential,Greenpoint,40,0,0
+2003,relation/14571685,Magnolia Dumbo & Front and York,Residential,Dumbo,21,0,0
+2004,relation/19313735,2-20 Malt Drive,Residential,Long Island City,4,0,0
+2005,relation/19313736,2-21 Malt Drive,Residential,Long Island City,4,0,0
+2006,relation/3346301,Mark Twain Intermediate School 239,Education,Coney Island,4,0,0
+2007,relation/3346991,Junior High School 43,Education,Brooklyn,4,0,0
+2008,relation/3347199,Fire Department Of New York Emergency Medical Service Station 43,Medical,Gravesend,1,0,0
+2009,relation/3347200,Coney Island Hospital,Medical,Gravesend,11,0,0
+2010,relation/3358353,Rochel Fruchthandler Fellowship Residence,Residential,Midwood,4,0,0
+2011,relation/3358381,Jefferson Court,Residential,Brooklyn,4,1,0
+2012,relation/3358382,Shelbourne,Residential,Flatlands,4,0,0
+2013,relation/3358477,Rosetta Court,Residential,Brooklyn,4,0,0
+2014,relation/3358478,Bristol Court,Residential,Flatlands,4,0,0
+2015,relation/3358479,Augusta Court,Residential,Brooklyn,4,0,0
+2016,relation/3359961,Buckingham Court,Residential,Bushwick,4,0,0
+2017,relation/3364740,Wyckoff Heights Medical Center,Medical,Ridgewood,12,0,0
+2018,relation/3563313,"Joseph Shenker ""M"" Building",Education,Long Island City,4,0,0
+2019,relation/8810248,Oosten,Residential,Williamsburg,8,0,0
+2020,relation/8810249,Austin Nichols House,Residential,Williamsburg,7,0,0
+2021,relation/9710630,Empire Stores,Office,Dumbo,5,13,0
+2022,way/1028868325,Emerson Place Residence,Residential,Clinton Hill,10,0,0
+2023,way/1039404270,One Willoughby Square,Office,Gowanus,36,0,0
+2024,way/1039407445,The Willoughby,Office,Gowanus,34,0,0
+2025,way/1039410695,One Boerum Place,Office,Gowanus,22,0,0
+2026,way/1052877937,Ruth Bader Ginsburg Building,Medical,Gravesend,11,0,0
+2027,way/1059745391,Webster Bank,Financial,Midwood,2,0,0
+2028,way/1062484925,Congregation Shar Moshe,Office,Borough Park,3,0,0
+2029,way/1092475172,The Terraces,Residential,Brooklyn,7,0,0
+2030,way/1132080797,Gotham Point North Tower,Residential,Long Island City,57,0,0
+2031,way/1132080798,Gotham Point South Tower,Office,Long Island City,33,0,0
+2032,way/1147982477,East New York Family Academy,Education,East New York,5,0,0
+2033,way/1148000306,Sweeney Building,Residential,Dumbo,6,0,0
+2034,way/1176618862,Chestnut Commons,Residential,East New York,14,0,0
+2035,way/1184895444,Kongen International Preschool,Office,Queens,3,0,0
+2036,way/1258458499,Sky Three,Residential,West Brighton,21,0,0
+2037,way/1314067623,One Point Park,Residential,Flatbush,13,0,0
+2038,way/1316005416,St. Vincent Health Sciences Center,Office,Queens,3,0,0
+2039,way/1317760326,Ramada,Hotel,Flatlands,8,0,0
+2040,way/1364328410,665 Union,Residential,Gowanus,13,0,0
+2041,way/1374502958,Triangle Junction,Mall,Flatlands,3,0,0
+2042,way/167481919,VA New York Harbor Healthcare System Brooklyn Campus,Medical,Brooklyn,,0,0
+2043,way/205416777,10 Jay Street,Office,Dumbo,9,0,0
+2044,way/218656804,Lander College of Arts and Sciences,Education,Brooklyn,6,0,0
+2045,way/219041270,NYC Health + Hospitals: South Brooklyn Health,Medical,Gravesend,,0,0
+2046,way/220393412,Amalgamated Warbasse Houses 3,Residential,West Brighton,23,0,0
+2047,way/220843443,Amalgamated Warbasse Houses 2,Residential,West Brighton,23,0,0
+2048,way/225060694,Luna Park Houses 1,Residential,West Brighton,20,0,0
+2049,way/228873051,The Bay,Residential,West Brighton,8,0,0
+2050,way/232050809,The Pillar Astoria,Office,Astoria,7,0,0
+2051,way/235223063,Packard Square North,Residential,Long Island City,11,0,0
+2052,way/241828403,Palm Gardens Center for Nursing and Rehabilitation,Office,Flatbush,7,0,0
+2053,way/241833098,Packer Early Learning Center,Education,Gowanus,2,0,0
+2054,way/241833149,Hotel Bossert,Hotel,Brooklyn Heights,14,0,0
+2055,way/241837965,Evangelistic Missionary Temple Inc.,Office,Williamsburg,4,0,0
+2056,way/241846069,The Urban Assembly School for Law & Justice,Education,Gowanus,6,1,0
+2057,way/241846072,NYU CUSP,Education,Gowanus,13,0,0
+2058,way/241846076,New York Marriott at the Brooklyn Bridge,Hotel,Gowanus,6,1,0
+2059,way/241848509,Leverich Towers Hotel,Residential,Brooklyn Heights,13,0,0
+2060,way/241856192,Shorecrest Towers 1,Residential,West Brighton,23,0,0
+2061,way/241856193,Shorecrest Tower 2,Residential,West Brighton,23,0,0
+2062,way/245113580,110 Livingston,Office,Gowanus,20,0,0
+2063,way/245576807,Brooklyn Army Terminal Building A,Office,Sunset Park,8,0,0
+2064,way/247288517,Crown Condos,Office,Crown Heights,7,0,0
+2065,way/247288592,Lubavitcher Yeshiva,Education,Eastern Parkway,4,0,0
+2066,way/247646029,Park Lane Condominium,Office,Queens,17,0,0
+2067,way/247709947,North Shore Towers Building 2,Office,Queens,34,0,0
+2068,way/247853261,Hollis Park,Residential,Hollis,3,0,0
+2069,way/247853618,Cambria Heights Academy,Education,Hollis,3,0,0
+2070,way/247860183,Jamaica Estates Luxury Apartments,Residential,Queens,7,0,0
+2071,way/247862466,Hillside Manor,Office,Queens,12,0,0
+2072,way/247862660,The Camelot,Residential,Hillside,15,0,0
+2073,way/247867611,Dalny Gardens,Residential,Queens,6,0,0
+2074,way/247900053,Queens Tower Condominiums,Residential,Elmhurst,16,0,0
+2075,way/247926048,Posh on P,Residential,Brooklyn,7,0,0
+2076,way/247929047,The Alexey,Office,Gowanus,12,0,0
+2077,way/248138023,Orange Court,Office,Brooklyn Heights,6,0,0
+2078,way/248153650,363 Bond,Residential,Gowanus,12,0,0
+2079,way/248156322,The Brook,Residential,Gowanus,51,0,0
+2080,way/248156326,Hanover House,Residential,Gowanus,35,0,0
+2081,way/248156352,The Paxton,Office,Gowanus,43,0,0
+2082,way/248165688,Hub,Residential,Gowanus,55,0,0
+2083,way/248166640,R&A Cycles,Office,Gowanus,3,0,0
+2084,way/248169437,Sunset Park Loft Condominium,Office,Sunset Park,4,0,0
+2085,way/248170579,Unoriginal Noodles,Office,Gowanus,3,0,0
+2086,way/248172634,Medical Office,Medical,Hillside,2,0,0
+2087,way/248172933,Tyler Towers,Residential,Hillside,6,0,0
+2088,way/248172942,Belvedere,Residential,Hillside,4,0,0
+2089,way/248177764,Junior High School 258,Education,Bedford-Stuyvesant,4,0,0
+2090,way/248179087,Atlantic Terminal Houses,Residential,Fort Greene,31,0,0
+2091,way/248252404,Fairfield Manor Apartments,Office,Douglaston,6,0,0
+2092,way/248285512,The Parkview,Residential,Queens,6,0,0
+2093,way/248285524,Sussex Hall,Residential,Queens,9,0,0
+2094,way/248285581,The Saxony,Residential,Queens,7,0,0
+2095,way/248285733,Elhaam Academy,Education,Queens,4,0,0
+2096,way/248285804,Belcrest House Apartments,Residential,Queens,7,0,0
+2097,way/248304701,Saint Nicholas of Tolentine Catholic Academy,Education,Queens,2,0,0
+2098,way/248342410,The Opal,Office,Queens,14,0,0
+2099,way/248456754,The Dorset,Office,Fort Hamilton,7,0,0
+2100,way/248463320,Scheuer House of Coney Island,Residential,Coney Island,19,0,0
+2101,way/248464167,Oceanview Manor Home for Adults,Residential,Coney Island,5,0,0
+2102,way/248474709,Seagate Nursing & Rehabilitation Center,Medical,Coney Island,8,0,0
+2103,way/248474810,The Pioneer,Residential,Coney Island,6,0,0
+2104,way/248478045,Carey Gardens,Residential,Coney Island,15,0,0
+2105,way/248479067,Unity Towers,Residential,Coney Island,18,0,0
+2106,way/248483503,The Ridge,Office,Bay Ridge,4,14,0
+2107,way/248490811,Ridge Harbor Owners Corporation,Residential,Bay Ridge,7,0,0
+2108,way/248496150,P.S. 90 Edna Cohen School,Education,West Brighton,3,0,0
+2109,way/248496231,Coney Island–Stillwell Avenue,Office,Coney Island,4,3,0
+2110,way/248499635,Luna Park Houses 2,Residential,West Brighton,20,0,0
+2111,way/248499636,Luna Park Houses 3,Residential,West Brighton,20,0,0
+2112,way/248500386,Brightwater Towers East,Residential,West Brighton,24,0,0
+2113,way/248500389,Brightwater Towers West,Residential,West Brighton,24,0,0
+2114,way/248500449,Bay View Court,Residential,Fort Hamilton,4,0,0
+2115,way/248500459,Fort View Court,Residential,Fort Hamilton,4,0,0
+2116,way/248502538,NYPD 60th Precinct,Office,West Brighton,3,0,0
+2117,way/248502542,Luna Park Houses 4,Residential,West Brighton,20,0,0
+2118,way/248502547,Luna Park Houses 5,Residential,West Brighton,20,0,0
+2119,way/248505995,Amalgamated Warbasse Houses 4,Residential,West Brighton,23,0,0
+2120,way/248506000,Amalgamated Warbasse Houses 5,Residential,West Brighton,23,0,0
+2121,way/248506805,Amalgamated Warbasse Houses 1,Residential,West Brighton,23,0,0
+2122,way/248510044,Silgen Apartments,Residential,Brighton Beach,4,0,0
+2123,way/248510136,Ocean Tower Professional Center,Office,Brighton Beach,5,0,0
+2124,way/248510209,Sador Court,Residential,Brighton Beach,6,0,0
+2125,way/248510797,Brighton Towers,Residential,Brighton Beach,16,0,0
+2126,way/248510810,Valley Bank,Financial,Brighton Beach,2,0,0
+2127,way/248515621,The Crown,Residential,Brighton Beach,6,0,0
+2128,way/248517157,Scheuer House Of Brighton Beach,Residential,Brighton Beach,13,0,0
+2129,way/248518587,NYPD Horse Stables,Office,Brighton Beach,3,0,0
+2130,way/248518638,Yda Elite High School,Education,Brighton Beach,2,0,0
+2131,way/248518639,Shore View Nursing and Rehabilitation Center,Office,Brighton Beach,9,0,0
+2132,way/248518640,Neptune Arms,Residential,Brighton Beach,4,0,0
+2133,way/248527274,Scheuer House of Manhattan Beach,Office,Brighton Beach,8,0,0
+2134,way/248527288,The Westbrook,Residential,Brooklyn,13,0,0
+2135,way/248527290,Wave,Residential,Brighton Beach,7,0,0
+2136,way/248529059,Yeshiva of Manhattan Beach,Education,Brooklyn,3,0,0
+2137,way/248556435,Aqua,Residential,Brooklyn,7,0,0
+2138,way/248556483,The Viking,Residential,Brooklyn,7,0,0
+2139,way/248579467,Public School 209,Education,Gravesend,4,0,0
+2140,way/248591491,The Esplanade,Residential,Hillside,4,0,0
+2141,way/248591529,Zara Luxury Apartments & Homes,Residential,Hillside,6,0,0
+2142,way/248591555,Belair Park 5,Residential,Hillside,6,0,0
+2143,way/248591618,Americana,Residential,Queens,9,0,0
+2144,way/248591619,Hudson House Luxury Apartments,Residential,Queens,12,0,0
+2145,way/248591620,Avalon Terrace,Residential,Hillside,12,0,0
+2146,way/248591681,Hillside Park,Residential,Queens,9,0,0
+2147,way/248593075,International Tower,Residential,Hillside,10,0,0
+2148,way/248598063,Kings Mews,Residential,Brooklyn,3,0,0
+2149,way/248598071,Kings Town Homes,Residential,Brooklyn,3,0,0
+2150,way/248599379,The Saybrook,Residential,Elmhurst,6,0,0
+2151,way/248817382,Arcadia Condominium,Residential,Gravesend,3,0,0
+2152,way/248817832,The Wedgewood,Residential,Gravesend,7,0,0
+2153,way/248832302,Zaki And Stella Metta Building,Education,Gravesend,2,0,0
+2154,way/248834941,Big Apple Education Center,Education,Gravesend,3,0,0
+2155,way/248835675,Metropolitan Ballroom,Office,Gravesend,3,0,0
+2156,way/248841443,CubeSmart,Office,Coney Island,5,0,0
+2157,way/248847281,Oceanview Towers,Residential,Bath Beach,17,0,0
+2158,way/248847286,Waterview Towers,Residential,Bath Beach,17,0,0
+2159,way/248850197,Marlboro Houses 5,Residential,Gravesend,7,0,0
+2160,way/248850199,Marlboro Houses 7,Residential,Gravesend,7,0,0
+2161,way/248852440,Marlboro Houses 12,Residential,Gravesend,7,0,0
+2162,way/248852444,Marlboro Houses 14,Residential,Gravesend,7,0,0
+2163,way/248852445,Marlboro Houses 15,Residential,Gravesend,7,0,0
+2164,way/248852448,Marlboro Houses 18,Residential,Gravesend,7,0,0
+2165,way/248852449,Marlboro Houses 19,Residential,Gravesend,7,0,0
+2166,way/248863584,Verizon,Office,Gravesend,4,0,0
+2167,way/248863630,Public School 248,Education,Gravesend,4,0,0
+2168,way/248887729,Bay Vista Condominiums,Residential,New Utrecht,6,0,0
+2169,way/248887812,The Amhurst 2255,Residential,New Utrecht,7,0,0
+2170,way/248887813,The Bradhurst 2225,Residential,New Utrecht,7,0,0
+2171,way/248905223,Marilyn & Jack Chehebar School,Education,Gravesend,3,0,0
+2172,way/248930576,Lucretia Marciagliano Campus,Education,New Utrecht,4,0,0
+2173,way/248931652,Intermediate School 96,Education,New Utrecht,4,0,0
+2174,way/248934929,Public School 205,Education,New Utrecht,5,0,0
+2175,way/248934931,Public School 247,Education,New Utrecht,4,0,0
+2176,way/249002311,Our Lady of Guadalupe Rectory,Office,New Utrecht,3,0,0
+2177,way/249094049,Yeshiva of Brooklyn,Education,Midwood,2,0,0
+2178,way/249094849,Yeshiva Sharei Hayosher,Education,Midwood,6,0,0
+2179,way/249104273,Yeshiva & Meshiva of Brooklyn,Education,Midwood,4,0,0
+2180,way/249125767,Saint Frances de Chantal Rectory,Office,New Utrecht,3,0,0
+2181,way/249539516,Gregory Jackson Center for Brownsville,Office,Brownsville,4,0,0
+2182,way/249557310,Maimonides Medical Center,Medical,Sunset Park,6,0,0
+2183,way/249561414,Maimonides Doctors Multispecialty Pavilion,Medical,Brooklyn,7,0,0
+2184,way/249565945,Intermediate School 220,Education,Sunset Park,5,0,0
+2185,way/249603531,New York City Police Department,Government,Sunset Park,3,0,0
+2186,way/249708313,Sephardic Community Center,Education,Gravesend,4,0,0
+2187,way/249727063,Deli and Grocery,Residential,Brooklyn,4,0,0
+2188,way/249730262,AFHC Ambulatory Surgery Center,Office,Sheepshead Bay,4,0,0
+2189,way/249730311,Kings Bay Library,Library,Sheepshead Bay,2,0,0
+2190,way/249749008,Maimonides Midwood Community Hospital,Medical,Flatlands,,0,0
+2191,way/249767741,The Bristol,Residential,Midwood,7,0,0
+2192,way/249768412,Yeshiva Ohr Shraga D'Veretzky,Education,Midwood,2,0,0
+2193,way/249771112,The Marc,Residential,Brooklyn,7,0,0
+2194,way/249771140,Shaare Torah High School For Girls,Education,Brooklyn,2,0,0
+2195,way/249771262,The Retreat,Residential,Brooklyn,8,1,0
+2196,way/249775037,Be'er Mordechai Elementary School,Education,Brooklyn,2,0,0
+2197,way/249779902,Melrose Court,Residential,Brooklyn,4,0,0
+2198,way/249779906,Manor Court,Residential,Brooklyn,4,0,0
+2199,way/249779910,Yale-Court,Residential,Brooklyn,4,0,0
+2200,way/249779950,Yeshiva Gedolah Bais Yisroel,Education,Brooklyn,4,0,0
+2201,way/249831230,Mount Sinai Brooklyn,Medical,Flatlands,,0,0
+2202,way/249833998,The Elena,Residential,Brooklyn,8,0,0
+2203,way/249913649,Public Schools 207,Office,Flatlands,3,0,0
+2204,way/249975986,Public School 75,Education,Bushwick,5,0,0
+2205,way/249979270,Bushwick Leaders' High School for Academic Excellence,Education,Ridgewood,3,0,0
+2206,way/249979925,Artel 535,Hotel,Brooklyn,7,0,0
+2207,way/250120882,Pierre Paul Driving School,Education,Flatbush,3,0,0
+2208,way/250142159,The Clark,Residential,Brooklyn Community District 17,8,0,0
+2209,way/250221431,50 Penn,Residential,East New York,9,0,0
+2210,way/250225979,W E B Dubois High School,Education,Flatbush,3,0,0
+2211,way/250226032,Doral Health & Wellness,Medical,Brownsville,3,0,0
+2212,way/250226615,Safeguard Self Storage,Office,Brownsville,6,2,0
+2213,way/250226707,Trey Whitfield School,Education,Broadway Junction,5,0,0
+2214,way/250228557,Prospect Heights High School Campus,Education,Flatbush,6,0,0
+2215,way/250312172,Cornerstone's Sandy F. Ray Senior Housing,Residential,Brooklyn,7,0,0
+2216,way/250347164,The Posthouse,Residential,Clinton Hill,8,0,0
+2217,way/250352500,Clinton Grand,Residential,Clinton Hill,5,0,0
+2218,way/250361581,Bishop Francis J. Mugavero Senior Citizen Apartments,Residential,Fort Greene,7,0,0
+2219,way/250369726,The Brooklyner,Office,Gowanus,51,0,0
+2220,way/250369749,Othmer Residence Hall - NYU Polytechnic School of Engineering,Residential,Downtown Brooklyn,18,0,0
+2221,way/250369753,4 Metrotech Center,Office,Gowanus,8,0,0
+2222,way/250369759,New York University Tandon School of Engineering,Education,Gowanus,8,0,0
+2223,way/250372689,Oro Condominium,Office,Brooklyn,40,0,0
+2224,way/250373215,Theodore Roosevelt United States Courthouse,Legal,Brooklyn,15,0,0
+2225,way/250373216,NYC Emergency Management Headquarters,Government,Dumbo,4,0,0
+2226,way/250374487,Concord Village - 270 Jay,Office,Brooklyn,16,0,0
+2227,way/250380070,Gold Street Lofts,Residential,Brooklyn,6,0,0
+2228,way/250386596,J Condos,Office,Dumbo,31,0,0
+2229,way/250408406,Public School 271,Education,Ocean Hill,3,0,0
+2230,way/250427489,Ridgewood Theater,Residential,Ridgewood,6,0,0
+2231,way/250431255,John Jay Educational Campus,Education,Gowanus,5,0,0
+2232,way/250546734,Parker House,Residential,Elmhurst,6,0,0
+2233,way/250546940,The Walbar,Residential,Rego Park,6,0,0
+2234,way/250564818,Queens Public Library at Forest Hills,Library,Forest Hills,2,1,0
+2235,way/250575223,Kyoto,Residential,Elmhurst,17,0,0
+2236,way/250575475,United States,Residential,Elmhurst,18,0,3
+2237,way/250577609,Montclair Gardens,Residential,Woodside,6,0,0
+2238,way/250577611,Colonial Court,Residential,Woodside,6,1,0
+2239,way/250965738,One Nine Rockwell,Residential,Gowanus,27,0,0
+2240,way/250979356,Brooklyn Music School,Education,Gowanus,4,0,0
+2241,way/250979509,Williamsburgh Savings Bank Tower,Residential,Gowanus,37,0,0
+2242,way/256218870,The Eagle,Office,Gowanus,34,0,0
+2243,way/264490338,On Prospect Park,Residential,Prospect Heights,15,3,0
+2244,way/265159244,Holiday Inn Express Long Island City E,Hotel,Long Island City,20,0,0
+2245,way/265159319,Falchi Building,Office,Long Island City,5,0,0
+2246,way/265159331,The Factory,Office,Long Island City,7,1,0
+2247,way/278369506,Christies Fine Art Storage Services,Office,Columbia Street Waterfront District,6,0,0
+2248,way/279592998,Schaefer Landing North,Residential,Williamsburg,24,0,0
+2249,way/279593000,Schaefer Landing South,Residential,Williamsburg,14,0,0
+2250,way/279593040,15 Dunham Place,Residential,Williamsburg,12,0,0
+2251,way/279597254,The Gretsh Building,Office,Williamsburg,10,0,0
+2252,way/279615179,The Williams,Office,Williamsburg,13,4,0
+2253,way/279648251,180 Scholes,Residential,Williamsburg,4,0,0
+2254,way/279788581,The Milo,Residential,Williamsburg,8,0,0
+2255,way/280079024,Warehouse 11,Residential,Williamsburg,6,0,0
+2256,way/280096332,The Oakland,Office,Williamsburg,6,0,0
+2257,way/280122409,Arlo Williamsburg,Hotel,Williamsburg,8,0,0
+2258,way/280143215,170 Freeman,Residential,Williamsburg,8,0,0
+2259,way/280145999,Mary D.'s Housing for Seniors,Residential,Greenpoint,5,0,0
+2260,way/280340498,Delight Stay Hotel,Hotel,Woodside,5,0,0
+2261,way/280354480,Arcadia Sunnyside,Residential,Woodside,8,0,0
+2262,way/280368552,Queens Renoir,Residential,Woodside,6,0,0
+2263,way/280373676,"Madison Bldg, Berkeley Towers",Residential,Woodside,13,0,0
+2264,way/280373681,"Jefferson Bldg, Berkeley Towers",Residential,Woodside,13,0,0
+2265,way/280373682,Park Plaza,Residential,Woodside,13,0,0
+2266,way/280374489,Oakwood Court,Office,Woodside,6,0,0
+2267,way/280375098,Washington,Residential,Woodside,13,0,0
+2268,way/280400590,The Mayfair,Residential,Woodside,6,0,0
+2269,way/280400600,The Surrey,Residential,Woodside,6,0,0
+2270,way/280494567,Queens Center,Mall,Elmhurst,3,10,0
+2271,way/280570747,Medical & Professional Building,Medical,Woodside,5,0,0
+2272,way/280571467,The Marx,Residential,Queens,7,0,0
+2273,way/280623179,The Powerhouse,Residential,Long Island City,11,0,0
+2274,way/280624947,The L Haus,Office,Long Island City,11,0,0
+2275,way/280625237,The Gantry,Office,Long Island City,6,0,0
+2276,way/280625244,Hunter's Point Plaza,Office,Long Island City,10,0,0
+2277,way/280642491,Mayflower Howard Johnson Hotel,Hotel,Long Island City,12,0,0
+2278,way/280644869,Crescent Club,Residential,Long Island City,15,0,0
+2279,way/280645160,Packard Square,Residential,Long Island City,15,0,0
+2280,way/281332543,Wyndham Garden,Hotel,Long Island City,8,4,0
+2281,way/281336899,P.S.  / I.S. 78Q - Middle School,Education,Long Island City,8,0,0
+2282,way/281342789,The Silver Star,Residential,Queens,9,0,0
+2283,way/281342845,Luna,Residential,Long Island City,11,0,0
+2284,way/281342885,The Independent,Residential,Long Island City,13,0,0
+2285,way/281342898,Court Square Place,Office,Long Island City,16,0,0
+2286,way/281342901,Vantage,Office,Long Island City,14,0,0
+2287,way/281343010,1 QPS Tower,Office,Long Island City,44,0,0
+2288,way/281343105,24-16 Queens Plaza South,Office,Long Island City,22,0,0
+2289,way/281343124,43-10 Crescent Street,Office,Long Island City,6,0,0
+2290,way/281343131,Bank of Manhattan Company Building,Office,Long Island City,14,0,0
+2291,way/281343168,The Addition,Residential,Queens,5,0,0
+2292,way/281343186,Two Gotham Center,Office,Long Island City,22,0,0
+2293,way/281343190,Aloft,Hotel,Long Island City,18,2,0
+2294,way/281343207,Arris Lofts,Residential,Long Island City,8,0,0
+2295,way/281344648,The Marina Astoria,Residential,Astoria,6,4,0
+2296,way/281345404,Bridgeview 2,Residential,Astoria,8,0,0
+2297,way/281345428,Bridgeview 1,Residential,Astoria,6,0,0
+2298,way/282273298,The Spear & Company Factory,Office,Queens,3,0,0
+2299,way/282906069,Jamaica Hospital Medical Center,Medical,Queens,,0,0
+2300,way/283161072,J. Kurtz and Sons Store Building,Office,Queens,6,0,0
+2301,way/283161959,Clinton Apartment,Residential,Queens,4,0,0
+2302,way/283161965,Hillcrest Hotel,Hotel,Queens,6,0,0
+2303,way/283165455,Jamaica Chamber of Commerce Building,Office,Queens,10,0,0
+2304,way/283165482,The President Lincoln,Residential,Queens,6,0,0
+2305,way/283165528,Hamilton House,Residential,Queens,7,0,0
+2306,way/283166081,YMCA,Office,Queens,3,0,0
+2307,way/283167168,Long Island Rail Road,Office,Queens,5,0,0
+2308,way/283167839,Park Haven Luxury Apartments,Residential,Queens,7,0,0
+2309,way/283167840,Park House,Residential,Queens,6,0,0
+2310,way/283167842,Immaculata Hall,Residential,Queens,6,0,0
+2311,way/283167844,Parkside Court,Residential,Queens,4,0,0
+2312,way/283170527,Hillside Gardens,Residential,Queens,6,0,0
+2313,way/283172382,Wingate by Wyndham,Hotel,Queens,7,1,0
+2314,way/283175865,Le Tour,Residential,Queens,7,0,0
+2315,way/283175874,The Sagamore,Residential,Queens,6,0,0
+2316,way/283185888,Tarleton Gardens,Residential,Queens,6,0,0
+2317,way/283185890,Briarfield,Residential,Queens,6,0,0
+2318,way/284450111,Korean Community Services (KCS),Office,Queens,3,0,0
+2319,way/284468792,Courtyard By Marriott,Hotel,Queens,6,12,0
+2320,way/284468793,Fairfield Inn & Suites By Marriott,Hotel,Queens,6,1,0
+2321,way/284526597,Choongsyn Korean Church,Office,Flushing,3,0,0
+2322,way/284555685,The Cheshire,Residential,Flushing,7,0,0
+2323,way/284555686,The Devon,Residential,Flushing,7,0,0
+2324,way/284621787,Flushing Commons South,Residential,Flushing,17,0,0
+2325,way/284668526,Stella's Shop and Beauty Salon,Office,Queens,3,0,0
+2326,way/285120559,2325 Bragg St,Government,Brooklyn,2,0,0
+2327,way/285130777,Yeshiva of Kings Bay,Education,Sheepshead Bay,3,0,0
+2328,way/285133949,Stop & Shop,Mall,Brooklyn,3,7,0
+2329,way/285908692,166th Street LLC,Residential,Queens,6,0,0
+2330,way/300959014,255 Columbia,Residential,Gowanus,7,0,0
+2331,way/337285771,Juliana Curran Terian Design Center,Office,Clinton Hill,3,0,0
+2332,way/358438718,Hilton Garden Inn,Hotel,Long Island City,16,4,0
+2333,way/361757084,Elmhurst Hospital,Medical,Elmhurst,,12,0
+2334,way/362875270,NewYork-Presbyterian Brooklyn Methodist Hospital,Medical,Gowanus,,1,0
+2335,way/371765893,Triangle Building,Office,Long Island City,19,0,0
+2336,way/374785365,Hoyt and Horn,Office,Gowanus,26,0,0
+2337,way/467109266,CubeSmart,Office,West Brighton,8,0,0
+2338,way/468946465,One John Street,Residential,Dumbo,12,0,0
+2339,way/475327562,Flushing Hospital Medical Center,Medical,Flushing,,0,0
+2340,way/479353688,The Baltic Hotel,Hotel,Gowanus,4,0,0
+2341,way/480497073,Holiday Inn Brooklyn Downtown,Hotel,Gowanus,14,2,0
+2342,way/484551768,Long Island Jewish Forest Hills,Medical,Rego Park,,0,0
+2343,way/489484678,Atelier,Residential,Williamsburg,6,0,0
+2344,way/496513558,Saint Albans Community Living Center,Medical,Queens,,0,0
+2345,way/499395490,Coney Island III,Office,Coney Island,11,0,0
+2346,way/499395491,1515 Surf,Residential,Coney Island,24,0,0
+2347,way/507424803,Noble,Residential,Queens,7,4,0
+2348,way/509975440,365 Bond,Residential,Gowanus,12,0,0
+2349,way/510608296,Sea Breeze Tower,Residential,West Brighton,20,0,0
+2350,way/545523035,The Vue,Residential,Brooklyn,10,0,0
+2351,way/556302082,Zucker Hillside Hospital,Medical,Glen Oaks,,0,0
+2352,way/559949784,Ocean Drive,Residential,Coney Island,21,0,0
+2353,way/559949785,Raven Hall,Residential,Coney Island,20,0,0
+2354,way/561419820,Saint John's Episcopal Hospital,Medical,Far Rockaway,,0,0
+2355,way/561823610,Kingsboro Psychiatric Center,Medical,East Flatbush,,0,0
+2356,way/561823611,Kings County Hospital Center,Medical,Flatbush,,0,0
+2357,way/561823612,Kingsbrook Jewish Medical Center,Medical,East Flatbush,,0,0
+2358,way/561836782,Brookdale Hospital Medical Center,Medical,Brownsville,,0,0
+2359,way/561921179,Jamaica Hospital Medical Center,Medical,Queens,,0,0
+2360,way/561925067,Queens Hospital Center,Medical,Queens,,0,0
+2361,way/561930692,Creedmoor Psychiatric Center,Medical,Queens,,0,0
+2362,way/561930693,New York City Children's Center - Queens Campus,Medical,Queens,,0,0
+2363,way/561932876,Saint Mary's Hospital for Children,Medical,Queens,,0,0
+2364,way/562015906,NewYork-Presbyterian/Queens,Medical,Flushing,,0,0
+2365,way/562041963,Mount Sinai Queens,Medical,Astoria,,0,0
+2366,way/562058708,NYC Health + Hospitals/Woodhull,Medical,Williamsburg,,0,0
+2367,way/562110355,New York City Children's Center - Brooklyn Campus,Medical,Brooklyn,,0,0
+2368,way/562110647,Interfaith Medical Center,Medical,Brooklyn,,0,0
+2369,way/562256746,Brooklyn Hospital Center,Medical,Gowanus,,0,0
+2370,way/569117453,Sorka Gakkai International-USA Buddhist Center,Office,Gowanus,4,0,0
+2371,way/570854307,Goodwill Tower,Office,Astoria,15,0,0
+2372,way/575433155,The Ashland,Residential,Gowanus,53,0,0
+2373,way/575433157,New York Hotel and Motel Trades Council Brooklyn Health Center,Office,Gowanus,12,0,0
+2374,way/575449026,EVEN Hotel,Hotel,Gowanus,13,0,0
+2375,way/583796860,Terminal B Parking Garage,Office,Queens,7,1,0
+2376,way/607163907,Pierhouse,Residential,Dumbo,10,0,0
+2377,way/607163908,1 Hotel Brooklyn Bridge,Hotel,Dumbo,10,3,0
+2378,way/616351742,The Hendrik,Residential,Gowanus,6,0,0
+2379,way/617894321,Alvista Towers,Residential,Queens,26,0,0
+2380,way/618343362,Tangram House West,Office,Flushing,16,0,0
+2381,way/624431748,Vista 65,Residential,Rego Park,23,0,0
+2382,way/633535211,The Refinery at Domino,Office,Williamsburg,15,0,0
+2383,way/644536343,Terminal B,Office,Queens,4,1,0
+2384,way/662819634,Avalon Brooklyn Bay,Residential,Brooklyn,27,0,0
+2385,way/665424724,The Union,Residential,Williamsburg,7,1,0
+2386,way/665486060,The Driggs,Residential,Williamsburg,5,0,0
+2387,way/665486061,The Driggs North,Residential,Williamsburg,6,0,0
+2388,way/665486064,The Park Ilona,Residential,Williamsburg,7,0,0
+2389,way/667820230,Halo,Office,Long Island City,25,0,0
+2390,way/673895007,Days Inn,Hotel,Brownsville,4,0,0
+2391,way/679250137,28-40 Jackson Avenue,Residential,Long Island City,43,0,0
+2392,way/679250139,28-30 Jackson Avenue,Residential,Long Island City,55,0,0
+2393,way/679250144,Jackson Park,Residential,Long Island City,45,2,0
+2394,way/698881899,60 Water Street,Office,Dumbo,16,0,0
+2395,way/700015265,Dock 72,Office,Brooklyn Navy Yard,17,0,0
+2396,way/700018143,One Clinton,Office,Brooklyn,38,0,0
+2397,way/700241895,AVA DoBro,Residential,Gowanus,57,0,0
+2398,way/700241901,Brooklyn Point,Residential,Gowanus,57,12,0
+2399,way/700241902,The BRiQ,Residential,Gowanus,21,0,0
+2400,way/700246653,The Bank of New York at Atlantic Terminal,Office,Gowanus,16,0,0
+2401,way/700249054,Eagle Lofts Tower,Residential,Long Island City,54,0,0
+2402,way/700249062,The Forge,Residential,Long Island City,33,0,0
+2403,way/700372474,Queens Plaza Park,Office,Long Island City,71,1,0
+2404,way/700372479,QLIC,Office,Long Island City,9,0,0
+2405,way/700550018,Level,Residential,Williamsburg,9,0,0
+2406,way/700550027,The Greenpoint,Office,Williamsburg,4,0,0
+2407,way/700551688,One Blue Slip,Office,Greenpoint,6,0,0
+2408,way/702523344,The Jackson,Office,Long Island City,11,0,0
+2409,way/702525860,Corte,Office,Long Island City,8,0,0
+2410,way/702525864,Murray Park South,Office,Long Island City,6,0,0
+2411,way/702530071,34-46 Vernon Boulevard,Office,Ravenswood,7,0,0
+2412,way/702692435,Quik Park,Office,Long Island City,7,1,0
+2413,way/702989188,42-60 Crescent Street,Office,Long Island City,10,0,0
+2414,way/705989833,Hunters Point Community Middle School,Education,Long Island City,5,0,0
+2415,way/707003674,Surface Inn,Hotel,Brownsville,7,0,0
+2416,way/710718203,The Lois,Residential,Brooklyn Community District 17,8,0,0
+2417,way/720259441,Watermark,Office,Long Island City,27,0,0
+2418,way/720376141,The Edison,Office,Long Island City,26,0,0
+2419,way/721190951,Eagle Lofts,Office,Long Island City,6,0,0
+2420,way/721524163,University Hospital of Brooklyn,Medical,Brooklyn Community District 17,,0,0
+2421,way/723006150,NYU Langone Hospital – Brooklyn,Medical,Sunset Park,,3,0
+2422,way/727598203,Wingate by Wyndham Long Island City,Hotel,Long Island City,16,0,0
+2423,way/733455400,The Edmond J. Safra Synagogue,Office,Gravesend,3,0,0
+2424,way/735023197,Citylights At Queens Landing,Office,Long Island City,6,0,0
+2425,way/755653597,Marriott Courtyard,Office,Long Island City,31,6,0
+2426,way/767315087,NYC Urban Post-Disaster Housing Prototype,Office,Dumbo,3,0,0
+2427,way/783730858,Medical Center,Office,Brighton Beach,5,0,0
+2428,way/802054761,The Amberly,Residential,Brooklyn,33,0,0
+2429,way/814651350,Joli on Guider,Residential,Brighton Beach,8,0,0
+2430,way/818959355,Olympia Dumbo,Residential,Dumbo,26,0,0
+2431,way/820529970,Catholic Charities Bishop Valero Residence,Residential,Queens,6,0,0
+2432,way/834310666,NuSun Tower,Office,Flushing,20,0,0
+2433,way/836178213,Creedmoor Psychiatric Center,Medical,Queens,,0,0
+2434,way/854197128,Searise,Residential,Coney Island,14,0,0
+2435,way/865126128,Magnolia Gardens,Office,Flushing,8,0,0
+2436,way/870958854,Tangram House South,Office,Flushing,15,0,0
+2437,way/878398440,avid Hotel,Hotel,Brooklyn,6,1,0
+2438,way/895750884,Shore Tower,Office,Brooklyn,7,0,0
+2439,way/963114323,The Vitagraph,Residential,Midwood,8,0,0
+2440,way/986801198,One Bell Slip,Residential,Greenpoint,3,0,0
+2441,way/988038378,One South First & Ten Grand,Office,Williamsburg,45,0,0
+2442,way/988128208,Brooklyn Square,Office,Brooklyn,6,2,0
+2443,way/988128209,Hatzolah of Boro Park,Office,Brooklyn,3,0,0
+2444,way/992379444,Jaguar & Land Rover Brooklyn,Office,West Brighton,3,0,0

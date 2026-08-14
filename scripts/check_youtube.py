@@ -111,7 +111,7 @@ def geo_ok(b, title):
     town_toks = [t for t in sig_tokens(b.get("town", "")) if t]
     town_in = bool(town_toks) and all(t in tt for t in town_toks)
     if strong_name(b["name"]):
-        return town_in or bool(tt & {"ny", "york", "island"})
+        return town_in or bool(tt & {"ny", "nyc", "york", "island", "brooklyn", "queens"})
     return town_in
 
 

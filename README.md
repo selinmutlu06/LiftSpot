@@ -67,7 +67,7 @@ flowchart LR
 | Search | Nominatim (OpenStreetMap) | Free geocoding from the same open data I verify buildings against | It allows about one request per second, so search caches results and rate-limits itself |
 | Voice | ElevenLabs + a Netlify function | Lets people ask about buildings out loud, which matters for accessibility | Needs the one piece of server code in the project, to keep the API key private |
 | Data pipeline | Python scripts that write SQL migrations | Every change to the catalog is a numbered file I can read, review, and trace back to evidence | Running the pipeline is a manual step |
-| Cleanup | [liftspot-data-tool](https://github.com/selinmutlu06/liftspot-data-tool) (C++) | Union-find to merge duplicate buildings and haversine distance to catch pins in the wrong place | A second repo to keep in sync |
+| Cleanup | [liftspot-data-tool](https://github.com/selinmutlu06/liftspot-data-tool) (C++) | Validates every row, finds each building's nearest neighbor with haversine distance, and clusters nearby buildings with union-find | A second repo to keep in sync |
 
 ### The data model
 

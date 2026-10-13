@@ -1,121 +1,200 @@
 # LiftSpot
 
-Data pipeline is validated and cleaned using [liftspot-data-tool](https://github.com/selinmutlu06/liftspot-data-tool).
-
-Find and rate elevators in buildings across Long Island. 572 buildings, searchable, filterable, reviewable, live at [liftspot.netlify.app](https://liftspot.netlify.app).
+LiftSpot is a map of elevators across Long Island, Queens, and Brooklyn. It has 715 buildings you can search, filter, review, and help fill in, and it's live at [liftspot.netlify.app](https://liftspot.netlify.app).
 
 <img src="docs/images/elevator.gif" alt="Pressing the elevator button" width="320" />
 
-My younger brother has been obsessed with elevators for over a decade. He spends hours every day tracking down new buildings, riding every elevator he can find, and cataloguing the details most people walk straight past: the cab manufacturer, the speed, the sound of the doors. He runs [@elevatorzboy20](https://www.youtube.com/@elevatorzboy20) on YouTube and Instagram, where he reviews elevators with a level of care I've only ever seen from the best critics.
+## Why I made this
 
-The problem: there was no tool built for someone like him. No map of where to go. No way to filter by building type or floor count. No place to leave a review that actually mattered.
+My younger brother has been obsessed with elevators for over a decade. He spends hours every day finding new buildings and riding every elevator he can, and he notices the things most people walk right past, like who made the cab, how fast it moves, and what the doors sound like when they close. He reviews them on [@elevatorzboy20](https://www.youtube.com/@elevatorzboy20) with more care than most critics I've read.
 
-So I built one.
+When I went looking for something that would help him figure out where to go next, I couldn't find anything. There was no map of buildings worth visiting, no way to filter by type or height, and nowhere to leave a review that other people could actually use, so I started building one for him, and it kept growing from there.
 
-<br>
+## What you can do with it
 
-## What it does
+Every building is pinned on the map, and clicking a pin opens a drawer with the building's details, its reviews, and what's known about filming it. You can search by name, by town, or with a plain-English query like "5-story hospital in Mineola," and if the search matches a real place, the map switches to showing everything within a radius of it. You can also filter by building type and number of stories, or turn on near-me mode to sort everything by distance.
 
-Every building sits pinned on a live MapLibre map, and clicking any pin opens the full detail drawer. Search takes names, towns, or natural language ("5-story hospital in Mineola"), geocodes addresses, and switches to radius mode automatically. Filters cover building type (Medical, Hotel, Mall, Office, and more), minimum story count, and distance from your location, with a near-me mode that sorts by distance on a 1-25 mile slider.
+The feature my brother uses most is the amber pins. LiftSpot checks YouTube and Reddit for footage of each building's elevators, and buildings nobody has filmed yet show up in amber, so you can see at a glance where you'd be the first. There's also a [hunt list](https://liftspot.netlify.app/hunt.html) that groups those buildings by town or sorts them by distance, with a checklist you can print and take with you.
 
-Ratings come from real submitted reviews only, never a seeded number. A building shows "No reviews yet" until someone actually rates it, then the score recalculates live. Private notes let you save anything per building (cab brand, access quirks), stored locally on your device.
+Ratings only come from real reviews, so a building nobody has reviewed just says "No reviews yet." If you ride an elevator, you can report how many there are along with the brand and drive type, and if you film one, you can submit the YouTube link. Both go into a review queue before they show up on the map. You can also keep private notes on any building, and those stay on your own device.
 
-**Fig. 1. The main view.** Filter sidebar and building list beside a live Long Island map with clustered pins.
+If you'd rather talk than type, the "Ask aloud" button opens a voice assistant you can ask about buildings in the catalog. It answers from the same data as the map and follows the same rules about what it knows and what it doesn't.
 
-<img src="docs/images/app-main.png" alt="liftspot main view: sidebar of filters and building list beside a live long island map with clustered pins" width="100%" />
+<img src="docs/images/app-main.png" alt="LiftSpot main view with the filter sidebar and building list beside a live map with clustered pins" width="100%" />
 
-**Fig. 2. The building drawer.** Specs, a real elevator review, and private notes.
+<p>
+  <img src="docs/images/app-drawer.png" alt="LiftSpot building drawer showing specs, a review, and private notes" width="64%" />
+  <img src="docs/images/app-mobile.png" alt="LiftSpot on mobile with a map-first layout and a draggable bottom sheet" width="32%" />
+</p>
 
-<img src="docs/images/app-drawer.png" alt="liftspot building detail drawer showing specs, a real elevator review, and private notes" width="100%" />
+## Designing it to be calm
 
-**Fig. 3. Mobile.** Map-first layout with a draggable bottom sheet of buildings.
+A lot of people who love elevators the way my brother does are autistic, and a map covered in pins, numbers, and badges can be a lot to take in. LiftSpot opens in a calm mode with a muted palette inspired by modern elevator cabs, very little motion, and only the essentials on screen, and there's a toggle for the full detail view whenever you want more.
 
-<img src="docs/images/app-mobile.png" alt="liftspot on mobile: map-first layout with a draggable bottom sheet" width="320" />
+Every state of the interface passes automated accessibility checks with axe, and animations turn off for anyone who has reduced motion set on their device. Dialogs trap focus properly, tap targets are big enough to hit on a phone, and on small screens the map comes first, with the building list in a sheet you can drag up. The voice assistant was set up with the same audience in mind, so it waits patiently for you to finish talking and answers in plain, literal language.
 
-<br>
+## How it fits together
 
-## The design
+The whole app runs in the browser and talks to a few services directly. The only server code is one small function that keeps the voice assistant's API key private.
 
-LiftSpot opens in a calm default. A quiet "modern cab interior" palette, low motion, only the essentials on screen. A full-detail toggle reveals the denser specs view for power users. The whole interface was designed with an autism-friendly default in mind: readable, low-stimulation, axe-clean across every state, honouring prefers-reduced-motion, and map-first on mobile with a draggable sheet.
+```mermaid
+---
+config:
+  fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+---
+flowchart LR
+    B["Your browser<br/>HTML, CSS, JS modules"]
+    DB[("Supabase<br/>Postgres + row-level security")]
+    T["CartoDB map tiles"]
+    N["Nominatim<br/>place search"]
+    F["Netlify function<br/>mints a voice token"]
+    E["ElevenLabs<br/>voice assistant"]
 
-<br>
-
-## How it works
-
-| Step | What happens |
-|------|--------------|
-| Load | All 572 buildings fetched from Supabase on page load |
-| Search | Query geocoded via Nominatim; a found place switches to radius mode, multi-word queries run smart keyword scoring |
-| Filter | Type chips and story count applied client-side in real time |
-| Detail | Opening a building fetches its reviews and shows specs, notes, and a star picker |
-| Review | New reviews inserted into Supabase; rating recalculated live from real reviews only |
-
-| Layer | Tools |
-|-------|-------|
-| Frontend | Vanilla HTML, CSS, JavaScript, zero build step |
-| Map | MapLibre GL 4.7, CartoDB Voyager tiles |
-| Geocoding | Nominatim (OpenStreetMap) |
-| Database | Supabase (PostgreSQL) |
-| Hosting | Netlify |
-
-```sql
-buildings (id, name, type, town, addr, lat, lng, stories, elevators, rating)
-reviews   (id, building_id, who, stars, body, created_at)
+    B -- "buildings, reviews, reports" --> DB
+    B -- "map tiles" --> T
+    B -- "where is Mineola?" --> N
+    B -- "asks for a short-lived token" --> F
+    F -- "secret API key stays here" --> E
+    B <-- "live voice over WebRTC" --> E
 ```
 
-16 building types: Medical, Dermatology, Physical Therapy, Radiology, Office, Mall, Hotel, Education, Government, Residential, Library, Transit, Legal, Entertainment, Community, Financial.
+### Why I picked each piece
 
-<br>
+| Layer | What I used | Why | What it costs me |
+|-------|-------------|-----|------------------|
+| Frontend | Plain HTML, CSS, and JavaScript modules | No framework or build step, so anyone can clone it and run it with one command | No components or type checking, which gets harder to manage as the app grows |
+| Map | MapLibre GL with CartoDB tiles | Open source, fast with hundreds of pins, and pins render on the map canvas so they never drift | Styling pins as map layers is more work than placing HTML elements |
+| Database | Supabase (Postgres) | A real database with row-level security, so the browser can talk to it without a backend of my own | The security rules have to be right, because nothing else stands between visitors and the data |
+| Search | Nominatim (OpenStreetMap) | Free geocoding from the same open data I verify buildings against | It allows about one request per second, so search caches results and rate-limits itself |
+| Voice | ElevenLabs + a Netlify function | Lets people ask about buildings out loud, which matters for accessibility | Needs the one piece of server code in the project, to keep the API key private |
+| Data pipeline | Python scripts that write SQL migrations | Every change to the catalog is a numbered file I can read, review, and trace back to evidence | Running the pipeline is a manual step |
+| Cleanup | [liftspot-data-tool](https://github.com/selinmutlu06/liftspot-data-tool) (C++) | Union-find to merge duplicate buildings and haversine distance to catch pins in the wrong place | A second repo to keep in sync |
 
-## The data honesty rules
+### The data model
 
-The building catalogue was originally seeded, and seeded data lies. Invented floor counts, guessed elevator counts, a fake default rating on every row. That's being corrected under one rule: don't present a guess as a fact.
+```mermaid
+---
+config:
+  fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+---
+erDiagram
+    buildings ||--o{ reviews : "rated in"
+    buildings ||--o{ submissions : "filmed in"
+    buildings ||--o{ elevator_reports : "described in"
 
-**Ratings** are derived from real reviews only. The fabricated default scores were stripped (`migrations/001_unfake_ratings.sql`), and buildings with no reviews say so.
+    buildings {
+        bigint id
+        text name
+        text type
+        text town
+        float lat
+        float lng
+        int stories "null when no source has it"
+        int elevators "null until a rider reports it"
+        bool verified
+        bool stories_verified
+        int yt_videos
+        date yt_checked
+    }
+    reviews {
+        bigint building_id
+        int stars
+        text body
+    }
+    submissions {
+        bigint building_id
+        text url
+        text status "pending until reviewed"
+    }
+    elevator_reports {
+        bigint building_id
+        int elevators
+        text brand
+        text kind "hydraulic or traction"
+        text status "pending until reviewed"
+    }
+```
 
-**Existence and location** are audited against four independent sources: OpenStreetMap, Wikidata, the US Census geocoder, and the Foursquare Places API (`scripts/verify_sources.py`). The audit is precision-first. A building is flagged verified only when a source confirms it by name near the pin, and guards reject town-name matches, street-name matches, wrong house numbers, and category mismatches, so a fabricated "Elmont Medical Center" can't ride on a neighbouring optometrist. Of 572 buildings, 175 clear that bar. Per-building evidence lives in `scripts/sources_evidence.csv`.
+## Keeping the data trustworthy
 
-**Wrong coordinates** get corrected. The audit found 59 buildings whose seed pin was off and snapped them to the confirmed feature.
+The catalog started out as seeded data, which meant invented floor counts, guessed elevator counts, and a fake rating on every building. Most of the work on this project since then has gone into fixing that, with one rule behind every decision, which is that the app should never show a guess as if it were a fact.
 
-**Unverified buildings** carry a badge, not a deletion. Most have real street addresses but simply aren't named in any free dataset.
+Here's the path every building takes before it shows up on the map.
 
-**Floor counts** show as fact only where OpenStreetMap's building:levels backs them. Everything else renders as an estimate, even on otherwise-verified buildings.
+```mermaid
+---
+config:
+  fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+---
+flowchart TD
+    A["Candidate building"] --> V{"Does an independent source<br/>name it near its pin?"}
+    S["OpenStreetMap · Wikidata<br/>US Census · Foursquare"] -.-> V
+    V -- "yes" --> K["Verified, kept on the map"]
+    V -- "no" --> X["Removed"]
+    K --> Y{"Any YouTube or Reddit<br/>footage of its elevators?"}
+    Y -- "clear match" --> C["Covered"]
+    Y -- "nothing found" --> P["Amber pin<br/>none found as of a date"]
+    Y -- "ambiguous" --> H["I review it by hand"]
+    H --> C
+    H --> P
+    C --> M["Written to a numbered<br/>SQL migration"]
+    P --> M
+```
 
-**Elevator counts** have no authoritative public source anywhere, so they always show as a community estimate. Reviews can confirm real counts over time.
+Every building on the map today has been confirmed to exist. I made that check strict on purpose, because a made-up "Elmont Medical Center" has a real-looking address and an optometrist next door, and a looser check would have let it through. The Queens and Brooklyn buildings were imported straight from OpenStreetMap, so they were confirmed from the start.
 
-**Writes are locked down.** The public can update exactly one column, the review-derived rating, so no anonymous visitor can flip verified, move a pin, or edit specs.
+Floor counts only show as fact when OpenStreetMap backs them up, and everywhere else they're marked as estimates. There's no public source for how many elevators a building has, so I deleted every guessed count, and that number now only comes from riders who've been there. When a footage match was ambiguous, I reviewed it myself, which came out to 372 candidates across 96 buildings.
 
-The goal is a catalogue where every shown number is either verified or honestly marked as not.
+That strictness caught real mistakes along the way. All five videos the app had matched to Huntington Public Library turned out to be of South Huntington Public Library, so I added a check that treats a direction word before a name as a different building.
 
-<br>
+### How rider contributions get in
+
+Nothing a visitor submits goes straight onto the map. It waits for me first.
+
+```mermaid
+---
+config:
+  fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif"
+---
+sequenceDiagram
+    participant R as Rider
+    participant App as LiftSpot
+    participant DB as Supabase
+    participant GH as GitHub Action
+    participant Me as Me
+
+    R->>App: Submits a video link or elevator report
+    App->>DB: Saves it as pending
+    GH->>DB: Checks the queue every day
+    GH->>Me: Opens an issue when something is waiting
+    Me->>DB: Approves or rejects through a migration
+    DB->>App: Approved data shows up on the map
+```
+
+## What I'd change next
+
+Right now the app loads every building at once, which is fine at 715 but won't be at ten times that, so the next step is only fetching buildings inside the part of the map you're looking at. The rating is also stored on each building row and updated from the browser, and I want to move that calculation into the database so the browser never writes it at all.
 
 ## Running it locally
-
-No install, no build step. Serve the folder with any static server (ES modules need http, not file://):
 
 ```bash
 git clone https://github.com/selinmutlu06/liftspot.git
 cd liftspot
-python3 -m http.server 8000   # then open http://localhost:8000
+python3 -m http.server 8000
 ```
 
-The Supabase project is public-read, so the map and buildings load immediately.
+Then open http://localhost:8000. The database allows public reads, so the map loads right away. The voice assistant needs an ElevenLabs key and `netlify dev`, and `.env.example` shows what to set.
 
-```
-index.html          markup + CDN links
-css/tokens.css      design tokens, the "modern cab interior" palette
-css/app.css         all component styles
-js/data.js          Supabase client, state, filtering, smart search scoring
-js/map.js           MapLibre init, clustering, elevator-button pins
-js/search.js        command palette (Cmd-K), geocode cache + rate limit
-js/drawer.js        building detail, door-reveal animation, reviews, notes
-js/ui.js            entry module: filters, list, toasts, wiring
-schema.sql          table definitions and RLS policies
-migrations/         incremental SQL changes
-scripts/            multi-source verification audit
-docs/               README assets + redesign plan
-```
+## License
 
-<br>
+MIT
 
-<sub>Built for one very specific critic. Find him at [YouTube](https://www.youtube.com/@elevatorzboy20) and [Instagram](https://www.instagram.com/elevatorzboy20). MIT License.</sub>
+<sub>Made for one very specific critic. You can find him on [YouTube](https://www.youtube.com/@elevatorzboy20) and [Instagram](https://www.instagram.com/elevatorzboy20).</sub>

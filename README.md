@@ -20,12 +20,9 @@ Ratings only come from real reviews, so a building nobody has reviewed just says
 
 If you'd rather talk than type, the "Ask aloud" button opens a voice assistant you can ask about buildings in the catalog. It answers from the same data as the map and follows the same rules about what it knows and what it doesn't.
 
-<img src="docs/images/app-main.png" alt="LiftSpot main view with the filter sidebar and building list beside a live map with clustered pins" width="100%" />
+<img src="docs/images/app-main.png" alt="LiftSpot main view with filters, the building list, and a map of Long Island, Queens, and Brooklyn with amber be-the-first pins" width="100%" />
 
-<p>
-  <img src="docs/images/app-drawer.png" alt="LiftSpot building drawer showing specs, a review, and private notes" width="64%" />
-  <img src="docs/images/app-mobile.png" alt="LiftSpot on mobile with a map-first layout and a draggable bottom sheet" width="32%" />
-</p>
+<img src="docs/images/app-drawer-mobile.png" alt="LiftSpot building drawer on desktop next to the map-first mobile layout" width="100%" />
 
 ## Designing it to be calm
 

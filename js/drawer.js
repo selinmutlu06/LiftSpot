@@ -1,6 +1,13 @@
 /* Drawer: building detail, door-reveal open, notes, reviews, live rating recalc. */
 
-import { sb, BUILDINGS, state, stars, rated, verified, storiesVerified } from './data.js';
+import { sb, BUILDINGS, state, stars, rated, verified, storiesVerified, unfilmed } from './data.js';
+
+// Storage can be blocked (private mode, strict settings); notes just don't persist then.
+const store = {
+  get: k => { try { return localStorage.getItem(k); } catch { return null; } },
+  set: (k, v) => { try { localStorage.setItem(k, v); return true; } catch { return false; } },
+};
+const safeUrl = u => (/^https:\/\//i.test(u || '') ? esc(u) : '#');
 import { trapFocus } from './focus.js';
 
 let els = null;
@@ -43,7 +50,7 @@ export async function openBuilding(id) {
   els.addr.textContent = b.addr;
   renderDataStrip(b);
 
-  const savedNote = localStorage.getItem(`liftspot_note_${id}`) || '';
+  const savedNote = store.get(`liftspot_note_${id}`) || '';
   els.body.innerHTML = `
     <div class="sec">
       <div class="rating-block${rated(b) ? '' : ' unrated'}">
@@ -66,7 +73,7 @@ export async function openBuilding(id) {
         <div class="field" style="margin-bottom:8px">
           <label for="rvName">Name (shown with your review)</label>
           <input class="text-input" id="rvName" maxlength="40" placeholder="Anonymous"
-            value="${esc(localStorage.getItem('liftspot_reviewer_name') || '')}" />
+            value="${esc(store.get('liftspot_reviewer_name') || '')}" />
         </div>
         <div class="field">
           <label for="rvText">Your review</label>
@@ -79,7 +86,7 @@ export async function openBuilding(id) {
     ${b.yt_checked != null && b.yt_videos === 0 ? `
     <div class="sec">
       <h3>Filmed these elevators?</h3>
-      <p class="sec-hint">Paste your YouTube link to claim this building. Your video shows up here after a quick review.</p>
+      <p class="sec-hint">Paste the YouTube link. It shows up here after we check it.</p>
       <div class="field">
         <label for="subUrl">YouTube link</label>
         <input class="text-input" id="subUrl" inputmode="url" placeholder="https://www.youtube.com/watch?v=…" />
@@ -94,7 +101,7 @@ export async function openBuilding(id) {
       <div id="repList"><div class="empty">Loading…</div></div>
       <button class="btn" id="repCta" aria-expanded="false" aria-controls="repform" style="margin-top:var(--s3)">Report what's inside</button>
       <div class="rform" id="repform">
-        <p class="sec-hint">Ridden these? Count, brand, drive type, whatever you know. It shows up after a quick review, labeled as reported, not as official specs.</p>
+        <p class="sec-hint">Fill in whatever you know. Your report shows up here after we review it.</p>
         <div class="field" style="margin-bottom:8px">
           <label for="repCount">How many elevators</label>
           <input class="text-input" id="repCount" type="number" min="1" max="100" inputmode="numeric" placeholder="e.g. 2" />
@@ -124,7 +131,7 @@ export async function openBuilding(id) {
         <div class="field" style="margin-bottom:8px">
           <label for="repName">Name (shown with your report)</label>
           <input class="text-input" id="repName" maxlength="40" placeholder="Anonymous"
-            value="${esc(localStorage.getItem('liftspot_reviewer_name') || '')}" />
+            value="${esc(store.get('liftspot_reviewer_name') || '')}" />
         </div>
         <p class="form-error" id="repError">Give at least a count, a brand, or a drive type.</p>
         <button class="btn" id="repSend">Send report</button>
@@ -161,10 +168,12 @@ export async function openBuilding(id) {
    counts that exists. Approved reports render here with their provenance;
    new ones go in pending and touch nothing until reviewed. */
 async function refreshReports(id) {
-  const list = document.getElementById('repList');
-  if (!list) return;
+  if (!document.getElementById('repList')) return;
   const { data, error } = await sb.from('elevator_reports').select('*')
     .eq('building_id', id).order('created_at', { ascending: false });
+  // The drawer may have moved on to another building while this loaded.
+  const list = state.activeId === id ? document.getElementById('repList') : null;
+  if (!list) return;
   if (error) {
     list.innerHTML = '<div class="empty">Nobody has reported these elevators yet.</div>';
     return;
@@ -183,7 +192,7 @@ async function refreshReports(id) {
     </div>`;
   });
   if (pending) bits.push(`<div class="empty">${pending} report${pending === 1 ? '' : 's'} waiting for review</div>`);
-  if (!bits.length) bits.push('<div class="empty">Nobody has reported these elevators yet. Ridden them? You’re the source.</div>');
+  if (!bits.length) bits.push('<div class="empty">No one has reported these elevators yet.</div>');
   list.innerHTML = bits.join('');
 }
 
@@ -209,7 +218,7 @@ function wireReports(b) {
       return;
     }
     err.classList.remove('show');
-    if (who) localStorage.setItem('liftspot_reviewer_name', who);
+    if (who) store.set('liftspot_reviewer_name', who);
     const btn = document.getElementById('repSend');
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -315,18 +324,19 @@ function footageRow(b) {
   const when = new Date(b.yt_checked + 'T00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
   const rows = [];
   if (b.yt_videos > 0) {
-    rows.push(`<div class="footage"><a href="${b.yt_url}" target="_blank" rel="noopener">
+    rows.push(`<div class="footage"><a href="${safeUrl(b.yt_url)}" target="_blank" rel="noopener">
       Watch elevator footage</a> · ${b.yt_videos} video${b.yt_videos === 1 ? '' : 's'} on YouTube as of ${when}</div>`);
   }
   if (b.reddit_posts > 0) {
-    rows.push(`<div class="footage"><a href="${b.reddit_url}" target="_blank" rel="noopener">
+    rows.push(`<div class="footage"><a href="${safeUrl(b.reddit_url)}" target="_blank" rel="noopener">
       Discussed on Reddit</a> · ${b.reddit_posts} post${b.reddit_posts === 1 ? '' : 's'} as of ${when}</div>`);
   }
   if (rows.length) return rows.join('');
-  if (b.yt_videos === 0) {
-    const sources = b.reddit_posts === 0 ? 'YouTube videos or Reddit posts' : 'YouTube videos';
+  // Same rule as the list and map: the pill needs BOTH sources checked and empty.
+  if (unfilmed(b)) {
+    const sources = 'YouTube videos or Reddit posts';
     return `<div class="footage none"><span class="pill-first">Be the first</span>
-      No ${sources} about these elevators found as of ${when}. Film yours and claim it.</div>`;
+      No ${sources} of these elevators found as of ${when}.</div>`;
   }
   return '';
 }
@@ -363,7 +373,7 @@ function wireForm(b) {
   });
 
   document.getElementById('saveNote').addEventListener('click', () => {
-    localStorage.setItem(`liftspot_note_${id}`, document.getElementById('noteBox').value);
+    store.set(`liftspot_note_${id}`, document.getElementById('noteBox').value);
     document.getElementById('noteSaved').classList.add('show');
     hooks.toast('Note saved.');
   });
@@ -376,7 +386,7 @@ function wireForm(b) {
       return;
     }
     const name = document.getElementById('rvName').value.trim().slice(0, 40);
-    if (name) localStorage.setItem('liftspot_reviewer_name', name);
+    if (name) store.set('liftspot_reviewer_name', name);
     const btn = document.getElementById('postReview');
     btn.disabled = true;
     btn.textContent = 'Posting…';
@@ -396,6 +406,7 @@ function wireForm(b) {
 
 async function refreshReviews(id) {
   const { data: reviews, error } = await sb.from('reviews').select('*').eq('building_id', id).order('created_at', { ascending: false });
+  if (state.activeId !== id) return; // a different building is open now
   const rvList = document.getElementById('rvList');
   if (error) {
     if (rvList) rvList.innerHTML = '<div class="empty">Couldn’t load reviews. Close and reopen to retry.</div>';
@@ -432,7 +443,7 @@ async function refreshReviews(id) {
 }
 
 function renderReviews(b) {
-  if (!b.reviews?.length) return '<div class="empty">No reviews yet — be the first.</div>';
+  if (!b.reviews?.length) return '<div class="empty">No reviews yet. Be the first.</div>';
   return b.reviews.map(r => `
     <div class="review">
       <div class="rhead">

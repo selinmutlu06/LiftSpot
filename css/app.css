@@ -313,8 +313,12 @@ button { font: inherit; color: inherit; }
   pointer-events: none;
 }
 .map-legend .dot { width: 9px; height: 9px; border-radius: 50%; }
+.map-legend .dot:not(:first-child) { margin-left: 6px; }
 .map-legend .dot.covered { background: var(--accent); }
 .map-legend .dot.first { background: var(--amber-deep); }
+.map-legend .dot.unknown { background: #9aa5a1; }
+html[data-mode="full"] .map-legend .dot.covered { background: #f5f6f4; }
+html[data-mode="full"] .map-legend .dot.unknown { background: #5d6a66; }
 html[data-mode="full"] .map-legend .dot.first { background: var(--amber); }
 
 /* "Be the first" pill: card meta row + drawer footage row */
@@ -837,7 +841,9 @@ textarea::placeholder, .text-input::placeholder { color: var(--ink-600); opacity
   .brand h1 { display: none; }
   .search { max-width: none; }
   .search .kbd { display: none; }
-  .search input { padding-right: 44px; }
+  .search input { padding-right: 12px; padding-left: 34px; }
+  .search .s-icon { left: 12px; }
+  .search.has-value input { padding-right: 44px; }
   /* >=16px keeps iOS Safari from auto-zooming the page when a field is focused */
   .search input, textarea, .text-input, .story-select, .floor-mode button { font-size: 16px; }
   .ctrl span { display: none; }
@@ -1139,3 +1145,6 @@ html[data-mode="full"] .vc-cab[data-vstate="speaking"]  .vc-door.r { transform: 
   }
   .doors, .vc-doors { display: none !important; }
 }
+
+.pbtn[hidden] { display: none; }
+input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }

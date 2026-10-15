@@ -3,9 +3,9 @@
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export function trapFocus(container) {
+export function trapFocus(container, isOpen = () => true) {
   container.addEventListener('keydown', e => {
-    if (e.key !== 'Tab') return;
+    if (e.key !== 'Tab' || !isOpen()) return;
     const items = [...container.querySelectorAll(FOCUSABLE)].filter(el => el.offsetParent !== null);
     if (!items.length) return;
     const first = items[0];

@@ -8,7 +8,7 @@ triage_server.py) and become a migration via --sql.
 
 Two worklists, one decisions ledger (building ids never collide):
   default   the original LI pass -> triage_data.json,     migration 013
-  --qbk     Queens/Brooklyn 016  -> triage_data_qbk.json, migration 017
+  --qbk     Queens/Brooklyn 016  -> triage_data_qbk.json, migration 018
 
 The import reports only store candidate COUNTS, so held buildings are
 re-searched here to recover the actual titles/urls (resumes into the
@@ -43,7 +43,7 @@ QBK_SUBS = [("Elevators", "{name}"), ("elevator", "{name}"),
 def paths(qbk):
     out = os.path.join(ROOT, "scripts", f"triage_data{'_qbk' if qbk else ''}.json")
     mig = os.path.join(ROOT, "migrations",
-                       "017_triage_qbk.sql" if qbk else "013_triage_decisions.sql")
+                       "018_triage_qbk.sql" if qbk else "013_triage_decisions.sql")
     return out, mig
 
 

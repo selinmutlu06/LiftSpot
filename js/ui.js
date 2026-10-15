@@ -1,7 +1,7 @@
 /* Entry: filters (button plate + floor indicator), list, states, toasts, wiring. */
 
 import { TYPES, typeIcon, maxStories, state, BUILDINGS, filtered, stars, rated, verified, storiesVerified, unfilmed, loadBuildings } from './data.js';
-import { initMap, setMapData, setActive, setHover, flyToBuilding, map, setLocationMarker, removeLocationMarker, setUserMarker, removeUserMarker, setMapTheme } from './map.js';
+import { initMap, setMapData, setActive, setHover, flyToBuilding, fitToBuildings, map, setLocationMarker, removeLocationMarker, setUserMarker, removeUserMarker, setMapTheme } from './map.js';
 import { initSearch, closePalette, clearToTextMode } from './search.js';
 import { initDrawer, openBuilding, showDrawer } from './drawer.js';
 import { initResources } from './resources.js';
@@ -31,7 +31,7 @@ function sortCaption() {
   if (state.searchMode === 'location') return `within ${state.radius} mi`;
   if (state.searchMode === 'smart') return 'best match first';
   if (state.userLoc) return 'nearest first';
-  return 'top rated first';
+  return BUILDINGS.some(rated) ? 'top rated, then tallest' : 'tallest first';
 }
 
 function skeletons(n = 5) {
@@ -92,7 +92,7 @@ function renderList() {
 
   list.innerHTML = items.map(b => `
     <div class="card${b.id === state.activeId ? ' active' : ''}" data-id="${b.id}" role="listitem" tabindex="0"
-      aria-label="${esc(`${b.name}, ${b.type} in ${b.town}, ${b.stories == null ? 'floor count unknown' : storiesVerified(b) ? `${b.stories} stories` : `about ${b.stories} stories estimated`}, ${b.elevators == null ? 'elevator count not yet reported' : `${b.elevators} elevators reported by riders`}, ${rated(b) ? `rated ${b.rating} of 5` : 'no reviews yet'}${unfilmed(b) ? ', not yet filmed on YouTube' : ''}`)}">
+      aria-label="${esc(`${b.name}, ${b.type} in ${b.town}, ${b.stories == null ? 'floor count unknown' : storiesVerified(b) ? `${b.stories} stories` : `about ${b.stories} stories estimated`}, ${b.elevators == null ? 'elevator count not yet reported' : `${b.elevators} elevators reported by riders`}, ${rated(b) ? `rated ${b.rating} of 5` : 'no reviews yet'}${unfilmed(b) ? ', no elevator footage found yet' : ''}`)}">
       <div class="top">
         <div style="min-width:0">
           <div class="bname">${esc(b.name)}${verified(b) ? '' : '<span class="dot-unverified" title="Unverified building" aria-hidden="true"></span>'}</div>
@@ -269,7 +269,13 @@ function onModeChange(mode, label, coords) {
     $('modeText').textContent = label === 'your location' ? `Near you · within ${state.radius} mi` : `Near ${label}`;
     if (coords) {
       if (label === 'your location') { setUserMarker(coords); removeLocationMarker(); }
-      else { setLocationMarker(coords); removeUserMarker(); }
+      else {
+        // A place search replaces "near me", so the button shouldn't stay lit.
+        setLocationMarker(coords); removeUserMarker();
+        state.userLoc = null;
+        nearBtn.classList.remove('on');
+        nearBtn.setAttribute('aria-pressed', 'false');
+      }
       map?.flyTo({ center: [coords.lng, coords.lat], zoom: 12 });
     }
   } else {
@@ -290,7 +296,7 @@ function onModeChange(mode, label, coords) {
 /* ── load ── */
 async function load() {
   $('list').innerHTML = skeletons();
-  $('countN').textContent = '—';
+  $('countN').textContent = '…';
   $('countCap').textContent = 'loading';
   const { error } = await loadBuildings();
   $('mapShimmer').classList.add('done');
@@ -309,6 +315,7 @@ async function load() {
     return;
   }
   buildFloors();
+  hideEmptyTypes();
   renderList();
 
   // Deep link: ?b=<id> opens that building (how the hunt list jumps to the map).
@@ -316,7 +323,16 @@ async function load() {
   if (linked && BUILDINGS.some(b => b.id === linked)) {
     open(linked);
     scrollCardIntoView(linked);
+  } else {
+    fitToBuildings(BUILDINGS);
   }
+}
+
+/* A type chip with zero buildings is a dead end, so it only shows once a
+   building of that type exists. */
+function hideEmptyTypes() {
+  const have = new Set(BUILDINGS.map(b => b.type));
+  document.querySelectorAll('.pbtn').forEach(btn => { btn.hidden = !have.has(btn.dataset.type); });
 }
 
 /* ── mobile sheet ── */
@@ -352,7 +368,8 @@ function initSheet() {
      would anchor to the rail, not the viewport. Move it to <body> while open. */
   const cab = $('cab');
   const cabHome = cab.parentElement;
-  trapFocus(cab);
+  // Only a dialog on phones; on desktop the filters sit inline and Tab moves on.
+  trapFocus(cab, () => cab.classList.contains('open'));
   $('filtersFab').addEventListener('click', () => {
     document.body.appendChild(cab);
     cab.classList.add('open');
@@ -444,7 +461,11 @@ function boot() {
     { input: $('q'), wrap: $('searchWrap'), palette: $('palette'), clearBtn: $('clearSearch') },
     {
       onModeChange,
-      onQueryChange: renderList,
+      onQueryChange: ({ settled } = {}) => {
+        renderList();
+        // Once a smart search lands, frame its results on the map.
+        if (settled && state.searchMode === 'smart') fitToBuildings(filtered());
+      },
       onPick: b => {
         open(b.id);
         scrollCardIntoView(b.id);
@@ -520,7 +541,7 @@ function boot() {
     }, () => {
       btn.classList.remove('on');
       toast('Couldn’t get your location. Allow location access and try again.', { error: true });
-    });
+    }, { timeout: 12000, maximumAge: 60000 });
   });
 
   load();

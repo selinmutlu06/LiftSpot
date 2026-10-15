@@ -5,7 +5,7 @@
    "Be the first" buildings (no coverage found anywhere) get amber pins so
    the hunt is visible on the map itself, not just in the list. */
 
-import { unfilmed } from './data.js';
+import { unfilmed, covered } from './data.js';
 
 export let map = null;
 
@@ -28,12 +28,12 @@ const PAINT = {
   calm: {
     clusterFill: '#2f7d68', clusterStroke: '#ffffff', clusterText: '#ffffff',
     pinFill: '#2f7d68', pinActive: '#1f5a4a', pinStroke: '#ffffff', halo: '#2f7d68',
-    pinFirst: '#b87d00',
+    pinFirst: '#b87d00', pinUnknown: '#9aa5a1',
   },
   full: {
     clusterFill: '#1d2b26', clusterStroke: '#c9ced0', clusterText: '#23a47f',
     pinFill: '#f5f6f4', pinActive: '#23a47f', pinStroke: '#16211d', halo: '#23a47f',
-    pinFirst: '#e8a13a',
+    pinFirst: '#e8a13a', pinUnknown: '#5d6a66',
   },
 };
 
@@ -48,8 +48,9 @@ export function initMap({ pinClick, pinHover }) {
   map = new maplibregl.Map({
     container: 'map',
     style: STYLES[currentMode()],
-    center: [-73.55, 40.78],
-    zoom: 9.6,
+    // Every building from Brooklyn to the East End; refit to the data on load.
+    bounds: [[-74.05, 40.55], [-71.9, 41.15]],
+    fitBoundsOptions: { padding: 40 },
   });
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
 
@@ -109,8 +110,9 @@ function addLayers() {
     paint: {
       'circle-radius': 7,
       'circle-color': ['case', litState, c.pinActive,
-        ['boolean', ['get', 'first'], false], c.pinFirst,
-        c.pinFill],
+        ['==', ['get', 'cov'], 'first'], c.pinFirst,
+        ['==', ['get', 'cov'], 'covered'], c.pinFill,
+        c.pinUnknown],
       'circle-stroke-width': 2.5,
       'circle-stroke-color': c.pinStroke,
     },
@@ -174,7 +176,7 @@ function applyData() {
       type: 'Feature',
       id: b.id,
       geometry: { type: 'Point', coordinates: [b.lng, b.lat] },
-      properties: { id: b.id, first: unfilmed(b) },
+      properties: { id: b.id, cov: covered(b) ? 'covered' : unfilmed(b) ? 'first' : 'unknown' },
     })),
   });
   if (activeId != null) trySetState(activeId, { active: true });
@@ -205,7 +207,28 @@ export function setActive(id) {
   if (id != null) trySetState(id, { active: true });
 }
 
+/* Frame a set of buildings (all of them on load, or a search's results). */
+export function fitToBuildings(items, { maxZoom = 14 } = {}) {
+  if (!map || !items.length) return;
+  // Frame where the buildings actually cluster: trim the outer few percent so
+  // a lone pin out in Montauk doesn't zoom everything else down to dots.
+  const trim = items.length > 40 ? 0.03 : 0;
+  const q = (arr, p) => arr[Math.min(arr.length - 1, Math.max(0, Math.round(p * (arr.length - 1))))];
+  const lngs = items.map(b => b.lng).sort((a, b) => a - b);
+  const lats = items.map(b => b.lat).sort((a, b) => a - b);
+  const w = q(lngs, trim), e = q(lngs, 1 - trim), s = q(lats, trim), n = q(lats, 1 - trim);
+  const narrow = matchMedia('(max-width: 860px)').matches;
+  // A phone is too narrow to show Brooklyn to the East End at a useful zoom,
+  // so the whole-catalogue view opens on the dense core (city + Nassau).
+  const box = narrow && items.length > 200 ? [[-74.04, 40.57], [-73.42, 40.84]] : [[w, s], [e, n]];
+  map.fitBounds(box, {
+    padding: narrow ? { top: 70, bottom: 140, left: 24, right: 24 } : 60,
+    maxZoom, duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900,
+  });
+}
+
 export function flyToBuilding(b) {
+  if (!map) return;
   map.flyTo({ center: [b.lng, b.lat], zoom: Math.max(map.getZoom(), 14) });
 }
 

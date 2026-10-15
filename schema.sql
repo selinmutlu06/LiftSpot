@@ -17,7 +17,8 @@ create table if not exists buildings (
   stories_verified boolean not null default false,  -- floor count confirmed by OSM building:levels (migrations/005); else it's an estimate
   yt_videos  integer,       -- confirmed YouTube elevator videos as of yt_checked (migrations/010)
   yt_url     text,          -- most-viewed confirmed video
-  yt_checked date           -- when we searched; 0 videos means "none found as of this date"
+  yt_checked date,          -- when we searched; 0 videos means "none found as of this date"
+  region     text           -- 'Long Island' | 'Queens' | 'Brooklyn' (migrations/017)
 );
 
 create table if not exists reviews (
@@ -37,14 +38,21 @@ create policy "Public read buildings"   on buildings for select using (true);
 create policy "Public read reviews"     on reviews   for select using (true);
 create policy "Public insert reviews"   on reviews   for insert with check (true);
 
--- The public may update buildings, but ONLY the rating column (recomputed from
--- real reviews by the app). Column-level grants enforce this — RLS gates rows,
--- not columns — so no anonymous visitor can touch verified, coordinates, or
--- specs. See migrations/004 for the rationale.
+-- The public can't update buildings at all. A building's rating is the
+-- average of its real reviews, recomputed by this trigger whenever a review
+-- changes (migrations/017; it replaced the anon rating grant from 004).
 revoke update on table buildings from anon, authenticated;
-grant  update (rating) on table buildings to anon, authenticated;
-create policy "Public update building rating"
-  on buildings for update using (true) with check (true);
+create or replace function recompute_rating() returns trigger
+language plpgsql security definer set search_path = public as $$
+declare bid bigint := coalesce(new.building_id, old.building_id);
+begin
+  update buildings set rating = coalesce(
+    (select round(avg(stars)::numeric, 1) from reviews where building_id = bid), 0)
+  where id = bid;
+  return null;
+end $$;
+create trigger reviews_recompute_rating after insert or update or delete on reviews
+  for each row execute function recompute_rating();
 
 -- Visitor video submissions (migrations/014): pending until reviewed by
 -- scripts/review_submissions.py; an approved video counts toward yt_videos.

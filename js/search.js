@@ -1,7 +1,7 @@
 /* Search: command palette dropdown, debounced geocode with cache + rate limit,
    mode switching (text / smart / location). */
 
-import { state, topMatches, storiesVerified } from './data.js';
+import { state, topMatches, storiesVerified, isSmartQuery, namesBuilding } from './data.js';
 
 const LI_VIEWBOX = '-74.05,40.45,-71.75,41.15';
 const geocodeCache = new Map();          // query -> result | null
@@ -97,6 +97,11 @@ function onInput(e) {
 async function runGeocode() {
   if (!state.q) return;
   const seq = ++geocodeSeq;
+  // Our own catalogue answers first: a building's name stays a name search,
+  // and "hospitals in Mineola" filters buildings. Only a bare place or
+  // address ("11501", "Jones Beach") goes out to the geocoder.
+  if (namesBuilding(state.q)) { setMode('text'); hooks.onQueryChange(); return; }
+  if (isSmartQuery(state.q)) { setMode('smart'); hooks.onQueryChange({ settled: true }); return; }
   let coords = null;
   try {
     coords = await geocodeQuery(state.q);
@@ -112,7 +117,7 @@ async function runGeocode() {
   } else {
     setMode('text');
   }
-  hooks.onQueryChange();
+  hooks.onQueryChange({ settled: state.searchMode === 'smart' });
 }
 
 function onKeydown(e) {

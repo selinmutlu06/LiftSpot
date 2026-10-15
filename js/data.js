@@ -86,6 +86,9 @@ export const storiesVerified = b => b.stories_verified === true;
 export const unfilmed = b => b.yt_checked != null && b.yt_videos === 0
   && (!('reddit_posts' in b) || b.reddit_posts === 0);
 export const ytChecked = b => b.yt_checked != null;
+// Footage actually found somewhere. Anything neither covered nor unfilmed is
+// still unchecked or awaiting review, and the map says so instead of guessing.
+export const covered = b => b.yt_videos > 0 || b.reddit_posts > 0;
 
 export const dist = (a, b) => {
   const R = 3959, dLat = (b.lat - a.lat) * Math.PI / 180, dLng = (b.lng - a.lng) * Math.PI / 180;
@@ -99,13 +102,13 @@ const TYPE_KEYWORDS = {
   'Physical Therapy': ['physical therapy', 'physical therapist', 'pt ', 'rehab', 'rehabilitation', 'sports medicine', 'occupational therapy'],
   Radiology: ['radiology', 'radiologist', 'xray', 'x-ray', 'imaging', 'mri', 'ct scan', 'ultrasound', 'mammography'],
   Office: ['office', 'professional', 'corporate', 'business', 'headquarters', 'hq', 'law firm', 'attorney'],
-  Mall: ['mall', 'shopping', 'retail', 'plaza', 'shopping center', 'shops'],
-  Hotel: ['hotel', 'motel', 'inn', 'stay', 'lodging', 'resort', 'suites'],
+  Mall: ['mall', 'shopping', 'retail', 'shopping center', 'shops'],
+  Hotel: ['hotel', 'motel', 'inn', 'lodging', 'resort', 'suites'],
   Education: ['school', 'education', 'university', 'college', 'high school', 'academy', 'learning'],
   Library: ['library', 'books', 'reading', 'branch'],
-  Government: ['government', 'city hall', 'village hall', 'dmv', 'municipal', 'county', 'town hall', 'federal'],
-  Entertainment: ['entertainment', 'theater', 'theatre', 'museum', 'art', 'cinema', 'movie', 'gallery', 'park'],
-  Community: ['community', 'ymca', 'jcc', 'recreation', 'center', 'arts council', 'cultural'],
+  Government: ['government', 'city hall', 'village hall', 'dmv', 'municipal', 'town hall', 'federal'],
+  Entertainment: ['entertainment', 'theater', 'theatre', 'museum', 'cinema', 'movie', 'gallery'],
+  Community: ['community', 'ymca', 'jcc', 'recreation', 'arts council', 'cultural'],
   Financial: ['financial', 'bank', 'credit union', 'bancorp', 'savings'],
   Residential: ['residential', 'apartment', 'senior', 'assisted living', 'senior living', 'condo'],
   Legal: ['legal', 'law', 'courthouse', 'court'],
@@ -113,7 +116,7 @@ const TYPE_KEYWORDS = {
 
 export function parseStoryCount(q) {
   const w = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, single: 1, double: 2, triple: 3 };
-  const m = q.match(/(\d+)\s*(?:floor|stor)/i); if (m) return +m[1];
+  const m = q.match(/(\d+)\s*-?\s*(?:floor|stor)/i); if (m) return +m[1];
   for (const [word, n] of Object.entries(w)) {
     if (new RegExp(`\\b${word}\\s+(?:floor|stor)`, 'i').test(q)) return n;
   }
@@ -121,23 +124,72 @@ export function parseStoryCount(q) {
   return null;
 }
 
-export function smartScore(b, q) {
-  const ql = q.toLowerCase();
-  const bt = [b.name, b.type, b.town, b.addr].join(' ').toLowerCase();
-  let score = 0;
+/* Where a query can point: a town/neighborhood we have buildings in, or a
+   whole region. Queens and Brooklyn addresses always carry their borough. */
+const inRegion = (b, r, guess) => (b.region ? b.region === r : guess(b));
+const REGIONS = {
+  brooklyn: b => inRegion(b, 'Brooklyn', x => /\bbrooklyn, ny\b/i.test(x.addr)),
+  queens: b => inRegion(b, 'Queens', x => x.id >= 2000 && !/\bbrooklyn, ny\b/i.test(x.addr)),
+  'long island': b => inRegion(b, 'Long Island', x => x.id < 2000),
+};
+const TOWN_ALIASES = { lic: 'long island city', 'bed stuy': 'bedford-stuyvesant', 'bed-stuy': 'bedford-stuyvesant', dumbo: 'dumbo' };
+const STOP = new Set(['with', 'that', 'near', 'from', 'have', 'this', 'floor', 'story', 'stories', 'floors', 'building', 'buildings',
+  'tall', 'tallest', 'high', 'rise', 'highrise', 'high-rise', 'skyscraper', 'skyscrapers', 'show', 'find', 'some', 'what', 'where', 'which', 'most', 'least', 'more', 'than', 'over', 'around']);
+
+let townIndex = null;  // lowercase town -> canonical, rebuilt when data loads
+function towns() {
+  if (!townIndex || townIndex.size === 0) {
+    townIndex = new Map(BUILDINGS.map(b => [b.town.toLowerCase(), b.town]));
+  }
+  return townIndex;
+}
+
+/* Turn a natural-language query into hard constraints + leftover keywords,
+   so "tall residential in Long Island City" means Residential AND in LIC,
+   tallest first, instead of anything mentioning "long" or "city". */
+export function parseQuery(q) {
+  let ql = ` ${q.toLowerCase().replace(/[?!.,]/g, ' ').replace(/\s+/g, ' ')} `;
+  for (const [a, t] of Object.entries(TOWN_ALIASES)) ql = ql.replace(` ${a} `, ` ${t} `);
+  const out = { types: new Set(), town: null, region: null, stories: parseStoryCount(ql), atLeast: false, tall: false, words: [] };
+  // Longest town name first, so "Long Island City" beats "Long Beach" style overlaps.
+  // Borough names are regions, never one "town", even where a row's town says "Brooklyn".
+  const names = [...towns().keys()].filter(t => t.length > 2 && !(t in REGIONS)).sort((a, b) => b.length - a.length);
+  for (const t of names) {
+    if (ql.includes(` ${t} `)) { out.town = towns().get(t); ql = ql.replace(` ${t} `, ' '); break; }
+  }
+  if (!out.town) {
+    for (const r of Object.keys(REGIONS)) if (ql.includes(` ${r} `)) { out.region = r; ql = ql.replace(` ${r} `, ' '); break; }
+  }
   for (const [type, kws] of Object.entries(TYPE_KEYWORDS)) {
-    if (kws.some(kw => ql.includes(kw))) {
-      if (b.type === type) score += 10;
-      else if (b.type === 'Medical' && ['Dermatology', 'Physical Therapy', 'Radiology'].includes(type)) score += 3;
-    }
+    if (kws.some(kw => ql.includes(` ${kw.trim()} `) || ql.includes(` ${kw.trim()}s `))) out.types.add(type);
   }
-  const want = parseStoryCount(ql);
-  if (want !== null && b.stories != null) {
-    if (b.stories === want) score += 8;
-    else if (Math.abs(b.stories - want) === 1) score += 2;
+  // The specialty types have no buildings of their own; their keywords mean "medical".
+  if (['Dermatology', 'Physical Therapy', 'Radiology'].some(t => out.types.has(t))) out.types.add('Medical');
+  out.tall = /\b(tall|tallest|high.?rise|skyscrapers?|towers?)\b/.test(ql);
+  out.atLeast = out.stories != null && /\b(at least|over|more than|plus|\d+\+)/.test(ql);
+  out.words = ql.split(/\s+/).filter(w => w.length > 3 && !STOP.has(w)
+    && !Object.values(TYPE_KEYWORDS).flat().includes(w) && !/^\d/.test(w));
+  return out;
+}
+
+const hasConstraints = p => p.types.size || p.town || p.region || p.stories != null;
+
+export function smartScore(b, q, p = parseQuery(q)) {
+  if (p.town && b.town !== p.town) return 0;
+  if (p.region && !REGIONS[p.region](b)) return 0;
+  if (p.types.size && !p.types.has(b.type)) return 0;
+  // An unknown floor count can't be ruled out, so it stays in, ranked below known matches.
+  if (p.stories != null && b.stories != null) {
+    if (p.atLeast ? b.stories < p.stories : Math.abs(b.stories - p.stories) > 1) return 0;
   }
-  const words = ql.split(/\s+/).filter(w => w.length > 3 && !['with', 'that', 'near', 'from', 'have', 'this', 'floor', 'story', 'stories', 'floors', 'building', 'buildings'].includes(w));
-  words.forEach(w => { if (bt.includes(w)) score += 2; });
+  let score = hasConstraints(p) ? 10 : 0;
+  if (p.stories != null && b.stories === p.stories) score += 4;
+  if (p.tall) score += Math.min(b.stories ?? 0, 80) / 4;
+  const bt = [b.name, b.type, b.town, b.addr].join(' ').toLowerCase();
+  let hits = 0;
+  p.words.forEach(w => { if (bt.includes(w)) { score += 3; hits++; } });
+  // Free words with no constraint behind them must actually match something.
+  if (!hasConstraints(p) && !hits) return 0;
   return score;
 }
 
@@ -161,10 +213,11 @@ export function filtered() {
   }
 
   if (state.searchMode === 'smart' && state.q) {
+    const p = parseQuery(state.q);
     return result
-      .map(b => ({ ...b, _score: smartScore(b, state.q), _d: state.userLoc ? dist(state.userLoc, b) : null }))
+      .map(b => ({ ...b, _score: smartScore(b, state.q, p), _d: state.userLoc ? dist(state.userLoc, b) : null }))
       .filter(b => b._score > 0)
-      .sort((a, b) => b._score - a._score);
+      .sort((a, b) => (b._score - a._score) || ((b.stories ?? -1) - (a.stories ?? -1)));
   }
 
   if (state.q) {
@@ -173,17 +226,30 @@ export function filtered() {
   }
   return result
     .map(b => ({ ...b, _d: state.userLoc ? dist(state.userLoc, b) : null }))
-    .sort((a, b) => state.userLoc ? a._d - b._d : b.rating - a.rating);
+    .sort((a, b) => state.userLoc ? a._d - b._d
+      // Reviews first, then the tallest buildings, then A to Z.
+      : (b.rating - a.rating) || ((b.stories ?? -1) - (a.stories ?? -1)) || a.name.localeCompare(b.name));
 }
+
+/* True when a query reads as a request ("hospitals in Mineola") rather than a
+   place name, so search filters the catalogue instead of geocoding. */
+export const isSmartQuery = q => hasConstraints(parseQuery(q)) || parseQuery(q).tall;
+
+/* A query that names one of our buildings outright ("Roosevelt Field"). */
+export const namesBuilding = q => {
+  const ql = q.trim().toLowerCase();
+  return ql.length > 3 && BUILDINGS.some(b => b.name.toLowerCase().includes(ql));
+};
 
 /* Top matches for the search palette: smart score when multi-word,
    plus straightforward name/town prefix and substring weighting. */
 export function topMatches(q, limit = 8) {
   if (!q.trim()) return [];
   const ql = q.toLowerCase();
+  const p = parseQuery(q);
   return BUILDINGS
     .map(b => {
-      let s = smartScore(b, q);
+      let s = smartScore(b, q, p);
       const name = b.name.toLowerCase(), town = b.town.toLowerCase();
       if (name.startsWith(ql)) s += 14;
       else if (name.includes(ql)) s += 8;
@@ -199,6 +265,6 @@ export function topMatches(q, limit = 8) {
 
 export async function loadBuildings() {
   const { data, error } = await sb.from('buildings').select('*');
-  if (!error) BUILDINGS = data || [];
+  if (!error) { BUILDINGS = data || []; townIndex = null; }
   return { data, error };
 }

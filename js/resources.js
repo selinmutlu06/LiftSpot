@@ -5,17 +5,17 @@ const GROUPS = [
   {
     title: 'Communities',
     items: [
-      { name: 'Elevatorpedia', url: 'https://elevation.fandom.com/wiki/Elevator_Wiki', desc: 'The elevator wiki — brands, fixtures, history, everything' },
-      { name: 'Elevator Community Wiki', url: 'https://elevatorcommunity.fandom.com/wiki/Elevator_Community_Wiki', desc: 'The filmers’ own wiki — people, meetups, culture' },
+      { name: 'Elevatorpedia', url: 'https://elevation.fandom.com/wiki/Elevator_Wiki', desc: 'The elevator wiki: brands, fixtures, history, everything' },
+      { name: 'Elevator Community Wiki', url: 'https://elevatorcommunity.fandom.com/wiki/Elevator_Community_Wiki', desc: 'The filmers’ own wiki: people, meetups, culture' },
       { name: 'r/Elevators', url: 'https://www.reddit.com/r/Elevators/', desc: 'Reddit’s elevator community' },
       { name: 'Dat Elevator Community', url: 'https://discord.com/invite/dat-elevator-community-395073624454987776', desc: 'Discord server, 1,500+ enthusiasts, weekly events' },
-      { name: 'VatorTrader', url: 'https://www.vatortrader.com', desc: 'Forum run by elevator technicians — deep technical answers' },
+      { name: 'VatorTrader', url: 'https://www.vatortrader.com', desc: 'Forum run by elevator technicians, with deep technical answers' },
     ],
   },
   {
     title: 'Watch',
     items: [
-      { name: 'DieselDucy / elevaTOURS', url: 'https://www.youtube.com/@DieselDucy', desc: 'The original elevator filmer — 7,000+ videos since 1993' },
+      { name: 'DieselDucy / elevaTOURS', url: 'https://www.youtube.com/@DieselDucy', desc: 'The original elevator filmer, with 7,000+ videos since 1993' },
       { name: 'The Elevator Channel', url: 'https://www.youtube.com/@TheElevatorChannel', desc: 'Jacob Bachta’s tours and restorations' },
     ],
   },
@@ -23,10 +23,10 @@ const GROUPS = [
     title: 'Learn',
     items: [
       { name: 'Elevator World', url: 'https://elevatorworld.com', desc: 'The industry magazine, publishing since 1953' },
-      { name: 'The Elevator Museum', url: 'https://en.wikipedia.org/wiki/The_Elevator_Museum', desc: 'Amesbury, MA — a day trip with real historic cabs' },
+      { name: 'The Elevator Museum', url: 'https://en.wikipedia.org/wiki/The_Elevator_Museum', desc: 'Amesbury, MA. A day trip with real historic cabs' },
       { name: 'Elevator U', url: 'https://www.elevatoru.org', desc: 'Education nonprofit for vertical transportation' },
       { name: 'NAEC', url: 'https://www.naec.org', desc: 'National Association of Elevator Contractors' },
-      { name: 'NEII', url: 'https://neii.org', desc: 'National Elevator Industry — codes and safety standards' },
+      { name: 'NEII', url: 'https://neii.org', desc: 'National Elevator Industry: codes and safety standards' },
     ],
   },
 ];

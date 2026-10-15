@@ -1,0 +1,1724 @@
+{
+"2000": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2001": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2007": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2008": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2009": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2011": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2012": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2013": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2014": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2015": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2016": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2017": {
+"neighbourhood": "Ridgewood",
+"quarter": "Bushwick",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2018": {
+"neighbourhood": null,
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2023": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2024": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2025": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2026": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2029": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2034": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2035": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2036": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2037": {
+"neighbourhood": "Windsor Terrace",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2038": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2039": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2041": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2042": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2044": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2045": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2046": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2047": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2048": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2049": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2050": {
+"neighbourhood": "Astoria",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2051": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2052": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2053": {
+"neighbourhood": "Brooklyn Heights",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2056": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2057": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2058": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2060": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2061": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2062": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2063": {
+"neighbourhood": "Sunset Park",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2064": {
+"neighbourhood": "Crown Heights",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2065": {
+"neighbourhood": "Crown Heights",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2066": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2067": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2070": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2071": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2072": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2073": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2074": {
+"neighbourhood": null,
+"quarter": "Elmhurst",
+"suburb": "Queens",
+"city_district": null
+},
+"2075": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2076": {
+"neighbourhood": "Sunset Park",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2079": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2080": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2081": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2082": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2084": {
+"neighbourhood": "Sunset Park",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2085": {
+"neighbourhood": "Sunset Park",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2086": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2087": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2088": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2089": {
+"neighbourhood": "Bedford-Stuyvesant",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2092": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2093": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2094": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2095": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2096": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2097": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2098": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2099": {
+"neighbourhood": "Fort Hamilton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2108": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2110": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2111": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2112": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2113": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2114": {
+"neighbourhood": "Fort Hamilton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2115": {
+"neighbourhood": "Fort Hamilton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2116": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2117": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2118": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2119": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2120": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2121": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2134": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2136": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2137": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2138": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2139": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2140": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2141": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2142": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2143": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2144": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2145": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2146": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2147": {
+"neighbourhood": "Hillside",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2148": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2149": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2150": {
+"neighbourhood": "Jackson Heights",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2151": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2152": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2153": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2154": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2155": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2157": {
+"neighbourhood": "Bath Beach",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2158": {
+"neighbourhood": "Bath Beach",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2159": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2160": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2161": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2162": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2163": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2164": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2165": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2166": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2167": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2168": {
+"neighbourhood": "Bath Beach",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2169": {
+"neighbourhood": "Bath Beach",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2170": {
+"neighbourhood": "Bath Beach",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2171": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2172": {
+"neighbourhood": null,
+"quarter": "New Utrecht",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2173": {
+"neighbourhood": null,
+"quarter": "New Utrecht",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2174": {
+"neighbourhood": null,
+"quarter": "New Utrecht",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2175": {
+"neighbourhood": "Bensonhurst",
+"quarter": "New Utrecht",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2176": {
+"neighbourhood": "Bath Beach",
+"quarter": "New Utrecht",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2177": {
+"neighbourhood": "Midwood",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2178": {
+"neighbourhood": "Midwood",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2179": {
+"neighbourhood": "Midwood",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2180": {
+"neighbourhood": "Sunset Park",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2182": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2183": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2184": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2185": {
+"neighbourhood": "Sunset Park",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2186": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2187": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2190": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2191": {
+"neighbourhood": "Midwood",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2193": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2194": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2195": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2196": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2197": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2198": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2199": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2200": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2202": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2203": {
+"neighbourhood": null,
+"quarter": "Flatlands",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2204": {
+"neighbourhood": null,
+"quarter": "Bushwick",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2205": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2206": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2208": {
+"neighbourhood": "Brooklyn Community District 17",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2209": {
+"neighbourhood": "Broadway Junction",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2210": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2213": {
+"neighbourhood": "Broadway Junction",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2214": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2215": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2219": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2221": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2222": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2223": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2224": {
+"neighbourhood": "Dumbo",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2226": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2227": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2231": {
+"neighbourhood": "Park Slope",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2232": {
+"neighbourhood": "Rego Park",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2233": {
+"neighbourhood": "Rego Park",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2235": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2236": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2237": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2238": {
+"neighbourhood": "Jackson Heights",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2239": {
+"neighbourhood": "Fort Greene",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2240": {
+"neighbourhood": "Fort Greene",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2241": {
+"neighbourhood": "Fort Greene",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2242": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2244": {
+"neighbourhood": "Sunnyside",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2245": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2246": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2247": {
+"neighbourhood": "Columbia Street Waterfront District",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2253": {
+"neighbourhood": null,
+"quarter": "Williamsburg",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2254": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2256": {
+"neighbourhood": "Greenpoint",
+"quarter": "Williamsburg",
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2258": {
+"neighbourhood": "Greenpoint",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2261": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2262": {
+"neighbourhood": "Sunnyside Gardens",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2268": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2269": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2271": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2272": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2277": {
+"neighbourhood": null,
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2278": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2279": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2282": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2290": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2291": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2295": {
+"neighbourhood": "Astoria",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2296": {
+"neighbourhood": "Astoria",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2297": {
+"neighbourhood": "Astoria",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2298": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2299": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2300": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2301": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2302": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2303": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2304": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2305": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2306": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2307": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2308": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2309": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2310": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2311": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2312": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2313": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2314": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2315": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2316": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2317": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2318": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2319": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2320": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2321": {
+"neighbourhood": "Murray Hill",
+"quarter": "Flushing",
+"suburb": "Queens",
+"city_district": null
+},
+"2325": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2326": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2328": {
+"neighbourhood": "Sheepshead Bay",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2329": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2332": {
+"neighbourhood": null,
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2334": {
+"neighbourhood": "Park Slope",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2336": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2337": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2339": {
+"neighbourhood": "Murray Hill",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2341": {
+"neighbourhood": "Boerum Hill",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2342": {
+"neighbourhood": "Rego Park",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2344": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2347": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2349": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2350": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2355": {
+"neighbourhood": "East Flatbush",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2356": {
+"neighbourhood": "Brooklyn Community District 17",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2358": {
+"neighbourhood": "Brownsville",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2359": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2360": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2361": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2362": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2363": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2364": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2365": {
+"neighbourhood": "Astoria",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2366": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2367": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2368": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2369": {
+"neighbourhood": "Fort Greene",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2371": {
+"neighbourhood": "Astoria",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2372": {
+"neighbourhood": "Fort Greene",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2373": {
+"neighbourhood": "Fort Greene",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2374": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2375": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2376": {
+"neighbourhood": "Dumbo",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2377": {
+"neighbourhood": "Dumbo",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2378": {
+"neighbourhood": "Boerum Hill",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2379": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2381": {
+"neighbourhood": "Rego Park",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2383": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2384": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2390": {
+"neighbourhood": "Brownsville",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2396": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2397": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2398": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2399": {
+"neighbourhood": "Downtown Brooklyn",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2400": {
+"neighbourhood": "Fort Greene",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2403": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2404": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2406": {
+"neighbourhood": "Greenpoint",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2416": {
+"neighbourhood": "Brooklyn Community District 17",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2420": {
+"neighbourhood": "East Flatbush",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2421": {
+"neighbourhood": "Sunset Park",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2422": {
+"neighbourhood": null,
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2423": {
+"neighbourhood": "Gravesend",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2425": {
+"neighbourhood": "Court Square",
+"quarter": "Long Island City",
+"suburb": "Queens",
+"city_district": null
+},
+"2428": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2431": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2433": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+},
+"2437": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2438": {
+"neighbourhood": "Sheepshead Bay",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2442": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2443": {
+"neighbourhood": null,
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2444": {
+"neighbourhood": "West Brighton",
+"quarter": null,
+"suburb": "Brooklyn",
+"city_district": "Kings County"
+},
+"2411": {
+"neighbourhood": "Ravenswood",
+"quarter": null,
+"suburb": "Queens",
+"city_district": null
+}
+}

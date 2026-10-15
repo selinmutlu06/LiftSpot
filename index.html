@@ -14,9 +14,9 @@
   })();
 </script>
 <title>LiftSpot</title>
-<meta name="description" content="Find and rate elevators in buildings across Long Island, NY. Search hospitals, offices, malls, hotels and more." />
-<meta property="og:title" content="LiftSpot — Find Elevators on Long Island" />
-<meta property="og:description" content="Find and rate elevators in verified buildings across Long Island." />
+<meta name="description" content="Find and rate elevators in buildings across Long Island, Queens and Brooklyn." />
+<meta property="og:title" content="LiftSpot: find elevators on Long Island, Queens and Brooklyn" />
+<meta property="og:description" content="A map of buildings with elevators across Long Island, Queens and Brooklyn. Reviews, footage and rider reports." />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#16211d" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316211d'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23c9ced0' stroke-width='3'/%3E%3Cpath d='M32 18l8 10H24z' fill='%2323a47f'/%3E%3Cpath d='M32 46l-8-10h16z' fill='%2323a47f'/%3E%3C/svg%3E" />
@@ -91,13 +91,13 @@
         <select id="storySelect" class="story-select" aria-label="Minimum stories"></select>
       </div>
       <div class="firstfilm">
-        <div class="cab-label" id="firstLabel">YouTube</div>
+        <div class="cab-label" id="firstLabel">Footage</div>
         <button type="button" class="first-toggle" id="firstToggle" role="switch" aria-checked="false"
-          title="Show buildings where our YouTube search found no elevator videos yet">
+          title="Show buildings where we found no elevator videos on YouTube or Reddit">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-          Not filmed yet
+          None found
         </button>
-        <a class="hunt-link" href="hunt.html" title="Every building with no elevator footage found anywhere, grouped for filming trips">Hunt list</a>
+        <a class="hunt-link" href="hunt.html" title="Buildings with no elevator footage we could find, sorted by town">Hunt list</a>
       </div>
     </div>
 
@@ -114,7 +114,7 @@
 
     <div class="listwrap">
       <div class="readout" aria-live="polite">
-        <span class="n led led-lit" id="countN">—</span>
+        <span class="n led led-lit" id="countN">…</span>
         <span class="cap" id="countCap">buildings</span>
         <span class="sort" id="countSort"></span>
       </div>
@@ -125,8 +125,9 @@
   <main class="mapwrap" aria-label="Map of buildings">
     <div id="map"></div>
     <div class="map-legend" aria-hidden="true">
-      <span class="dot covered"></span>covered
-      <span class="dot first"></span>be the first
+      <span class="dot covered"></span>filmed
+      <span class="dot first"></span>no footage yet
+      <span class="dot unknown"></span>not checked
     </div>
     <div class="map-shimmer" id="mapShimmer" aria-hidden="true"></div>
     <button class="filters-fab" id="filtersFab" aria-expanded="false" aria-controls="cab">
@@ -156,7 +157,7 @@
 <div class="resmodal" id="resModal" role="dialog" aria-modal="true" aria-labelledby="resTitle" aria-hidden="true">
   <div class="res-head">
     <h2 id="resTitle">Elevator resources</h2>
-    <p>The wikis, forums, channels, and places the elevator community has built.</p>
+    <p>Wikis, forums and channels run by elevator fans.</p>
     <button class="close-btn" id="resClose" aria-label="Close resources">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14"/></svg>
     </button>

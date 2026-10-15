@@ -5,7 +5,9 @@
 
 // Zero-build: pull the official SDK straight from an ESM CDN, the same way the
 // rest of the app loads Supabase / MapLibre. Pinned so it can't drift on us.
-import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.13.0/+esm';
+// Loaded lazily on the first "Ask aloud" so a CDN hiccup only breaks voice,
+// never the map and list.
+const SDK_URL = 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.13.0/+esm';
 import { trapFocus } from './focus.js';
 import { sb, BUILDINGS, loadBuildings, topMatches, verified, storiesVerified, rated } from './data.js';
 
@@ -67,6 +69,7 @@ async function findBuildings({ query, limit }) {
 
 let conversation = null;   // active session, or null when idle
 let starting = false;      // guard against double-clicks mid-connect
+let cancelled = false;     // End pressed while still connecting
 
 export function initVoice(els, { toast } = {}) {
   const { btn, status, overlay, cab, statusText, caption, endBtn, closeBtn } = els;
@@ -132,19 +135,24 @@ export function initVoice(els, { toast } = {}) {
   async function start() {
     if (conversation || starting) return;
     starting = true;
+    cancelled = false;
     setState('connecting');
     openOverlay();
     announce('Connecting. Please wait.');
     try {
       // Ask for the mic first, so a denial fails fast with a clear message.
-      await navigator.mediaDevices.getUserMedia({ audio: true });
+      // Release the probe stream right away; the SDK opens its own.
+      (await navigator.mediaDevices.getUserMedia({ audio: true })).getTracks().forEach(t => t.stop());
+      const { Conversation } = await import(SDK_URL);
+      if (cancelled) return;
 
       const res = await fetch(TOKEN_ENDPOINT);
       if (!res.ok) throw new Error(`token request failed (${res.status})`);
       const { token } = await res.json();
       if (!token) throw new Error('no token returned');
+      if (cancelled) return;
 
-      conversation = await Conversation.startSession({
+      const session = await Conversation.startSession({
         conversationToken: token,
         connectionType: 'webrtc',
         // Client tools the agent can call. find_buildings gives it LiftSpot's
@@ -170,6 +178,8 @@ export function initVoice(els, { toast } = {}) {
           toast?.('Voice agent error. Please try again.', { error: true });
         },
       });
+      if (cancelled) { session.endSession().catch(() => {}); return; }
+      conversation = session;
     } catch (err) {
       console.error('Could not start voice agent', err);
       conversation = null;
@@ -187,6 +197,7 @@ export function initVoice(els, { toast } = {}) {
   }
 
   async function stop() {
+    if (starting) cancelled = true;
     announce('Ending the conversation.');
     const c = conversation;
     conversation = null;

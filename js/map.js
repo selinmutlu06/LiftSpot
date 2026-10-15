@@ -186,7 +186,9 @@ function applyData() {
 /* Rebuild the basemap + markers for a new theme. */
 export function setMapTheme(mode) {
   if (!map) return;
-  map.setStyle(STYLES[mode === 'full' ? 'full' : 'calm']); // style.load re-runs addLayers
+  // diff: false forces a full style load, so style.load fires and addLayers
+  // rebuilds the pins. A diffed swap drops our layers without firing it.
+  map.setStyle(STYLES[mode === 'full' ? 'full' : 'calm'], { diff: false });
 }
 
 function trySetState(id, s) {

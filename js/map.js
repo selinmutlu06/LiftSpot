@@ -53,6 +53,9 @@ export function initMap({ pinClick, pinHover }) {
     fitBoundsOptions: { padding: 40 },
   });
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
+  // Keep the canvas filling its box when the layout changes without a window
+  // resize event (plugging into a projector, the rail opening on a phone).
+  if ('ResizeObserver' in window) new ResizeObserver(() => map.resize()).observe(map.getContainer());
 
   bindInteractions();
   map.once('load', () => applyPitch(currentMode()));

@@ -147,6 +147,7 @@ export function initVoice(els, { toast } = {}) {
       if (cancelled) return;
 
       const res = await fetch(TOKEN_ENDPOINT);
+      if (res.status === 429) throw Object.assign(new Error('rate limited'), { name: 'RateLimited' });
       if (!res.ok) throw new Error(`token request failed (${res.status})`);
       const { token } = await res.json();
       if (!token) throw new Error('no token returned');
@@ -187,7 +188,9 @@ export function initVoice(els, { toast } = {}) {
       const denied = err && (err.name === 'NotAllowedError' || err.name === 'SecurityError');
       const msg = denied
         ? 'The microphone is off. Allow the microphone, then try again.'
-        : 'Could not start the voice agent. Please try again.';
+        : err?.name === 'RateLimited'
+          ? 'The voice guide is taking a short break. Try again in a few minutes.'
+          : 'Could not start the voice agent. Please try again.';
       announce(msg);
       toast?.(msg, { error: true });
       closeOverlay();

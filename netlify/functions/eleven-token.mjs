@@ -8,7 +8,43 @@
 //   ELEVENLABS_API_KEY   — your secret xi-api-key
 //   ELEVENLABS_AGENT_ID  — the agent to talk to (not secret, but kept here too)
 
-export default async () => {
+// Only LiftSpot's own pages get a token. Browsers mark same-site requests with
+// Sec-Fetch-Site, and send Origin/Referer otherwise. A script can fake these,
+// so this stops casual reuse, not a determined attacker. The real ceiling is
+// on the ElevenLabs agent itself: auth on, this site's hostname allowlisted,
+// 3 calls at once, 100 a day, 5 minutes each.
+const ALLOWED = /^(liftspot\.netlify\.app|[\w-]+--liftspot\.netlify\.app|localhost|127\.0\.0\.1)$/;
+
+function fromOurSite(req) {
+  if (req.headers.get('sec-fetch-site') === 'same-origin') return true;
+  for (const h of ['origin', 'referer']) {
+    const v = req.headers.get(h);
+    if (!v) continue;
+    try { return ALLOWED.test(new URL(v).hostname); } catch { return false; }
+  }
+  return false;
+}
+
+// Per-visitor limit: 6 tokens per IP per 10 minutes. It lives in memory, so it
+// resets when Netlify starts a fresh instance; it slows down a loop, and the
+// agent's daily cap catches the rest.
+const WINDOW_MS = 10 * 60 * 1000, MAX_PER_WINDOW = 6;
+const hits = new Map();
+
+function overLimit(ip) {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) hits.clear();
+  return recent.length > MAX_PER_WINDOW;
+}
+
+export default async (req, context) => {
+  if (!fromOurSite(req)) return json({ error: 'Not allowed.' }, 403);
+  const ip = context?.ip || req.headers.get('x-nf-client-connection-ip') || 'unknown';
+  if (overLimit(ip)) return json({ error: 'Too many voice sessions. Try again in a few minutes.' }, 429);
+
   const apiKey = process.env.ELEVENLABS_API_KEY;
   const agentId = process.env.ELEVENLABS_AGENT_ID;
 

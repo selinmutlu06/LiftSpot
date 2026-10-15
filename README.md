@@ -1,6 +1,6 @@
 # LiftSpot
 
-LiftSpot is a map of elevators across Long Island, Queens, and Brooklyn. It has 714 buildings you can search, filter, review, and help fill in, and it's live at [liftspot.netlify.app](https://liftspot.netlify.app).
+LiftSpot is a map of elevators across Long Island, Queens, and Brooklyn. It has 710 buildings you can search, filter, review, and help fill in, and it's live at [liftspot.netlify.app](https://liftspot.netlify.app).
 
 <img src="docs/images/elevator.gif" alt="Pressing the elevator button" width="320" />
 
@@ -179,7 +179,7 @@ sequenceDiagram
 
 ## What I'd change next
 
-Right now the app loads every building at once, which is fine at 714 but won't be at ten times that, so the next step is only fetching buildings inside the part of the map you're looking at. I also still have 674 possible Queens and Brooklyn footage matches to review by hand, which will turn most of the gray pins amber or green.
+Right now the app loads every building at once, which is fine at 710 but won't be at ten times that, so the next step is only fetching buildings inside the part of the map you're looking at. I also still have 674 possible Queens and Brooklyn footage matches to review by hand, which will turn most of the gray pins amber or green.
 
 ## Running it locally
 

@@ -55,6 +55,7 @@ export function initMap({ pinClick, pinHover }) {
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
 
   bindInteractions();
+  map.once('load', () => applyPitch(currentMode()));
   // Runs on the first style load and again after every setStyle (theme switch).
   map.on('style.load', addLayers);
 
@@ -73,6 +74,23 @@ function addLayers() {
     clusterRadius: 34,
     clusterMaxZoom: 11,
   });
+
+  // Full detail: real building heights from the basemap tiles, drawn in 3D
+  // under the pins, so the tall towers (the ones with the best elevators)
+  // stand out.
+  if (currentMode() === 'full' && map.getSource('carto')) {
+    map.addLayer({
+      id: 'buildings-3d', type: 'fill-extrusion', source: 'carto', 'source-layer': 'building',
+      minzoom: 13,
+      filter: ['!=', ['get', 'hide_3d'], true],
+      paint: {
+        'fill-extrusion-color': ['interpolate', ['linear'], ['get', 'render_height'], 0, '#202b27', 60, '#2b3a35', 200, '#3d524b'],
+        'fill-extrusion-height': ['get', 'render_height'],
+        'fill-extrusion-base': ['get', 'render_min_height'],
+        'fill-extrusion-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, 0.9],
+      },
+    });
+  }
 
   map.addLayer({
     id: 'clusters', type: 'circle', source: 'buildings',
@@ -99,7 +117,9 @@ function addLayers() {
     id: 'pin-halo', type: 'circle', source: 'buildings',
     filter: ['!', ['has', 'point_count']],
     paint: {
-      'circle-radius': 14,
+      'circle-radius': currentMode() === 'full'
+        ? ['interpolate', ['linear'], ['get', 'st'], 0, 13, 10, 14, 30, 17, 60, 20]
+        : 14,
       'circle-color': c.halo,
       'circle-opacity': ['case', litState, 0.3, 0],
     },
@@ -108,7 +128,10 @@ function addLayers() {
     id: 'pins', type: 'circle', source: 'buildings',
     filter: ['!', ['has', 'point_count']],
     paint: {
-      'circle-radius': 7,
+      // Full detail sizes each pin by its floor count; calm keeps them uniform.
+      'circle-radius': currentMode() === 'full'
+        ? ['interpolate', ['linear'], ['get', 'st'], 0, 6, 10, 7, 30, 9.5, 60, 12]
+        : 7,
       'circle-color': ['case', litState, c.pinActive,
         ['==', ['get', 'cov'], 'first'], c.pinFirst,
         ['==', ['get', 'cov'], 'covered'], c.pinFill,
@@ -203,6 +226,7 @@ function applyData() {
       properties: {
         id: b.id, cov: covered(b) ? 'covered' : unfilmed(b) ? 'first' : 'unknown',
         name: b.name,
+        st: b.stories ?? 0,
         floors: b.stories == null ? '' : `${b.stories} floor${b.stories === 1 ? '' : 's'}${b.stories_verified ? '' : ' · est'}`,
       },
     })),
@@ -217,6 +241,15 @@ export function setMapTheme(mode) {
   // diff: false forces a full style load, so style.load fires and addLayers
   // rebuilds the pins. A diffed swap drops our layers without firing it.
   map.setStyle(STYLES[mode === 'full' ? 'full' : 'calm'], { diff: false });
+  applyPitch(mode);
+}
+
+/* Full detail tilts the map so the 3D buildings read; calm stays flat. */
+function applyPitch(mode) {
+  const pitch = mode === 'full' ? 50 : 0;
+  if (Math.round(map.getPitch()) === pitch) return;
+  const instant = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  map.easeTo({ pitch, duration: instant ? 0 : 800 });
 }
 
 function trySetState(id, s) {

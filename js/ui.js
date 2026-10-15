@@ -102,15 +102,27 @@ function renderList() {
           ? `<div class="stars" aria-hidden="true">${stars(b.rating)}<span class="n led">${Number(b.rating).toFixed(1)}</span></div>`
           : `<div class="stars unrated" aria-hidden="true">No reviews</div>`}
       </div>
-      <div class="addr">${esc(b.addr)}</div>
+      <div class="addr full-only">${esc(b.addr)}</div>
+      <div class="addr calm-only">${esc(b.town)}</div>
       <div class="meta">
         <span><span class="led">${b.stories ?? '?'}</span><span class="u">stories${b.stories == null || storiesVerified(b) ? '' : ' · est'}</span></span>
-        <span><span class="led">${b.elevators ?? '?'}</span><span class="u">${b.elevators == null ? 'elev' : 'elev · reported'}</span></span>
+        <span class="full-only"><span class="led">${b.elevators ?? '?'}</span><span class="u">${b.elevators == null ? 'elev' : 'elev · reported'}</span></span>
         ${b._d != null ? `<span><span class="led">${b._d.toFixed(1)}</span><span class="u">mi</span></span>` : ''}
         ${unfilmed(b) ? `<span class="pill-first" title="No coverage of these elevators found on YouTube or Reddit. Film it and be the first.">Be the first</span>` : ''}
       </div>
+      <div class="footline full-only">${footageLine(b)}</div>
     </div>`).join('');
   setMapData(items);
+}
+
+// Full detail only: what the YouTube and Reddit check turned up.
+function footageLine(b) {
+  const parts = [];
+  if (b.yt_videos > 0) parts.push(`${b.yt_videos} YouTube video${b.yt_videos === 1 ? '' : 's'}`);
+  if (b.reddit_posts > 0) parts.push(`${b.reddit_posts} Reddit post${b.reddit_posts === 1 ? '' : 's'}`);
+  if (parts.length) return `<span class="fl-dot covered" aria-hidden="true"></span>${parts.join(' · ')}`;
+  if (unfilmed(b)) return `<span class="fl-dot first" aria-hidden="true"></span>No footage found yet`;
+  return `<span class="fl-dot unknown" aria-hidden="true"></span>Footage not checked yet`;
 }
 
 function emptyState() {

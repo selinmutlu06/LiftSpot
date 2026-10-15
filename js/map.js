@@ -220,7 +220,7 @@ export function fitToBuildings(items, { maxZoom = 14 } = {}) {
   const narrow = matchMedia('(max-width: 860px)').matches;
   // A phone is too narrow to show Brooklyn to the East End at a useful zoom,
   // so the whole-catalogue view opens on the dense core (city + Nassau).
-  const box = narrow && items.length > 200 ? [[-74.04, 40.57], [-73.42, 40.84]] : [[w, s], [e, n]];
+  const box = narrow && items.length > 200 ? [[-74.03, 40.58], [-73.55, 40.80]] : [[w, s], [e, n]];
   map.fitBounds(box, {
     padding: narrow ? { top: 70, bottom: 140, left: 24, right: 24 } : 60,
     maxZoom, duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900,

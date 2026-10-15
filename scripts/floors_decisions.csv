@@ -1,0 +1,354 @@
+id,name,decision,stories,fact,basis,osm,pluto,wikidata,wikipedia,wikipedia_title,pluto_lot
+2000,Linden Orthopaedics,filled,2,False,pluto,,2,,,,4110710003
+2003,Magnolia Dumbo & Front and York,agree,21,True,wikipedia+pluto+osm,21,21,,21,Front & York,
+2004,2-20 Malt Drive,conflict,34,False,pluto,4,34,,,,
+2005,2-21 Malt Drive,conflict,39,False,pluto,4,39,,,,
+2006,Mark Twain Intermediate School 239,agree,4,True,pluto+osm,4,3,,,,3069650140
+2007,Junior High School 43,agree,4,True,pluto+osm,4,4,,,,3087670026
+2010,Rochel Fruchthandler Fellowship Residence,agree,4,True,pluto+osm,4,4,,,,3067430079
+2011,Jefferson Court,agree,4,True,pluto+osm,4,4,,,,3076200033
+2012,Shelbourne,agree,4,True,pluto+osm,4,4,,,,3076200041
+2013,Rosetta Court,agree,4,True,pluto+osm,4,4,,,,3076020015
+2014,Bristol Court,agree,4,True,pluto+osm,4,4,,,,3076020006
+2015,Augusta Court,agree,4,True,pluto+osm,4,4,,,,3076020022
+2016,Buckingham Court,agree,4,True,pluto+osm,4,4,,,,3033880001
+2017,Wyckoff Heights Medical Center,agree,12,True,pluto+osm,12,12,,,,
+2018,"Joseph Shenker ""M"" Building",agree,4,True,pluto+osm,4,4,,,,4002780001
+2019,Oosten,agree,8,True,pluto+osm,8,9,,,,
+2020,Austin Nichols House,agree,7,True,pluto+osm,7,6,,,,3023487501
+2021,Empire Stores,agree,5,True,pluto+osm,5,5,,,,3000260050
+2022,Emerson Place Residence,agree,10,True,pluto+osm,10,10,,,,
+2023,One Willoughby Square,agree,34,True,wikipedia+wikidata+pluto,36,35,34,34,One Willoughby Square,
+2024,The Willoughby,agree,34,True,pluto+osm,34,34,,,,
+2025,One Boerum Place,agree,22,True,pluto+osm,22,21,,,,3001530003
+2027,Webster Bank,agree,2,True,pluto+osm,2,2,,,,3067350121
+2028,Congregation Shar Moshe,agree,3,True,pluto+osm,3,3,,,,3054480027
+2029,The Terraces,agree,7,True,pluto+osm,7,6,,,,3087267502
+2033,Sweeney Building,agree,6,True,pluto+osm,6,5,,,,3000260050
+2034,Chestnut Commons,agree,14,True,pluto+osm,14,14,,,,3041427501
+2035,Kongen International Preschool,agree,3,True,pluto+osm,3,2,,,,4053610010
+2036,Sky Three,agree,21,True,pluto+osm,21,22,,,,
+2037,One Point Park,agree,13,True,pluto+osm,13,13,,,,3053220010
+2039,Ramada,agree,8,True,pluto+osm,8,8,,,,3075760016
+2040,665 Union,agree,13,True,pluto+osm,13,13,,,,
+2041,Triangle Junction,agree,3,True,pluto+osm,3,4,,,,3075767501
+2043,10 Jay Street,agree,9,True,pluto+osm,9,10,,,,
+2049,The Bay,agree,8,True,pluto+osm,8,8,,,,
+2050,The Pillar Astoria,agree,7,True,pluto+osm,7,8,,,,
+2051,Packard Square North,agree,11,True,pluto+osm,11,10,,,,
+2052,Palm Gardens Center for Nursing and Rehabilitation,agree,7,True,pluto+osm,7,8,,,,3053580041
+2053,Packer Early Learning Center,agree,2,True,pluto+osm,2,3,,,,3002490001
+2054,Hotel Bossert,agree,14,True,wikipedia+wikidata+osm,14,12,14,14,Hotel Bossert,
+2055,Evangelistic Missionary Temple Inc.,agree,4,True,pluto+osm,4,3,,,,3024060025
+2056,The Urban Assembly School for Law & Justice,agree,6,True,pluto+osm,6,6,,,,3001400010
+2057,NYU CUSP,conflict,13,False,osm,13,7,,,,
+2058,New York Marriott at the Brooklyn Bridge,conflict,32,False,pluto,6,32,,,,
+2059,Leverich Towers Hotel,conflict,15,False,pluto,13,15,,,,
+2060,Shorecrest Towers 1,agree,23,True,pluto+osm,23,23,,,,
+2061,Shorecrest Tower 2,agree,23,True,pluto+osm,23,23,,,,
+2062,110 Livingston,conflict,20,False,osm,20,17,,,,
+2064,Crown Condos,agree,7,True,pluto+osm,7,7,,,,3014177501
+2065,Lubavitcher Yeshiva,agree,4,True,pluto+osm,4,4,,,,3014170007
+2066,Park Lane Condominium,agree,17,True,pluto+osm,17,17,,,,
+2067,North Shore Towers Building 2,agree,34,True,wikipedia+osm,34,,,34,North Shore Towers,
+2068,Hollis Park,agree,3,True,pluto+osm,3,3,,,,4104560015
+2070,Jamaica Estates Luxury Apartments,agree,7,True,pluto+osm,7,6,,,,4099600005
+2071,Hillside Manor,agree,12,True,pluto+osm,12,12,,,,4099500001
+2072,The Camelot,agree,15,True,pluto+osm,15,15,,,,
+2074,Queens Tower Condominiums,agree,16,True,pluto+osm,16,16,,,,
+2075,Posh on P,agree,7,True,pluto+osm,7,7,,,,3067740001
+2076,The Alexey,agree,12,True,pluto+osm,12,12,,,,
+2077,Orange Court,agree,6,True,pluto+osm,6,6,,,,3002200016
+2078,363 Bond,agree,12,True,pluto+osm,12,12,,,,
+2079,The Brook,agree,51,True,pluto+osm,51,52,,,,
+2080,Hanover House,agree,35,True,pluto+osm,35,34,,,,
+2081,The Paxton,agree,43,True,pluto+osm,43,43,,,,
+2082,Hub,agree,55,True,wikipedia+pluto+osm,55,54,52,55,The Hub (building),
+2083,R&A Cycles,agree,3,True,pluto+osm,3,3,,,,3004050019
+2084,Sunset Park Loft Condominium,conflict,6,False,pluto,4,6,,,,
+2085,Unoriginal Noodles,agree,3,True,pluto+osm,3,3,,,,3008860002
+2087,Tyler Towers,agree,6,True,pluto+osm,6,6,,,,4098240043
+2088,Belvedere,agree,4,True,pluto+osm,4,4,,,,4098250005
+2089,Junior High School 258,agree,4,True,pluto+osm,4,3,,,,3018450001
+2090,Atlantic Terminal Houses,agree,31,True,pluto+osm,31,31,,,,
+2091,Fairfield Manor Apartments,agree,6,True,pluto+osm,6,6,,,,4080920005
+2092,The Parkview,agree,6,True,pluto+osm,6,6,,,,4098370080
+2093,Sussex Hall,agree,9,True,pluto+osm,9,8,,,,
+2094,The Saxony,agree,7,True,pluto+osm,7,6,,,,4098370044
+2095,Elhaam Academy,agree,4,True,pluto+osm,4,4,,,,4098370021
+2096,Belcrest House Apartments,agree,7,True,pluto+osm,7,6,,,,4097730005
+2098,The Opal,agree,14,True,pluto+osm,14,14,,,,4068090001
+2099,The Dorset,agree,7,True,pluto+osm,7,6,,,,3061300001
+2100,Scheuer House of Coney Island,agree,19,True,pluto+osm,19,19,,,,3070450031
+2101,Oceanview Manor Home for Adults,agree,5,True,pluto+osm,5,5,,,,3070660010
+2102,Seagate Nursing & Rehabilitation Center,agree,8,True,pluto+osm,8,7,,,,
+2103,The Pioneer,agree,6,True,pluto+osm,6,6,,,,3070710019
+2104,Carey Gardens,agree,15,True,pluto+osm,15,15,,,,
+2105,Unity Towers,agree,18,True,pluto+osm,18,18,,,,3070590026
+2107,Ridge Harbor Owners Corporation,agree,7,True,pluto+osm,7,6,,,,3058890014
+2108,P.S. 90 Edna Cohen School,agree,3,True,pluto+osm,3,3,,,,3072660040
+2114,Bay View Court,agree,4,True,pluto+osm,4,4,,,,3061100010
+2115,Fort View Court,agree,4,True,pluto+osm,4,4,,,,3061100006
+2122,Silgen Apartments,agree,4,True,pluto+osm,4,4,,,,3086610060
+2123,Ocean Tower Professional Center,agree,5,True,pluto+osm,5,6,,,,3086610072
+2124,Sador Court,agree,6,True,pluto+osm,6,6,,,,3086610001
+2126,Valley Bank,agree,2,True,pluto+osm,2,2,,,,3086700051
+2127,The Crown,agree,6,True,pluto+osm,6,6,,,,3086750076
+2128,Scheuer House Of Brighton Beach,agree,13,True,pluto+osm,13,13,,,,
+2129,NYPD Horse Stables,agree,3,True,pluto+osm,3,3,,,,3072610047
+2130,Yda Elite High School,agree,2,True,pluto+osm,2,2,,,,3072620017
+2132,Neptune Arms,agree,4,True,pluto+osm,4,4,,,,3072610095
+2133,Scheuer House of Manhattan Beach,agree,8,True,pluto+osm,8,8,,,,3087190073
+2134,The Westbrook,agree,13,True,pluto+osm,13,13,,,,3087190038
+2135,Wave,agree,7,True,pluto+osm,7,7,,,,3087197502
+2136,Yeshiva of Manhattan Beach,conflict,7,False,pluto,3,7,,,,
+2137,Aqua,agree,7,True,pluto+osm,7,7,,,,3087717503
+2138,The Viking,agree,7,True,pluto+osm,7,6,,,,3087710135
+2140,The Esplanade,agree,4,True,pluto+osm,4,4,,,,4098190001
+2141,Zara Luxury Apartments & Homes,agree,6,True,pluto+osm,6,6,,,,4098270018
+2142,Belair Park 5,agree,6,True,pluto+osm,6,6,,,,4098270008
+2143,Americana,agree,9,True,pluto+osm,9,9,,,,4098170006
+2144,Hudson House Luxury Apartments,agree,12,True,pluto+osm,12,12,,,,4098170030
+2145,Avalon Terrace,agree,12,True,pluto+osm,12,12,,,,4098030024
+2146,Hillside Park,agree,9,True,pluto+osm,9,9,,,,4098190003
+2147,International Tower,agree,10,True,pluto+osm,10,10,,,,
+2148,Kings Mews,agree,3,True,pluto+osm,3,3,,,,3067970001
+2149,Kings Town Homes,agree,3,True,pluto+osm,3,3,,,,3067970084
+2150,The Saybrook,agree,6,True,pluto+osm,6,6,,,,4014460001
+2151,Arcadia Condominium,agree,3,True,pluto+osm,3,3,,,,3072327501
+2152,The Wedgewood,agree,7,True,pluto+osm,7,6,,,,3072180059
+2153,Zaki And Stella Metta Building,agree,2,True,pluto+osm,2,2,,,,3071750039
+2154,Big Apple Education Center,agree,3,True,pluto+osm,3,3,,,,3071707501
+2155,Metropolitan Ballroom,agree,3,True,pluto+osm,3,2,,,,3071920074
+2156,CubeSmart,agree,5,True,pluto+osm,5,5,,,,3069470600
+2157,Oceanview Towers,agree,17,True,pluto+osm,17,17,,,,3069350001
+2168,Bay Vista Condominiums,agree,6,True,pluto+osm,6,6,,,,3063817501
+2169,The Amhurst 2255,agree,7,True,pluto+osm,7,6,,,,3063830006
+2170,The Bradhurst 2225,agree,7,True,pluto+osm,7,6,,,,3063820006
+2171,Marilyn & Jack Chehebar School,agree,3,True,pluto+osm,3,3,,,,3071040415
+2172,Lucretia Marciagliano Campus,agree,4,True,pluto+osm,4,4,,,,3066180001
+2173,Intermediate School 96,agree,4,True,pluto+osm,4,4,,,,3065950033
+2174,Public School 205,agree,5,True,pluto+osm,5,5,,,,3055710001
+2175,Public School 247,agree,4,True,pluto+osm,4,4,,,,3061740036
+2176,Our Lady of Guadalupe Rectory,agree,3,True,pluto+osm,3,3,,,,3061910010
+2177,Yeshiva of Brooklyn,agree,2,True,pluto+osm,2,2,,,,3065870039
+2178,Yeshiva Sharei Hayosher,agree,6,True,pluto+osm,6,6,,,,3065680015
+2179,Yeshiva & Meshiva of Brooklyn,agree,4,True,pluto+osm,4,4,,,,3054951000
+2180,Saint Frances de Chantal Rectory,agree,3,True,pluto+osm,3,3,,,,3056970048
+2181,Gregory Jackson Center for Brownsville,agree,4,True,pluto+osm,4,4,,,,3035260002
+2182,Maimonides Medical Center,agree,6,True,pluto+osm,6,5,,,,3056310038
+2183,Maimonides Doctors Multispecialty Pavilion,agree,7,True,pluto+osm,7,7,,,,3056310001
+2184,Intermediate School 220,agree,5,True,pluto+osm,5,5,,,,3007780023
+2185,New York City Police Department,agree,3,True,pluto+osm,3,3,,,,3007240001
+2186,Sephardic Community Center,agree,4,True,pluto+osm,4,4,,,,3070880001
+2187,Deli and Grocery,agree,4,True,pluto+osm,4,4,,,,3067820023
+2188,AFHC Ambulatory Surgery Center,agree,4,True,pluto+osm,4,4,,,,3074050914
+2189,Kings Bay Library,agree,2,True,pluto+osm,2,1,,,,3074050920
+2190,Maimonides Midwood Community Hospital,filled,5,False,pluto,,5,,,,3067720004
+2191,The Bristol,agree,7,True,pluto+osm,7,7,,,,3065327501
+2193,The Marc,agree,7,True,pluto+osm,7,7,,,,3067390047
+2194,Shaare Torah High School For Girls,agree,2,True,pluto+osm,2,2,,,,3067390072
+2195,The Retreat,agree,8,True,pluto+osm,8,8,,,,
+2196,Be'er Mordechai Elementary School,agree,2,True,pluto+osm,2,2,,,,3067300089
+2197,Melrose Court,agree,4,True,pluto+osm,4,4,,,,3067210062
+2198,Manor Court,agree,4,True,pluto+osm,4,4,,,,3067210065
+2199,Yale-Court,agree,4,True,pluto+osm,4,4,,,,3067210070
+2200,Yeshiva Gedolah Bais Yisroel,agree,4,True,pluto+osm,4,4,,,,3076020042
+2201,Mount Sinai Brooklyn,filled,3,False,pluto,,3,,,,3076680024
+2202,The Elena,agree,8,True,pluto+osm,8,8,,,,3066940064
+2203,Public Schools 207,agree,3,True,pluto+osm,3,2,,,,3084830060
+2205,Bushwick Leaders' High School for Academic Excellence,agree,3,True,pluto+osm,3,3,,,,3032420001
+2206,Artel 535,agree,7,True,pluto+osm,7,7,,,,3016130001
+2208,The Clark,agree,8,True,pluto+osm,8,8,,,,3048370017
+2209,50 Penn,agree,9,True,pluto+osm,9,9,,,,
+2210,W E B Dubois High School,agree,3,True,pluto+osm,3,3,,,,3012670001
+2211,Doral Health & Wellness,agree,3,True,pluto+osm,3,3,,,,3037090034
+2212,Safeguard Self Storage,conflict,6,False,osm,6,3,,,,3036750014
+2213,Trey Whitfield School,agree,5,True,pluto+osm,5,5,,,,3036820033
+2214,Prospect Heights High School Campus,agree,6,True,pluto+osm,6,6,,,,3011870001
+2215,Cornerstone's Sandy F. Ray Senior Housing,agree,7,True,pluto+osm,7,7,,,,3017980040
+2216,The Posthouse,agree,8,True,pluto+osm,8,8,,,,
+2217,Clinton Grand,agree,5,True,pluto+osm,5,5,,,,3018920048
+2218,Bishop Francis J. Mugavero Senior Citizen Apartments,agree,7,True,pluto+osm,7,6,,,,3021190001
+2219,The Brooklyner,agree,51,True,wikipedia+wikidata+pluto+osm,51,51,51,51,Brooklyner,
+2220,Othmer Residence Hall - NYU Polytechnic School of Engineering,agree,18,True,pluto+osm,18,18,,,,
+2221,4 Metrotech Center,agree,25,True,wikidata+pluto,8,24,25,,,3020590001
+2223,Oro Condominium,agree,40,True,pluto+osm,40,40,,,,
+2224,Theodore Roosevelt United States Courthouse,agree,15,True,wikidata+pluto+osm,15,15,15,,,3000850100
+2225,NYC Emergency Management Headquarters,agree,4,True,pluto+osm,4,3,,,,3000850006
+2227,Gold Street Lofts,agree,6,True,pluto+osm,6,7,,,,3000560003
+2228,J Condos,agree,31,True,pluto+osm,31,31,,,,
+2229,Public School 271,agree,3,True,pluto+osm,3,3,,,,3015500001
+2230,Ridgewood Theater,agree,6,True,pluto+osm,6,5,,,,4034510007
+2231,John Jay Educational Campus,agree,5,True,pluto+osm,5,4,,,,3010820001
+2232,Parker House,agree,6,True,pluto+osm,6,6,,,,4030830061
+2233,The Walbar,agree,6,True,pluto+osm,6,6,,,,4030870025
+2234,Queens Public Library at Forest Hills,agree,2,True,pluto+osm,2,2,,,,4022230054
+2235,Kyoto,agree,17,True,pluto+osm,17,16,,,,
+2236,United States,conflict,18,False,osm,18,16,,,,
+2237,Montclair Gardens,agree,6,True,pluto+osm,6,6,,,,4012750045
+2238,Colonial Court,agree,6,True,pluto+osm,6,6,,,,4012750020
+2239,One Nine Rockwell,agree,27,True,pluto+osm,27,27,,,,3020950010
+2241,Williamsburgh Savings Bank Tower,agree,37,True,wikidata+osm,37,41,37,,,3021117501
+2242,The Eagle,agree,34,True,pluto+osm,34,34,,,,3020617501
+2243,On Prospect Park,agree,15,True,pluto+osm,15,15,,,,
+2244,Holiday Inn Express Long Island City E,agree,20,True,pluto+osm,20,20,,,,4003010024
+2245,Falchi Building,agree,5,True,pluto+osm,5,6,,,,4002810001
+2246,The Factory,conflict,10,False,pluto,7,10,,,,4002820001
+2247,Christies Fine Art Storage Services,agree,6,True,pluto+osm,6,6,,,,3005150050
+2248,Schaefer Landing North,agree,24,True,pluto+osm,24,24,,,,
+2249,Schaefer Landing South,agree,14,True,pluto+osm,14,14,,,,
+2250,15 Dunham Place,conflict,14,False,pluto,12,14,,,,
+2251,The Gretsh Building,conflict,12,False,pluto,10,12,,,,3021307501
+2252,The Williams,agree,13,True,pluto+osm,13,13,,,,
+2253,180 Scholes,agree,4,True,pluto+osm,4,5,,,,3030450017
+2254,The Milo,agree,8,True,pluto+osm,8,8,,,,3029220034
+2255,Warehouse 11,agree,6,True,pluto+osm,6,6,,,,3022997501
+2256,The Oakland,agree,6,True,pluto+osm,6,6,,,,3027007501
+2257,Arlo Williamsburg,agree,8,True,pluto+osm,8,8,,,,
+2258,170 Freeman,agree,8,True,pluto+osm,8,8,,,,
+2259,Mary D.'s Housing for Seniors,agree,5,True,pluto+osm,5,5,,,,3024950023
+2260,Delight Stay Hotel,agree,5,True,pluto+osm,5,5,,,,4013220001
+2261,Arcadia Sunnyside,agree,8,True,pluto+osm,8,8,,,,
+2262,Queens Renoir,agree,6,True,pluto+osm,6,6,,,,4001630019
+2265,Park Plaza,conflict,13,False,osm,13,10,,,,
+2266,Oakwood Court,agree,6,True,pluto+osm,6,6,,,,4012270006
+2270,Queens Center,agree,3,True,pluto+osm,3,4,,,,4018600059
+2271,Medical & Professional Building,agree,5,True,pluto+osm,5,6,,,,4006560066
+2272,The Marx,agree,7,True,pluto+osm,7,7,,,,4006427501
+2273,The Powerhouse,agree,11,True,pluto+osm,11,11,,,,
+2274,The L Haus,agree,11,True,pluto+osm,11,11,,,,
+2275,The Gantry,agree,6,True,pluto+osm,6,5,,,,4000317501
+2276,Hunter's Point Plaza,agree,10,True,pluto+osm,10,10,,,,
+2277,Mayflower Howard Johnson Hotel,agree,12,True,pluto+osm,12,11,,,,4004720635
+2278,Crescent Club,conflict,17,False,pluto,15,17,,,,
+2279,Packard Square,agree,15,True,pluto+osm,15,15,,,,
+2280,Wyndham Garden,agree,8,True,pluto+osm,8,7,,,,4004500006
+2281,P.S.  / I.S. 78Q - Middle School,conflict,8,False,osm,8,6,,,,4000210030
+2282,The Silver Star,agree,9,True,pluto+osm,9,10,,,,
+2283,Luna,agree,11,True,pluto+osm,11,11,,,,
+2284,The Independent,agree,13,True,pluto+osm,13,13,,,,
+2285,Court Square Place,agree,16,True,pluto+osm,16,16,,50,One Court Square,
+2286,Vantage,agree,14,True,pluto+osm,14,15,,,,
+2287,1 QPS Tower,agree,44,True,pluto+osm,44,44,,,,
+2288,24-16 Queens Plaza South,agree,22,True,pluto+osm,22,22,,,,4004247501
+2289,43-10 Crescent Street,conflict,41,False,pluto,6,41,,,,4004350013
+2290,Bank of Manhattan Company Building,conflict,14,False,osm,14,10,,,,
+2291,The Addition,agree,5,True,pluto+osm,5,6,,,,4003750033
+2292,Two Gotham Center,agree,22,True,pluto+osm,22,22,,,,
+2293,Aloft,agree,18,True,pluto+osm,18,18,,,,4004320005
+2294,Arris Lofts,agree,8,True,pluto+osm,8,8,,,,4000827501
+2295,The Marina Astoria,agree,6,True,pluto+osm,6,7,,,,4005067501
+2296,Bridgeview 2,agree,8,True,pluto+osm,8,8,,,,
+2297,Bridgeview 1,agree,6,True,pluto+osm,6,6,,,,4009080001
+2298,The Spear & Company Factory,agree,3,True,pluto+osm,3,3,,,,4093770001
+2299,Jamaica Hospital Medical Center,filled,2,False,pluto,,2,,,,4102080019
+2300,J. Kurtz and Sons Store Building,agree,6,True,pluto+osm,6,6,,,,4101020010
+2301,Clinton Apartment,agree,4,True,pluto+osm,4,4,,,,4097930059
+2302,Hillcrest Hotel,conflict,10,False,pluto,6,10,,,,4098140034
+2303,Jamaica Chamber of Commerce Building,agree,10,True,pluto+osm,10,10,,,,4097600027
+2304,The President Lincoln,agree,6,True,pluto+osm,6,6,,,,4097610048
+2305,Hamilton House,agree,7,True,pluto+osm,7,6,,,,4097680060
+2306,YMCA,conflict,9,False,pluto,3,9,,,,4097580001
+2308,Park Haven Luxury Apartments,agree,7,True,pluto+osm,7,6,,,,4097620001
+2309,Park House,agree,6,True,pluto+osm,6,6,,,,4097550006
+2310,Immaculata Hall,agree,6,True,pluto+osm,6,6,,,,4096790059
+2311,Parkside Court,agree,4,True,pluto+osm,4,4,,,,4096790063
+2312,Hillside Gardens,agree,6,True,pluto+osm,6,6,,,,4096780037
+2313,Wingate by Wyndham,agree,7,True,pluto+osm,7,6,,,,4099820023
+2314,Le Tour,agree,7,True,pluto+osm,7,7,,,,4096487501
+2315,The Sagamore,agree,6,True,pluto+osm,6,6,,,,4096480024
+2316,Tarleton Gardens,agree,6,True,pluto+osm,6,6,,,,4097130113
+2317,Briarfield,agree,6,True,pluto+osm,6,6,,,,4097150220
+2319,Courtyard By Marriott,agree,6,True,pluto+osm,6,6,,,,4070670063
+2320,Fairfield Inn & Suites By Marriott,agree,6,True,pluto+osm,6,6,,,,4070670054
+2321,Choongsyn Korean Church,agree,3,True,pluto+osm,3,3,,,,4053260083
+2324,Flushing Commons South,agree,17,True,pluto+osm,17,17,,,,4049787502
+2325,Stella's Shop and Beauty Salon,agree,3,True,pluto+osm,3,3,,,,4041650004
+2326,2325 Bragg St,agree,2,True,pluto+osm,2,1,,,,3074100143
+2327,Yeshiva of Kings Bay,agree,3,True,pluto+osm,3,3,,,,3074420011
+2328,Stop & Shop,conflict,3,False,osm,3,1,,,,3074380001
+2329,166th Street LLC,agree,6,True,pluto+osm,6,6,,,,4098180049
+2330,255 Columbia,agree,7,True,pluto+osm,7,7,,,,3003487503
+2331,Juliana Curran Terian Design Center,conflict,5,False,pluto,3,5,,,,
+2332,Hilton Garden Inn,agree,16,True,pluto+osm,16,16,,,,
+2334,NewYork-Presbyterian Brooklyn Methodist Hospital,filled,5,False,pluto,,5,,,,3010860001
+2335,Triangle Building,agree,19,True,pluto+osm,19,18,,,,4004340016
+2336,Hoyt and Horn,agree,26,True,pluto+osm,26,25,,,,
+2337,CubeSmart,agree,8,True,pluto+osm,8,7,,,,
+2338,One John Street,agree,12,True,pluto+osm,12,12,,,,
+2340,The Baltic Hotel,agree,4,True,pluto+osm,4,4,,,,3003990045
+2341,Holiday Inn Brooklyn Downtown,agree,14,True,pluto+osm,14,14,,,,
+2343,Atelier,agree,6,True,pluto+osm,6,6,,,,3023070038
+2347,Noble,agree,7,True,pluto+osm,7,8,,,,
+2348,365 Bond,agree,12,True,pluto+osm,12,12,,,,
+2349,Sea Breeze Tower,agree,20,True,pluto+osm,20,20,,,,
+2350,The Vue,conflict,10,False,osm,10,8,,,,3087737501
+2352,Ocean Drive,agree,21,True,pluto+osm,21,21,,,,3070657501
+2353,Raven Hall,agree,20,True,pluto+osm,20,20,,,,
+2354,Saint John's Episcopal Hospital,filled,10,False,pluto,,10,,,,
+2357,Kingsbrook Jewish Medical Center,filled,4,False,pluto,,4,,,,3046020001
+2364,NewYork-Presbyterian/Queens,filled,8,False,pluto,,8,,,,
+2369,Brooklyn Hospital Center,filled,13,False,pluto,,13,,,,3020880004
+2370,Sorka Gakkai International-USA Buddhist Center,agree,4,True,pluto+osm,4,4,,,,3003890066
+2371,Goodwill Tower,agree,15,True,pluto+osm,15,15,,,,4009090001
+2372,The Ashland,conflict,53,False,osm,53,51,,,,3021077501
+2373,New York Hotel and Motel Trades Council Brooklyn Health Center,agree,12,True,pluto+osm,12,11,,,,3021080001
+2374,EVEN Hotel,agree,13,True,pluto+osm,13,13,,,,3001660040
+2377,1 Hotel Brooklyn Bridge,agree,10,True,pluto+osm,10,10,,,,3001990010
+2378,The Hendrik,agree,6,True,pluto+osm,6,7,,,,3001867502
+2381,Vista 65,conflict,23,False,osm,23,6,,,,4030867501
+2382,The Refinery at Domino,agree,15,True,pluto+osm,15,14,,,,
+2384,Avalon Brooklyn Bay,agree,27,True,pluto+osm,27,28,,,,3074597501
+2385,The Union,agree,7,True,pluto+osm,7,7,,,,3027310001
+2386,The Driggs,conflict,7,False,pluto,5,7,,,,
+2387,The Driggs North,agree,6,True,pluto+osm,6,7,,,,3023060015
+2388,The Park Ilona,agree,7,True,pluto+osm,7,7,,,,3022900005
+2389,Halo,agree,25,True,pluto+osm,25,26,,,,
+2390,Days Inn,agree,4,True,pluto+osm,4,4,,,,3014440042
+2391,28-40 Jackson Avenue,agree,43,True,pluto+osm,43,43,,,,
+2392,28-30 Jackson Avenue,conflict,57,False,wikipedia,55,,,57,Tower 28,
+2393,Jackson Park,agree,45,True,pluto+osm,45,45,,,,
+2394,60 Water Street,agree,16,True,pluto+osm,16,17,,,,3000367504
+2396,One Clinton,conflict,38,False,osm,38,36,,,,
+2397,AVA DoBro,conflict,57,False,osm,57,24,,,,3001450026
+2398,Brooklyn Point,agree,57,True,pluto+osm,57,57,,,,3001497502
+2399,The BRiQ,agree,21,True,pluto+osm,21,21,,,,3001460007
+2401,Eagle Lofts Tower,agree,54,True,pluto+osm,54,54,,,,4002660003
+2403,Queens Plaza Park,conflict,67,False,wikidata,71,64,67,,,
+2404,QLIC,conflict,21,False,pluto,9,21,,,,4004130002
+2405,Level,conflict,40,False,pluto,9,40,,,,
+2406,The Greenpoint,agree,39,True,wikidata+pluto,4,39,39,,,3025307502
+2407,One Blue Slip,conflict,30,False,pluto,6,30,,,,3024727503
+2408,The Jackson,agree,11,True,pluto+osm,11,11,,,,4000567502
+2409,Corte,agree,8,True,pluto+osm,8,8,,,,4000787502
+2410,Murray Park South,agree,6,True,pluto+osm,6,6,,,,4000547501
+2411,34-46 Vernon Boulevard,conflict,17,False,pluto,7,17,,,,4003227501
+2412,Quik Park,conflict,41,False,pluto,7,41,,,,
+2413,42-60 Crescent Street,agree,10,True,pluto+osm,10,10,,,,
+2414,Hunters Point Community Middle School,agree,5,True,pluto+osm,5,5,,,,4000060008
+2415,Surface Inn,agree,7,True,pluto+osm,7,7,,,,3035230020
+2416,The Lois,agree,8,True,pluto+osm,8,8,,,,3048370027
+2417,Watermark,agree,27,True,pluto+osm,27,27,,,,4002680008
+2418,The Edison,agree,26,True,pluto+osm,26,27,,,,4002687501
+2419,Eagle Lofts,conflict,54,False,pluto,6,54,,,,
+2422,Wingate by Wyndham Long Island City,agree,16,True,pluto+osm,16,16,,,,4004730618
+2423,The Edmond J. Safra Synagogue,agree,3,True,pluto+osm,3,3,,,,3071090050
+2424,Citylights At Queens Landing,conflict,42,False,pluto,6,42,,,,4000180001
+2425,Marriott Courtyard,agree,31,True,pluto+osm,31,30,,,,
+2426,NYC Urban Post-Disaster Housing Prototype,conflict,3,False,osm,3,1,,,,3000750001
+2427,Medical Center,agree,5,True,pluto+osm,5,5,,,,3086620131
+2428,The Amberly,agree,33,True,pluto+osm,33,34,,,,3001077501
+2429,Joli on Guider,agree,8,True,pluto+osm,8,7,,,,3088120137
+2430,Olympia Dumbo,agree,26,True,pluto+osm,26,26,,,,3000457502
+2431,Catholic Charities Bishop Valero Residence,agree,6,True,pluto+osm,6,6,,,,4005690017
+2434,Searise,agree,14,True,pluto+osm,14,14,,,,3069790101
+2436,Tangram House South,agree,15,True,pluto+osm,15,15,,,,
+2437,avid Hotel,agree,6,True,pluto+osm,6,6,,,,3060550021
+2438,Shore Tower,conflict,7,False,osm,7,5,,,,
+2439,The Vitagraph,agree,8,True,pluto+osm,8,8,,,,
+2440,One Bell Slip,conflict,31,False,pluto,3,31,,,,3024720200
+2441,One South First & Ten Grand,conflict,45,False,osm,45,42,,,,
+2442,Brooklyn Square,agree,6,True,pluto+osm,6,6,,,,3053490001
+2443,Hatzolah of Boro Park,agree,3,True,pluto+osm,3,3,,,,3053480007
+2444,Jaguar & Land Rover Brooklyn,agree,3,True,pluto+osm,3,2,,,,3072470113

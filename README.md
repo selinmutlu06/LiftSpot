@@ -136,18 +136,18 @@ flowchart TD
     V -- "yes" --> K["Verified, kept on the map"]
     V -- "no" --> X["Removed"]
     K --> Y{"Any YouTube or Reddit<br/>footage of its elevators?"}
-    Y -- "clear match" --> C["Covered"]
+    Y -- "clear match" --> C["Filmed"]
     Y -- "nothing found" --> P["Amber pin<br/>none found as of a date"]
-    Y -- "ambiguous" --> H["I review it by hand"]
+    Y -- "ambiguous" --> H["Gray pin until<br/>I review it by hand"]
     H --> C
     H --> P
     C --> M["Written to a numbered<br/>SQL migration"]
     P --> M
 ```
 
-Every building on the map today has been confirmed to exist. I made that check strict on purpose, because a made-up "Elmont Medical Center" has a real-looking address and an optometrist next door, and a looser check would have let it through. The Queens and Brooklyn buildings were imported straight from OpenStreetMap, so they were confirmed from the start, and their neighborhoods come from NYC Planning's official neighborhood boundaries.
+Every building on the map today has been confirmed to exist. I made that check strict on purpose, because a made-up "Elmont Medical Center" has a real-looking address and an optometrist next door, and a looser check would have let it through. The Queens and Brooklyn buildings were imported straight from OpenStreetMap, so they were confirmed from the start, and their neighborhoods come from NYC Planning's official neighborhood boundaries. Long Island towns were checked against the US Census, and buildings that showed up twice under different names, like Coney Island Hospital and its new name South Brooklyn Health, were merged into one pin.
 
-Floor counts only show as fact when OpenStreetMap backs them up, and everywhere else they're marked as estimates. There's no public source for how many elevators a building has, so I deleted every guessed count, and that number now only comes from riders who've been there. When a footage match was ambiguous, I reviewed it myself, which came out to 372 candidates across 96 buildings.
+Floor counts only show as fact when OpenStreetMap backs them up, and everywhere else they're marked as estimates. There's no public source for how many elevators a building has, so I deleted every guessed count, and that number now only comes from riders who've been there. When a footage match was ambiguous, I reviewed it myself, which came out to 372 candidates across 96 buildings on Long Island. Queens and Brooklyn are next.
 
 That strictness caught real mistakes along the way. All five videos the app had matched to Huntington Public Library turned out to be of South Huntington Public Library, so I added a check that treats a direction word before a name as a different building.
 

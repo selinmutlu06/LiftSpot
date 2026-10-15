@@ -1,6 +1,6 @@
 # LiftSpot
 
-LiftSpot is a map of elevators across Long Island, Queens, and Brooklyn. It has 715 buildings you can search, filter, review, and help fill in, and it's live at [liftspot.netlify.app](https://liftspot.netlify.app).
+LiftSpot is a map of elevators across Long Island, Queens, and Brooklyn. It has 714 buildings you can search, filter, review, and help fill in, and it's live at [liftspot.netlify.app](https://liftspot.netlify.app).
 
 <img src="docs/images/elevator.gif" alt="Pressing the elevator button" width="320" />
 
@@ -12,11 +12,11 @@ When I went looking for something that would help him figure out where to go nex
 
 ## What you can do with it
 
-Every building is pinned on the map, and clicking a pin opens a drawer with the building's details, its reviews, and what's known about filming it. You can search by name, by town, or with a plain-English query like "5-story hospital in Mineola," and if the search matches a real place, the map switches to showing everything within a radius of it. You can also filter by building type and number of stories, or turn on near-me mode to sort everything by distance.
+Every building is pinned on the map, and clicking a pin opens a drawer with the building's details, its reviews, and what's known about filming it. You can search by name, by town, or with a plain-English query like "tall residential in Long Island City" or "hospitals in Brooklyn," and the map zooms to whatever matches. If you type a place that isn't a building, like a zip code or a beach, the map switches to showing everything within a radius of it. You can also filter by building type and number of stories, or turn on near-me mode to sort everything by distance.
 
-The feature my brother uses most is the amber pins. LiftSpot checks YouTube and Reddit for footage of each building's elevators, and buildings nobody has filmed yet show up in amber, so you can see at a glance where you'd be the first. There's also a [hunt list](https://liftspot.netlify.app/hunt.html) that groups those buildings by town or sorts them by distance, with a checklist you can print and take with you.
+The feature my brother uses most is the amber pins. LiftSpot checks YouTube and Reddit for footage of each building's elevators, and buildings nobody has filmed yet show up in amber, so you can see at a glance where you'd be the first. Gray pins are buildings I haven't finished checking yet, so the map doesn't claim anything about them either way. There's also a [hunt list](https://liftspot.netlify.app/hunt.html) that groups those buildings by town or sorts them by distance, with a checklist you can print and take with you.
 
-Ratings only come from real reviews, so a building nobody has reviewed just says "No reviews yet." If you ride an elevator, you can report how many there are along with the brand and drive type, and if you film one, you can submit the YouTube link. Both go into a review queue before they show up on the map. You can also keep private notes on any building, and those stay on your own device.
+Ratings only come from real reviews, so a building nobody has reviewed just says "No reviews yet." The database calculates each rating from the reviews themselves, so nobody can set one from the browser. If you ride an elevator, you can report how many there are along with the brand and drive type, and if you film one, you can submit the YouTube link. Both go into a review queue before they show up on the map. You can also keep private notes on any building, and those stay on your own device.
 
 If you'd rather talk than type, the "Ask aloud" button opens a voice assistant you can ask about buildings in the catalog. It answers from the same data as the map and follows the same rules about what it knows and what it doesn't.
 
@@ -88,6 +88,7 @@ erDiagram
         text name
         text type
         text town
+        text region "Long Island, Queens, or Brooklyn"
         float lat
         float lng
         int stories "null when no source has it"
@@ -144,7 +145,7 @@ flowchart TD
     P --> M
 ```
 
-Every building on the map today has been confirmed to exist. I made that check strict on purpose, because a made-up "Elmont Medical Center" has a real-looking address and an optometrist next door, and a looser check would have let it through. The Queens and Brooklyn buildings were imported straight from OpenStreetMap, so they were confirmed from the start.
+Every building on the map today has been confirmed to exist. I made that check strict on purpose, because a made-up "Elmont Medical Center" has a real-looking address and an optometrist next door, and a looser check would have let it through. The Queens and Brooklyn buildings were imported straight from OpenStreetMap, so they were confirmed from the start, and their neighborhoods come from NYC Planning's official neighborhood boundaries.
 
 Floor counts only show as fact when OpenStreetMap backs them up, and everywhere else they're marked as estimates. There's no public source for how many elevators a building has, so I deleted every guessed count, and that number now only comes from riders who've been there. When a footage match was ambiguous, I reviewed it myself, which came out to 372 candidates across 96 buildings.
 
@@ -178,7 +179,7 @@ sequenceDiagram
 
 ## What I'd change next
 
-Right now the app loads every building at once, which is fine at 715 but won't be at ten times that, so the next step is only fetching buildings inside the part of the map you're looking at. The rating is also stored on each building row and updated from the browser, and I want to move that calculation into the database so the browser never writes it at all.
+Right now the app loads every building at once, which is fine at 714 but won't be at ten times that, so the next step is only fetching buildings inside the part of the map you're looking at. I also still have 674 possible Queens and Brooklyn footage matches to review by hand, which will turn most of the gray pins amber or green.
 
 ## Running it locally
 

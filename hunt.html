@@ -172,7 +172,10 @@ document.getElementById('list').addEventListener('change', e => {
   const g = got();
   e.target.checked ? g.add(+li.dataset.id) : g.delete(+li.dataset.id);
   saveGot(g);
+  const id = li.dataset.id;
   render();
+  // Re-rendering replaces the row, so put keyboard focus back on its checkbox.
+  document.querySelector(`li.b[data-id="${id}"] input`)?.focus();
 });
 
 const setSort = mode => {

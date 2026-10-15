@@ -26,7 +26,7 @@ If you'd rather talk than type, the "Ask aloud" button opens a voice assistant y
 
 ## Designing it to be calm
 
-A lot of people who love elevators the way my brother does are autistic, and a map covered in pins, numbers, and badges can be a lot to take in. LiftSpot opens in a calm mode with a muted palette inspired by modern elevator cabs, very little motion, and only the essentials on screen, and there's a toggle for the full detail view whenever you want more.
+A lot of people who love elevators the way my brother does are autistic, and a map covered in pins, numbers, and badges can be a lot to take in. LiftSpot opens in a calm mode with a muted palette inspired by modern elevator cabs and very little motion, and the map only shows plain pins until you ask for more. The full detail toggle switches to a dark, lit-up cab look, prints each building's name and floor count next to its pin once you zoom in, and plays the elevator doors opening when you pick a building.
 
 Every state of the interface passes automated accessibility checks with axe, and animations turn off for anyone who has reduced motion set on their device. Dialogs trap focus properly, tap targets are big enough to hit on a phone, and on small screens the map comes first, with the building list in a sheet you can drag up. The voice assistant was set up with the same audience in mind, so it waits patiently for you to finish talking and answers in plain, literal language.
 

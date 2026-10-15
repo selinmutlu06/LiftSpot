@@ -118,6 +118,30 @@ function addLayers() {
     },
   });
 
+  // Full detail adds what calm leaves off: each building's name and floor
+  // count printed next to its pin once you zoom in to street level.
+  if (currentMode() === 'full') {
+    map.addLayer({
+      id: 'pin-labels', type: 'symbol', source: 'buildings',
+      filter: ['!', ['has', 'point_count']],
+      minzoom: 13,
+      layout: {
+        'text-field': ['format',
+          ['get', 'name'], { 'font-scale': 1 },
+          ['case', ['==', ['get', 'floors'], ''], '', '\n'], {},
+          ['get', 'floors'], { 'font-scale': 0.85, 'text-color': c.halo }],
+        'text-font': ['Open Sans Bold'],
+        'text-size': 11.5,
+        'text-anchor': 'left',
+        'text-offset': [1.1, 0],
+        'text-justify': 'left',
+        'text-max-width': 12,
+        'text-optional': true,
+      },
+      paint: { 'text-color': '#e7ebe9', 'text-halo-color': '#0f1714', 'text-halo-width': 1.4 },
+    });
+  }
+
   applyData();
 }
 
@@ -176,7 +200,11 @@ function applyData() {
       type: 'Feature',
       id: b.id,
       geometry: { type: 'Point', coordinates: [b.lng, b.lat] },
-      properties: { id: b.id, cov: covered(b) ? 'covered' : unfilmed(b) ? 'first' : 'unknown' },
+      properties: {
+        id: b.id, cov: covered(b) ? 'covered' : unfilmed(b) ? 'first' : 'unknown',
+        name: b.name,
+        floors: b.stories == null ? '' : `${b.stories} floor${b.stories === 1 ? '' : 's'}${b.stories_verified ? '' : ' · est'}`,
+      },
     })),
   });
   if (activeId != null) trySetState(activeId, { active: true });

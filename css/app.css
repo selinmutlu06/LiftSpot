@@ -1148,3 +1148,13 @@ html[data-mode="full"] .vc-cab[data-vstate="speaking"]  .vc-door.r { transform: 
 
 .pbtn[hidden] { display: none; }
 input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }
+
+/* Desktop: the whole rail scrolls as one, so on a laptop-height screen the
+   filters scroll out of the way instead of squeezing the list into a sliver.
+   The count row sticks to the top while you scroll the results. */
+@media (min-width: 861px) {
+  .rail { overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--steel-300) transparent; }
+  .listwrap { flex: none; display: block; }
+  .readout { position: sticky; top: 0; z-index: 3; }
+  .list { overflow: visible; }
+}

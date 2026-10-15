@@ -100,7 +100,7 @@ async function runGeocode() {
   // Our own catalogue answers first: a building's name stays a name search,
   // and "hospitals in Mineola" filters buildings. Only a bare place or
   // address ("11501", "Jones Beach") goes out to the geocoder.
-  if (namesBuilding(state.q)) { setMode('text'); hooks.onQueryChange(); return; }
+  if (namesBuilding(state.q)) { setMode('text'); hooks.onQueryChange({ settled: true }); return; }
   if (isSmartQuery(state.q)) { setMode('smart'); hooks.onQueryChange({ settled: true }); return; }
   let coords = null;
   try {
@@ -117,7 +117,7 @@ async function runGeocode() {
   } else {
     setMode('text');
   }
-  hooks.onQueryChange({ settled: state.searchMode === 'smart' });
+  hooks.onQueryChange({ settled: true });
 }
 
 function onKeydown(e) {

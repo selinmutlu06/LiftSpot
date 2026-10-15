@@ -258,6 +258,21 @@ function syncFab() {
   $('filtersFab').classList.toggle('active', state.types.size > 0 || state.minStories > 0 || state.firstOnly);
 }
 
+/* On desktop the rail scrolls as one; after a search lands, bring the
+   "Best matches" row and the results into view instead of leaving them
+   below the filters. */
+function revealResults() {
+  const rail = $('rail');
+  if (matchMedia('(max-width: 860px)').matches || rail.scrollHeight <= rail.clientHeight) return;
+  const target = [$('modeChip'), $('radiusRow'), document.querySelector('.listwrap')]
+    .find(el => el && el.offsetParent !== null);
+  if (!target) return;
+  const top = target.offsetTop - rail.offsetTop;
+  if (rail.scrollTop < top) {
+    rail.scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+}
+
 /* ── mode chip + radius ── */
 function onModeChange(mode, label, coords) {
   const chip = $('modeChip');
@@ -465,6 +480,7 @@ function boot() {
         renderList();
         // Once a smart search lands, frame its results on the map.
         if (settled && state.searchMode === 'smart') fitToBuildings(filtered());
+        if (settled) revealResults();
       },
       onPick: b => {
         open(b.id);
